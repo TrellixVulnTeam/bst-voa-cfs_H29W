@@ -8,4 +8,3 @@ if (window.console && window.console.info) {
 $(document).ready(function () {
   window.MOJFrontend.initAll()
   window.GOVUKFrontend.initAll()
-})
