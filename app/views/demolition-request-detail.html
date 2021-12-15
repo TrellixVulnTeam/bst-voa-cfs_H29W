@@ -1,0 +1,60 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Enter property info
+{% endblock %}
+
+      {% block beforeContent %}
+      <a href="enter-property-info" class="govuk-back-link">Back</a>
+      {% endblock %}
+
+{% block content %}
+
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+                  <div class="govuk-form-group">
+                    <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="event-name">
+                        Demolition request details
+                      </label>
+
+                     <form class="form" action="/property-occupier-details" method="post">
+
+                        <p>
+                        Billing Authority number
+                        </p>
+
+                        <div id="with-hint-hint" class="govuk-hint">
+                              This allows us to cross reference and track reports.
+                          </div>
+
+                        <div id="with-hint-hint" class="govuk-hint">
+                              For example 06002832
+                          </div>
+
+                    </h1>
+                    <input class="govuk-input" id="event-name" name="event-name" type="text">
+                  </div>
+
+                      {{ govukDateInput({
+                id: "passport-issued",
+                namePrefix: "passport-issued",
+                fieldset: {
+                  legend: {
+                    text: "Property demolished effective date"
+                  }
+                },
+                hint: {
+                  text: "For example, 27 3 2007"
+                }
+              }) }}
+
+        <br/br>
+
+          <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+        </div>
+      </div>
+
+{% endblock %}

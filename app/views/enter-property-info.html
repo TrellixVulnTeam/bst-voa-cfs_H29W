@@ -1,0 +1,42 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Enter property info
+{% endblock %}
+
+      {% block beforeContent %}
+      <a href="reasons-for-removing" class="govuk-back-link">Back</a>
+      {% endblock %}
+
+{% block content %}
+
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+
+          <div class="govuk-form-group">
+          <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="event-name">
+              Enter property information
+            </label>
+
+            <form class="form" action="/demolition-request-detail" method="post">
+
+              <p>
+                The Billing property reference number makes sure we are talking about the same property and we are unable to clear any reports wihtout this number.
+              </p>
+
+              <div id="with-hint-hint" class="govuk-hint">
+                    For example 06002874000001.
+                </div>
+
+          </h1>
+          <input class="govuk-input" id="event-name" name="event-name" type="text">
+        </div>
+
+          <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+        </div>
+      </div>
+
+{% endblock %}

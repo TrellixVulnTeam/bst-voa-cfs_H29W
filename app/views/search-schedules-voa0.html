@@ -17,7 +17,7 @@
 
         <h1 class="govuk-heading-xl">Your available schedules</h1>
 
-        <!--<p> Find out about your schdules using Billing Authority Reference Number or Billing Authority Report number. </p> --->
+        <p> Find out about your schdules using Billing Authority Reference Number or Billing Authority Report number. </p>
 
       <form class="form" action="/url/of/next/page" method="post">
 
@@ -49,116 +49,95 @@
 
 
 
+      <table class="govuk-table" data-module="moj-sortable-table">
+
+            <thead class="govuk-table__head">
+              <tr class="govuk-table__row">
+
+                <th scope="col" class="govuk-table__header" aria-sort="ascending">File Name</th>
+
+                <th scope="col" class="govuk-table__header" aria-sort="none">Rating year</th>
+
+                <th scope="col" class="govuk-table__header" aria-sort="none">Description</th>
+
+                <th scope="col" class="govuk-table__header govuk-table__header--numeric" aria-sort="none">Date and time</th>
+
+              </tr>
+            </thead>
 
 
+            <tbody class="govuk-table__body">
+
+              <tr class="govuk-table__row">
+
+                <td class="govuk-table__header"><a href="#" class="govuk-link">0840201701NRP</td>
+
+                <td class="govuk-table__cell" data-sort-value="2017">2017</td>
+
+                <td class="govuk-table__cell">Update</td>
+
+                <td class="govuk-table__cell govuk-table__cell--numeric" data-sort-value="11 Oct 2022 16:45">11 Oct 2022 16:45</td>
+
+              </tr>
+
+              <tr class="govuk-table__row">
+
+                <td class="govuk-table__header"><a href="#" class="govuk-link">0840201701NR</td>
+
+                <td class="govuk-table__cell" data-sort-value="2017">2017</td>
+
+                <td class="govuk-table__cell">Full List</td>
+
+                <td class="govuk-table__cell govuk-table__cell--numeric" data-sort-value="10 Oct 2022 16:45">10 Oct 2022 16:45</td>
+
+              </tr>
+
+              <tr class="govuk-table__row">
+
+                <td class="govuk-table__header"><a href="#" class="govuk-link">0840201701NRP</td>
+
+                <td class="govuk-table__cell" data-sort-value="2010">2010</td>
+
+                <td class="govuk-table__cell">Rating List</td>
+
+                <td class="govuk-table__cell govuk-table__cell--numeric" data-sort-value="10 Oct 2022 16:45">10 Oct 2022 16:45</td>
+
+              </tr>
+
+              <tr class="govuk-table__row">
+
+                <td class="govuk-table__header"><a href="#" class="govuk-link">0840201701NRP</td>
+
+                <td class="govuk-table__cell" data-sort-value="2010">2010</td>
+
+                <td class="govuk-table__cell">Rating List</td>
+
+                <td class="govuk-table__cell govuk-table__cell--numeric" data-sort-value="10 Oct 2022 11:45">10 Oct 2022 11:45</td>
+
+              </tr>
+
+              <tr class="govuk-table__row">
+
+                <td class="govuk-table__header"><a href="#" class="govuk-link">0840201701NRP</td>
+
+                <td class="govuk-table__cell" data-sort-value="2005">2005</td>
+
+                <td class="govuk-table__cell">Rating List</td>
+
+                <td class="govuk-table__cell govuk-table__cell--numeric" data-sort-value="30 Sep 2022 16:45">30 Sep 2022 16:45</td>
+
+              </tr>
 
 
-          <table class="govuk-table" data-module="moj-multi-select" data-multi-select-checkbox="#select-all">
+              </tr>
+
+            </tbody>
+          </table>
 
 
-    <thead class="govuk-table__head">
-      <tr class="govuk-table__row">
-        <th class="govuk-table__header" scope="col" id="select-all"></th>
-        <th class="govuk-table__header" scope="col">Name</th>
-        <th class="govuk-table__header" scope="col">Elevation</th>
-        <th class="govuk-table__header" scope="col">Continent</th>
-        <th class="govuk-table__header govuk-table__header--numeric" scope="col">First summit</th>
-      </tr>
-    </thead>
+          <br/><br/>
 
-    <tbody class="govuk-table__body">
-
-      <tr class="govuk-table__row">
-        <td class="govuk-table__cell">
-          <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
-            <input type="checkbox" class="govuk-checkboxes__input" id="mountain-elbrus" value="elbrus">
-            <label class="govuk-label govuk-checkboxes__label" for="mountain-elbrus">
-              <span class="govuk-visually-hidden">0840201701NRP</span>
-            </label>
-          </div>
-        </td>
-        <th scope="row" class="govuk-table__header"><a href="#" class="govuk-link">0840201701NRP</a></th>
-        <td class="govuk-table__cell">2017</td>
-        <td class="govuk-table__cell">Update schedule</td>
-        <td class="govuk-table__cell govuk-table__cell--numeric">11 Oct 2022 16:45</td>
-      </tr>
-
-      <tr class="govuk-table__row">
-        <td class="govuk-table__cell">
-          <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
-            <input type="checkbox" class="govuk-checkboxes__input" id="mountain-elbrus" value="elbrus">
-            <label class="govuk-label govuk-checkboxes__label" for="mountain-elbrus">
-              <span class="govuk-visually-hidden">0840201701NRP</span>
-            </label>
-          </div>
-        </td>
-        <th scope="row" class="govuk-table__header"><a href="#" class="govuk-link">0840201701NRP</a></th>
-        <td class="govuk-table__cell">2017</td>
-        <td class="govuk-table__cell">Full list</td>
-        <td class="govuk-table__cell govuk-table__cell--numeric">11 Oct 2022 16:45</td>
-      </tr>
-
-      <tr class="govuk-table__row">
-        <td class="govuk-table__cell">
-          <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
-            <input type="checkbox" class="govuk-checkboxes__input" id="mountain-elbrus" value="elbrus">
-            <label class="govuk-label govuk-checkboxes__label" for="mountain-elbrus">
-              <span class="govuk-visually-hidden">0840201701NRP</span>
-            </label>
-          </div>
-        </td>
-        <th scope="row" class="govuk-table__header"><a href="#" class="govuk-link">0840201701NRP</a></th>
-        <td class="govuk-table__cell">2010</td>
-        <td class="govuk-table__cell">Rating List</td>
-        <td class="govuk-table__cell govuk-table__cell--numeric">11 Oct 2022 16:45</td>
-      </tr>
-
-      <tr class="govuk-table__row">
-        <td class="govuk-table__cell">
-          <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
-            <input type="checkbox" class="govuk-checkboxes__input" id="mountain-elbrus" value="elbrus">
-            <label class="govuk-label govuk-checkboxes__label" for="mountain-elbrus">
-              <span class="govuk-visually-hidden">0840201701NRP</span>
-            </label>
-          </div>
-        </td>
-        <th scope="row" class="govuk-table__header"><a href="#" class="govuk-link">0840201701NRP</a></th>
-        <td class="govuk-table__cell">2010</td>
-        <td class="govuk-table__cell">Rating List</td>
-        <td class="govuk-table__cell govuk-table__cell--numeric">10 Oct 2022 11:45</td>
-      </tr>
-
-      <tr class="govuk-table__row">
-        <td class="govuk-table__cell">
-          <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
-            <input type="checkbox" class="govuk-checkboxes__input" id="mountain-elbrus" value="elbrus">
-            <label class="govuk-label govuk-checkboxes__label" for="mountain-elbrus">
-              <span class="govuk-visually-hidden">0840201701NRP</span>
-            </label>
-          </div>
-        </td>
-        <th scope="row" class="govuk-table__header"><a href="#" class="govuk-link">0840201701NRP</a></th>
-        <td class="govuk-table__cell">2005</td>
-        <td class="govuk-table__cell">Rating List</td>
-        <td class="govuk-table__cell govuk-table__cell--numeric">30 Sep 2022 16:45</td>
-      </tr>
-
-    </tbody>
-  </table>
-
-    <br >
-
-
-
-    <br/><br/>
-
-
-        <a href="/filter-schedules0" class="govuk-button" href="/search-schedules-voa0.html" data-module="govuk-button">Previous schedules</a>
-
-          </div>
-
-
-        <!-- <button class="govuk-button" data-module="govuk-button">Sign In</button> --->
+        <button class="govuk-button" data-module="govuk-button">See previous schedules</button>
 
       </form>
 

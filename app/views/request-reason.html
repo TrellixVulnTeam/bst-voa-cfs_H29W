@@ -1,0 +1,64 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Request reason
+{% endblock %}
+
+      {% block beforeContent %}
+      <a href="signin0" class="govuk-back-link">Back</a>
+      {% endblock %}
+
+{% block content %}
+
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+        <form action="reasons-for-removing" method="post" class="form">
+
+              <div class="govuk-form-group">
+                <fieldset class="govuk-fieldset">
+                  <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                    <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="event-name">
+                        Why should the property be removed?
+                      </label>
+                  </legend>
+
+                  <p> Using the correct request reason means we can allocate reports to make sure they are handled effectively by the right people. </p>
+
+                  <div class="govuk-radios">
+                    <div class="govuk-radios__item">
+                      <input class="govuk-radios__input" id="request-reason-remove-this-propety-from-the-non-domestic-rating-list" name="request-reason" type="radio" value="Remove-this-propety-from-the-non-domestic-rating-list" {{ checked("request-reason", "Remove-this-propety-from-the-non-domestic-rating-list") }}>
+                      <label class="govuk-label govuk-radios__label" for="request-reason-remove-this-propety-from-the-non-domestic-rating-list">
+                        Remove this propety from the Non-domestic rating list
+                      </label>
+                    </div>
+
+                    <div class="govuk-radios__item">
+                      <input class="govuk-radios__input" id="vehicle-type-lorry" name="vehicle-type" type="radio" value="Lorry" {{ checked("vehicle-type", "Lorry") }}>
+                      <label class="govuk-label govuk-radios__label" for="vehicle-type-lorry">
+                        Make amendements to the Non-domestic rating list
+                      </label>
+                    </div>
+
+                    <div class="govuk-radios__item">
+                      <input class="govuk-radios__input" id="vehicle-type-motorcycle" name="vehicle-type" type="radio" value="Motorcycle" {{ checked("vehicle-type", "Motorcycle") }}>
+                      <label class="govuk-label govuk-radios__label" for="vehicle-type-motorcycle">
+                        Add new property
+                      </label>
+                    </div>
+                  </div>
+
+                </fieldset>
+              </div>
+
+              <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+        </form>
+
+          </div>
+        </div>
+
+
+
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Owner or occupier details
+{% endblock %}
+
+        {% block beforeContent %}
+        <a href="demolition-request-detail" class="govuk-back-link">Back</a>
+        {% endblock %}
+
+{% block content %}
+
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+
+          <div class="govuk-form-group">
+          <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="event-name">
+              Owner or occupier details
+            </label>
+
+            <form class="form" action="/correct-property-check" method="post">
+
+              <div class="govuk-form-group">
+
+
+          <label class="govuk-label" for="full">
+            First Name
+          </label>
+          <input class="govuk-input govuk-!-width-full" id="full" name="full" type="text"></div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="three-quarters">
+            Last Name
+          </label>
+          <input class="govuk-input govuk-!-width-full" id="full" name="full" type="text"></div>
+
+        <div class="govuk-form-group">
+          <label class="govuk-label" for="two-thirds">
+            Email address (optional)
+          </label>
+          <input class="govuk-input govuk-!-width-two-thirds" id="two-thirds" name="two-thirds" type="text"></div>
+
+
+        <br/br>
+
+          <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+        </div>
+      </div>
+
+{% endblock %}
