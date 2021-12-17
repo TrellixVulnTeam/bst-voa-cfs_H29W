@@ -1,0 +1,51 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Reference details
+{% endblock %}
+
+      {% block beforeContent %}
+      <a href=" " class="govuk-back-link">Back</a>
+      {% endblock %}
+
+{% block content %}
+
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+
+                     <form class="form" action="/ " method="post">
+
+                        {{ govukInput({
+                            label: {
+                              text: "Reference details",
+                              classes: "govuk-label--l",
+                              isPageHeading: true
+
+                          },
+                          hint: {
+                            text: "OS Grid reference deatils(optional)"
+                          },
+
+                        
+                        hint: {
+                          text: "OS Grid reference deatils(optional)"
+                        },
+
+
+                            id: "event-name",
+                            name: "event-name"
+                        }) }}
+
+
+
+
+        <br>
+
+          <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+        </div>
+      </div>
+
+{% endblock %}

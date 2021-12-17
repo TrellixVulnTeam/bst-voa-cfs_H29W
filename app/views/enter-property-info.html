@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  Enter property info
+  Property address
 {% endblock %}
 
       {% block beforeContent %}
@@ -17,10 +17,10 @@
 
           <div class="govuk-form-group">
           <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="event-name">
-              Enter property information
+              Billing property reference number
             </label>
 
-            <form class="form" action="/demolition-request-detail" method="post">
+            <form class="form" action="/property-address" method="post">
 
               <p>
                 The Billing property reference number makes sure we are talking about the same property and we are unable to clear any reports wihtout this number.
