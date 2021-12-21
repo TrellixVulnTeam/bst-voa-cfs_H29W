@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  Reasons for removing
+  Reasons for amendements
 {% endblock %}
 
       {% block beforeContent %}
@@ -15,26 +15,27 @@
 
     <div class="govuk-form-group">
     <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="event-name">
-        What is the reason for being removed?
+        Why do you want to make amendements to this property?
       </label>
 
       <form class="form" action="enter-property-info" method="post">
 
         <br>
 
-        <!--<p> Reasons for removing the property. You can select other if you do not see this as part of the list. </p>-->
+        <!-- <p> Reasons for making amendments to the property. You can select other if you do not see this as part of the list. </p> -->
 
-      <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
+
+            <div class="govuk-radios govuk-radios--conditional" data-module="govuk-radios">
               <div class="govuk-radios__item">
                 <input class="govuk-radios__input" id="contact" name="contact" type="radio" value="email" data-aria-controls="conditional-contact">
                 <label class="govuk-label govuk-radios__label" for="contact">
-                  (05) It has been demolished
+                  (09) Improvements/Alterations
                 </label>
               </div>
               <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact">
                 <div class="govuk-form-group">
                   <label class="govuk-label" for="contact-by-email">
-                    (05) It has been demolished
+                    (09) Improvements/Alterations
                   </label>
                   <input class="govuk-input govuk-!-width-one-third" id="contact-by-email" name="contact-by-email" type="email" spellcheck="false" autocomplete="email"></div>
 
@@ -42,13 +43,13 @@
               <div class="govuk-radios__item">
                 <input class="govuk-radios__input" id="contact-2" name="contact" type="radio" value="phone" data-aria-controls="conditional-contact-2">
                 <label class="govuk-label govuk-radios__label" for="contact-2">
-                  (06) Ceased to be rateable
+                  (10) Reconstitution
                 </label>
               </div>
               <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact-2">
                 <div class="govuk-form-group">
                   <label class="govuk-label" for="contact-by-phone">
-                    (06) Ceased to be rateable
+                    (10) Reconstitution
                   </label>
                   <input class="govuk-input govuk-!-width-one-third" id="contact-by-phone" name="contact-by-phone" type="tel" autocomplete="tel"></div>
 
@@ -56,13 +57,13 @@
               <div class="govuk-radios__item">
                 <input class="govuk-radios__input" id="contact-3" name="contact" type="radio" value="text" data-aria-controls="conditional-contact-3">
                 <label class="govuk-label govuk-radios__label" for="contact-3">
-                  (07) Exempt
+                  (11) Address/Ref number change only
                 </label>
               </div>
               <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact-3">
                 <div class="govuk-form-group">
                   <label class="govuk-label" for="contact-by-text">
-                    (07) Exempt
+                    (11) Address/Ref number change only
                   </label>
                   <input class="govuk-input govuk-!-width-one-third" id="contact-by-text" name="contact-by-text" type="tel" autocomplete="tel"></div>
 
@@ -70,13 +71,13 @@
                 <div class="govuk-radios__item">
                   <input class="govuk-radios__input" id="contact-3" name="contact" type="radio" value="text" data-aria-controls="conditional-contact-3">
                   <label class="govuk-label govuk-radios__label" for="contact-3">
-                    (08) Other
+                    (12) Other
                   </label>
                 </div>
                 <div class="govuk-radios__conditional govuk-radios__conditional--hidden" id="conditional-contact-3">
                   <div class="govuk-form-group">
                     <label class="govuk-label" for="contact-by-text">
-                      (08) Other
+                      (12) Other
                     </label>
                     <input class="govuk-input govuk-!-width-one-third" id="contact-by-text" name="contact-by-text" type="tel" autocomplete="tel"></div>
 
