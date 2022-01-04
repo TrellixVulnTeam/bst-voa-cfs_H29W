@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  Owner or occupier details
+  Owner-occupier
 {% endblock %}
 
         {% block beforeContent %}
@@ -20,9 +20,37 @@
               Owner or occupier details
             </label>
 
-            <form class="form" action="/correct-property-check" method="post">
+            <form class="form" action="/reference-detail" method="post">
 
               <div class="govuk-form-group">
+
+                <br>
+
+                {{ govukRadios({
+                      classes: "govuk-radios--inline",
+                      idPrefix: "changed-name",
+                      name: "changed-name",
+                      fieldset: {
+                        legend: {
+                          text: "Is this for the owner or occupier",
+                          isPageHeading: true,
+                          classes: "govuk-fieldset__legend--m"
+                        }
+                      },
+                      hint: {
+                        text: ""
+                      },
+                      items: [
+                        {
+                          value: "owner",
+                          text: "Owner"
+                        },
+                        {
+                          value: "occupier",
+                          text: "Occupier"
+                    }
+                  ]
+                }) }}
 
 
                 {{ govukInput({
@@ -45,26 +73,26 @@
                   spellcheck: false
                 }) }}
 
+
                 {{ govukInput({
                   label: {
                     text: "Email address (optional)"
                   },
-                  id: "Email-address-(optional)",
-                  name: "Email-address-(optional)",
-                  autocomplete: "email",
-                  spellcheck: false
+                  classes: "govuk-!-width-two-thirds",
+                  id: "two-thirds",
+                  name: "two-thirds"
                 }) }}
 
                 {{ govukInput({
                   label: {
                     text: "Phone number (optional)"
                   },
-                  id: "Phone number (optional)",
-                  name: "Phone number (optional)",
-                  autocomplete: "phone",
-                  spellcheck: false
+                  classes: "govuk-!-width-two-thirds",
+                  id: "two-thirds",
+                  name: "two-thirds"
                 }) }}
 
+                <br>
 
                 {{ govukRadios({
                       classes: "govuk-radios--inline",
@@ -72,7 +100,7 @@
                       name: "changed-name",
                       fieldset: {
                         legend: {
-                          text: "Do you have alternative address details for his occupier",
+                          text: "Do you have alternative address details for this owner/occupier?",
                           isPageHeading: true,
                           classes: "govuk-fieldset__legend--m"
                         }
