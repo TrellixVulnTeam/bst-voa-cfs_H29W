@@ -4,9 +4,9 @@
   Check your answers
 {% endblock %}
 
-{% block beforeContent %}
-  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
-{% endblock %}
+        {% block beforeContent %}
+        <a href="comments" class="govuk-back-link">Back</a>
+        {% endblock %}
 
 {% from "govuk/components/back-link/macro.njk" import govukBackLink %}
 {% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
@@ -126,7 +126,7 @@
         ]
       }) }}
 
-      <h2 class="govuk-heading-m">Application details</h2>
+      <h2 class="govuk-heading-m">Reference details</h2>
 
       {{ govukSummaryList({
         classes: 'govuk-!-margin-bottom-9',
@@ -202,17 +202,17 @@
         ]
       }) }}
 
-      <h2 class="govuk-heading-m">Now send your application</h2>
+          <h2 class="govuk-heading-m">I understand and accept that:</h2>
 
-      <p class="govuk-body">By submitting this application you are confirming that, to the best of your knowledge, the details you are providing are correct.</p>
+          <p class="govuk-body">By submitting this application you are confirming that, to the best of your knowledge, the details you are providing are correct.</p>
 
-      <form action="/form-handler" method="post" novalidate>
+          <form action="/confirmation" method="post" novalidate>
 
-        <input type="hidden" name="answers-checked" value="true">
+            <input type="hidden" name="answers-checked" value="true">
 
-        {{ govukButton({
-          text: "Accept and send"
-        }) }}
+            {{ govukButton({
+                text: "Complete request"
+            }) }}
 
       </form>
 

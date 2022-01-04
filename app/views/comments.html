@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  Other evidence
+  Comments
 {% endblock %}
 
 {% block beforeContent %}
@@ -15,7 +15,7 @@
 
       <!--<h1 class="govuk-heading-xl">Comments</h1>-->
 
-      <form class="form" action="/check-your-answers" method="post">
+      <form class="form" action="/check-answers" method="post">
 
     {{ govukCharacterCount({
         name: "with-hint",

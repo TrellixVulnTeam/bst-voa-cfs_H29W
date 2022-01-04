@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Provide evidence
+{% endblock %}
+
+          {% block beforeContent %}
+          <a href="reference-detail" class="govuk-back-link">Back</a>
+          {% endblock %}
+
+
+{% block content %}
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+          <div class="govuk-form-group">
+            <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--xl" for="event-name">
+                Provide relevant evidence (WIP table to be added)
+              </label>
+
+
+      <form class="form" action="/comments" method="post">
+
+              {{ govukCharacterCount({
+                  name: "with-hint",
+                  id: "with-hint",
+                  maxlength: 200,
+                  label: {
+                    text: "",
+                    classes: "govuk-label--xl",
+                    isPageHeading: true
+                    },
+                    hint: {
+                      text: "Please provide description for the evidence uploaded"
+                    }
+                  }) }}
+
+                  {{ govukDetails({
+                      summaryText: "Help with documents",
+                      text: "Content needed here to explain to User."
+                  }) }}
+
+        <br>
+
+              <div class="govuk-button-group">
+                {{ govukButton({
+                  text: "Continue",
+                    href: "comments"
+                }) }}
+
+                {{ govukButton({
+                  text: "Save and comeback later",
+                  href: "#",
+                  classes: "govuk-button--secondary"
+
+          }) }}
+        </div>
+
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
