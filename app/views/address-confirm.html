@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  Address-confirm
+  Billing reference number
 {% endblock %}
 
       {% block beforeContent %}
@@ -22,24 +22,20 @@
 
             <form class="form" action="/property-playback" method="post">
 
-              <p>
-                The Billing property reference number makes sure we are talking about the same property and we are unable to clear any reports without this number.
-              </p>
+              <br>
+
+            <p class="govuk-!-font-size-24">
+                {% for addressLine in address %}
+                  {{ addressLine }}<br/>
+                {% endfor %}
+                </p>
+
+            <p>By confirming this change, you agree that the information you have given is complete and correct.</p>
 
 
-            {{ govukInput({
-              hint: {
-                text: "For example 06002874000001"
-              },
-              classes: "govuk-input--width-20",
-              id: "width-20",
-              name: "width-20"
-            }) }}
-
-        <br>
 
             {{ govukButton({
-                  text: "Save and continue"
+                  text: "Confirm address"
             }) }}
 
         </div>
