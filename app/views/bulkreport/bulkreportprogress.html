@@ -1,0 +1,31 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Bulk report upload progress
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <div class="govuk-panel govuk-panel--confirmation" style="background-color:#003078">
+        <h1 class="govuk-panel__title">We are checking your submission for any technical or format issues. </h1>
+        <div class="govuk-panel__body">
+         You can now close this browser or log out and we will email an update once these checks are complete.
+        </div>
+      </div>
+
+    
+      <h2 class="govuk-heading-m">What happens next</h2>
+     	 <p>If the checks are successful, you can add evidences against the reports. 
+
+		</p>
+     	 <p>You have to upload the file again if the checks are not successful.</p>
+      <p><a href="https://www.gov.uk/service-manual/user-centred-design/resources/patterns/feedback-pages.html">What did you think of this service?</a> (takes 30 seconds)</p>
+
+
+    </div>
+  </div>
+
+{% endblock %}

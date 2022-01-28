@@ -1,0 +1,74 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Upload XML Format 
+{% endblock %}
+
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-width-container">
+
+
+  <main class="govuk-main-wrapper " id="main-content" role="main">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <form action="/bulkreport/bulkreportprogress" method="post" novalidate>
+
+          <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset">
+				  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+					<h1 class="govuk-fieldset__heading">
+					  Upload a excel report using a template
+					</h1>
+				  </legend>
+
+
+					<div class="govuk-inset-text">
+						<ul>
+
+							<li>Accepted file extension .xls,.xlsx,.xlt.</li>
+
+							<li>File size limit should not exceed more than 10 MB</li>
+
+							<li>Please make sure file is scanned by antivirus, not corrupt and a valid excel document to avoid delays during the upload process.</li>
+
+						</ul>
+					</div>
+
+
+				  <div class="govuk-form-group">
+					  <label class="govuk-label" for="file-upload-1">
+						Upload a file
+					  </label>
+					  <input class="govuk-file-upload" id="file-upload-1" name="file-upload-1" type="file">
+				  </div>
+				
+				
+			
+            </fieldset>
+          </div>
+			
+			<div class="govuk-width-container">
+			  <div class="govuk-grid-row">
+				<div class="govuk-grid-column-two-thirds">
+				  <p><a href="#">See Instructions for the excel template (opens in new tab)</a></p>
+				</div>
+			  </div>
+			</div>
+
+          <button class="govuk-button" data-module="govuk-button">
+            Continue
+          </button>
+        </form>
+      </div>
+    </div>
+  </main>
+</div>
+
+{% endblock %}

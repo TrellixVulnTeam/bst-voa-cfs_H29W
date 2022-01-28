@@ -34,4 +34,22 @@ var searchAddresses = [
 // Add your routes here - above the module.exports line
 
 
+// Run this code when a form is submitted to 'selectformat'
+router.post('/selectformat', function (req, res) {
+
+  // Make a variable and give it the value from 'how-many-balls'
+  var selectformat = req.session.data['selectformat']
+
+  // Check whether the variable matches a condition
+  if (selectformat == "xml"){
+    // Send user to next page
+    res.redirect('/bulkreport/xmlupload')
+  } else {
+    // Send user to ineligible page
+    res.redirect('/bulkreport/xlsupload')
+  }
+
+})
+
+
 module.exports = router
