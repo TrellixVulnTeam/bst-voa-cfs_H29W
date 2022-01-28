@@ -1,0 +1,88 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Reason for removal
+{% endblock %}
+
+      {% block beforeContent %}
+      <a href="request-reason" class="govuk-back-link">Back</a>
+      {% endblock %}
+
+{% block content %}
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+
+        <form class="form" action="billing-reference" method="post">
+
+
+            {% set textHtml %}
+            {{ govukTextarea({
+              id: "more-detail",
+              name: "more-detail",
+              type: "tel",
+              autocomplete: "tel",
+              classes: "govuk-!-width-full",
+              label: {
+                text: "Other reason for removing the property"
+              }
+            }) }}
+            {% endset -%}
+
+            {{ govukRadios({
+              idPrefix: "contact",
+              name: "contact",
+              fieldset: {
+                legend: {
+                  text: "What is the reason for removal?",
+                  isPageHeading: false,
+                  classes: "govuk-fieldset__legend--l"
+                }
+              },
+
+
+              items: [
+                {
+                  value: "05 it has been demolished",
+                  text: "05: It has been demolished",
+                  conditional: {
+                    html: emailHtml
+                  }
+                },
+                {
+                  value: "06 Ceased to be rateable",
+                  text: "06: Ceased to be rateable",
+                  conditional: {
+                    html: phoneHtml
+                  }
+                },
+                {
+                  value: "07 Exempt",
+                  text: "07: Exempt",
+                  conditional: {
+                    html: nothing
+                  }
+                },
+                {
+                  value: "08 Other",
+                  text: "08: Other",
+                  conditional: {
+                    html: textHtml
+                  }
+                }
+              ]
+            }) }}
+
+
+
+            <br/br>
+
+
+                <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+        </div>
+        </div>
+
+
+
+{% endblock %}

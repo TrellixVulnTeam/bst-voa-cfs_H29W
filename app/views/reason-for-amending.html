@@ -1,0 +1,87 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Reason for amending
+{% endblock %}
+
+      {% block beforeContent %}
+      <a href="request-reason" class="govuk-back-link">Back</a>
+      {% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form class="form" action="billing-reference" method="post">
+
+
+                {% set textHtml %}
+                {{ govukTextarea({
+                  id: "more-detail",
+                  name: "more-detail",
+                  type: "tel",
+                  autocomplete: "tel",
+                  classes: "govuk-!-width-full",
+                  label: {
+                    text: "Other reason for amending the property"
+                  }
+                }) }}
+                {% endset -%}
+
+                {{ govukRadios({
+                  idPrefix: "contact",
+                  name: "contact",
+                  fieldset: {
+                    legend: {
+                      text: "What is the reason for amending the property?",
+                      isPageHeading: false,
+                      classes: "govuk-fieldset__legend--l"
+                    }
+                  },
+
+
+                  items: [
+                    {
+                      value: "09 imrpovements alterations",
+                      text: "09: Imrpovements/Alterations",
+                      conditional: {
+                        html: emailHtml
+                      }
+                    },
+                    {
+                      value: "10 reconstitution",
+                      text: "10: Reconstitution",
+                      conditional: {
+                        html: phoneHtml
+                      }
+                    },
+                    {
+                      value: "11 other reason",
+                      text: "11: Other reason",
+                      conditional: {
+                        html: nothing
+                      }
+                    },
+                    {
+                      value: "12 address ref number change",
+                      text: "12: Address/Ref number change only",
+                      conditional: {
+                        html: textHtml
+                      }
+                    }
+                  ]
+                }) }}
+
+
+            <br/br>
+
+
+                <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+    </div>
+    </div>
+
+
+
+{% endblock %}

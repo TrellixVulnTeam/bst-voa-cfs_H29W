@@ -1,0 +1,74 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Reference details
+{% endblock %}
+
+      {% block beforeContent %}
+      <a href="owner-occupier-details" class="govuk-back-link">Back</a>
+      {% endblock %}
+
+{% block content %}
+
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+          <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--xl" for="event-name">
+              Reference details
+            </label>
+
+                     <form class="form" action="/#" method="post">
+
+
+                       {{ govukRadios({
+                             classes: "govuk-radios--inline",
+                             idPrefix: "reference-details",
+                             name: "reference-details",
+                             fieldset: {
+                               legend: {
+                                 text: "Does this property have planning reference?",
+                                 isPageHeading: true,
+                                 classes: "govuk-fieldset__legend-xl"
+                               }
+
+                             },
+                             hint: {
+                               text: ""
+                             },
+                             items: [
+                               {
+                                 value: "yes",
+                                 text: "Yes"
+                               },
+                               {
+                                 value: "no",
+                                 text: "No"
+                           }
+                         ]
+                       }) }}
+
+                       <p>OS Grid reference details (optional)</p>
+                       <p>This allows us to locate the property clearly and easliy. Only for properties in rual areas.</p>
+
+
+                     {{ govukInput({
+                       hint: {
+                         text: "For example 06002832"
+                       },
+                       classes: "govuk-input--width-20",
+                       id: "width-20",
+                       name: "width-20"
+                     }) }}
+
+
+
+
+        <br>
+
+          <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+        </div>
+      </div>
+
+{% endblock %}

@@ -1,0 +1,131 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Owner-occupier
+{% endblock %}
+
+        {% block beforeContent %}
+        <a href="request-detail" class="govuk-back-link">Back</a>
+        {% endblock %}
+
+{% block content %}
+
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+
+          <div class="govuk-form-group">
+          <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="event-name">
+              Owner or occupier details
+            </label>
+
+            <form class="form" action="/reference-details" method="post">
+
+              <div class="govuk-form-group">
+
+                <br>
+
+                {{ govukRadios({
+                      classes: "govuk-radios--inline",
+                      idPrefix: "changed-name",
+                      name: "changed-name",
+                      fieldset: {
+                        legend: {
+                          text: "Is this for the owner or occupier",
+                          isPageHeading: true,
+                          classes: "govuk-fieldset__legend--m"
+                        }
+                      },
+                      hint: {
+                        text: ""
+                      },
+                      items: [
+                        {
+                          value: "owner",
+                          text: "Owner"
+                        },
+                        {
+                          value: "occupier",
+                          text: "Occupier"
+                    }
+                  ]
+                }) }}
+
+
+                {{ govukInput({
+                  label: {
+                    text: "First name"
+                  },
+                  id: "first-name",
+                  name: "first-name",
+                  autocomplete: "name",
+                  spellcheck: false
+                }) }}
+
+                {{ govukInput({
+                  label: {
+                    text: "Last name"
+                  },
+                  id: "last-name",
+                  name: "last-name",
+                  autocomplete: "name",
+                  spellcheck: false
+                }) }}
+
+
+                {{ govukInput({
+                  label: {
+                    text: "Email address (optional)"
+                  },
+                  classes: "govuk-!-width-two-thirds",
+                  id: "two-thirds",
+                  name: "two-thirds"
+                }) }}
+
+                {{ govukInput({
+                  label: {
+                    text: "Phone number (optional)"
+                  },
+                  classes: "govuk-!-width-two-thirds",
+                  id: "two-thirds",
+                  name: "two-thirds"
+                }) }}
+
+                <br>
+
+                {{ govukRadios({
+                      classes: "govuk-radios--inline",
+                      idPrefix: "changed-name",
+                      name: "changed-name",
+                      fieldset: {
+                        legend: {
+                          text: "Is the owner/occupier address the same as the property address?",
+                          isPageHeading: true,
+                          classes: "govuk-fieldset__legend--m"
+                        }
+                      },
+                      hint: {
+                        text: ""
+                      },
+                      items: [
+                        {
+                          value: "yes",
+                          text: "Yes"
+                        },
+                        {
+                          value: "no",
+                          text: "No"
+                    }
+                  ]
+                }) }}
+
+
+        <br/br>
+
+          <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+        </div>
+      </div>
+
+{% endblock %}

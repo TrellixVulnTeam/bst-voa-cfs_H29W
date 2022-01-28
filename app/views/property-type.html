@@ -1,0 +1,73 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Question page
+{% endblock %}
+
+{% block beforeContent %}
+<a class="govuk-back-link" href="signin0.html">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">What property type do you want to look into</h1>
+
+      <form class="form" action="/url/of/next/page" method="post">
+
+
+        <div class="govuk-form-group">
+          <fieldset class="govuk-fieldset" aria-describedby="sign-in-hint">
+            <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
+            <!--  <h1 class="govuk-fieldset__heading">
+                How do you want to sign in?
+              </h1> -->
+            </legend>
+            <div id="sign-in-hint" class="govuk-hint">
+
+            <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="sign-in" name="sign-in" type="radio" value="govuk-verify" aria-describedby="sign-in-item-hint">
+                <label class="govuk-label govuk-radios__label" for="sign-in">
+                  Council Tax
+                </label>
+                <div id="sign-in-3-item-hint" class="govuk-hint govuk-radios__hint">
+                  This will include domestic properties.
+            </div>
+
+            </div>
+            <div class="govuk-radios">
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="sign-in-1" name="sign-in" type="radio" value="government-gateway" aria-describedby="sign-in-1-item-hint">
+                <label class="govuk-label govuk-radios__label" for="sign-in-1">
+                    Non Domestic
+                </label>
+                <div id="sign-in-item-hint" class="govuk-hint govuk-radios__hint">
+                  This will include business rates.
+                </div>
+              </div>
+
+              <div class="govuk-radios__item">
+                <input class="govuk-radios__input" id="sign-in-2" name="sign-in" type="radio" value="govuk-verify" aria-describedby="sign-in-2-item-hint">
+                <label class="govuk-label govuk-radios__label" for="sign-in-2">
+                  Non Domestic
+                </label>
+                <div id="sign-in-2-item-hint" class="govuk-hint govuk-radios__hint">
+                  Content here for Non Domestic option..
+                </div>
+
+
+              </div>
+            </div>
+
+          </fieldset>
+        </div>
+        <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,78 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Property playback
+{% endblock %}
+
+      {% block beforeContent %}
+      <a href="billing-reference" class="govuk-back-link">Back</a>
+      {% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <h1 class="govuk-heading-xl">Is this the correct property?</h1>
+
+      <h2 class="govuk-heading-m">Billing property reference number</h2>
+
+
+      <p>06002874005006</p>
+
+      <p>Based on the Billing property reference number.Below are the property details. Please confirm if thgis is the right property your are looking for at.
+      If you think the property details are incorrect you can select another property using the Billing Reference number.</p>
+
+
+      <h2 class="govuk-heading-s govuk-!-margin-bottom-2"
+          >Property address
+        </h2>
+
+        <ul class="govuk-list">
+            <li>Straford 2, Jubliee House,</li>
+            <li>2 Farthingale Walk,</li>
+            <li>London,</li>
+            <li>SW1Y 4NO</li>
+
+        </ul>
+
+
+        <h2 class="govuk-heading-s govuk-!-margin-bottom-2">Description</h2>
+            <p>Description content needed here</p>
+
+
+          <h2 class="govuk-heading-s govuk-!-margin-bottom-2">Rateable value</h2>
+              <p>£1.350.000.00</p>
+
+
+          {{ govukDetails({
+              summaryText: "Incorrect details - Content needed",
+              text: "Content needed here to explain to User."
+          }) }}
+
+          <br/>
+
+          <div class="govuk-button-group">
+            {{ govukButton({
+              text: "Continue",
+                href: "request-detail"
+            }) }}
+
+            {{ govukButton({
+              text: "Enter another property",
+              href: "billing-reference",
+              classes: "govuk-button--secondary"
+
+            }) }}
+          </div>
+
+
+
+
+
+
+
+    </div>
+  </div>
+
+{% endblock %}

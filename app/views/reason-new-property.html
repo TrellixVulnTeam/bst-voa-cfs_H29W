@@ -1,0 +1,87 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Reason for adding new Property
+{% endblock %}
+
+      {% block beforeContent %}
+      <a href="request-reason" class="govuk-back-link">Back</a>
+      {% endblock %}
+
+{% block content %}
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+
+
+      <form class="form" action="billing-reference" method="post">
+
+
+                {% set textHtml %}
+                {{ govukTextarea({
+                  id: "more-detail",
+                  name: "more-detail",
+                  type: "tel",
+                  autocomplete: "tel",
+                  classes: "govuk-!-width-full",
+                  label: {
+                    text: "Other reason for adding new property"
+                  }
+                }) }}
+                {% endset -%}
+
+                {{ govukRadios({
+                  idPrefix: "contact",
+                  name: "contact",
+                  fieldset: {
+                    legend: {
+                      text: "What is the reason for adding a new property?",
+                      isPageHeading: false,
+                      classes: "govuk-fieldset__legend--l"
+                    }
+                  },
+
+
+                  items: [
+                    {
+                      value: "01 new",
+                      text: "01: New",
+                      conditional: {
+                        html: emailHtml
+                      }
+                    },
+                    {
+                      value: "02 new (formerly domestic)",
+                      text: "02: New (formerly domestic)",
+                      conditional: {
+                        html: phoneHtml
+                      }
+                    },
+                    {
+                      value: "03 new (formerly exempt)",
+                      text: "03: New (formerly exempt)",
+                      conditional: {
+                        html: nothing
+                      }
+                    },
+                    {
+                      value: "04 new (other)",
+                      text: "04: New (other)",
+                      conditional: {
+                        html: textHtml
+                      }
+                    }
+                  ]
+                }) }}
+
+            <br/br>
+
+
+            <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+    </div>
+    </div>
+
+
+
+{% endblock %}

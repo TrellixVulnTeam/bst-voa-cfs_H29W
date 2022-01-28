@@ -1,0 +1,99 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Sign In page
+{% endblock %}
+
+
+{% block content %}
+
+
+<main id="content" role="main">
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+
+
+        <h1 class="govuk-heading-xl">Sign in to Billing Authorities portal</h1>
+
+
+      <form class="form" action="/request-reason" method="post">
+
+
+        {{ govukInput({
+            label: {
+              text: "Username"
+            },
+            classes: "govuk-input--width-10",
+            id: "width-12",
+            name: "width-12"
+        }) }}
+
+        {{ govukInput({
+            label: {
+              text: "Password"
+            },
+            classes: "govuk-input--width-10",
+            id: "width-10",
+            name: "width-10"
+        }) }}
+
+          <!--<div class="govuk-form-group">
+                <label class="govuk-label" for="two-thirds">
+                  Username
+                </label>
+            <input class="govuk-input govuk-!-width-two-thirds" id="username" name="two-thirds" type="text">
+        </div>
+
+      <div class="govuk-form-group">
+              <label class="govuk-label" for="two-thirds">
+                Password
+              </label>
+          <input class="govuk-input govuk-!-width-two-thirds" id="password" name="two-thirds" type="text">
+        </div> -->
+
+
+          <div class="form-group">
+              <a href="/request-reason" class="govuk-button" href="/request-reason" data-module="govuk-button">Sign In</a>
+            </div>
+
+      </form>
+
+        <ul class="govuk-list">
+          <a id="no-account" href="#" class="govuk-link data-ga-action="Create-New-Account-Through-BAS" data-ga-category="Sign-In" data-ga-label="HMRC">Create sign in details</a>
+          <ul class="govuk-list">
+
+              <br/>
+
+                    <h2 class="govuk-heading-m">Problems signing in</h2>
+
+                    <ul class="govuk-list">
+                            <li>
+                              <a class="govuk-link" href="#">I have forgotten my password</a>
+                              </li>
+                            <li>
+                              <a class="govuk-link" href="#">Option</a>
+                              </li>
+                            <li>
+                              <a class="govuk-link" href="#">Option</a>
+                              </li>
+
+                    </ul>
+
+
+              </div>
+                </div>
+
+                <div class="form-group">
+                    <br/><br/>
+
+                  <ul class="govuk-list">
+
+                    <a class="govuk-list" href="#">Get help with this page</a>
+
+                    </ul>
+
+                </div>
+            </main>
+
+{% endblock %}
