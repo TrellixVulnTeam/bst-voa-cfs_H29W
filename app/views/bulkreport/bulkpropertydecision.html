@@ -1,0 +1,95 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Request reason
+{% endblock %}
+
+{% block beforeContent %}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+
+        <form class="form" action="" method="post">
+
+
+                    {{ govukRadios({
+            idPrefix: "What do you want to do with the bulk report?",
+            name: "What do you want to do with the bulk report?",
+            fieldset: {
+              legend: {
+                text: "What do you want to do with the bulk report?",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+              }
+         
+               
+            },
+            items: [
+              {
+                value: "I want to correct the errors in these reports and continue with this file submission. bulkreport type~/bulkreport/edit-reports-list",
+                text: "I want to correct the errors in these reports and continue with this file submission."
+              },
+              {
+                value: "I want to discard this submission and upload a replacement file. bulkreport type~/bulkreport/confirm-replace-file",
+                text: "I want to discard this submission and upload a replacement file."
+              },
+              {
+                value: "I want to continue to submit only the reports with no issues in this submission and discard those with errors. bulkreport type~/bulkreport/verify-reports-noissues-list",
+                text: "I want to continue to submit only the reports with no issues in this submission and discard those with errors"
+              }
+            ]
+
+          }) }}
+
+              <!-- <div class="govuk-form-group">
+                <fieldset class="govuk-fieldset">
+                  <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+                    <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="event-name">
+                        What do you need to do with this property?
+                      </label>
+                  </legend>
+
+                  <p> Using the correct request reason means we can allocate reports to make sure they are handled effectively by the right people. </p>
+
+                  <div class="govuk-radios">
+                    <div class="govuk-radios__item">
+                      <input class="govuk-radios__input" id="request-reason-remove-this-propety-from-the-non-domestic-rating-list" name="request-reason" type="radio" value="Remove-this-propety-from-the-non-domestic-rating-list" {{ checked("request-reason", "Remove-this-propety-from-the-non-domestic-rating-list") }}>
+                      <label class="govuk-label govuk-radios__label" for="request-reason-remove-this-propety-from-the-non-domestic-rating-list">
+                        Remove this propety from the Non-domestic rating list
+                      </label>
+                    </div>
+
+                    <div class="govuk-radios__item">
+                      <input class="govuk-radios__input" id="vehicle-type-lorry" name="vehicle-type" type="radio" value="Lorry" {{ checked("vehicle-type", "Lorry") }}>
+                      <label class="govuk-label govuk-radios__label" for="vehicle-type-lorry">
+                        Make amendements to the Non-domestic rating list
+                      </label>
+                    </div>
+
+                    <div class="govuk-radios__item">
+                      <input class="govuk-radios__input" id="vehicle-type-motorcycle" name="vehicle-type" type="radio" value="Motorcycle" {{ checked("vehicle-type", "Motorcycle") }}>
+                      <label class="govuk-label govuk-radios__label" for="vehicle-type-motorcycle">
+                        Add new property
+                      </label>
+                    </div>
+                  </div>
+
+                </fieldset>
+              </div> -->
+
+              <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+        </form>
+
+          </div>
+        </div>
+
+
+
+{% endblock %}
