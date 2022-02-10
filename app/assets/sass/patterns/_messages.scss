@@ -1,0 +1,58 @@
+/* line 1, assets/scss/pages/_messages.scss */
+table.messages {
+    width: 100%
+}
+
+/* line 4, assets/scss/pages/_messages.scss */
+table.messages td:last-child,table.messages th:last-child {
+    padding-right: 0
+}
+
+/* line 9, assets/scss/pages/_messages.scss */
+table.messages th {
+    display: table-cell;
+    vertical-align: inherit;
+    color: #0b0c0c;
+    font-family: "GDS Transport", Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-size: 19px;
+
+    text-align: left;
+}
+
+th.regular {
+    font-weight: 400;
+}
+
+/* line 13, assets/scss/pages/_messages.scss */
+table.messages .marker-column {
+    width: 5%
+}
+
+/* line 18, assets/scss/pages/_messages.scss */
+table.messages th:nth-of-type(2) {
+    width: 50%
+}
+
+/* line 21, assets/scss/pages/_messages.scss */
+table.messages th:nth-of-type(3) {
+    width: 25%
+}
+
+/* line 24, assets/scss/pages/_messages.scss */
+table.messages th:nth-of-type(4) {
+    width: 20%
+}
+
+/* line 28, assets/scss/pages/_messages.scss */
+table.messages a,table.messages .link-style,table.messages .button--link-style {
+    color: #000
+}
+
+/* line 35, assets/scss/pages/_messages.scss */
+.message-details h3 {
+    margin: 30px 0 0 0
+}
+
+

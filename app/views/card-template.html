@@ -1,0 +1,33 @@
+{% macro card(cardStyle, cardLinkClass, cardUrl, headingLevel="h2", heading, statusClass, statusMessage, details, linkContent, links) %}
+<div class="card {{ cardStyle }}">
+
+    <div class="card-body {{ cardLinkClass }} {% if cardUrl %}active{% endif %}">
+        {% if cardUrl %}
+          <{{headingLevel}} class="govuk-heading-s card-heading"><a href="{{cardUrl}}">{{ heading }}</a></{{headingLevel}}>
+        {% else %}
+          <{{headingLevel}} class="govuk-heading-s card-heading">{{ heading }}</{{headingLevel}}>
+        {% endif %}
+
+        {% if statusClass %} <div class="status {{ statusClass }}"> {{ statusMessage }}</div>  {% endif %}
+
+        {% if details %}
+            {% for content in details %}
+                <div class="{{ content.class }}">{{ content.content | safe }}</div>
+            {% endfor %}
+        {% endif %}
+        {% if linkContent %}
+            <p>{{ linkContent }}</p>
+        {% endif %}
+    </div>
+
+    {% if links %}
+        <div class="card-action">
+        <ul class="govuk-list" >
+            {% for link in links %}
+                <li><a href= {{ link.url }}>{{ link.title }}</a></li>
+            {% endfor %}
+        </ul>
+        </div>
+    {% endif %}
+</div>
+{% endmacro %}

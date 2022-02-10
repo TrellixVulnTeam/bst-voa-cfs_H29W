@@ -1,0 +1,126 @@
+.card {
+  border: 1px solid #dee0e2;
+
+  &.inactive {
+    color: #6F777B;
+  }
+
+  .card-body {
+    border-bottom: 1px solid #dee0e2;
+    padding: 15px;
+
+    *:last-child {
+      margin-bottom: 0;
+    }
+
+    &.active {
+      background-color: govuk-colour("light-grey");
+      transition: .1s ease-in-out;
+
+      .card-heading {
+        a {
+          color: $govuk-link-colour;
+        }
+      }
+    }
+
+    .status {
+      border-radius: 2px;
+      color: #FFFFFF;
+      margin-bottom: 8px;
+      padding: 3px 6px 1px;
+      transition: .1s ease-in;
+    }
+
+    .status-low {
+      border: 1px solid #6F777B;
+      color: #0B0C0C;
+    }
+
+    .status-high {
+      background-color: #005EA5;
+      border: 1px solid #005EA5;
+    }
+
+    .status-med {
+      background-color: #6F777B;
+      border: 1px solid #6F777B;
+    }
+
+    .detail-large {
+      font-size: 48px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .detail {
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+  }
+
+  .card-action {
+    border-top: 0;
+    padding: 15px;
+    ul {
+      margin: 0;
+      li {
+        margin-bottom: 15px;
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+    }
+  }
+}
+
+.js-enabled {
+  .card-body {
+    &.active {
+      &:hover {
+        p, h2 {
+          color:  govuk-colour("white");
+        }
+        background-color: $govuk-link-colour;
+        color:  govuk-colour("white");
+        cursor: pointer;
+        // transition: .1s ease-in-out;
+        // transition-delay: .25s;
+
+        .card-heading a {
+          color:  govuk-colour("white");
+          // transition-delay: .25s;
+        }
+
+        .status-low {
+          border: 1px solid #FFFFFF;
+          color: #FFFFFF;
+          transition-delay: .25s;
+        }
+
+        .status-med {
+          background-color: #005EA5;
+          border: 1px solid #FFFFFF;
+          color: #FFFFFF;
+          transition-delay: .25s;
+        }
+
+        .status-high {
+          border: 1px solid #FFFFFF;
+          transition-delay: .25s;
+        }
+
+        .detail-large {
+          color: #FFFFFF;
+          transition-delay: .25s;
+        }
+      }
+
+      a {
+        display: inline-block;
+        text-decoration: none;
+      }
+    }
+  }
+}

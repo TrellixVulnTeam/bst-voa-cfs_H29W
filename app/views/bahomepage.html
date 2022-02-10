@@ -1,0 +1,200 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+	Local Authorities Dashboard - Valuation Office Agency - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+
+	{% include "includes/header-dashboard.html" %}
+{% endblock %}
+
+<!-- Import the cards template if using the macro -->
+{% import "card-template.html" as card %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+      <h1 class="govuk-heading-xl">Billing Authority Reports</h1>
+
+    </div>
+</div>
+<div class="govuk-tabs" data-module="govuk-tabs">
+  <h2 class="govuk-tabs__title">
+    Contents
+  </h2>
+  <ul class="govuk-tabs__list">
+    <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+      <a class="govuk-tabs__tab" href="#council-tax">
+      Council Tax
+      </a>
+    </li>
+    <li class="govuk-tabs__list-item">
+      <a class="govuk-tabs__tab" href="#non-domestic-rates">
+      Non-Domestic Rates
+      </a>
+    </li>
+
+  </ul>
+  <div class="govuk-tabs__panel" id="council-tax">
+    <h2 class="govuk-heading-l">Draft reports</h2>
+
+											<div class="flex-container govuk-grid-row">
+
+													<div class="card">
+														<div class="card-body active" style="height: 125px">
+															<h2 class="govuk-heading-s card-heading"><a href="messages">Upload reports</a></h2>
+															<p>Upload multiple Council Tax reports using an XML or Excel template</p>
+														</div>
+
+													</div>
+
+
+
+													<div class="card">
+														<div class="card-body active" style="height: 125px">
+															<h2 class="govuk-heading-s card-heading"><a href="messages">Create reports manually</a></h2>
+															<p>Create and submit single Council Tax reports manually</p>
+														</div>
+
+													</div>
+
+
+													<div class="card">
+														<div class="card-body active" style="height: 125px">
+															<h2 class="govuk-heading-s card-heading"><a href="messages">Correct and submit uploaded reports</a></h2>
+															<p>Correct upload errors and submit to the VOA</p>
+														</div>
+
+													</div>
+
+
+
+				<h2 class="govuk-heading-l">Submitted reports</h2>
+
+													<div class="flex-container govuk-grid-row">
+
+															<div class="card">
+																<div class="card-body active" style="height: 125px">
+																	<h2 class="govuk-heading-s card-heading"><a href="messages">Update reports</a></h2>
+																	<p>View submitted reports and update with evidence and/or comments</p>
+																</div>
+
+																<!--<div class="card-action">
+																	<ul class="govuk-list">
+																		<li>
+																			{% if data['messages'] == 0 %}
+																				You have no new messages
+																			{% else %}
+																				<a href="/message">You have <strong>1</strong> new message</a>
+																			{% endif %}
+																		</li>
+																		<li><a href="/messages">Go to your messages</a></li>
+																	</ul>
+																</div>-->
+
+															</div>
+
+
+
+															<div class="card">
+																<div class="card-body active" style="height: 125px">
+																	<h2 class="govuk-heading-s card-heading"><a href="messages">View latest comments</a></h2>
+																	<p>View and reply to your latest comments</p>
+																</div>
+
+															</div>
+
+
+															<div class="card">
+																<div class="card-body active" style="height: 125px">
+																	<h2 class="govuk-heading-s card-heading"><a href="messages">View latest comments</a></h2>
+																	<p>View and reply to your latest comments</p>
+																</div>
+
+															</div>
+
+
+
+				<h2 class="govuk-heading-l">Schedules</h2>
+
+													<div class="flex-container govuk-grid-row">
+
+															<div class="card">
+																<div class="card-body active" style="height: 125px">
+																	<h2 class="govuk-heading-s card-heading"><a href="messages">Download schedules</a></h2>
+																	<p>Download your latest scheduled updates for Council Tax valuations</p>
+																</div>
+
+															</div>
+
+
+
+															<div class="card">
+																<div class="card-body active" style="height: 125px">
+																	<h2 class="govuk-heading-s card-heading"><a href="messages">Download schedules</a></h2>
+																	<p>Download your latest scheduled updates for Council Tax valuations</p>
+																</div>
+
+															</div>
+
+
+															<div class="card">
+																<div class="card-body active" style="height: 125px">
+																	<h2 class="govuk-heading-s card-heading"><a href="messages">Download schedules</a></h2>
+																	<p>Download your latest scheduled updates for Council Tax valuations</p>
+																</div>
+
+															</div>
+
+
+
+
+
+
+
+
+					<h2 class="govuk-heading-l">Settings</h2>
+
+														<div class="flex-container govuk-grid-row">
+
+																<div class="card">
+																	<div class="card-body active" style="height: 125px">
+																		<h2 class="govuk-heading-s card-heading"><a href="messages">Update your profile</a></h2>
+																		<p>Update your personal details within your profile</p>
+																	</div>
+
+																</div>
+
+
+
+																<div class="card">
+																	<div class="card-body active" style="height: 125px">
+																		<h2 class="govuk-heading-s card-heading"><a href="messages">Manage users</a></h2>
+																		<p>Add or remove users in your Billing Authority</p>
+																	</div>
+
+																</div>
+
+
+
+
+
+
+  </div>
+  <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="non-domestic-rates">
+
+			<h2 class="govuk-heading-l">Non-Domestic Rates</h2>
+
+
+  </div>
+
+
+</div>
+
+
+{% include "includes/details-get-help.html" %}
+
+{% endblock %}
