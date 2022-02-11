@@ -1,0 +1,106 @@
+.hmrc-responsive-table {
+  thead {
+    border: 0;
+    clip: rect(0 0 0 0);
+    -webkit-clip-path: inset(50%);
+    clip-path: inset(50%);
+    height: 1px;
+    margin: 0;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    //white-space: nowrap;
+    width: 1px;
+
+    @include govuk-media-query($from: desktop) {
+      clip: auto;
+      -webkit-clip-path: none;
+      clip-path: none;
+      display: table-header-group;
+      height: auto;
+      overflow: auto;
+      position: relative;
+      width: auto;
+    }
+  }
+
+  tbody {
+    tr {
+      display: block;
+      margin-bottom: 20px;
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+
+      @include govuk-media-query($from: desktop) {
+        display: table-row;
+      }
+
+      th {
+        text-align: right;
+
+        @include govuk-media-query($from: desktop) {
+          text-align: left;
+        }
+      }
+
+      td {
+        display: block; // For browsers that don't support flexbox
+        //display: flex;
+        //justify-content: space-between;
+        //min-width: 1px;
+        //text-align: right;
+
+        @include govuk-media-query($from: desktop) {
+          display: table-cell;
+          text-align: left;
+        }
+
+        @include govuk-media-query($until: desktop) {
+          padding-right: 0;
+        }
+      }
+    }
+  }
+}
+
+.hmrc-responsive-table__heading {
+  font-weight: 700;
+  padding-right: 1em;
+  text-align: left;
+  word-break: initial;
+  display: block;
+  margin-bottom: 5px;
+
+  @include govuk-media-query($from: desktop) {
+    display: none;
+  }
+}
+
+.hmrc-responsive-table__data--wrap-mobile {
+  @include govuk-media-query($until: desktop) {
+    word-break: break-all;
+  }
+}
+
+.hmrc-responsive-table__data--wrap-desktop {
+  @include govuk-media-query($from: desktop) {
+    word-break: break-all;
+  }
+}
+
+.hmrc-reponsive-table__numeric {
+  @include govuk-media-query($from: desktop) {
+    text-align: right;
+  }
+}
+
+// .table-foot {
+//   border-bottom: 1px solid #b1b4b6;
+//   display: flex;
+//   font-size: 19px;
+//   font-weight: 700;
+//   justify-content: space-between;
+//   padding: 0.75em 0 0.75em;
+// }

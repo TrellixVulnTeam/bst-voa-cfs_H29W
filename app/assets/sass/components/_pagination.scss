@@ -1,0 +1,22 @@
+.cca-pagination {
+  white-space: nowrap;
+  @include govuk-media-query($from: tablet) {
+    float: right;
+  }
+}
+
+.cca-pagination__summary {
+  @include govuk-media-query($from: tablet) {
+    padding: 5px 0;
+  }
+}
+
+.cca-pagination__item {
+  display: inline-block;
+}
+
+.cca-pagination__link {
+  display: block;
+  padding: 5px 10px;
+  text-decoration: none;
+}
