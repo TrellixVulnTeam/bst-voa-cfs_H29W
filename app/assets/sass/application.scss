@@ -15,4 +15,311 @@ $govuk-assets-path: '/govuk/assets/';
 @import "patterns/task-list";
 @import "patterns/related-items";
 
+
 // Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
+@import 'patterns/flexbox';
+@import 'patterns/card';
+@import 'patterns/messages';
+// @import 'custom/nav'; // Navigation styling for menu bar
+
+// Components that aren't in Frontend
+@import "components/cookie-banner";
+//@import "components/accessible-autocomplete";
+@import "components/sortable-table";
+@import "components/responsive-table";
+@import "components/pagination";
+@import "components/icons";
+
+// Add extra styles here, or re-organise the Sass files in whichever way makes most sense to you
+
+.card-body {
+	padding: 10px
+}
+
+dl.reduction-override {
+  width: 100%;
+  font-family:nta, Arial, sans-serif;
+}
+
+/* Make sure that padding behaves as expected */
+//* {box-sizing:border-box}
+
+// dt.wide {
+// 	width: 70%
+// }
+//
+// dt.vwide {
+// 	width: 300%
+// }
+//
+// dt.mwide {
+//     width: 210%
+// }
+
+// tasklist styles
+
+.govuk-tag.notStarted{
+  background-color: rgba(255, 191, 71, 1);
+  color: #000;
+}
+
+.govuk-tag.started{
+  background-color: rgba(255, 255, 255, 1);
+  color: #000;
+  border: 2px solid grey;
+}
+
+.govuk-tag.completed{
+  color: #ffffff;
+}
+
+// save and continue button
+
+.button--link-style {
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+  border: none;
+  cursor: pointer;
+  text-decoration: underline;
+  background: none;
+  box-shadow: none;
+  color: #005ea5;
+  &:hover,
+  &:active {
+    top: 0;
+    outline: none;
+    background-color: transparent;
+  }
+
+  &:hover, &:focus {
+    background-color: transparent;
+    color: #2b8cc4;
+  }
+
+  &:active {
+    color: #2b8cc4;
+  }
+
+  &:hover,
+  &:focus,
+  &:active {
+    background: none;
+  }
+}
+
+.yellow {
+    background-color: yellow;
+}
+
+.value-right {
+    text-align: right;
+    padding-right: 0px;
+}
+
+.related-navigation {
+    color: #0b0c0c;
+    border-top: 4px solid #1d70b8;
+}
+
+.searchbar {
+    background: #dee0e2;
+    padding: 0.5em;
+    margin-bottom: 20px;
+}
+
+.message-inbox__list {
+    display: table;
+    width: 100%;
+    margin-bottom: 20px;
+    border-top: 1px solid #a1acb2;
+}
+
+/* line 1, assets/patterns/messages/_messages.scss */
+.message-inbox__list {
+    display: table;
+    width: 100%;
+    border-top: 1px solid #a1acb2
+}
+
+/* line 6, assets/patterns/messages/_messages.scss */
+.message-inbox__list .message-inbox__list-item {
+    display: table-row;
+    font-weight: bold
+}
+
+/* line 9, assets/patterns/messages/_messages.scss */
+.message-inbox__list .message-inbox__list-item a:link,.message-inbox__list .message-inbox__list-item .link-style:link,.message-inbox__list .message-inbox__list-item .button--link-style:link {
+    text-decoration: none
+}
+
+/* line 12, assets/patterns/messages/_messages.scss */
+.message-inbox__list .message-inbox__list-item--read {
+    background-color: #f8f8f8;
+    font-weight: normal
+}
+
+/* line 18, assets/patterns/messages/_messages.scss */
+.message-inbox__list .message-inbox__block {
+    display: table-cell;
+    padding: 20px 10px;
+    border-bottom: 1px solid #a1acb2
+}
+
+/* line 22, assets/patterns/messages/_messages.scss */
+.message-inbox__list .message-inbox__block:last-child {
+    white-space: nowrap;
+    text-align: right
+}
+
+th.descending a:after, th.ascending a:after {
+    content: "\00a0\00a0\25BC";
+    font-size: 12px;
+    text-decoration: none;
+}
+th.ascending a:after {
+	content: "\00a0\00a0\25B2";
+}
+
+th.left {
+    text-align: left,
+
+}
+
+a.no-un {
+      text-decoration: none;
+      font-size: 19px;
+}
+
+a.tab {
+      font-size: 19px;
+      vertical-align: top;
+}
+
+tr.border_bottom td {
+  border-bottom: 1px solid black;
+}
+
+.message-inbox__list td { border-bottom: 1px solid grey; }
+
+
+
+.govuk-table__cell_right {
+    padding: 10px 20px 10px 0;
+    border-bottom: 1px solid #b1b4b6;
+    text-align: right;
+    vertical-align: top;
+}
+
+.govuk-link--sort {
+margin-left:-14px
+}
+
+.govuk-link--sort::after {
+  display:inline-block;
+  text-decoration: none;
+  width:16px;
+  overflow: hidden;
+}
+
+.button-secondary {
+  background-color: #DEE0E2;
+  box-shadow: 0 1px 0 #0b0c0c;
+  color: #0b0c0c;
+  border: #0b0c0c 1px solid;
+  &[disabled]:active {
+    background-color: #cbcbcb;
+    box-shadow: 0 0px 0 #0b0c0c;
+  }
+}
+
+.button-secondary:hover {
+  background-color: darken(#DEE0E2, 5%);
+  color: #0b0c0c;
+}
+
+
+
+ .button-affordance {
+    background-color: #DEE0E2;
+    color: #0B0C0C;
+  box-shadow: 0 1px 0 #0B0C0C;
+  border: #0B0C0C 1px solid;
+}
+.button-affordance:hover {
+    background-color: darken(#DEE0E2, 5%);
+    color: #0B0C0C;
+}
+.button-affordance svg {width: 30px; height:30px; padding-right:8px; margin-bottom:-5px;}
+.hod-download-button:before {
+    content: "\e901";
+}
+.icon-small:before {
+    vertical-align: middle;
+    padding-bottom: 1em;
+}
+
+// CWS Back to top link. Modifies govuk-back-link.
+.cca-top-link {
+	&:before {
+	-webkit-transform: rotate(315deg);
+	-ms-transform: rotate(315deg);
+	transform: rotate(315deg);
+	left: -1px;
+	top: 2px;
+	}
+}
+
+// Prevent text wrapping
+.cca-nowrap {
+	white-space: nowrap;
+}
+
+// GOV.UK Summary List numeric value-right
+.govuk-summary-list__value--numeric {
+	padding-right: 0;
+	@include govuk-media-query($from: desktop) {
+	  text-align: right;
+	}
+}
+
+// GOV.UK Table header remove border
+.govuk-table__header--no-border {
+	border-bottom: 0;
+	padding-bottom: 0;
+}
+
+// GOV.UK Summary list variations: wider key / narrower value w/ action
+
+.govuk-summary-list--key-wide {
+	.govuk-summary-list__key {
+		@include govuk-media-query($from: tablet) {
+      width: 50%;
+    }
+	}
+	.govuk-summary-list__value {
+    @include govuk-media-query($from: tablet) {
+      width: 30%;
+    }
+  }
+}
+.govuk-summary-list--actions-wide {
+	.govuk-summary-list__value {
+    @include govuk-media-query($from: tablet) {
+      width: 20%;
+    }
+  }
+	.govuk-summary-list__actions {
+    @include govuk-media-query($from: tablet) {
+      width: 30%;
+    }
+  }
+}
+
+// Break long words
+.ba-break-word {
+	overflow-wrap: break-word;
+  word-wrap: break-word;
+  hyphens: auto;
+	max-width: 7em;
+}
