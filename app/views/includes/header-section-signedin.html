@@ -1,0 +1,28 @@
+<div class="govuk-grid-column-two-thirds">
+  <ul class="govuk-list" style="text-align:right; margin-top:13px;">
+
+    {% if data['signedin'] == 'no' %}
+
+    <li style="display:inline">
+      <a href="#" class="govuk-link">Sign in</a> |
+    </li>
+    <li style="display:inline">
+      <a href="#" class="govuk-link">Register</a>
+    </li>
+
+    {% else %}
+
+    <li style="display:inline">
+      <a href="/your-account" class="govuk-link">Home</a> |
+    </li>
+    <li style="display:inline">
+      <a href="#" class="govuk-link">Ms Alex Test</a> |
+    </li>
+    <li style="display:inline">
+      <a href="#" class="govuk-link">Sign out</a>
+    </li>
+
+    {% endif %}
+
+  </ul>
+</div>

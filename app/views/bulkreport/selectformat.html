@@ -1,68 +1,85 @@
-
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  Select format page
+  Do you have a copy of the business rates bill for this property? - Valuation Office Agency - GOV.UK
 {% endblock %}
 
 {% block beforeContent %}
-  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-one-third">
+			{{ govukBackLink({
+			  text: "Back",
+			  href: "javascript:window.history.back()"
+			}) }}
+		</div>
+		{% include "includes/header-section-signedin.html" %}
+	</div>
 {% endblock %}
 
 {% block content %}
 
-<div class="govuk-width-container">
- 
 
-  <main class="govuk-main-wrapper " id="main-content" role="main">
-    <div class="govuk-grid-row">
-      <div class="govuk-grid-column-two-thirds">
-        <form action="/selectformat" method="post" novalidate>
 
-          <div class="govuk-form-group">
-            <fieldset class="govuk-fieldset">
-              <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-                <h1 class="govuk-fieldset__heading">
-                  Choose format for bulk reports
-                </h1>
-				  
-			
-				  
-				  
-              </legend>
-				
-				
-				  
-				<p class="govuk-!-margin-top-3 govuk-!-margin-bottom-6">
-					You can use the below desired format to make a bulk report submission.
-				</p>
-				
-              <div class="govuk-radios" data-module="govuk-radios">
-                <div class="govuk-radios__item">
-                  <input class="govuk-radios__input" id="xmlformat" name="selectformat" type="radio" value="xml">
-                  <label class="govuk-label govuk-radios__label" for="xmlformat">
-                    XML document 
-                  </label>
-                </div>
-                <div class="govuk-radios__item">
-                  <input class="govuk-radios__input" id="xlsformat" name="selectformat" type="radio" value="xls">
-                  <label class="govuk-label govuk-radios__label" for="xlsformat">
-                    Excel document (XLS, XLSX, XLT) using a template
-                  </label>
-                </div>
-                
-              </div>
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="/selectformat" method="post" class="form">
+      <div class="govuk-form-group">
+        <label class="govuk-heading-xl" for="event-name">
+        What is the file format of your upload?
+        </label>
 
-            </fieldset>
+
+          <div class="govuk-warning-text">
+            <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+            <strong class="govuk-warning-text__text">
+              <span class="govuk-warning-text__assistive">Warning</span>
+              Uploaded files must conform to our security and data standards.
+              Check with our <a href="#">Instructions for XML and Excel formats</a> before uploading.
+            </strong>
           </div>
 
-          <button class="govuk-button" data-module="govuk-button">
-            Continue
-          </button>
-        </form>
-      </div>
-    </div>
-  </main>
+
+
+
+          <p class="govuk-!-margin-top-3 govuk-!-margin-bottom-6">
+            You can use the below desired format to make a bulk report submission.
+          </p>
+
+                <div class="govuk-radios" data-module="govuk-radios">
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="xmlformat" name="selectformat" type="radio" value="xml">
+                    <label class="govuk-label govuk-radios__label" for="xmlformat">
+                      XML document
+                    </label>
+                  </div>
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="xlsformat" name="selectformat" type="radio" value="xls">
+                    <label class="govuk-label govuk-radios__label" for="xlsformat">
+                      Excel document (XLS, XLSX, XLT) using a template
+                    </label>
+                  </div>
+
+                </div>
+
+
+            </div>
+
+            <button class="govuk-button" data-module="govuk-button">
+              Continue
+            </button>
+          </form>
+
+
+
+
+
+  </div>
 </div>
+
+
+
+
+
 
 {% endblock %}
