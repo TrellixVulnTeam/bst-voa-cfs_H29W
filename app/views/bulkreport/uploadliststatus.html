@@ -1,0 +1,104 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Upload an XML file of reports
+{% endblock %}
+
+{% block beforeContent %}
+
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-one-third">
+			{{ govukBackLink({
+			  text: "Back",
+			  href: "javascript:window.history.back()"
+			}) }}
+		</div>
+		{% include "includes/header-section-signedin.html" %}
+	</div>
+{% endblock %}
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <h1 class="govuk-heading-xl">Uploaded report files</h1>
+
+
+
+      <p>Showing 1 - 5 of 5 results</p>
+
+
+      <table class="govuk-table" data-module="moj-sortable-table">
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+          <!--  <th class="govuk-table__header" scope="col" id="select-all"></th>-->
+            <th scope="col" class="govuk-table__header" aria-sort="ascending">Last updated Date and Time</th>
+            <th scope="col" class="govuk-table__header" aria-sort="none">Status</th>
+            <th scope="col" class="govuk-table__header" aria-sort="none">Action</th>
+
+            <!--<th scope="col" class="govuk-table__header" aria-sort="none">Action</th>-->
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row govuk-table__row--selected">
+            <td class="govuk-table__cell">11 Oct 2022 16:45</td>
+            <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--yellow">
+                Processing
+              </strong>
+           </td>
+            <td class="govuk-table__cell">
+                  <a href="#">View report</a>
+            </td>
+          </tr>
+
+          <tr class="govuk-table__row govuk-table__row--selected">
+            <td class="govuk-table__cell">08 Oct 2022 14:27</td>
+            <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--red">
+                File Validation failure
+              </strong>
+           </td>
+            <td class="govuk-table__cell">
+                  <a href="#">View report</a>
+            </td>
+          </tr>
+
+
+          <tr class="govuk-table__row govuk-table__row--selected">
+            <td class="govuk-table__cell">07 Oct 2022 14:27</td>
+            <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--orange">
+                Data Validation failure
+              </strong>
+           </td>
+            <td class="govuk-table__cell">
+                  <a href="#">View report</a>
+            </td>
+          </tr>
+
+
+          <tr class="govuk-table__row govuk-table__row--selected">
+            <td class="govuk-table__cell">05 Oct 2022 14:27</td>
+            <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">
+                Validated
+              </strong>
+           </td>
+            <td class="govuk-table__cell">
+                  <a href="#">View report</a>
+            </td>
+          </tr>
+
+
+
+
+
+
+        </tbody>
+      </table>
+
+
+
+
+
+    </div>
+  </div>
+
+{% endblock %}
