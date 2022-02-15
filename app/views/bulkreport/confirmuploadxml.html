@@ -1,0 +1,71 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Check and confirm your xml upload
+{% endblock %}
+
+{% block beforeContent %}
+
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-one-third">
+			{{ govukBackLink({
+			  text: "Back",
+			  href: "javascript:window.history.back()"
+			}) }}
+		</div>
+		{% include "includes/header-section-signedin.html" %}
+	</div>
+{% endblock %}
+
+{% block content %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="/bulkreport/bulkreportprogress" method="post" class="form">
+      <div class="govuk-form-group">
+        <label class="govuk-heading-xl" for="event-name">
+          Check and confirm your added report
+        </label>
+
+
+        <dl class="govuk-summary-list">
+                  <div class="govuk-summary-list__row">
+                   <dt class="govuk-summary-list__key">
+                     Report type
+                   </dt>
+                   <dd class="govuk-summary-list__value">
+                     bareport.xml
+                   </dd>
+                   <dd class="govuk-summary-list__actions">
+                     <a class="govuk-link" href="xmlupload">
+                       Change<span class="govuk-visually-hidden"> Report type</span>
+                     </a>
+                   </dd>
+                  </div>
+        </dl>
+
+
+
+
+
+
+
+
+
+            </div>
+
+            <button class="govuk-button" data-module="govuk-button">
+              Confirm and send
+            </button>
+          </form>
+
+
+
+
+
+  </div>
+</div>
+
+{% endblock %}
