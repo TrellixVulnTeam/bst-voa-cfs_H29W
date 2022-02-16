@@ -1,69 +1,91 @@
-
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  Upload XML Format
+Your upload has failed file validation
 {% endblock %}
-
 
 {% block beforeContent %}
-  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
-{% endblock %}
 
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-one-third">
+			{{ govukBackLink({
+			  text: "Back",
+			  href: "javascript:window.history.back()"
+			}) }}
+		</div>
+		{% include "includes/header-section-signedin.html" %}
+	</div>
+{% endblock %}
 {% block content %}
 
-<div class="govuk-width-container">
-
-
-  <main class="govuk-main-wrapper " id="main-content" role="main">
-    <div class="govuk-grid-row">
-      <div class="govuk-grid-column-two-thirds">
-        <form action="/bulkreport/bulkreportprogress" method="post" novalidate>
-
-          <div class="govuk-form-group">
-            <fieldset class="govuk-fieldset">
-				  <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-					<h1 class="govuk-fieldset__heading">
-					  Your upload has failed
-					</h1>
-				  </legend>
 
 
 
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="/bulkreport/confirmdelete" method="post" class="form">
+      <div class="govuk-form-group">
+        <label class="govuk-heading-xl" for="event-name">
+      Your upload has failed file validation
+        </label>
 
 
-				 <p>We found a virus with your file.</p>
+        <p>Your file seems to be corrupt.</p>
 
-
-	        <p><a href="/bulkreport/selectformat">Upload a different filent file.</a></p>
+        <p class="govuk-!-padding-top-4 govuk-!-margin-padding-4">You will need to remove this file, correct the issues, and reupload the file.</p>
 
 
 
 
 
 
-       <p><a href="#">Read instructions for the xml format (Opens in a new tab)</a>
 
-
-
-            </fieldset>
+          <div class="govuk-width-container">
+            <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+              <p><a href="#">See Instructions for the xml format (opens in a new tab)</a></p>
+            </div>
+            </div>
           </div>
 
-			<div class="govuk-width-container">
-			  <div class="govuk-grid-row">
-				<div class="govuk-grid-column-two-thirds">
-				  <p><a href="#">Get help with this page</a></p>
-				</div>
-			  </div>
-			</div>
 
-          <button class="govuk-button" data-module="govuk-button">
-            Continue
-          </button>
-        </form>
-      </div>
-    </div>
-  </main>
+
+
+            </div>
+
+            <div class="govuk-button-group">
+
+
+
+              <button class="govuk-button govuk-button--warning" data-module="govuk-button">
+              Delete the upload and continue
+            </button>
+
+
+            </div>
+
+
+  			<div class="govuk-width-container">
+  			  <div class="govuk-grid-row">
+  				<div class="govuk-grid-column-two-thirds">
+  				  <p><a href="#">Get help with this page</a></p>
+  				</div>
+  			  </div>
+  			</div>
+
+
+          </form>
+
+
+
+  </div>
 </div>
+
+
+
+
+
+
+
 
 {% endblock %}
