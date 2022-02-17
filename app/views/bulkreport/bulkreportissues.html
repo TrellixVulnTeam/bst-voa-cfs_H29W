@@ -18,6 +18,10 @@
 {% endblock %}
 {% block content %}
 
+
+
+
+
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
 
@@ -34,13 +38,13 @@
 
 
 
-      <table class="govuk-table" data-module="moj-multi-select"  data-multi-select-checkbox="#select-all">
+     <!--  <table class="govuk-table" data-module="moj-multi-select"  data-multi-select-checkbox="#select-all">
+-->
+
+         <table class="govuk-table" data-module="moj-sortable-table">
 
 
-          <!--<table class="govuk-table" data-module="moj-sortable-table" data-module="moj-multi-select"  data-multi-select-checkbox="#select-all">-->
-
-
-        <thead class="govuk-table__head">
+        <thead class="govuk-table__head" data-module="moj-multi-select" data-multi-select-checkbox="#select-all">
           <tr class="govuk-table__row">
          <th class="govuk-table__header" scope="col" id="select-all">
 
@@ -514,13 +518,16 @@
 
   <div class="govuk-button-group">
 
-    <button class="govuk-button govuk-button--secondary" data-module="govuk-button">
-      Download the errors
-    </button>
+    
 
     <button class="govuk-button govuk-button--warning" data-module="govuk-button">
     Delete the upload and continue
   </button>
+	  
+	  
+	  <button class="govuk-button govuk-button--secondary" data-module="govuk-button">
+      Download the errors
+    </button>
 
 
   </div>
