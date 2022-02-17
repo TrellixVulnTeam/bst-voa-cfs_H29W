@@ -52,6 +52,26 @@ router.post('/selectformat', function (req, res) {
 })
 
 
+router.post('/confirmdelete', function (req, res) {
+
+  // Make a variable and give it the value from 'how-many-balls'
+  var confirmdelete = req.session.data['confirmdelete']
+  
+  
+  
+
+  // Check whether the variable matches a condition
+  if (confirmdelete == "no"){
+    // Send user to next page
+    res.redirect('/bulkreport/bulkreportissues')
+  } else {
+    // Send user to ineligible page
+    res.redirect('/bulkreport/confirm-remove-current-file')
+  }
+
+})
+
+
 
 
 module.exports = router
