@@ -1,0 +1,407 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Check your answers
+{% endblock %}
+
+        {% block beforeContent %}
+        <a href="comments" class="govuk-back-link">Back</a>
+        {% endblock %}
+
+{% from "govuk/components/back-link/macro.njk" import govukBackLink %}
+{% from "govuk/components/summary-list/macro.njk" import govukSummaryList %}
+{% from "govuk/components/button/macro.njk" import govukButton %}
+
+
+  {{ govukBackLink({
+    text: "Back",
+    href: "#"
+  }) }}
+
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+      <h1 class="govuk-heading-l">Check your answers before sending your application</h1>
+
+      <h2 class="govuk-heading-m">Property request</h2>
+
+      {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
+        rows: [
+          {
+            key: {
+              text: "What do you need to do with this property"
+            },
+            value: {
+              text: "Remove this property from the Non-Domestic rating list"
+            },
+            actions: {
+              items: [
+                {
+                  href: "request-reason",
+                  text: "Change",
+                  visuallyHiddenText: "name"
+				  
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Why should the property be removed"
+            },
+            value: {
+              text: "05: Its has been demolished"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "date of birth"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+      <h2 class="govuk-heading-m">Property details</h2>
+
+      {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
+        rows: [
+          {
+            key: {
+              text: "Billing property reference number"
+            },
+            value: {
+              text: "06002874005006"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "",
+                  visuallyHiddenText: "name"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Address"
+            },
+            value: {
+              text: "Stratford 2, Jubliee House, 2 Farthingale Walk, London, E15 AW"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "",
+                  visuallyHiddenText: "date of birth"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Description"
+            },
+            value: {
+              text: "Content will appear here"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "",
+                  visuallyHiddenText: "content will appear here"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Rateable value"
+            },
+            value: {
+              text: "£1.150.000.00"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "",
+                  visuallyHiddenText: "content will appear here"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Property occupier details"
+            },
+            value: {
+              text: "John Smith john.smith@ymail.co.uk +44 65789 07654"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "",
+                  visuallyHiddenText: "content will appear here"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+      <h2 class="govuk-heading-m">Demolition request details</h2>
+
+      {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
+        rows: [
+          {
+            key: {
+              text: "Billing Authority Report Number"
+            },
+            value: {
+              text: "06002874"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "billing authority report number"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Property demolished effective date"
+            },
+            value: {
+              text: "10th October 2020"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "property demolished effective date"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+      <h2 class="govuk-heading-m">Property occuiper details</h2>
+
+      {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
+        rows: [
+          {
+            key: {
+              text: "Name"
+            },
+            value: {
+              text: "John Smith"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "name"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Do you have alternative address details for this occupier"
+            },
+            value: {
+              text: "No"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "do you have alternative address details for this occupier"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Property occupier address"
+            },
+            value: {
+              html: "Stratford 2, Jubliee House.<br>2 Farthingale Walk, London<br>E15 AW"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "property occupier address"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+      <h2 class="govuk-heading-m">Reference details</h2>
+
+      {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
+        rows: [
+          {
+            key: {
+              text: "OS Grid reference details"
+            },
+            value: {
+              text: ""
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "os grid reference details"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Does this property have planning reference?"
+            },
+            value: {
+              text: "No"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "does this property have planning reference?"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Why is there no planning reference?"
+            },
+            value: {
+              html: "Planning permission not required - no plan-PPNR"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "property occupier address"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+      <h2 class="govuk-heading-m">Relevant evidence</h2>
+
+      {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
+        rows: [
+          {
+            key: {
+              text: "Photograph"
+            },
+            value: {
+              text: "NDR_removed_property.jpg"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "photograph"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Schedule of costs"
+            },
+            value: {
+              text: "NDR_removed_property.xls"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "does this property have planning reference?"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+      <h2 class="govuk-heading-m">Comments</h2>
+
+      {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
+        rows: [
+          {
+            key: {
+              text: "Comments"
+            },
+            value: {
+              text: "Content here will be from the what the User fills in comments text area component"
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "Change",
+                  visuallyHiddenText: "photograph"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+          <h2 class="govuk-heading-m">I understand and accept that:</h2>
+
+          <p class="govuk-body">By submitting this application you are confirming that, to the best of your knowledge, the details you are providing are correct.</p>
+
+          <form action="/confirmation" method="post" novalidate>
+
+            <input type="hidden" name="answers-checked" value="true">
+
+            {{ govukButton({
+                text: "Complete request"
+            }) }}
+
+      </form>
+
+    </div>
+  </div>
+{% endblock %}

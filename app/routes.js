@@ -72,6 +72,58 @@ router.post('/confirmdelete', function (req, res) {
 })
 
 
+router.post('/bulkreportissues', function (req, res) {
+	
+
+  // Make a variable and give it the value from 'submit buttons'
+  var bulkconfirm = req.session.data['bulkconfirm']
+  
+   console.log('routing'+bulkconfirm);
+  
+
+  // Check whether the variable matches a condition
+  if (bulkconfirm == "1"){
+    // Send user to next page
+	
+    res.redirect('/bulkreport/confirmremovefailedreport')
+  } else if(bulkconfirm == "0") {
+	  
+    // Send user to ineligible page
+    res.redirect('/bulkreport/confirmdelete')
+  }
+	
+	else{
+		
+		res.redirect('/bulkreport/bulksubmissionconfirmation')
+		
+	}
+
+})
+
+
+removefile=1
+
+
+
+router.post('/faileduploadxml', function (req, res) {
+	
+
+  // Make a variable and give it the value from 'submit buttons'
+  var deletefile = req.session.data['deletefile']
+  
+   console.log('routing'+deletefile);
+  
+
+  // Check whether the variable matches a condition
+  if (deletefile == "1"){
+    // Send user to next page
+	
+    res.redirect('/bulkreport/uploadliststatus?deletefile=1')
+  } 
+	
+	
+
+})
 
 
 module.exports = router
