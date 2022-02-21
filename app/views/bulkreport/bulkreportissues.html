@@ -25,24 +25,29 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
 
+
+  	{% if data['dataissues'] == 1 %}
+
       <h1 class="govuk-heading-xl">Your upload has failed data validation</h1>
 
-     
-	{% if data['dataissues'] == 1 %}
+
+
 		<p class="govuk-!-padding-bottom-3">You have 9 data issues</p>
-		
-		
+
+
 {%else%}
-	  
+
+      <h1 class="govuk-heading-xl">Verify your uploaded and corrected reports</h1>
+
 			<p class="govuk-!-padding-bottom-6">You have 0 data issues</p>
 {%endif%}
 
-		
-		
- <p class="govuk-!-padding-bottom-3">Showing 1 - 20 of 90 results</p>
 
-  
-      
+
+ <!--<p class="govuk-!-padding-bottom-3">Showing 1 - 20 of 90 results</p>-->
+
+
+
 
 
 
@@ -53,7 +58,7 @@
 
 
         <thead class="govuk-table__head">
-			
+
 <!-- <thead class="govuk-table__head" data-module="moj-multi-select" data-multi-select-checkbox="#select-all">-->
           <tr class="govuk-table__row">
         <!-- <th class="govuk-table__header" scope="col" id="select-all">-->
@@ -71,10 +76,10 @@
           </tr>
         </thead>
         <tbody class="govuk-table__body">
-			
+
 	{% if data['dataissues'] == 1 %}
-											
-			
+
+
           <tr class="govuk-table__row govuk-table__row--selected">
             <!--<td class="govuk-table__cell">
               <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
@@ -239,7 +244,7 @@
           </tr>
 
 {% else %}
-			
+
 			  <tr class="govuk-table__row govuk-table__row--selected">
            <!-- <td class="govuk-table__cell">
               <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
@@ -408,11 +413,11 @@
             <td class="govuk-table__cell"><a href="#">View property request</a></td>
 
           </tr>
-		
-			
-			
-							
-{% endif %}	
+
+
+
+
+{% endif %}
 
 
           <tr class="govuk-table__row govuk-table__row--selected">
@@ -650,6 +655,8 @@
       <div class="govuk-!-margin-left-2 govuk-!-margin-top-4 govuk-!-margin-bottom-8">
       <nav class="moj-pagination" id="pagination-label">
 
+        <p class="moj-pagination__results">Showing <b>1</b> to <b>20</b> of <b>90</b> results</p>
+
           <p class="govuk-visually-hidden" aria-labelledby="pagination-label">Pagination navigation</p>
 
               <ul class="moj-pagination__list">
@@ -671,15 +678,15 @@
                   <a class="moj-pagination__link" href="">Next<span class="govuk-visually-hidden"> set of pages</span></a>
                 </li>
               </ul>
-              <p class="moj-pagination__results">Showing <b>1</b> to <b>20</b> of <b>5</b> pages</p>
+
         </nav>
       </div>
 
-		
-	
-		
-				<form method="post" novalidate action="/bulkreportissues">	
-		
+
+
+
+				<form method="post" novalidate action="/bulkreportissues">
+
 
 
 
@@ -708,11 +715,25 @@
 
     </fieldset>
   </div>-->
-				
-				
+
+
 <!--<p class="govuk-!-margin-top-4 govuk-!-margin-bottom-8"><a href="#">Download report failure as excel file</a></p>
 -->
-				
+
+
+
+
+
+<!--<div class="gem-c-print-link govuk-!-display-none-print govuk-!-margin-top-3 govuk-!-margin-bottom-3">
+  <button class="govuk-link govuk-body-s gem-c-print-link__button" data-module="print-link">Print this page</button>
+</div>-->
+
+
+
+
+
+
+{% if data['dataissues'] == 1 %}
 
 <div class="govuk-warning-text">
   <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
@@ -721,41 +742,51 @@
     <a href="#">Download report failure as excel file</a>
   </strong>
 </div>
-	
-				
 
   <div class="govuk-button-group">
 
-    
-{% if data['dataissues'] == 1 %}
-	  
 
-
-	  
-	  
 	  	 <button class="govuk-button" data-module="govuk-button" id="removefailed" name="bulkconfirm" value="1">
 			Remove all failed reports
-		  </button> 
-				 
-				  
-	  
+		  </button>
+
+
+
 		  <button class="govuk-button govuk-button--warning" data-module="govuk-button" id="deleteupload" name="bulkconfirm" value="0">
 			Delete this uploaded file
-		  </button> 
-	  
-		
+		  </button>
+  </div>
+
 {%else%}
-	  
+
+<div class="govuk-warning-text">
+  <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+    <strong class="govuk-warning-text__text">
+      <span class="govuk-warning-text__assistive">Warning</span>
+    I understand and accept that: By submitting this application you are confirming that, to the best of your knowledge, the details you are providing are correct.
+
+    </strong>
+
+
+</div>
+
+
+
+
+  <div class="govuk-button-group">
+
 			<button class="govuk-button" data-module="govuk-button" id="condirmsubmit" name="bulkconfirm" value="2">
 				Confirm and Submit to VOA
-			</button> 
-{%endif%}
-
-	  
-	 
-
+			</button>
 
   </div>
+{%endif%}
+
+
+
+
+
+
 </form>
 
       </div>
