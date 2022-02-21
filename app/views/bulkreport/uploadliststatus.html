@@ -20,9 +20,9 @@ Uploaded report files
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
-		
-		
-	{% if data['deletefile'] == 1 %}	
+
+
+	{% if data['deletefile'] == 1 %}
 		<div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
 		  <div class="govuk-notification-banner__header">
 			<h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
@@ -33,18 +33,18 @@ Uploaded report files
 			<h3 class="govuk-notification-banner__heading">
 			  You have successfully removed this file.
 			</h3>
-			<p class="govuk-body">Now you can upload another file.</p>
+			<p class="govuk-body">You can upload another file with the corrections.</p>
 		  </div>
-		</div>	
-	
-		
-		
+		</div>
+
+
+
 	{% endif %}
 
 
       <h1 class="govuk-heading-xl">Uploaded report files</h1>
-	
-	{% if data['deletefile'] == 1 %}	
+
+	{% if data['deletefile'] == 1 %}
 		<p>Showing 1 - 3 of 3 results</p>
 	{% else %}
       <p>Showing 1 - 4 of 4 results</p>
@@ -72,7 +72,7 @@ Uploaded report files
                   <a href="/bulkreport/bulkreportprogress">View report</a>
             </td>
           </tr>
-			
+
 		{% if data['deletefile'] == 0 %}
 
           <tr class="govuk-table__row govuk-table__row--selected">
@@ -118,15 +118,15 @@ Uploaded report files
 
         </tbody>
       </table>
-<form method="post" novalidate action="/bulkreport/selectformat">	
+<form method="post" novalidate action="/bulkreport/selectformat">
 
 	<div class="govuk-button-group">
 
-	  
+
 	  	 <button class="govuk-button" data-module="govuk-button" id="uploadanother" name="uploadanother" value="1">
 			Upload another file
-		  </button> 
-				 
+		  </button>
+
 	 </div>
 
 </form>
