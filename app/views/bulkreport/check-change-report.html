@@ -28,24 +28,33 @@
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds-from-desktop">
 		  
-		  
+		  {% if (data['errors'] != 0) %}
 		  <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" data-module="govuk-error-summary">
 			  <h2 class="govuk-error-summary__title" id="error-summary-title">
 				There is a problem
 			  </h2>
 			  <div class="govuk-error-summary__body">
 				<ul class="govuk-list govuk-error-summary__list">
+					{% if data['error1'] != 0 %}
+					
 				  <li>
 					<a href="#billing-authority-reference-change">Please provide Billing authority report number for this property</a>
 				  </li>
+					
+					{% endif %}
+					
+						{% if data['error2'] != 0 %}
+					
 				  <li>
 					<a href="#planning-reference-option-change">Please provide reason for omission of a planning reference number.</a>
 				  </li>
+					
+						{% endif %}
 				</ul>
 			  </div>
 			</div>
 		  
-		  
+		  {% endif %}
 		
 
         <h1 class="govuk-heading-l">Check and modify your report details</h1>
@@ -192,20 +201,26 @@
               Billing Authority Report Number
             </dt>
             <dd class="govuk-summary-list__value">
-				
+		
+		{% if data['error1'] != 0 %}
 			 <p id="post-code-error" class="govuk-error-message">
   				<span class="govuk-visually-hidden">Error:</span> 	
 				Please provide Billing authority report number for this property
   			</p>	
+			<p style="color:#505050;">This is blank</p>
 				
-              <p style="color:#505050;">This is blank</p>
+		{%else%}
+				<p>C0136</p>
+				
+		{% endif %}		
+             
 				
 				
 				
             </dd>
             <dd class="govuk-summary-list__actions">
               <a class="govuk-link" href="/bulkreport/request-details-error" id="billing-authority-reference-change">
-                Change<span class="govuk-visually-hidden"> billing authority reference number</span>
+                Change<span class="govuk-visually-hidden"> billing authority report number</span>
               </a>
             </dd>
           </div>
@@ -331,12 +346,23 @@
              Why is there no planning reference?
             </dt>
             <dd class="govuk-summary-list__value moj-ticket-panel__content--red">
-              <p id="post-code-error" class="govuk-error-message">
+				
+				
+			{% if data['error2'] != 0 %}
+			 <p id="post-code-error" class="govuk-error-message">
   				<span class="govuk-visually-hidden">Error:</span> 	
 				Please provide reason for omission of a planning reference number.
   			</p>	
 				
               <p style="color:#505050;">This is blank</p>
+				
+		{%else%}
+				<p>Planning permission not required - no plan-PPNR</p>
+				
+		{% endif %}			
+				
+				
+             
 				
 				
 				
