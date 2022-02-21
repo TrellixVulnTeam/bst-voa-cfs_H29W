@@ -1,0 +1,95 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Do you have a copy of the business rates bill for this property? - Valuation Office Agency - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-one-third">
+			{{ govukBackLink({
+			  text: "Back",
+			  href: "javascript:window.history.back()"
+			}) }}
+		</div>
+		{% include "includes/header-section-signedin.html" %}
+	</div>
+{% endblock %}
+
+{% block content %}
+
+
+
+
+<div class="govuk-grid-row">
+	
+	
+	
+	{% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
+
+		{{ govukErrorSummary({
+		  titleText: "There is a problem",
+		  errorList: [
+			{
+			  text: "Enter Billing Authority report number in the correct format",
+			  href: "#billing-authority-report-number"
+			}
+		  ]
+		}) }}
+	
+	
+	
+	
+        <div class="govuk-grid-column-two-thirds">
+
+                  <div class="govuk-form-group">
+                    <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="event-name">
+                        Request details
+                      </label>
+
+                     <form class="form" action="/owner-occupier-details" method="post">
+
+                   
+
+                         {{ govukInput({
+							  label: {
+								text: "Billing Authority report number."
+							  },
+							  hint: {
+								text: "This allows us to cross reference and track reports. For example 06002832."
+							  },
+							  id: "billing-authority-report-number",
+							  name: "billing-authority-report-number",
+							  errorMessage: {
+								text: "Enter Billing Authority report number in the correct format"
+							  }
+							}) }}
+
+
+                          {{ govukDateInput({
+                              id: "effective-date",
+                              namePrefix: "effective-date",
+                              fieldset: {
+                                legend: {
+                                  text: "Property demolished effective date"
+                            }
+                          },
+                          hint: {
+                            text: "Not in the future. For example, 27 3 2007"
+                          }
+                        }) }}
+
+        <br/br>
+
+          <button class="govuk-button" data-module="govuk-button">Save and Continue</button>
+
+        </div>
+      </div>
+
+
+
+
+
+
+{% endblock %}
