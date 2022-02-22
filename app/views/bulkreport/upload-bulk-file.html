@@ -1,7 +1,18 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Upload an Excel file of reports using a template
+
+{%
+
+
+	if data['filetype'] == "Excel" %}
+			Upload an Excel file of reports using a template
+
+{%else%}
+		Upload an XML file of reports
+
+
+{%endif%}
 {% endblock %}
 
 {% block beforeContent %}
