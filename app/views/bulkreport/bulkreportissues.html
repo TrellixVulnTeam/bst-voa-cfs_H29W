@@ -60,8 +60,9 @@
           {% if data['removerowissue'] == 1 %}
 
               You have 8 data issues
+          {%elseif data['correctedissues'] == 2%}
+              You have 7 data issues
           {%else%}
-
                 You have 9 data issues
           {% endif %}
 
@@ -112,7 +113,7 @@
         <tbody class="govuk-table__body">
 
 	{% if data['dataissues'] == 1 %}
-
+          <!-- if the row is removed using the remove link-->
           {% if data['removerowissue'] != 1 %}
                 <tr class="govuk-table__row govuk-table__row--selected">
                   <!--<td class="govuk-table__cell">
@@ -127,8 +128,38 @@
                     <td class="govuk-table__cell">1</td>
                   <td class="govuk-table__cell">06002874005006</td>
 
-                  <td class="govuk-table__cell"><div class="govuk-error-message">Please provide Billing authority report number for this property</div></td>
-                  <td class="govuk-table__cell"><a href="/bulkreport/check-change-report?error1=1&error2=1&errors=1">Edit</a> <a href="/bulkreport/confirm-remove-delete-error-row">Remove</a></td>
+                  <td class="govuk-table__cell">
+              <!--if issues are corrected using manual check answers page-->
+                  {%if data['correctedissues'] == 2%}
+
+
+                        <strong class="govuk-tag--green">
+                         No Issues
+                         </strong>
+
+                  {%else%}
+
+                  <div class="govuk-error-message">Please provide Billing authority report number for this property</div></td>
+
+
+                  {% endif %}
+
+
+                  <td class="govuk-table__cell">
+
+                  {%if data['correctedissues'] == 2%}
+
+                      <a href="/bulkreport/check-change-report?error1=1&error2=1&errors=1">View report</a>
+
+                  {%else%}
+
+                          <a href="/bulkreport/check-change-report?error1=1&error2=1&errors=1">Edit</a> <a href="/bulkreport/confirm-remove-delete-error-row">Remove</a>
+
+
+
+                  {% endif %}
+
+                  </td>
                 </tr>
           {% endif %}
 
@@ -146,11 +177,40 @@
             <td class="govuk-table__cell">06002874005006</td>
 
             <td class="govuk-table__cell">
-			 	<div class="govuk-error-message">
-					Please provide reason for omission of a planning reference number
-				</div>
-			 </td>
-          <td class="govuk-table__cell"><a href="/bulkreport/check-change-report?error1=1&error2=1&errors=1">Edit</a> <a href="#">Remove</a></td>
+        <!--if issues are corrected using manual check answers page-->
+            {%if data['correctedissues'] == 2%}
+
+
+                  <strong class="govuk-tag--green">
+                   No Issues
+                   </strong>
+
+            {%else%}
+
+            <div class="govuk-error-message">Please provide reason for omission of a planning reference number	</div></td>
+
+
+            {% endif %}
+
+
+            <td class="govuk-table__cell">
+
+            {%if data['correctedissues'] == 2%}
+
+                <a href="/bulkreport/check-change-report?error1=1&error2=1&errors=1">View report</a>
+
+            {%else%}
+
+                    <a href="/bulkreport/check-change-report?error1=1&error2=1&errors=1">Edit</a> <a href="/bulkreport/confirm-remove-delete-error-row">Remove</a>
+
+
+
+            {% endif %}
+
+            </td>
+
+
+
           </tr>
 
           <tr class="govuk-table__row govuk-table__row--selected">
