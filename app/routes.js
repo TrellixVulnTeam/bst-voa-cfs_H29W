@@ -52,78 +52,117 @@ router.post('/selectformat', function (req, res) {
 })
 
 
-router.post('/confirmdelete', function (req, res) {
+router.post('/confirm-delete-upload', function (req, res) {
 
   // Make a variable and give it the value from 'how-many-balls'
-  var confirmdelete = req.session.data['confirmdelete']
-  
-  
-  
+  var confirmdeleteupload = req.session.data['confirm-delete-upload']
+
+
+
 
   // Check whether the variable matches a condition
-  if (confirmdelete == "no"){
+  if (confirmdeleteupload == "no"){
     // Send user to next page
-    res.redirect('/bulkreport/bulkreportissues')
+    res.redirect('/bulkreport/bulkreportissues?dataissues=1')
   } else {
     // Send user to ineligible page
-    res.redirect('/bulkreport/confirm-remove-current-file')
+    res.redirect('/bulkreport/uploadliststatus?deletefile=1')
   }
 
 })
 
 
 router.post('/bulkreportissues', function (req, res) {
-	
+
 
   // Make a variable and give it the value from 'submit buttons'
   var bulkconfirm = req.session.data['bulkconfirm']
-  
+
    console.log('routing'+bulkconfirm);
-  
+
 
   // Check whether the variable matches a condition
   if (bulkconfirm == "1"){
     // Send user to next page
-	
-    res.redirect('/bulkreport/confirmremovefailedreport')
+
+    res.redirect('/bulkreport/confirm-remove-failed-report')
   } else if(bulkconfirm == "0") {
-	  
+
     // Send user to ineligible page
-    res.redirect('/bulkreport/confirmdelete')
+    res.redirect('/bulkreport/confirm-delete-upload')
   }
-	
+
 	else{
-		
+
 		res.redirect('/bulkreport/bulksubmissionconfirmation')
-		
+
 	}
 
 })
 
 
-removefile=1
+
 
 
 
 router.post('/faileduploadxml', function (req, res) {
-	
+
 
   // Make a variable and give it the value from 'submit buttons'
   var deletefile = req.session.data['deletefile']
-  
+
    console.log('routing'+deletefile);
-  
+
 
   // Check whether the variable matches a condition
   if (deletefile == "1"){
     // Send user to next page
-	
+
     res.redirect('/bulkreport/uploadliststatus?deletefile=1')
-  } 
-	
-	
+  }
+
+
 
 })
 
+
+
+
+// Run this code when a form is submitted to 'confirm-remove-failed-report'
+router.post('/confirm-remove-failed-report', function (req, res) {
+
+  // Make a variable and give it the value from 'how-many-balls'
+  var confirmremove = req.session.data['confirmremove']
+console.log("COnfirm rempve = "+ confirmremove)
+  // Check whether the variable matches a condition
+  if (confirmremove == "yes"){
+    // Send user to next page
+    res.redirect('/bulkreport/bulkreportissues?dataissues=3')
+  } else {
+    // Send user to ineligible page
+    res.redirect('/bulkreport/bulkreportissues?dataissues=1')
+  }
+
+})
+
+//confirmremoverowissue
+
+// Run this code when a form is submitted to 'confirm-remove-delete-error-row'
+router.post('/confirm-remove-delete-error-row', function (req, res) {
+
+  // Make a variable and give it the value from 'how-many-balls'
+  var confirmremoverowissue = req.session.data['confirmremoverowissue']
+console.log("Confirm rempve = "+ confirmremoverowissue)
+  // Check whether the variable matches a condition
+  if (confirmremoverowissue == "yes"){
+    // Send user to next page
+    console.log("in yes")
+    res.redirect('/bulkreport/bulkreportissues?dataissues=1&removerowissue=1')
+  } else {
+    // Send user to ineligible page
+    res.redirect('/bulkreport/bulkreportissues?dataissues=1&removerowissue=0')
+  }
+
+})
 
 module.exports = router

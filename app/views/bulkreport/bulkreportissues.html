@@ -28,11 +28,45 @@
 
   	{% if data['dataissues'] == 1 %}
 
+
+
+    {% if data['removerowissue'] == 1 %}
+  		<div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+  		  <div class="govuk-notification-banner__header">
+  			<h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+  			  Success
+  			</h2>
+  		  </div>
+  		  <div class="govuk-notification-banner__content">
+  			<h3 class="govuk-notification-banner__heading">
+  			  You have successfully removed the row with data issue.
+  			</h3>
+
+  		  </div>
+  		</div>
+
+
+
+  	{% endif %}
+
+
       <h1 class="govuk-heading-xl">Your upload has failed data validation</h1>
 
 
 
-		<p class="govuk-!-padding-bottom-3">You have 9 data issues</p>
+
+		      <p class="govuk-!-padding-bottom-3">
+
+          {% if data['removerowissue'] == 1 %}
+
+              You have 8 data issues
+          {%else%}
+
+                You have 9 data issues
+          {% endif %}
+
+          </p>
+
 
 
 {%else%}
@@ -61,13 +95,13 @@
 
 <!-- <thead class="govuk-table__head" data-module="moj-multi-select" data-multi-select-checkbox="#select-all">-->
           <tr class="govuk-table__row">
-        <!-- <th class="govuk-table__header" scope="col" id="select-all">-->
+        <!-- <th class="govuk-table__header" scope="col" id="select-all">   </th>-->
 
 
 
 
 
-         </th>
+
               <th scope="col" class="govuk-table__header" aria-sort="none">Row</th>
             <th scope="col" class="govuk-table__header" aria-sort="none">Billing authority reference number</th>
             <th scope="col" class="govuk-table__header" aria-sort="none">Data issues</th>
@@ -79,23 +113,24 @@
 
 	{% if data['dataissues'] == 1 %}
 
+          {% if data['removerowissue'] != 1 %}
+                <tr class="govuk-table__row govuk-table__row--selected">
+                  <!--<td class="govuk-table__cell">
+                    <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
+                      <input type="checkbox" class="govuk-checkboxes__input" id="mountain-aconcagua">
+                      <label class="govuk-label govuk-checkboxes__label" for="mountain-aconcagua">
+                        <span class="govuk-visually-hidden">Select Aconcagua</span>
+                      </label>
+                    </div>
+                  </td>-->
 
-          <tr class="govuk-table__row govuk-table__row--selected">
-            <!--<td class="govuk-table__cell">
-              <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
-                <input type="checkbox" class="govuk-checkboxes__input" id="mountain-aconcagua">
-                <label class="govuk-label govuk-checkboxes__label" for="mountain-aconcagua">
-                  <span class="govuk-visually-hidden">Select Aconcagua</span>
-                </label>
-              </div>
-            </td>-->
+                    <td class="govuk-table__cell">1</td>
+                  <td class="govuk-table__cell">06002874005006</td>
 
-              <td class="govuk-table__cell">1</td>
-            <td class="govuk-table__cell">06002874005006</td>
-
-            <td class="govuk-table__cell"><div class="govuk-error-message">Please provide Billing authority report number for this property</div></td>
-            <td class="govuk-table__cell"><a href="/bulkreport/check-change-report?error1=1&error2=1&errors=1">Edit</a> <a href="#">Remove</a></td>
-          </tr>
+                  <td class="govuk-table__cell"><div class="govuk-error-message">Please provide Billing authority report number for this property</div></td>
+                  <td class="govuk-table__cell"><a href="/bulkreport/check-change-report?error1=1&error2=1&errors=1">Edit</a> <a href="/bulkreport/confirm-remove-delete-error-row">Remove</a></td>
+                </tr>
+          {% endif %}
 
 
           <tr class="govuk-table__row govuk-table__row--selected">
@@ -243,7 +278,7 @@
 
           </tr>
 
-{% else %}
+{% elseif data['dataissues'] == 0 %}
 
 			  <tr class="govuk-table__row govuk-table__row--selected">
            <!-- <td class="govuk-table__cell">

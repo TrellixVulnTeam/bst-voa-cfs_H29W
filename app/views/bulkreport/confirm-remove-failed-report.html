@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  Are you sure you want to delete this file? - Valuation Office Agency - GOV.UK
+  Are you sure you want to remove all failed reports? - Valuation Office Agency - GOV.UK
 {% endblock %}
 
 {% block beforeContent %}
@@ -23,10 +23,11 @@
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <form action="/confirmdelete" method="post" class="form">
+
+    <form action="/confirm-remove-failed-report" method="post" class="form">
       <div class="govuk-form-group">
         <label class="govuk-heading-xl" for="event-name">
-        Are you sure you want to delete this file?
+        Are you sure you want to remove all failed reports and submit report with no issues?
         </label>
 
 
@@ -34,15 +35,15 @@
 
                 <div class="govuk-radios" data-module="govuk-radios">
                   <div class="govuk-radios__item">
-                    <input class="govuk-radios__input" id="yesdelete" name="confirmdelete" type="radio" value="yes">
+                    <input class="govuk-radios__input" id="yesremove" name="confirmremove" type="radio" value="yes">
                     <label class="govuk-label govuk-radios__label" for="yesdelete">
-                      Yes, I want to delete this file and reupload a new file.
+                      Yes, I want to remove all failed reports and submit reports with no issues only.
                     </label>
                   </div>
                   <div class="govuk-radios__item">
-                    <input class="govuk-radios__input" id="nodelete" name="confirmdelete" type="radio" value="no">
+                    <input class="govuk-radios__input" id="noremove" name="confirmremove" type="radio" value="no">
                     <label class="govuk-label govuk-radios__label" for="nodelete">
-                      No, I don't want to delete this file.
+                      No, I don't want to remove all failed reports.
                     </label>
                   </div>
 
