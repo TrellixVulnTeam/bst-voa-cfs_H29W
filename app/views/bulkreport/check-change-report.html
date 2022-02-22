@@ -19,15 +19,15 @@
 {% block content %}
 
 
-  
+
 
 <div class="govuk-width-container">
- 
+
 
   <main class="govuk-main-wrapper " id="main-content" role="main">
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds-from-desktop">
-		  
+
 		  {% if (data['errors'] != 0) %}
 		  <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" data-module="govuk-error-summary">
 			  <h2 class="govuk-error-summary__title" id="error-summary-title">
@@ -36,44 +36,44 @@
 			  <div class="govuk-error-summary__body">
 				<ul class="govuk-list govuk-error-summary__list">
 					{% if data['error1'] != 0 %}
-					
+
 				  <li>
 					<a href="#billing-authority-reference-change">Please provide Billing authority report number for this property</a>
 				  </li>
-					
+
 					{% endif %}
-					
+
 						{% if data['error2'] != 0 %}
-					
+
 				  <li>
 					<a href="#planning-reference-option-change">Please provide reason for omission of a planning reference number.</a>
 				  </li>
-					
+
 						{% endif %}
 				</ul>
 			  </div>
 			</div>
-		  
+
 		  {% endif %}
-		
+
 
         <h1 class="govuk-heading-l">Check and modify your report details</h1>
 
         <h2 class="govuk-heading-m">Property request</h2>
-		  
-		  
-					
+
+
+
 
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
-			
-	
-			
+
+
+
           <div class="govuk-summary-list__row">
-			
-			 
-			  
-			
-			  
+
+
+
+
+
             <dt class="govuk-summary-list__key">
               What do you need to do with this property?
             </dt>
@@ -99,13 +99,13 @@
               </a>
             </dd>
           </div>
-         
-          
+
+
         </dl>
-		  
-		  
-	 <h2 class="govuk-heading-m">Property details</h2>	  
-		  
+
+
+	 <h2 class="govuk-heading-m">Property details</h2>
+
 	 <dl class="govuk-summary-list govuk-!-margin-bottom-9">
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
@@ -120,29 +120,29 @@
               </a>
             </dd>
           </div>
-		 
-		 
-		 
+
+
+
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               Address
             </dt>
             <dd class="govuk-summary-list__value">
-				
-					
 
-			
-				
+
+
+
+
              Stratford 2, Jubliee House, 2 Farthingale Walk, London, E15 AW
             </dd>
-			  
+
 			<dd class="govuk-summary-list__actions">
-              
+
             </dd>
-           
+
           </div>
-		 
-		 
+
+
 		  <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
              Description
@@ -150,48 +150,48 @@
             <dd class="govuk-summary-list__value">
               Content will appear here
             </dd>
-			  
+
 			<dd class="govuk-summary-list__actions">
-              
+
             </dd>
-           
-           
+
+
           </div>
-		 
+
 		  <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              Rateable value	
+              Rateable value
             </dt>
             <dd class="govuk-summary-list__value">
-              £1.150.000.00	
+              £1.150.000.00
             </dd>
-			  
+
 			<dd class="govuk-summary-list__actions">
-              
+
             </dd>
-           
-           
+
+
           </div>
-		 
-		 
+
+
 		  <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
-              Property occupier details	
+              Property occupier details
             </dt>
             <dd class="govuk-summary-list__value">
              John Smith john.smith@ymail.co.uk<br>+44 65789 07654
             </dd>
-			  
+
 			<dd class="govuk-summary-list__actions">
-              
+
             </dd>
-           
-           
+
+
           </div>
-         
-          
+
+
         </dl>
-	 
+
 
         <h2 class="govuk-heading-m">Demolition request details</h2>
 
@@ -201,25 +201,25 @@
               Billing Authority Report Number
             </dt>
             <dd class="govuk-summary-list__value">
-		
+
 		{% if data['error1'] != 0 %}
-			 <p id="post-code-error" class="govuk-error-message">
-  				<span class="govuk-visually-hidden">Error:</span> 	
+			 <p id="billing-authority-report-number-error" class="govuk-error-message">
+  				<span class="govuk-visually-hidden">Error:</span>
 				Please provide Billing authority report number for this property
-  			</p>	
+  			</p>
 			<p style="color:#505050;">This is blank</p>
-				
+
 		{%else%}
 				<p>C0136</p>
-				
-		{% endif %}		
-             
-				
-				
-				
+
+		{% endif %}
+
+
+
+
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="/bulkreport/request-details-error" id="billing-authority-reference-change">
+              <a class="govuk-link" href="/bulkreport/request-details-error" id="billing-authority-reference-change" aria-describedby="billing-authority-report-number-error">
                 Change<span class="govuk-visually-hidden"> billing authority report number</span>
               </a>
             </dd>
@@ -237,15 +237,15 @@
               </a>
             </dd>
           </div>
-          
+
         </dl>
-		  
-		  
-		  
+
+
+
 	 <h2 class="govuk-heading-m">Property Owner or occupier details</h2>
 
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
-			
+
 		<div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               Is this for the owner or occupier?
@@ -259,8 +259,8 @@
               </a>
             </dd>
           </div>
-			
-			
+
+
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               Name
@@ -287,7 +287,7 @@
               </a>
             </dd>
           </div>
-			
+
 			 <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
              Property occupier address
@@ -303,15 +303,15 @@
               </a>
             </dd>
           </div>
-          
-        </dl>	
-		  
-		  
-		  
+
+        </dl>
+
+
+
 		 <h2 class="govuk-heading-m">Reference details</h2>
 
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
-			
+
 		<div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               OS Grid reference details
@@ -325,8 +325,8 @@
               </a>
             </dd>
           </div>
-			
-			
+
+
           <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
               Does this property have planning reference?
@@ -340,52 +340,52 @@
               </a>
             </dd>
           </div>
-			
+
 		 <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
              Why is there no planning reference?
             </dt>
             <dd class="govuk-summary-list__value moj-ticket-panel__content--red">
-				
-				
+
+
 			{% if data['error2'] != 0 %}
-			 <p id="post-code-error" class="govuk-error-message">
-  				<span class="govuk-visually-hidden">Error:</span> 	
+			 <p id="planning-reference-number-omission-reason-error" class="govuk-error-message">
+  				<span class="govuk-visually-hidden">Error:</span>
 				Please provide reason for omission of a planning reference number.
-  			</p>	
-				
+  			</p>
+
               <p style="color:#505050;">This is blank</p>
-				
+
 		{%else%}
 				<p>Planning permission not required - no plan-PPNR</p>
-				
-		{% endif %}			
-				
-				
-             
-				
-				
-				
+
+		{% endif %}
+
+
+
+
+
+
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="/bulkreport/reference-details-error" id="planning-reference-option-change">
+              <a class="govuk-link" href="/bulkreport/reference-details-error" id="planning-reference-option-change" aria-describedby="planning-reference-number-omission-reason-error">
                 Change<span class="govuk-visually-hidden"> why is there no planning reference</span>
               </a>
             </dd>
           </div>
-			
-			
-         
-        </dl>	
-		  
-		  
-		  
+
+
+
+        </dl>
+
+
+
 		 <h2 class="govuk-heading-m">Comments</h2>
 
         <dl class="govuk-summary-list govuk-!-margin-bottom-9">
-			
-		
-			
+
+
+
 		 <div class="govuk-summary-list__row">
             <dt class="govuk-summary-list__key">
              Comments
@@ -399,11 +399,11 @@
               </a>
             </dd>
           </div>
-			
-			
-         
-        </dl>	
-	
+
+
+
+        </dl>
+
 
         {% if (data['errors'] == 0) %}
         <form action="/bulkreport/bulkreportissues?dataissues=1" method="post" novalidate>

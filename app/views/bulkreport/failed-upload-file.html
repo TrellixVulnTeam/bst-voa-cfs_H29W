@@ -43,9 +43,14 @@ Your upload has failed file validation
           <div class="govuk-width-container">
             <div class="govuk-grid-row">
             <div class="govuk-grid-column-full">
-              <p><a href="#">See Instructions for the xml format (opens in a new tab)</a></p>
 
 
+
+							{% if data['filetype'] == "xml" %}
+            	  <p><a href="#">See Instructions for the xml format (opens in a new tab)</a></p>
+							{% else  %}
+								<p><a href="#">See Instructions for the excel format (opens in a new tab)</a></p>
+							{% endif %}
 
             </div>
             </div>
