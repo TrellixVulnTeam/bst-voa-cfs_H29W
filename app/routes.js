@@ -43,10 +43,10 @@ router.post('/selectformat', function (req, res) {
   // Check whether the variable matches a condition
   if (selectformat == "xml"){
     // Send user to next page
-    res.redirect('/bulkreport/xmlupload')
+    res.redirect('/bulkreport/upload-bulk-file?filetype=xml')
   } else {
     // Send user to ineligible page
-    res.redirect('/bulkreport/xlsupload')
+    res.redirect('/bulkreport/upload-bulk-file?filetype=Excel')
   }
 
 })
