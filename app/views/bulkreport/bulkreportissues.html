@@ -25,29 +25,29 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
 
-
+      <!--  Show heading with listed errors -->
   	{% if data['dataissues'] == 1 %}
 
 
+              <!--  confirmation message for the row removed -->
+            {% if data['removerowissue'] == 1 %}
+          		<div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+          		  <div class="govuk-notification-banner__header">
+          			<h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+          			  Success
+          			</h2>
+          		  </div>
+          		  <div class="govuk-notification-banner__content">
+          			<h3 class="govuk-notification-banner__heading">
+          			  You have successfully removed the row with data issue.
+          			</h3>
 
-    {% if data['removerowissue'] == 1 %}
-  		<div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
-  		  <div class="govuk-notification-banner__header">
-  			<h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
-  			  Success
-  			</h2>
-  		  </div>
-  		  <div class="govuk-notification-banner__content">
-  			<h3 class="govuk-notification-banner__heading">
-  			  You have successfully removed the row with data issue.
-  			</h3>
-
-  		  </div>
-  		</div>
+          		  </div>
+          		</div>
 
 
 
-  	{% endif %}
+          	{% endif %}
 
 
       <h1 class="govuk-heading-xl">Your upload has failed data validation</h1>
@@ -56,10 +56,12 @@
 
 
 		      <p class="govuk-!-padding-bottom-3">
-
+          <!-- update count once the user removes the 1 issue with data error -->
           {% if data['removerowissue'] == 1 %}
 
               You have 8 data issues
+
+          <!-- update count once the user corrects the 2 issues using webform -->
           {%elseif data['correctedissues'] == 2%}
               You have 7 data issues
           {%else%}
@@ -71,6 +73,8 @@
 
 
 {%else%}
+
+      <!--  Show heading and messaging with no data errors -->
 
       <h1 class="govuk-heading-xl">Verify your uploaded and corrected reports</h1>
 
@@ -111,7 +115,7 @@
           </tr>
         </thead>
         <tbody class="govuk-table__body">
-
+<!-- show rows with listed data errors-->
 	{% if data['dataissues'] == 1 %}
           <!-- if the row is removed using the remove link-->
           {% if data['removerowissue'] != 1 %}
@@ -129,7 +133,8 @@
                   <td class="govuk-table__cell">06002874005006</td>
 
                   <td class="govuk-table__cell">
-              <!--if issues are corrected using manual check answers page-->
+              <!--if issues are corrected using manual check answers page hide error message and replace with no issues tag-->
+
                   {%if data['correctedissues'] == 2%}
 
 
@@ -147,6 +152,9 @@
 
                   <td class="govuk-table__cell">
 
+
+
+                  <!--if issues are corrected using manual check answers page hide edit remove link and replace with view report link-->
                   {%if data['correctedissues'] == 2%}
 
                       <a href="/bulkreport/check-change-report?error1=1&error2=1&errors=1">View report</a>
@@ -177,7 +185,8 @@
             <td class="govuk-table__cell">06002874005006</td>
 
             <td class="govuk-table__cell">
-        <!--if issues are corrected using manual check answers page-->
+              <!--if issues are corrected using manual webform check answers page hide error message and replace with no issues tag-->
+
             {%if data['correctedissues'] == 2%}
 
 
@@ -194,6 +203,7 @@
 
 
             <td class="govuk-table__cell">
+              <!--if issues are corrected using manual webform check answers page hide edit remove link and replace with view report link-->
 
             {%if data['correctedissues'] == 2%}
 
@@ -337,7 +347,7 @@
             <td class="govuk-table__cell"><a href="#">Edit</a> <a href="#">Remove</a></td>
 
           </tr>
-
+  <!-- show rows with no issues-->
 {% elseif data['dataissues'] == 0 %}
 
 			  <tr class="govuk-table__row govuk-table__row--selected">
@@ -827,7 +837,7 @@
 
 
 
-
+<!-- show rexcel data errors link if file has data issues and option to remove failed reports and delete uploaded file-->
 {% if data['dataissues'] == 1 %}
 
 <div class="govuk-warning-text">
@@ -853,7 +863,7 @@
   </div>
 
 {%else%}
-
+<!-- show Confirm and Submit to VOA button alongwith meesage to confirm the submitted if the file doesnt have any data issues-->
 <div class="govuk-warning-text">
   <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
     <strong class="govuk-warning-text__text">
