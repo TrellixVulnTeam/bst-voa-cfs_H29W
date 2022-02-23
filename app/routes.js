@@ -34,8 +34,8 @@ var searchAddresses = [
 // Add your routes here - above the module.exports line
 
 
-// Run this code when a form is submitted to 'selectformat'
-router.post('/selectformat', function (req, res) {
+// Run this code when a form is submitted to 'select-file-format'
+router.post('/select-file-format', function (req, res) {
 
   // Make a variable and give it the value from 'how-many-balls'
   var selectformat = req.session.data['selectformat']
@@ -63,16 +63,16 @@ router.post('/confirm-delete-upload', function (req, res) {
   // Check whether the variable matches a condition
   if (confirmdeleteupload == "no"){
     // Send user to next page
-    res.redirect('/bulkreport/bulkreportissues?dataissues=1')
+    res.redirect('/bulkreport/bulk-submission-report-list?dataissues=1')
   } else {
     // Send user to ineligible page
-    res.redirect('/bulkreport/uploadliststatus?deletefile=1')
+    res.redirect('/bulkreport/uploaded-file-status?deletefile=1')
   }
 
 })
 
 
-router.post('/bulkreportissues', function (req, res) {
+router.post('/bulk-submission-report-list', function (req, res) {
 
 
   // Make a variable and give it the value from 'submit buttons'
@@ -94,7 +94,7 @@ router.post('/bulkreportissues', function (req, res) {
 
 	else{
 
-		res.redirect('/bulkreport/bulksubmissionconfirmation')
+		res.redirect('/bulkreport/bulk-submission-confirmation')
 
 	}
 
@@ -118,7 +118,7 @@ router.post('/faileduploadxml', function (req, res) {
   if (deletefile == "1"){
     // Send user to next page
 
-    res.redirect('/bulkreport/uploadliststatus?deletefile=1')
+    res.redirect('/bulkreport/uploaded-file-status?deletefile=1')
   }
 
 
@@ -137,10 +137,10 @@ console.log("COnfirm rempve = "+ confirmremove)
   // Check whether the variable matches a condition
   if (confirmremove == "yes"){
     // Send user to next page
-    res.redirect('/bulkreport/bulkreportissues?dataissues=3')
+    res.redirect('/bulkreport/bulk-submission-report-list?dataissues=3')
   } else {
     // Send user to ineligible page
-    res.redirect('/bulkreport/bulkreportissues?dataissues=1')
+    res.redirect('/bulkreport/bulk-submission-report-list?dataissues=1')
   }
 
 })
@@ -157,10 +157,10 @@ console.log("Confirm rempve = "+ confirmremoverowissue)
   if (confirmremoverowissue == "yes"){
     // Send user to next page
     console.log("in yes")
-    res.redirect('/bulkreport/bulkreportissues?dataissues=1&removerowissue=1')
+    res.redirect('/bulkreport/bulk-submission-report-list?dataissues=1&removerowissue=1')
   } else {
     // Send user to ineligible page
-    res.redirect('/bulkreport/bulkreportissues?dataissues=1&removerowissue=0')
+    res.redirect('/bulkreport/bulk-submission-report-list?dataissues=1&removerowissue=0')
   }
 
 })

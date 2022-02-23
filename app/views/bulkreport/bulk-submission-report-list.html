@@ -158,7 +158,7 @@
                   <!--if issues are corrected using manual check answers page hide edit remove link and replace with view report link-->
                   {%if data['correctedissues'] == 2%}
 
-                      <a href="/bulkreport/check-change-report?error1=1&error2=1&errors=1">View report</a>
+                      <a href="/bulkreport/check-change-report?error1=0&error2=0&errors=0">View report</a>
 
                   {%else%}
 
@@ -208,7 +208,7 @@
 
             {%if data['correctedissues'] == 2%}
 
-                <a href="/bulkreport/check-change-report?error1=1&error2=1&errors=1">View report</a>
+                <a href="/bulkreport/check-change-report?error1=0&error2=0&errors=0">View report</a>
 
             {%else%}
 
@@ -791,7 +791,7 @@
 
 
 
-				<form method="post" novalidate action="/bulkreportissues">
+				<form method="post" novalidate action="/bulk-submission-report-list">
 
 
 
