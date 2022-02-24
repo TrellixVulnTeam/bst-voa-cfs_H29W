@@ -26,11 +26,29 @@ Your upload has failed file validation
     <form action="/faileduploadxml" method="post" class="form">
       <div class="govuk-form-group">
         <label class="govuk-heading-xl" for="event-name">
-      Your upload has failed file validation
+      Your submission has failed file validation
         </label>
 
 
-        <p>Your file seems to be corrupt.</p>
+       <table class="govuk-table" data-module="moj-sortable-table">
+	   <!--<table class="govuk-table" data-module="moj-sortable-table">-->
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+        <!-- <th class="govuk-table__header" class="govuk-table__header" aria-sort="none">Filename</th>-->
+		 <th class="govuk-table__header" class="govuk-table__header">Filename</th>
+           <!-- <th scope="col" class="govuk-table__header" aria-sort="ascending">File issues</th>-->
+		<th scope="col" class="govuk-table__header">File issues</th>
+           
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row govuk-table__row--selected">
+			<td class="govuk-table__cell">localcouncil09032022.xml</td>
+            <td class="govuk-table__cell">The file you uploaded is corrupt</td>
+            
+          </tr>
+			
+		</table>
 
         <p class="govuk-!-padding-top-4 govuk-!-margin-padding-4">You will need to remove this file, correct the issues, and reupload the file.</p>
 

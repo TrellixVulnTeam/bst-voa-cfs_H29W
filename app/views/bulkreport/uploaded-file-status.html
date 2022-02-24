@@ -31,9 +31,9 @@ Uploaded report files
 		  </div>
 		  <div class="govuk-notification-banner__content">
 			<h3 class="govuk-notification-banner__heading">
-			  You have successfully removed this file.
+			  You have successfully removed the file "localcouncil09032022.xml".
 			</h3>
-			<p class="govuk-body">You can upload another file with the corrections.</p>
+			<p class="govuk-body">Upload a corrected file.</p>
 		  </div>
 		</div>
 
@@ -42,7 +42,64 @@ Uploaded report files
 	{% endif %}
 
 
-      <h1 class="govuk-heading-xl">Uploaded report files</h1>
+      <h1 class="govuk-heading-xl">Uploaded reports</h1>
+		
+		
+		<details class="govuk-details" data-module="govuk-details">
+                <summary class="govuk-details__summary">
+                  <span class="govuk-details__summary-text">
+                    I want to understand the different status descriptions
+                  </span>
+                </summary>
+                <div class="govuk-details__text">
+
+                  <p>
+                      The different statuses refers to:
+                  </p>
+                  <ul>
+
+                    <li class="govuk-!-margin-top-3 govuk-!-margin-bottom-3">
+						<strong class="govuk-tag govuk-tag--yellow">
+               				 Processing
+             			 </strong> 
+						
+						The upload validation is in progress. You will receive an email notification once validation is complete.</li>
+
+                    <li class="govuk-!-margin-top-3 govuk-!-margin-bottom-3">
+						<strong class="govuk-tag govuk-tag--red">
+               				 FILE VALIDATION FAILURE
+             			 </strong> 
+						
+						File uploaded seems to be having issues. You have to correct the file issue(s) and upload the file again.
+					</li>
+
+                
+					  
+					  <li class="govuk-!-margin-top-3 govuk-!-margin-bottom-3">
+						  <strong class="govuk-tag govuk-tag--orange">
+               				 DATA VALIDATION FAILURE
+             			 </strong> 
+						
+						Some of the data inputs within the file are missing or has failed data validation. You have to correct the data errors to submit the reports to VOA.</li>
+
+                   
+					  
+					  <li class="govuk-!-margin-top-3">
+						  <strong class="govuk-tag govuk-tag--green">
+               				 VALIDATED
+             			 </strong> 
+						
+						Your file has passed file and data validation. You can submit the reports within the file to VOA.
+					  
+					  </li>
+
+                  
+
+                  </ul>
+
+
+                </div>
+      </details>
 
 	{% if data['deletefile'] == 1 %}
 		<p>Showing 1 - 3 of 3 results</p>
@@ -53,7 +110,7 @@ Uploaded report files
       <table class="govuk-table" data-module="moj-sortable-table">
         <thead class="govuk-table__head">
           <tr class="govuk-table__row">
-          <!--  <th class="govuk-table__header" scope="col" id="select-all"></th>-->
+         <th class="govuk-table__header" class="govuk-table__header" aria-sort="none">Filename</th>
             <th scope="col" class="govuk-table__header" aria-sort="ascending">Last updated Date and Time</th>
             <th scope="col" class="govuk-table__header" aria-sort="none">Status</th>
             <th scope="col" class="govuk-table__header" aria-sort="none">Action</th>
@@ -63,51 +120,55 @@ Uploaded report files
         </thead>
         <tbody class="govuk-table__body">
           <tr class="govuk-table__row govuk-table__row--selected">
-            <td class="govuk-table__cell">11 Oct 2022 16:45</td>
+			<td class="govuk-table__cell">localcouncil09032022.xml</td>
+            <td class="govuk-table__cell">09 Mar 2022 14:45</td>
             <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--yellow">
                 Processing
               </strong>
            </td>
             <td class="govuk-table__cell">
-                  <a href="/bulkreport/bulk-report-progress">View report</a>
+                  <a href="/bulkreport/bulk-report-progress">View reports</a>
             </td>
           </tr>
 
 		{% if data['deletefile'] == 0 %}
 
           <tr class="govuk-table__row govuk-table__row--selected">
-            <td class="govuk-table__cell">08 Oct 2022 14:27</td>
+			<td class="govuk-table__cell">localcouncil08032022-1.xml</td>
+            <td class="govuk-table__cell">09 Mar 2022 12:27</td>
             <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--red">
                 File Validation failure
               </strong>
            </td>
             <td class="govuk-table__cell">
-                  <a href="/bulkreport/failed-upload-file?filetype=xml">View report</a>
+                  <a href="/bulkreport/failed-upload-file?filetype=xml">View reports</a>
             </td>
           </tr>
 
 		{% endif %}
 
           <tr class="govuk-table__row govuk-table__row--selected">
-            <td class="govuk-table__cell">07 Oct 2022 14:27</td>
+			<td class="govuk-table__cell">localcouncil07032022-2.xls</td>
+            <td class="govuk-table__cell">09 Mar 2022 11:27</td>
             <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--orange">
                 Data Validation failure
               </strong>
            </td>
             <td class="govuk-table__cell">
-                  <a href="/bulkreport/bulk-submission-report-list?dataissues=1&correctedissues=0">View report</a>
+                  <a href="/bulkreport/bulk-submission-report-list?dataissues=1&correctedissues=0">View reports</a>
             </td>
           </tr>
 
 
           <tr class="govuk-table__row govuk-table__row--selected">
-            <td class="govuk-table__cell">05 Oct 2022 14:27</td>
+			<td class="govuk-table__cell">localcouncil07032022-1.xls</td>
+            <td class="govuk-table__cell">09 Mar 2022 09:27</td>
             <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">
                 Validated
               </strong>
            </td>
             <td class="govuk-table__cell">
-                  <a href="/bulkreport/bulk-submission-report-list?dataissues=0">View report</a>
+                  <a href="/bulkreport/bulk-submission-report-list?dataissues=0">View reports</a>
             </td>
           </tr>
 
