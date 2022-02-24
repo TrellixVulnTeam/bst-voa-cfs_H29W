@@ -69,7 +69,7 @@ router.post('/confirm-delete-upload', function (req, res) {
     res.redirect('/bulkreport/bulk-submission-report-list?dataissues=1')
   } else {
     // Send user to ineligible page
-    res.redirect('/bulkreport/uploaded-file-status?deletefile=1')
+    res.redirect('/bulkreport/uploaded-file-status?deletefile=2')
   }
 
 })

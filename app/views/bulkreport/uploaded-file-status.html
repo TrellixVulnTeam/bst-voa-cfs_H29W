@@ -22,7 +22,7 @@ Uploaded report files
     <div class="govuk-grid-column-full">
 
 
-	{% if data['deletefile'] == 1 %}
+	{% if data['deletefile'] != 0 %}
 		<div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
 		  <div class="govuk-notification-banner__header">
 			<h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
@@ -31,9 +31,15 @@ Uploaded report files
 		  </div>
 		  <div class="govuk-notification-banner__content">
 			<h3 class="govuk-notification-banner__heading">
-			  You have successfully removed the file "localcouncil09032022.xml".
+			  You have successfully removed the file 
+				
+				{% if data['deletefile'] == 1 %}
+					"localcouncil09032022.xml"
+				{% else %}
+					"localcouncil07032022-2.xls"
+				.{% endif %}
 			</h3>
-			<p class="govuk-body">Upload a corrected file.</p>
+		<!--	<p class="govuk-body">Upload a corrected file.</p>-->
 		  </div>
 		</div>
 
@@ -131,7 +137,7 @@ Uploaded report files
             </td>
           </tr>
 
-		{% if data['deletefile'] == 0 %}
+		{% if data['deletefile'] != 1 %}
 
           <tr class="govuk-table__row govuk-table__row--selected">
 			<td class="govuk-table__cell">localcouncil08032022-1.xml</td>
@@ -146,6 +152,9 @@ Uploaded report files
           </tr>
 
 		{% endif %}
+			
+			
+	{% if data['deletefile'] != 2 %}
 
           <tr class="govuk-table__row govuk-table__row--selected">
 			<td class="govuk-table__cell">localcouncil07032022-2.xls</td>
@@ -155,11 +164,11 @@ Uploaded report files
               </strong>
            </td>
             <td class="govuk-table__cell">
-                  <a href="/bulkreport/bulk-submission-report-list?dataissues=1&correctedissues=0">View reports</a>
+                  <a href="/bulkreport/bulk-submission-report-list?dataissues=1&correctedissues=0&removerowissue=0">View reports</a>
             </td>
           </tr>
 
-
+{% endif %}
           <tr class="govuk-table__row govuk-table__row--selected">
 			<td class="govuk-table__cell">localcouncil07032022-1.xls</td>
             <td class="govuk-table__cell">09 Mar 2022 09:27</td>

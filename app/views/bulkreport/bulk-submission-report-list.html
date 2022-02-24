@@ -40,7 +40,7 @@
           		  </div>
           		  <div class="govuk-notification-banner__content">
           			<h3 class="govuk-notification-banner__heading">
-          			  You have successfully removed the row with data issue.
+          			  You have successfully removed the row with data issues.
           			</h3>
 
           		  </div>
@@ -53,23 +53,33 @@
 
       <h1 class="govuk-heading-xl">Your upload has failed data validation</h1>
 
+ 	
+	
 
+		<div class="govuk-warning-text">
+			  <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
+			  <strong class="govuk-warning-text__text">
+				<span class="govuk-warning-text__assistive">Warning</span>
+				  
+				     <!-- update count once the user removes the 1 issue with data error -->
+						  {% if data['removerowissue'] == 1 %}
 
+							  You have 8 data issues.
 
-		      <p class="govuk-!-padding-bottom-3">
-          <!-- update count once the user removes the 1 issue with data error -->
-          {% if data['removerowissue'] == 1 %}
+						  <!-- update count once the user corrects the 2 issues using webform -->
+						  {%elseif data['correctedissues'] == 2%}
+							  You have 7 data issues.
+						  {%else%}
+								You have 9 data issues.
+						  {% endif %}
+				  
+				  
+				  
+				<a href="#">Download this list as an excel file.</a>
+			  </strong>
+			</div>
+       
 
-              You have 8 data issues
-
-          <!-- update count once the user corrects the 2 issues using webform -->
-          {%elseif data['correctedissues'] == 2%}
-              You have 7 data issues
-          {%else%}
-                You have 9 data issues
-          {% endif %}
-
-          </p>
 
 
 
@@ -77,7 +87,7 @@
 
       <!--  Show heading and messaging with no data errors -->
 
-      <h1 class="govuk-heading-xl">Verify your uploaded and corrected reports</h1>
+      <h1 class="govuk-heading-xl">Review and submit your reports</h1>
 
 			<p class="govuk-!-padding-bottom-6">You have 0 data issues</p>
 {%endif%}
@@ -145,12 +155,16 @@
 
                   {%else%}
 								
-										 <div><a href="/bulkreport/request-details-error?dataissues=1">Billing authority for this property is missing</a></div>
+										 <div>
+
+												Change date should not be in the future.
+					  								
+					  					</div>
 								
 								
 								
 									
-										  <div><a href="/bulkreport/reference-details-error?dataissues=1">Reason for omission of a planning reference number is missing</a>
+										  <div>Reason for omission of a planning reference number is missing.
 											</div>
 								
 							
@@ -251,12 +265,12 @@
             <td class="govuk-table__cell"> 
 				
 				
-				<div><a href="/bulkreport/request-details-error?dataissues=1">Postcode W2 7UT is invalid</a></div>
+				<div>Postcode W2 7UT is invalid.</div>
 								
 								
 								
 									
-										  <div><a href="/bulkreport/reference-details-error?dataissues=1">Planning reference number is missing</a>
+										  <div>Billing authority for this property is missing.
 			  </div>
 			  
 		    </td>
@@ -280,15 +294,13 @@
 
             <td class="govuk-table__cell">
 			  
-					<div>
-						<a href="#">Change date should not be in the future</a>
+					<div> Change date should not be in the future.
 				    </div>
 								
 								
 								
 										
-				 	 <div>
-						 <a href="#">Comments for the report is missing </a>
+				 	 <div> Comments for the report is missing. 
 					</div>
 				
 				
@@ -313,16 +325,14 @@
 
             <td class="govuk-table__cell">
 				
-					<div>
-						<a href="#">	
-							Billing authority for this property is missing</a>
+					<div> 	
+						  Billing authority for this property is missing.
 				    </div>
 								
 								
 								
 										
-				 	 <div>
-						 <a href="#">Postcode W2 89U is invalid </a>
+				 	 <div> Postcode W2 89U is invalid.
 					</div>
 				
 				
@@ -347,8 +357,7 @@
 
             <td class="govuk-table__cell">
 					
-				 <div>
-						 <a href="#">Reason for omission of a planning reference number is missing</a>
+				 <div> Reason for omission of a planning reference number is missing.
 					</div>
 				
 				
@@ -934,26 +943,53 @@
 
 <!-- show rexcel data errors link if file has data issues and option to remove failed reports and delete uploaded file-->
 {% if data['dataissues'] == 1 %}
+					
+					
+<details class="govuk-details" data-module="govuk-details">
+                <summary class="govuk-details__summary">
+                  <span class="govuk-details__summary-text">
+                   How do i correct the issues for ths submission?
+                  </span>
+                </summary>
+                <div class="govuk-details__text">
 
-<div class="govuk-warning-text">
-  <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
-  <strong class="govuk-warning-text__text">
-    <span class="govuk-warning-text__assistive">Warning</span>
-    <a href="#">Download report failure as excel file</a>
-  </strong>
-</div>
+                 
+                  <ul>
+
+                    <li class="govuk-!-margin-top-3 govuk-!-margin-bottom-3">
+						
+					  You can remove failed reports only and submit the file with no data issues.
+					  
+					  </li>
+
+                    <li class="govuk-!-margin-top-3 govuk-!-margin-bottom-3">
+						You can delete all uploaded reports and upload the corrected report again.
+					</li>
+
+                
+					 
+
+                  
+
+                  </ul>
+
+
+                </div>
+      </details>
+
+
 
   <div class="govuk-button-group">
 
 
 	  	 <button class="govuk-button" data-module="govuk-button" id="removefailed" name="bulkconfirm" value="1">
-			Remove all failed reports
+			Remove failed reports only
 		  </button>
 
 
 
 		  <button class="govuk-button govuk-button--warning" data-module="govuk-button" id="deleteupload" name="bulkconfirm" value="0">
-			Delete this uploaded file
+			Delete all reports
 		  </button>
   </div>
 

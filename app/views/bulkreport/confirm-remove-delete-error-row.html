@@ -27,12 +27,12 @@
     <form action="/confirm-remove-delete-error-row" method="post" class="form">
       <div class="govuk-form-group">
         <label class="govuk-heading-xl" for="event-name">
-        Are you sure you want to remove this row with data issue?
+         Are you sure you want to remove this report from your sumbmission
         </label>
 
 
         <table class="govuk-table">
-          <caption class="govuk-table__caption govuk-table__caption--m">Report with data issue</caption>
+          <caption class="govuk-table__caption govuk-table__caption--m">Report with data issue(s)</caption>
           <thead class="govuk-table__head">
             <tr class="govuk-table__row">
               <th scope="col" class="govuk-table__header">Billing authority reference number</th>
@@ -42,7 +42,18 @@
           <tbody class="govuk-table__body">
             <tr class="govuk-table__row">
               <th scope="row" class="govuk-table__header">06002874005006</th>
-              <td class="govuk-table__cell"><div class="govuk-error-message">Please provide Billing authority report number for this property</div></td>
+              <td class="govuk-table__cell">
+				  
+				  
+				  <div>Change date should not be in the future.
+				  </div>
+				  
+				  <div>
+				  Reason for omission of a planning reference number is missing.
+				  </div>
+				
+				
+				</td>
             </tr>
 
           </tbody>
@@ -56,13 +67,13 @@
                   <div class="govuk-radios__item">
                     <input class="govuk-radios__input" id="yesremove" name="confirmremoverowissue" type="radio" value="yes">
                     <label class="govuk-label govuk-radios__label" for="yesdelete">
-                      Yes, I want to remove this row with data issue.
+                      Yes, I want to remove this report with data issues.
                     </label>
                   </div>
                   <div class="govuk-radios__item">
                     <input class="govuk-radios__input" id="noremove" name="confirmremoverowissue" type="radio" value="no">
                     <label class="govuk-label govuk-radios__label" for="nodelete">
-                      No, I don't want to remove this row with data issue.
+                      No, I don't want to remove this report with data issues.
                     </label>
                   </div>
 

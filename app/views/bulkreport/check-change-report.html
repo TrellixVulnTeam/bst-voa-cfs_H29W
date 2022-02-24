@@ -38,7 +38,7 @@
 					{% if data['error1'] != 0 %}
 
 				  <li>
-					<a href="#billing-authority-reference-change">Please provide Billing authority report number for this property</a>
+					<a href="#billing-authority-reference-change">Property demolished effective date should not be in the future.</a>
 				  </li>
 
 					{% endif %}
@@ -46,7 +46,7 @@
 						{% if data['error2'] != 0 %}
 
 				  <li>
-					<a href="#planning-reference-option-change">Please provide reason for omission of a planning reference number.</a>
+					<a href="#planning-reference-option-change">Reason for omission of a planning reference number is missing.</a>
 				  </li>
 
 						{% endif %}
@@ -202,24 +202,17 @@
             </dt>
             <dd class="govuk-summary-list__value">
 
-		{% if data['error1'] != 0 %}
-			 <p id="billing-authority-report-number-error" class="govuk-error-message">
-  				<span class="govuk-visually-hidden">Error:</span>
-				Billing authority for this property is missing
-  			</p>
-			<p style="color:#505050;">This is blank</p>
 
-		{%else%}
 				<p>C0136</p>
 
-		{% endif %}
+
 
 
 
 
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="/bulkreport/request-details-error" id="billing-authority-reference-change" aria-describedby="billing-authority-report-number-error">
+              <a class="govuk-link" href="#" id="billing-authority-reference-change">
                 Change<span class="govuk-visually-hidden"> billing authority report number</span>
               </a>
             </dd>
@@ -229,12 +222,28 @@
               Property demolished effective date
             </dt>
             <dd class="govuk-summary-list__value">
-              10th October 2020
+				
+				{% if data['error1'] != 0 %}
+			 <p id="property-demolished-effective-date-error" class="govuk-error-message">
+  				<span class="govuk-visually-hidden">Error:</span>
+				Property demolished effective date should not be in the future.
+  			</p>
+			<p style="color:#505050;">25th March 2022</p>
+
+		{%else%}
+				<p>25th March 2022</p>
+
+		{% endif %}
+				
+				
+              
             </dd>
             <dd class="govuk-summary-list__actions">
-              <a class="govuk-link" href="#">
-                Change<span class="govuk-visually-hidden"> property demolished effective date</span>
-              </a>
+            
+              
+				
+				 <a class="govuk-link" href="/bulkreport/request-details-error" id="property-demolished-effective-date-change" aria-describedby="property-demolished-effective-date-error">
+               Change<span class="govuk-visually-hidden"> property demolished effective date</span></a>
             </dd>
           </div>
 
