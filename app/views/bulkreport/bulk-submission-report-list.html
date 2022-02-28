@@ -27,7 +27,7 @@
 
       <!--  Show heading with listed errors -->
   	{% if data['dataissues'] == 1 %}
-  
+
 
 
               <!--  confirmation message for the row removed -->
@@ -35,12 +35,12 @@
           		<div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
           		  <div class="govuk-notification-banner__header">
           			<h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
-          			  Success
+          			  Report removed
           			</h2>
           		  </div>
           		  <div class="govuk-notification-banner__content">
           			<h3 class="govuk-notification-banner__heading">
-          			  You have successfully removed the row with data issues.
+          			  You have removed the report with data issues for billing authority reference number 06002874005326.
           			</h3>
 
           		  </div>
@@ -53,14 +53,14 @@
 
       <h1 class="govuk-heading-xl">Your upload has failed data validation</h1>
 
- 	
-	
+
+
 
 		<div class="govuk-warning-text">
 			  <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
 			  <strong class="govuk-warning-text__text">
 				<span class="govuk-warning-text__assistive">Warning</span>
-				  
+
 				     <!-- update count once the user removes the 1 issue with data error -->
 						  {% if data['removerowissue'] == 1 %}
 
@@ -72,13 +72,13 @@
 						  {%else%}
 								You have 9 data issues.
 						  {% endif %}
-				  
-				  
-				  
+
+
+
 				<a href="#">Download this list as an excel file.</a>
 			  </strong>
 			</div>
-       
+
 
 
 
@@ -92,6 +92,37 @@
 			<p class="govuk-!-padding-bottom-6">You have 0 data issues</p>
 {%endif%}
 
+
+{% if data['dataissues'] == 1 %}
+
+    <details class="govuk-details" data-module="govuk-details">
+                <summary class="govuk-details__summary">
+                  <span class="govuk-details__summary-text">
+                   How do i correct the issues for ths submission?
+                  </span>
+                </summary>
+                <div class="govuk-details__text">
+
+
+                  <ul>
+
+                    <li class="govuk-!-margin-top-3 govuk-!-margin-bottom-3">
+
+					  You can remove failed reports only and submit the file with no data issues.
+
+					  </li>
+
+                    <li class="govuk-!-margin-top-3 govuk-!-margin-bottom-3">
+						You can delete all uploaded reports and upload the corrected report again.
+					</li>
+
+
+                  </ul>
+
+
+                </div>
+      </details>
+{%endif%}
 
 
  <!--<p class="govuk-!-padding-bottom-3">Showing 1 - 20 of 90 results</p>-->
@@ -154,23 +185,23 @@
                          </strong>
 
                   {%else%}
-								
+
 										 <div>
 
 												Change date should not be in the future.
-					  								
+
 					  					</div>
-								
-								
-								
-									
+
+
+
+
 										  <div>Reason for omission of a planning reference number is missing.
 											</div>
-								
-							
-					
+
+
+
 					  </ul>
-					  
+
 					</td>
 
 
@@ -214,19 +245,19 @@
             <td class="govuk-table__cell">-->
               <!--if issues are corrected using manual webform check answers page hide error message and replace with no issues tag
 
-           
+
 
 
                   <strong class="govuk-tag--green">
                    No Issues
                    </strong>
 
-           
+
 
             <div class="govuk-error-message">Please provide reason for omission of a planning reference number	</div></td>-->
 
 
-         
+
 
  <!--
             <td class="govuk-table__cell">
@@ -262,23 +293,23 @@
             <td class="govuk-table__cell">2</td>
            <td class="govuk-table__cell">06002874005326</td>
 
-            <td class="govuk-table__cell"> 
-				
-				
+            <td class="govuk-table__cell">
+
+
 				<div>Postcode W2 7UT is invalid.</div>
-								
-								
-								
-									
+
+
+
+
 										  <div>Billing authority for this property is missing.
 			  </div>
-			  
+
 		    </td>
             <td class="govuk-table__cell"><a href="#">Edit</a> <a href="#">Remove</a></td>
           </tr>
 
 
-         
+
 
           <tr class="govuk-table__row govuk-table__row--selected">
               <!--<td class="govuk-table__cell">
@@ -293,18 +324,18 @@
             <td class="govuk-table__cell">06002874005034</td>
 
             <td class="govuk-table__cell">
-			  
+
 					<div> Change date should not be in the future.
 				    </div>
-								
-								
-								
-										
-				 	 <div> Comments for the report is missing. 
+
+
+
+
+				 	 <div> Comments for the report is missing.
 					</div>
-				
-				
-				
+
+
+
 			</td>
             <td class="govuk-table__cell"><a href="#">Edit</a> <a href="#">Remove</a></td>
           </tr>
@@ -324,24 +355,24 @@
             <td class="govuk-table__cell">06002874005398</td>
 
             <td class="govuk-table__cell">
-				
-					<div> 	
+
+					<div>
 						  Billing authority for this property is missing.
 				    </div>
-								
-								
-								
-										
+
+
+
+
 				 	 <div> Postcode W2 89U is invalid.
 					</div>
-				
-				
+
+
 			</td>
             <td class="govuk-table__cell"><a href="#">Edit</a> <a href="#">Remove</a></td>
           </tr>
 
 
-        
+
 
           <tr class="govuk-table__row govuk-table__row--selected">
             <!--<td class="govuk-table__cell">
@@ -356,11 +387,11 @@
             <td class="govuk-table__cell">06002874005566</td>
 
             <td class="govuk-table__cell">
-					
+
 				 <div> Reason for omission of a planning reference number is missing.
 					</div>
-				
-				
+
+
 			</td>
             <td class="govuk-table__cell"><a href="#">Edit</a> <a href="#">Remove</a></td>
 
@@ -769,8 +800,8 @@
                         <td class="govuk-table__cell"><a href="#">View report</a></td>
                         <!--<td class="govuk-table__cell">Edit property request</td>-->
                 </tr>
-	  
-	  
+
+
 	   <tr class="govuk-table__row govuk-table__row--selected">
                  <!--<td class="govuk-table__cell">
                    <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
@@ -791,8 +822,8 @@
                         <td class="govuk-table__cell"><a href="#">View report</a></td>
                         <!--<td class="govuk-table__cell">Edit property request</td>-->
                 </tr>
-	  
-	  
+
+
 	   <tr class="govuk-table__row govuk-table__row--selected">
                  <!--<td class="govuk-table__cell">
                    <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
@@ -813,7 +844,7 @@
                         <td class="govuk-table__cell"><a href="#">View report</a></td>
                         <!--<td class="govuk-table__cell">Edit property request</td>-->
                 </tr>
-	  
+
 	   <tr class="govuk-table__row govuk-table__row--selected">
                  <!--<td class="govuk-table__cell">
                    <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
@@ -834,7 +865,7 @@
                         <td class="govuk-table__cell"><a href="#">View report</a></td>
                         <!--<td class="govuk-table__cell">Edit property request</td>-->
                 </tr>
-	  
+
 	   <tr class="govuk-table__row govuk-table__row--selected">
                  <!--<td class="govuk-table__cell">
                    <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
@@ -943,39 +974,8 @@
 
 <!-- show rexcel data errors link if file has data issues and option to remove failed reports and delete uploaded file-->
 {% if data['dataissues'] == 1 %}
-					
-					
-<details class="govuk-details" data-module="govuk-details">
-                <summary class="govuk-details__summary">
-                  <span class="govuk-details__summary-text">
-                   How do i correct the issues for ths submission?
-                  </span>
-                </summary>
-                <div class="govuk-details__text">
-
-                 
-                  <ul>
-
-                    <li class="govuk-!-margin-top-3 govuk-!-margin-bottom-3">
-						
-					  You can remove failed reports only and submit the file with no data issues.
-					  
-					  </li>
-
-                    <li class="govuk-!-margin-top-3 govuk-!-margin-bottom-3">
-						You can delete all uploaded reports and upload the corrected report again.
-					</li>
-
-                
-					 
-
-                  
-
-                  </ul>
 
 
-                </div>
-      </details>
 
 
 
@@ -1005,7 +1005,7 @@
 
 
 </div>-->
-					
+
 
 <!-- show Confirm and Submit to VOA button alongwith meesage to confirm the submitted if the file doesnt have any data issues-->
 
@@ -1013,7 +1013,7 @@
 
         <p class="govuk-body">By submitting this information you are confirming that, to the best of your knowledge, the details you are providing are correct.</p>
 
-    
+
 
         <input type="hidden" name="answers-checked" value="true">
 

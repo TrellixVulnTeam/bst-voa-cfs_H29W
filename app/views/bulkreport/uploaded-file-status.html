@@ -26,13 +26,13 @@ Uploaded report files
 		<div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
 		  <div class="govuk-notification-banner__header">
 			<h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
-			  Success
+			  File removed
 			</h2>
 		  </div>
 		  <div class="govuk-notification-banner__content">
 			<h3 class="govuk-notification-banner__heading">
-			  You have successfully removed the file 
-				
+			  You have removed the file
+
 				{% if data['deletefile'] == 1 %}
 					"localcouncil09032022.xml"
 				{% else %}
@@ -49,8 +49,8 @@ Uploaded report files
 
 
       <h1 class="govuk-heading-xl">Uploaded reports</h1>
-		
-		
+
+
 		<details class="govuk-details" data-module="govuk-details">
                 <summary class="govuk-details__summary">
                   <span class="govuk-details__summary-text">
@@ -67,39 +67,39 @@ Uploaded report files
                     <li class="govuk-!-margin-top-3 govuk-!-margin-bottom-3">
 						<strong class="govuk-tag govuk-tag--yellow">
                				 Processing
-             			 </strong> 
-						
+             			 </strong>
+
 						The upload validation is in progress. You will receive an email notification once validation is complete.</li>
 
                     <li class="govuk-!-margin-top-3 govuk-!-margin-bottom-3">
 						<strong class="govuk-tag govuk-tag--red">
                				 FILE VALIDATION FAILURE
-             			 </strong> 
-						
+             			 </strong>
+
 						File uploaded seems to be having issues. You have to correct the file issue(s) and upload the file again.
 					</li>
 
-                
-					  
+
+
 					  <li class="govuk-!-margin-top-3 govuk-!-margin-bottom-3">
 						  <strong class="govuk-tag govuk-tag--orange">
                				 DATA VALIDATION FAILURE
-             			 </strong> 
-						
+             			 </strong>
+
 						Some of the data inputs within the file are missing or has failed data validation. You have to correct the data errors to submit the reports to VOA.</li>
 
-                   
-					  
+
+
 					  <li class="govuk-!-margin-top-3">
 						  <strong class="govuk-tag govuk-tag--green">
                				 VALIDATED
-             			 </strong> 
-						
+             			 </strong>
+
 						Your file has passed file and data validation. You can submit the reports within the file to VOA.
-					  
+
 					  </li>
 
-                  
+
 
                   </ul>
 
@@ -152,8 +152,8 @@ Uploaded report files
           </tr>
 
 		{% endif %}
-			
-			
+
+
 	{% if data['deletefile'] != 2 %}
 
           <tr class="govuk-table__row govuk-table__row--selected">
