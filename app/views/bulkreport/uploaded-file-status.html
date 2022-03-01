@@ -54,29 +54,38 @@ Uploaded report files
 		<details class="govuk-details" data-module="govuk-details">
                 <summary class="govuk-details__summary">
                   <span class="govuk-details__summary-text">
-                    I want to understand the different status descriptions
+                  I want to understand the different statuses
                   </span>
                 </summary>
                 <div class="govuk-details__text">
 
                   <p>
-                      The different statuses refers to:
+
+											All uploaded files of reports are validated by this service to check they do not contain errors or issues,
+											both within the file and its report data. The file statuses help you understand the outcomes of this validation.
                   </p>
+
+
+									<p>
+											There are four possible statuses for validation outcomes:
+									</p>
                   <ul>
 
                     <li class="govuk-!-margin-top-3 govuk-!-margin-bottom-3">
-						<strong class="govuk-tag govuk-tag--yellow">
-               				 Processing
-             			 </strong>
+												<strong class="govuk-tag govuk-tag--yellow">
+	               				 Processing
+	             			 	  </strong>
 
-						The upload validation is in progress. You will receive an email notification once validation is complete.</li>
+									 				The status of ‘Processing’ means the validation of the uploaded file is in progress. You will receive an email once validation is complete.
+										</li>
 
                     <li class="govuk-!-margin-top-3 govuk-!-margin-bottom-3">
 						<strong class="govuk-tag govuk-tag--red">
                				 FILE VALIDATION FAILURE
              			 </strong>
 
-						File uploaded seems to be having issues. You have to correct the file issue(s) and upload the file again.
+									 		File validation failure’ occurs when an uploaded file has failed validation because either it contains a virus,
+											it is corrupt, or there are faults within its file structure. Files that have failed file validation will need to be removed, corrected, and re-uploaded.
 					</li>
 
 
@@ -86,7 +95,9 @@ Uploaded report files
                				 DATA VALIDATION FAILURE
              			 </strong>
 
-						Some of the data inputs within the file are missing or has failed data validation. You have to correct the data errors to submit the reports to VOA.</li>
+									 		‘Data validation failure’ occurs when the actual data within individual reports does not meet the BAR submission standards. In this situation,
+											it is possible to view the report and correct any errors within the service. Alternatively, you can remove the file, correct any errors, then re-upload the corrected file.
+						</li>
 
 
 
@@ -95,7 +106,7 @@ Uploaded report files
                				 VALIDATED
              			 </strong>
 
-						Your file has passed file and data validation. You can submit the reports within the file to VOA.
+									 	A status of ‘validated’ means the uploaded file (and all of its data) has passed validation and the reports it contains are ready to be submitted to the VOA.
 
 					  </li>
 
