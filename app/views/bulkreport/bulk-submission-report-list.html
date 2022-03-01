@@ -550,7 +550,9 @@
              <td class="govuk-table__cell"><strong class="govuk-tag--green">
  					 No Issues
 				</strong> </td>
-            <td class="govuk-table__cell"><a href="#">View report</a></td>
+            <td class="govuk-table__cell">
+              <a href="/bulkreport/check-change-report?error1=0&error2=0&errors=0">View report</a>
+            </td>
           </tr>
 
           <tr class="govuk-table__row govuk-table__row--selected">
@@ -629,7 +631,7 @@
             <td class="govuk-table__cell"><strong class="govuk-tag--green">
  					 No Issues
 				</strong> </td>
-            <td class="govuk-table__cell"><a href="#">View report</a></td>
+            <td class="govuk-table__cell"><a href="/bulkreport/check-change-report?error1=0&error2=0&errors=0">View report</a></td>
             <!--<td class="govuk-table__cell">Edit property request</td>-->
           </tr>
 
@@ -968,7 +970,7 @@
 
 				<form method="post" novalidate action="/bulk-submission-report-list">
 
-
+	<input type="hidden" name="file-data-validation" id="file-data-validation" value="localcouncilreport.xls">
 
 
   <!--<div class="govuk-form-group">

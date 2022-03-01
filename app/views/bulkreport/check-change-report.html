@@ -21,12 +21,19 @@
 
 
 
+
+
+
+
 <div class="govuk-width-container">
 
 
   <main class="govuk-main-wrapper " id="main-content" role="main">
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds-from-desktop">
+
+
+      
 
 		  {% if (data['errors'] != 0) %}
 		  <div class="govuk-error-summary" aria-labelledby="error-summary-title" role="alert" data-module="govuk-error-summary">
@@ -222,7 +229,7 @@
               Property demolished effective date
             </dt>
             <dd class="govuk-summary-list__value">
-				
+
 				{% if data['error1'] != 0 %}
 			 <p id="property-demolished-effective-date-error" class="govuk-error-message">
   				<span class="govuk-visually-hidden">Error:</span>
@@ -234,14 +241,14 @@
 				<p>25th March 2022</p>
 
 		{% endif %}
-				
-				
-              
+
+
+
             </dd>
             <dd class="govuk-summary-list__actions">
-            
-              
-				
+
+
+
 				 <a class="govuk-link" href="/bulkreport/request-details-error" id="property-demolished-effective-date-change" aria-describedby="property-demolished-effective-date-error">
                Change<span class="govuk-visually-hidden"> property demolished effective date</span></a>
             </dd>
