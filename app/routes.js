@@ -106,6 +106,32 @@ router.post('/bulk-submission-report-list', function (req, res) {
 
 
 
+router.post('/bulk-submission-confirmation', function (req, res) {
+
+
+  // Make a variable and give it the value from 'submit buttons'
+  var bulksubmissionconfirm = req.session.data['bulksubmissionconfirm']
+
+
+  // Check whether the variable matches a condition
+  if (bulksubmissionconfirm == "1"){
+    // Send user to next page
+
+    res.redirect('/bulkreport/outstanding-reports')
+  } else if(bulksubmissionconfirm == "0") {
+
+    // Send user to ineligible page
+    res.redirect('/bahomepage')
+  }
+
+	else{
+
+		res.redirect('/bulkreport/bulk-submission-confirmation')
+
+	}
+
+})
+
 
 
 router.post('/faileduploadxml', function (req, res) {
@@ -167,6 +193,10 @@ console.log("Confirm rempve = "+ confirmremoverowissue)
   }
 
 })
+
+
+
+
 
 
 // The URL here needs to match the URL of the page that the user is on

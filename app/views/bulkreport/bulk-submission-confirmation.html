@@ -31,24 +31,26 @@
       <h2 class="govuk-heading-m">What happens next</h2>
        	 <p>Your uploaded reports have been submitted to the VOA.
 
-			 You can update these reports with supporting documents</a>.
+			 You can update these reports with supporting documents.
 
   		     </p>
 
-	
+
+	<form method="post" novalidate action="/bulk-submission-confirmation">
+
 
            <div class="govuk-button-group">
-              <button class="govuk-button" data-module="govuk-button">
+              <button class="govuk-button" data-module="govuk-button" id="adddocuments" name="bulksubmissionconfirm" value="1">
                 Add supporting documents
               </button>
 
-              <button class="govuk-button govuk-button--secondary" data-module="govuk-button">
+              <button class="govuk-button govuk-button--secondary" data-module="govuk-button" id="dashboard" name="bulksubmissionconfirm" value="0">
                 Return to Dashbaord
               </button>
             </div>
 
+</form>
 
-			</p>
 
 			<p><a href="#">What do you think of this service</a> (takes 30 seconds).
 
