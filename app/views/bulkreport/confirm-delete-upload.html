@@ -39,7 +39,19 @@
 				  Filename
 				</dt>
 				<dd class="govuk-summary-list__value">
-				  {{ data['file-bulk-upload'] }}
+
+
+          {% if data['file-bulk-upload'] != "" %}
+
+
+              {{data['file-bulk-upload']}}
+
+          {%else%}
+
+              {{data['bulk-report-file']}}
+
+
+          {%endif%}
 				</dd>
 			  </div>
 		  </dl>
