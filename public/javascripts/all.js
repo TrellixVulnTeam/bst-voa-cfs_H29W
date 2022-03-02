@@ -1181,3 +1181,91 @@ MOJFrontend.SortableTable.prototype.getCellValue = function(cell) {
 
 return MOJFrontend;
 }));
+
+
+
+
+
+
+
+
+	      // Function to get the current date and time in the GDS format
+        //this is for ba-report-details.html script
+	      function subDate() {
+
+	        // Get the current date
+	        const d = new Date();
+
+	        // Get the day
+	        let day = d.getDate();
+
+	        // Get the month
+	        const monthNames = ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+	        let month = monthNames[d.getMonth()];
+
+	        // Get the year
+	        let year = d.getFullYear();
+
+	        // Get the hours
+	        let hours = d.getHours();
+	        var ampm = hours >= 12 ? 'pm' : 'am';
+	        hours = hours % 12;
+
+	        // Get the minutes
+	        let minutes = d.getMinutes();
+	        minutes = minutes < 10 ? '0'+minutes : minutes;
+
+	        // Return the submission Date
+	        return day + " " + month + " " + year + ", " + hours + ":" + minutes + ampm;
+
+	      }
+
+	      // Function to insert a table row first using from data
+	      function insertRow() {
+
+	        // First check if a <tbody> tag exists, add one if not
+	        if ($("#updates-history tbody").length == 0) {
+	            $("#updates-history").append("<tbody></tbody>");
+	        }
+
+	        // Get the form data
+	        var subject = document.getElementById("subject").value;
+	        var body = document.getElementById("body").value;
+	        var date = subDate();
+
+	        // Find a <table> element with id="updates-history"
+	        var table = document.getElementById("updates-history");
+
+	        // Create an empty <tr> element and add it to the 1st position of the table
+	        var row = table.insertRow(1);
+	        row.className = "govuk-table__row";
+
+	        // Insert new cells (<td> elements) at the 1st and 2nd position of the "new" <tr> element:
+	        var cell1 = row.insertCell(0);
+	        cell1.className = "govuk-table__header";
+	        var cell2 = row.insertCell(1);
+	        cell2.className = "govuk-table__cell";
+	        var cell3 = row.insertCell(2);
+	        cell3.className = "govuk-table__cell";
+	        var cell4 = row.insertCell(3);
+	        cell4.className = "govuk-table__cell";
+
+	        // Add some text to the new cells:
+	        cell1.innerHTML = date;
+	        cell2.innerHTML = "<strong>" + subject + "</strong><br>" + body;
+	        cell3.innerHTML = "John Smith";
+	        cell4.innerHTML = "<button class='govuk-button govuk-button--secondary' data-module='govuk-button' style='margin-bottom:0;' onclick='deleteRow(this);'>Remove</button>";
+
+	        // Reset form fields
+	        $("#updates-form")[0].reset();
+
+	        // Stop page refreshing
+	        return false;
+
+	      }
+
+	    // Remove row from table
+	    function deleteRow(btn) {
+	    	var row = btn.parentNode.parentNode;
+	    	row.parentNode.removeChild(row);
+	    }

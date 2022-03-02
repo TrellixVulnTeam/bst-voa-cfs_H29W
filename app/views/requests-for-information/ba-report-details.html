@@ -1,0 +1,146 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+	Billing Authorities Report details - Valuation Office Agency - GOV.UK
+{% endblock %}
+
+
+
+
+
+{% block beforeContent %}
+
+	{% include "includes/header-dashboard.html" %}
+{% endblock %}
+
+
+
+
+<!-- Import the cards template if using the macro -->
+{% import "card-template.html" as card %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-full">
+
+      <h1 class="govuk-heading-xl">Billing Authority Reports</h1>
+
+    </div>
+</div>
+<div class="govuk-tabs" data-module="govuk-tabs">
+  <h2 class="govuk-tabs__title">
+    Contents
+  </h2>
+  <ul class="govuk-tabs__list">
+    <li class="govuk-tabs__list-item govuk-tabs__list-item--selected">
+      <a class="govuk-tabs__tab" href="#report-details">
+      Report
+      </a>
+    </li>
+    <li class="govuk-tabs__list-item">
+      <a class="govuk-tabs__tab" href="#supporting-documents">
+      Supporting Documents
+      </a>
+    </li>
+
+		<li class="govuk-tabs__list-item">
+			<a class="govuk-tabs__tab" href="#updates">
+			Updates
+			</a>
+		</li>
+
+  </ul>
+  <div class="govuk-tabs__panel" id="report-details">
+    <h2 class="govuk-heading-l">Report details</h2>
+
+</div>
+
+  <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="supporting-documents">
+
+			<h2 class="govuk-heading-l">Supporting Documents</h2>
+
+
+  </div>
+
+
+	<div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="updates">
+
+			<h2 class="govuk-heading-l">Updates</h2>
+
+
+
+			<form action="/docs/examples/pass-data/vehicle-features" method="post" class="form" id="updates-form">
+
+        <div style="border:1px solid silver;background-color:#f8f8f8;width:870px;padding:20px;margin-bottom:50px;">
+
+          <h3 class="govuk-heading-m">Add an update</h3>
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="subject">Subject</label>
+            <input class="govuk-input" id="subject" name="subject" type="text">
+          </div>
+
+          <div class="govuk-form-group">
+            <label class="govuk-label" for="body">Body</label>
+            <textarea class="govuk-textarea" id="body" name="body" rows="5"></textarea>
+          </div>
+
+          <button type="button" class="govuk-button" data-module="govuk-button" onclick="insertRow();">Add update</button>
+
+        </div>
+
+        <h3 class="govuk-heading-m">Updates history</h3>
+        <table class="govuk-table" id="updates-history">
+          <caption class="govuk-table__caption govuk-table__caption--m govuk-visually-hidden">Upload results</caption>
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header">Date</th>
+              <th scope="col" class="govuk-table__header">Update</th>
+              <th scope="col" class="govuk-table__header">Created by</th>
+              <th scope="col" class="govuk-table__header">Action</th>
+            </tr>
+          </thead>
+          <tbody class="govuk-table__body">
+            <tr class="govuk-table__row">
+              <td class="govuk-table__header">15 Feb 2022, 11:20am</td>
+              <td class="govuk-table__cell">
+                <strong>Photographs</strong><br>
+                Photographs uploaded as requested.
+              </td>
+              <td class="govuk-table__cell">Jane Parsons</td>
+              <td class="govuk-table__cell">
+                <button type="button" class="govuk-button govuk-button--secondary" data-module="govuk-button" onclick="deleteRow(this);">Remove</button>
+              </td>
+            </tr>
+            <tr class="govuk-table__row">
+              <td class="govuk-table__header">15 Feb 2022, 10:14am</td>
+              <td class="govuk-table__cell">
+                <strong>Photographs required</strong><br>
+                There is no photograph of the front elevation. Please upload one to progress this report.
+              </td>
+              <td class="govuk-table__cell">VOA</td>
+              <td class="govuk-table__cell">
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+      </form>
+
+
+
+  </div>
+
+
+
+
+
+
+</div>
+
+
+{% include "includes/details-get-help.html" %}
+
+	{% include "includes/footer.html" %}
+
+{% endblock %}
