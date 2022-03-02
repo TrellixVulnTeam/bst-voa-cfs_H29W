@@ -81,7 +81,7 @@ router.post('/bulk-submission-report-list', function (req, res) {
   // Make a variable and give it the value from 'submit buttons'
   var bulkconfirm = req.session.data['bulkconfirm']
 
-   console.log('routing'+bulkconfirm);
+   console.log('parmaeters'+req.method);
 
 
   // Check whether the variable matches a condition

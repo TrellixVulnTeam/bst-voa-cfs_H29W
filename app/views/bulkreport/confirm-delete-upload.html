@@ -41,12 +41,16 @@
 				<dd class="govuk-summary-list__value">
 
 
-          {% if data['file-bulk-upload'] != "" %}
 
 
-              {{data['file-bulk-upload']}}
+        {%if data['file-bulk-upload'] != null %}
 
-          {%else%}
+          print  {{data['file-bulk-upload']}}
+
+
+
+          {%else %}
+
 
               {{data['bulk-report-file']}}
 
