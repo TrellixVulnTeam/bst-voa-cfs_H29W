@@ -154,7 +154,19 @@ Uploaded report files
 		{% if data['deletefile'] != 1 %}
 
           <tr class="govuk-table__row govuk-table__row--selected">
-			<td class="govuk-table__cell">{{ data['file-bulk-upload'] }}</td>
+			<td class="govuk-table__cell">
+
+					{% if data['file-bulk-upload'] != null %}
+
+							{{ data['file-bulk-upload'] }}
+
+					{%else%}
+							localcouncilreport07022022.xml
+
+					{%endif%}
+
+
+			</td>
             <td class="govuk-table__cell">09 Mar 2022 12:27</td>
             <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--red">
                 File Validation failure
@@ -173,8 +185,8 @@ Uploaded report files
           <tr class="govuk-table__row govuk-table__row--selected">
 			<td class="govuk-table__cell">
 
-		
-							localcouncilreport.xls
+
+							localcouncilreport03022022.xls
 			</td>
             <td class="govuk-table__cell">09 Mar 2022 11:27</td>
             <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--orange">
