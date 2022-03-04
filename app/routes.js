@@ -75,7 +75,7 @@ router.post('/confirm-delete-upload', function (req, res) {
 })
 
 
-router.post('/bulk-submission-report-list', function (req, res) {
+router.post('/bulk-submission-report-list', function (req, res, nex) {
 
 
   // Make a variable and give it the value from 'submit buttons'
@@ -97,6 +97,8 @@ router.post('/bulk-submission-report-list', function (req, res) {
 
 	else{
     console.log(req.body.emailAddress);
+
+  //  setTimeout(next,30000);
 
     notify.sendEmail(
       // this long string is the template ID, copy it from the template
@@ -216,6 +218,8 @@ router.post('/email-address-page', function (req, res) {
 //  .then(function () {
     // This is the URL the users will be redirected to once the email
     // has been sent
+
+
 
     res.redirect('/email-address-page?useradded=1');
 
