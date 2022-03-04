@@ -1,5 +1,5 @@
-//var NotifyClient = require('notifications-node-client').NotifyClient,
-//notify = new NotifyClient(process.env.NOTIFYAPIKEY);
+var NotifyClient = require('notifications-node-client').NotifyClient;
+const notify = new NotifyClient(process.env.NOTIFYAPIKEY);
 
 const express = require('express')
 const router = express.Router()
@@ -177,22 +177,26 @@ console.log("COnfirm rempve = "+ confirmremove)
 //confirmremoverowissue
 
 // Run this code when a form is submitted to 'confirm-remove-delete-error-row'
-router.post('/confirm-remove-delete-error-row', function (req, res) {
+router.post('/email-address-page', function (req, res) {
+  notify.sendEmail(
+    // this long string is the template ID, copy it from the template
+    // page in GOV.UK Notify. It's not a secret so it's fine to put it
+    // in your code.
+    'a07a78a1-73ce-47b2-9ccc-3152506a0c73',
+    // `emailAddress` here needs to match the name of the form field in
+    // your HTML page
+    req.body.emailAddress
+  )
+  .then(function () {
+    // This is the URL the users will be redirected to once the email
+    // has been sent
+    res.redirect('/confirmation-page');
+  })
+  .catch(function (err) {
+    res.status(500).send('Notify experienced an error:<br/><br/>' + err.message + '<br/><br/><pre>' + (err.stack || '').replace(/\\n/g, '<br/>') + '</pre>' + '<br/><br/><pre>' + JSON.stringify(err) + '</pre>')
+  })
 
-  // Make a variable and give it the value from 'how-many-balls'
-  var confirmremoverowissue = req.session.data['confirmremoverowissue']
-console.log("Confirm rempve = "+ confirmremoverowissue)
-  // Check whether the variable matches a condition
-  if (confirmremoverowissue == "yes"){
-    // Send user to next page
-    console.log("in yes")
-    res.redirect('/bulkreport/bulk-submission-report-list?dataissues=1&removerowissue=1')
-  } else {
-    // Send user to ineligible page
-    res.redirect('/bulkreport/bulk-submission-report-list?dataissues=1&removerowissue=0')
-  }
-
-})
+});
 
 
 
@@ -202,20 +206,23 @@ console.log("Confirm rempve = "+ confirmremoverowissue)
 // The URL here needs to match the URL of the page that the user is on
 // when they type in their email address
 router.post('/email-address-page', function (req, res) {
-
   notify.sendEmail(
     // this long string is the template ID, copy it from the template
-    // page in GOV.UK Notify. It’s not a secret so it’s fine to put it
+    // page in GOV.UK Notify. It's not a secret so it's fine to put it
     // in your code.
     'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
     // `emailAddress` here needs to match the name of the form field in
     // your HTML page
     req.body.emailAddress
-  );
-
-  // This is the URL the users will be redirected to once the email
-  // has been sent
-  res.redirect('/confirmation-page');
+  )
+  .then(function () {
+    // This is the URL the users will be redirected to once the email
+    // has been sent
+    res.redirect('/confirmation-page');
+  })
+  .catch(function (err) {
+    res.status(500).send(err.message)
+  })
 
 });
 
