@@ -201,7 +201,7 @@ router.post('/signin', function (req, res) {
 
 
     // Send user to ineligible page
-    req.session.data = {}
+  //  req.session.data = {}
 
     res.redirect('/bahomepage')
 
@@ -253,25 +253,25 @@ router.post('/email-address-page', function (req, res) {
 
 // The URL here needs to match the URL of the page that the user is on
 // when they type in their email address
-router.post('/email-address-page', function (req, res) {
-  notify.sendEmail(
+//router.post('/email-address-page', function (req, res) {
+  //notify.sendEmail(
     // this long string is the template ID, copy it from the template
     // page in GOV.UK Notify. It's not a secret so it's fine to put it
     // in your code.
-    'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
+  //  'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
     // `emailAddress` here needs to match the name of the form field in
     // your HTML page
-    req.body.emailAddress
-  )
-  .then(function () {
+  //  req.body.emailAddress
+//  )
+//  .then(function () {
     // This is the URL the users will be redirected to once the email
     // has been sent
-    res.redirect('/confirmation-page');
-  })
-  .catch(function (err) {
-    res.status(500).send(err.message)
-  })
+//    res.redirect('/confirmation-page');
+//  })
+//  .catch(function (err) {
+//    res.status(500).send(err.message)
+//  })
 
-});
+//});
 
 module.exports = router
