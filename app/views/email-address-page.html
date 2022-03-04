@@ -1,18 +1,60 @@
 {% extends "layout.html" %}
 
-{% block content %}
+{% block pageTitle %}
+  Add email address for participants
+{% endblock %}
 
+{% block beforeContent %}
+
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-one-third">
+			{{ govukBackLink({
+			  text: "Back",
+			  href: "javascript:window.history.back()"
+			}) }}
+		</div>
+		{% include "includes/header-section-signedin.html" %}
+	</div>
+{% endblock %}
+{% block content %}
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
+
+
+
+      {% if data['useradded'] == 1 %}
+
+
+
+      <div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+        <div class="govuk-notification-banner__header">
+        <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+          User added to the email list
+        </h2>
+        </div>
+        <div class="govuk-notification-banner__content">
+        <h3 class="govuk-notification-banner__heading">
+          You have added the participant's email address {{data['emailAddressUser']}}.
+        </h3>
+
+        </div>
+      </div>
+{%endif%}
+
+
+
+
+      <h1>Add email address for participant</h1>
       <form class="form" method="post">
 
         {{ govukInput({
           label: {
             text: "Email Address"
           },
-          id: "email-address",
-          name: "emailAddress",
+          id: "email-address-user",
+          name: "emailAddressUser",
           type: "email",
+          value: data['emailAddressUser'],
           autocomplete: "email",
           spellcheck: false
         }) }}
@@ -22,6 +64,10 @@
         })}}
 
       </form>
+
+
+
+
     </div>
   </div>
 {% endblock %}

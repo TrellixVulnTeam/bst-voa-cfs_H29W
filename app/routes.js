@@ -96,8 +96,27 @@ router.post('/bulk-submission-report-list', function (req, res) {
   }
 
 	else{
+    console.log(req.body.emailAddress);
 
-		res.redirect('/bulkreport/bulk-submission-confirmation')
+    notify.sendEmail(
+      // this long string is the template ID, copy it from the template
+      // page in GOV.UK Notify. It's not a secret so it's fine to put it
+      // in your code.
+      'a07a78a1-73ce-47b2-9ccc-3152506a0c73',
+      // `emailAddress` here needs to match the name of the form field in
+      // your HTML page
+      req.body.emailAddress
+    )
+    .then(function () {
+      // This is the URL the users will be redirected to once the email
+      // has been sent
+      	res.redirect('/bulkreport/bulk-submission-confirmation');
+    })
+    .catch(function (err) {
+      res.status(500).send('Notify experienced an error:<br/><br/>' + err.message + '<br/><br/><pre>' + (err.stack || '').replace(/\\n/g, '<br/>') + '</pre>' + '<br/><br/><pre>' + JSON.stringify(err) + '</pre>')
+    })
+
+
 
 	}
 
@@ -178,23 +197,33 @@ console.log("COnfirm rempve = "+ confirmremove)
 
 // Run this code when a form is submitted to 'confirm-remove-delete-error-row'
 router.post('/email-address-page', function (req, res) {
-  notify.sendEmail(
+  //notify.sendEmail(
+
+
     // this long string is the template ID, copy it from the template
     // page in GOV.UK Notify. It's not a secret so it's fine to put it
     // in your code.
-    'a07a78a1-73ce-47b2-9ccc-3152506a0c73',
+
+    //'a07a78a1-73ce-47b2-9ccc-3152506a0c73',
+
     // `emailAddress` here needs to match the name of the form field in
+
     // your HTML page
-    req.body.emailAddress
-  )
-  .then(function () {
+
+
+    //req.body.emailAddress
+  //)
+//  .then(function () {
     // This is the URL the users will be redirected to once the email
     // has been sent
-    res.redirect('/confirmation-page');
-  })
-  .catch(function (err) {
-    res.status(500).send('Notify experienced an error:<br/><br/>' + err.message + '<br/><br/><pre>' + (err.stack || '').replace(/\\n/g, '<br/>') + '</pre>' + '<br/><br/><pre>' + JSON.stringify(err) + '</pre>')
-  })
+
+    res.redirect('/email-address-page?useradded=1');
+
+
+//  })
+//  .catch(function (err) {
+  //  res.status(500).send('Notify experienced an error:<br/><br/>' + err.message + '<br/><br/><pre>' + (err.stack || '').replace(/\\n/g, '<br/>') + '</pre>' + '<br/><br/><pre>' + JSON.stringify(err) + '</pre>')
+//  })
 
 });
 
