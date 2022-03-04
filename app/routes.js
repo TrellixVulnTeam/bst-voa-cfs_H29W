@@ -182,7 +182,7 @@ router.post('/email-address-page', function (req, res) {
     // this long string is the template ID, copy it from the template
     // page in GOV.UK Notify. It's not a secret so it's fine to put it
     // in your code.
-    'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
+    'a07a78a1-73ce-47b2-9ccc-3152506a0c73',
     // `emailAddress` here needs to match the name of the form field in
     // your HTML page
     req.body.emailAddress
@@ -193,7 +193,7 @@ router.post('/email-address-page', function (req, res) {
     res.redirect('/confirmation-page');
   })
   .catch(function (err) {
-    res.status(500).send('Notify experienced an error:<br/><br/>' + err.message + '<br/><br/><pre>' + (err.stack || '').replace(/\\n/g, '<br/>') + '</pre>' + '<br/><br/>')
+    res.status(500).send('Notify experienced an error:<br/><br/>' + err.message + '<br/><br/><pre>' + (err.stack || '').replace(/\\n/g, '<br/>') + '</pre>' + '<br/><br/><pre>' + JSON.stringify(err) + '</pre>')
   })
 
 });
