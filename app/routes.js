@@ -195,6 +195,21 @@ console.log("COnfirm rempve = "+ confirmremove)
 
 })
 
+
+// Run this code when a form is submitted to 'confirm-remove-failed-report'
+router.post('/signin', function (req, res) {
+
+
+    // Send user to ineligible page
+    req.session.data = {}
+
+    res.redirect('/bahomepage')
+
+
+})
+
+
+
 //confirmremoverowissue
 
 // Run this code when a form is submitted to 'confirm-remove-delete-error-row'
