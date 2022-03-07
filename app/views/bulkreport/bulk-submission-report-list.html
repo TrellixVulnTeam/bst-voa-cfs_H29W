@@ -40,7 +40,7 @@
           		  </div>
           		  <div class="govuk-notification-banner__content">
           			<h3 class="govuk-notification-banner__heading">
-          			  You have removed the report with data issues for billing authority reference number 06002874005326.
+          			  You have removed the report with data issues for billing authority reference number {{data['bref']}}.
           			</h3>
 
           		  </div>
@@ -64,13 +64,13 @@
 				     <!-- update count once the user removes the 1 issue with data error -->
 						  {% if data['removerowissue'] == 1 %}
 
-							  You have 8 data issues.
+							  You have 1 data issue.
 
 						  <!-- update count once the user corrects the 2 issues using webform -->
 						  {%elseif data['correctedissues'] == 2%}
-							  You have 7 data issues.
+							  You have 0 data issues.
 						  {%else%}
-								You have 9 data issues.
+								You have 2 data issues.
 						  {% endif %}
 
 
@@ -200,8 +200,10 @@
         <tbody class="govuk-table__body">
 <!-- show rows with listed data errors-->
 	{% if data['dataissues'] == 1 %}
+
+
           <!-- if the row is removed using the remove link-->
-          {% if data['removerowissue'] != 1 %}
+          {% if (data['bref'] != "06002874005006")%}
                 <tr class="govuk-table__row govuk-table__row--selected">
                   <!--<td class="govuk-table__cell">
                     <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
@@ -267,7 +269,7 @@
 
                   {%else%}
 
-                      <a href="/bulkreport/check-change-report?error1=1&error2=1&errors=1">Edit</a> <a href="/bulkreport/confirm-remove-delete-error-row">Remove</a>
+                      <a href="/bulkreport/check-change-report?error1=1&error2=1&errors=1">Edit</a> <a href="/bulkreport/confirm-remove-delete-error-row?bref=06002874005006">Remove</a>
 
 
 
@@ -329,15 +331,10 @@
 
           </tr>-->
 
+  {% if data['bref'] != "06002874005326" %}
+
           <tr class="govuk-table__row govuk-table__row--selected">
-              <!--<td class="govuk-table__cell">
-              <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
-                <input type="checkbox" class="govuk-checkboxes__input" id="mountain-aconcagua">
-                <label class="govuk-label govuk-checkboxes__label" for="mountain-aconcagua">
-                  <span class="govuk-visually-hidden">Select Aconcagua</span>
-                </label>
-              </div>
-            </td>-->
+
             <td class="govuk-table__cell">2</td>
            <td class="govuk-table__cell">06002874005326</td>
 
@@ -349,25 +346,36 @@
 
 
 
-										  <div>Billing authority for this property is missing.
-			  </div>
+				<div>Billing authority for this property is missing.</div>
 
 		    </td>
-            <td class="govuk-table__cell"><a href="#">Edit</a> <a href="#">Remove</a></td>
+            <td class="govuk-table__cell">
+
+
+              {%if data['correctedissues'] == 2%}
+
+                  <a href="/bulkreport/check-change-report?error1=0&error2=0&errors=0">View report</a>
+
+              {%else%}
+
+                  <a href="/bulkreport/check-change-report?error1=1&error2=1&errors=1">Edit</a> <a href="/bulkreport/confirm-remove-delete-error-row?bref=06002874005326">Remove</a>
+
+
+
+              {% endif %}
+
+
+
+
+            </td>
           </tr>
 
 
+{% endif %}
 
-
+<!--
           <tr class="govuk-table__row govuk-table__row--selected">
-              <!--<td class="govuk-table__cell">
-              <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
-                <input type="checkbox" class="govuk-checkboxes__input" id="mountain-aconcagua">
-                <label class="govuk-label govuk-checkboxes__label" for="mountain-aconcagua">
-                  <span class="govuk-visually-hidden">Select Aconcagua</span>
-                </label>
-              </div>
-            </td>-->
+
             <td class="govuk-table__cell">3</td>
             <td class="govuk-table__cell">06002874005034</td>
 
@@ -390,15 +398,12 @@
 
 
 
+
+start of ommented for usability testing
+
+
           <tr class="govuk-table__row govuk-table__row--selected">
-             <!--<td class="govuk-table__cell">
-              <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
-                <input type="checkbox" class="govuk-checkboxes__input" id="mountain-aconcagua">
-                <label class="govuk-label govuk-checkboxes__label" for="mountain-aconcagua">
-                  <span class="govuk-visually-hidden">Select Aconcagua</span>
-                </label>
-              </div>
-            </td>-->
+
             <td class="govuk-table__cell">4</td>
             <td class="govuk-table__cell">06002874005398</td>
 
@@ -423,14 +428,7 @@
 
 
           <tr class="govuk-table__row govuk-table__row--selected">
-            <!--<td class="govuk-table__cell">
-             <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
-               <input type="checkbox" class="govuk-checkboxes__input" id="mountain-aconcagua">
-               <label class="govuk-label govuk-checkboxes__label" for="mountain-aconcagua">
-                 <span class="govuk-visually-hidden">Select Aconcagua</span>
-               </label>
-             </div>
-           </td>-->
+
            <td class="govuk-table__cell">5</td>
             <td class="govuk-table__cell">06002874005566</td>
 
@@ -444,18 +442,21 @@
             <td class="govuk-table__cell"><a href="#">Edit</a> <a href="#">Remove</a></td>
 
           </tr>
+
+
+end of commented for usability testing
+
+  -->
+
+
+
+
+
   <!-- show rows with no issues-->
 {% elseif data['dataissues'] == 0 %}
 
 			  <tr class="govuk-table__row govuk-table__row--selected">
-           <!-- <td class="govuk-table__cell">
-              <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
-                <input type="checkbox" class="govuk-checkboxes__input" id="mountain-aconcagua">
-                <label class="govuk-label govuk-checkboxes__label" for="mountain-aconcagua">
-                  <span class="govuk-visually-hidden">Select Aconcagua</span>
-                </label>
-              </div>
-            </td>-->
+
 
               <td class="govuk-table__cell">1</td>
             <td class="govuk-table__cell">06002874005006</td>
@@ -468,34 +469,9 @@
 
 
           <tr class="govuk-table__row govuk-table__row--selected">
-             <!-- <td class="govuk-table__cell">
-              <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
-                <input type="checkbox" class="govuk-checkboxes__input" id="mountain-aconcagua">
-                <label class="govuk-label govuk-checkboxes__label" for="mountain-aconcagua">
-                  <span class="govuk-visually-hidden">Select Aconcagua</span>
-                </label>
-              </div>
-            </td>-->
+
             <td class="govuk-table__cell">2</td>
-            <td class="govuk-table__cell">06002874005006</td>
-
-           <td class="govuk-table__cell"><strong class="govuk-tag--green">
- 					 No Issues
-				</strong> </td>
-            <td class="govuk-table__cell"><a href="#">View report</a></td>
-          </tr>
-
-          <tr class="govuk-table__row govuk-table__row--selected">
-              <!--<td class="govuk-table__cell">
-              <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
-                <input type="checkbox" class="govuk-checkboxes__input" id="mountain-aconcagua">
-                <label class="govuk-label govuk-checkboxes__label" for="mountain-aconcagua">
-                  <span class="govuk-visually-hidden">Select Aconcagua</span>
-                </label>
-              </div>
-            </td>-->
-            <td class="govuk-table__cell">3</td>
-           <td class="govuk-table__cell">06002874005326</td>
+            <td class="govuk-table__cell">06002874005096</td>
 
            <td class="govuk-table__cell"><strong class="govuk-tag--green">
  					 No Issues
@@ -504,53 +480,12 @@
           </tr>
 
 
+
+<!--
+
+commented for usability testing
           <tr class="govuk-table__row govuk-table__row--selected">
-            <!-- <td class="govuk-table__cell">
-              <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
-                <input type="checkbox" class="govuk-checkboxes__input" id="mountain-aconcagua">
-                <label class="govuk-label govuk-checkboxes__label" for="mountain-aconcagua">
-                  <span class="govuk-visually-hidden">Select Aconcagua</span>
-                </label>
-              </div>
-            </td>-->
-            <td class="govuk-table__cell">4</td>
-            <td class="govuk-table__cell">06002874005326</td>
 
-            <td class="govuk-table__cell"><strong class="govuk-tag--green">
- 					 No Issues
-				</strong> </td>
-            <td class="govuk-table__cell"><a href="#">View report</a></td>
-          </tr>
-
-
-          <tr class="govuk-table__row govuk-table__row--selected">
-              <!--<td class="govuk-table__cell">
-              <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
-                <input type="checkbox" class="govuk-checkboxes__input" id="mountain-aconcagua">
-                <label class="govuk-label govuk-checkboxes__label" for="mountain-aconcagua">
-                  <span class="govuk-visually-hidden">Select Aconcagua</span>
-                </label>
-              </div>
-            </td>-->
-            <td class="govuk-table__cell">5</td>
-            <td class="govuk-table__cell">06002874005034</td>
-
-        <td class="govuk-table__cell"><strong class="govuk-tag--green">
- 					 No Issues
-				</strong> </td>
-            <td class="govuk-table__cell"><a href="#">View report</a></td>
-          </tr>
-
-
-          <tr class="govuk-table__row govuk-table__row--selected">
-              <!--<td class="govuk-table__cell">
-              <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
-                <input type="checkbox" class="govuk-checkboxes__input" id="mountain-aconcagua">
-                <label class="govuk-label govuk-checkboxes__label" for="mountain-aconcagua">
-                  <span class="govuk-visually-hidden">Select Aconcagua</span>
-                </label>
-              </div>
-            </td>-->
             <td class="govuk-table__cell">6</td>
             <td class="govuk-table__cell">06002874005034</td>
 
@@ -563,14 +498,7 @@
           </tr>
 
           <tr class="govuk-table__row govuk-table__row--selected">
-            <!-- <td class="govuk-table__cell">
-              <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
-                <input type="checkbox" class="govuk-checkboxes__input" id="mountain-aconcagua">
-                <label class="govuk-label govuk-checkboxes__label" for="mountain-aconcagua">
-                  <span class="govuk-visually-hidden">Select Aconcagua</span>
-                </label>
-              </div>
-            </td>-->
+
             <td class="govuk-table__cell">7</td>
             <td class="govuk-table__cell">06002874005398</td>
 
@@ -582,14 +510,7 @@
 
 
           <tr class="govuk-table__row govuk-table__row--selected">
-           <!-- <td class="govuk-table__cell">
-             <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
-               <input type="checkbox" class="govuk-checkboxes__input" id="mountain-aconcagua">
-               <label class="govuk-label govuk-checkboxes__label" for="mountain-aconcagua">
-                 <span class="govuk-visually-hidden">Select Aconcagua</span>
-               </label>
-             </div>
-           </td>-->
+
            <td class="govuk-table__cell">8</td>
             <td class="govuk-table__cell">06002874005398</td>
 
@@ -600,14 +521,7 @@
           </tr>
 
           <tr class="govuk-table__row govuk-table__row--selected">
-            <!--<td class="govuk-table__cell">
-             <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
-               <input type="checkbox" class="govuk-checkboxes__input" id="mountain-aconcagua">
-               <label class="govuk-label govuk-checkboxes__label" for="mountain-aconcagua">
-                 <span class="govuk-visually-hidden">Select Aconcagua</span>
-               </label>
-             </div>
-           </td>-->
+
            <td class="govuk-table__cell">9</td>
             <td class="govuk-table__cell">06002874005566</td>
 
@@ -618,58 +532,75 @@
 
           </tr>
 
-
+-->
 
 
 {% endif %}
 
 
           <tr class="govuk-table__row govuk-table__row--selected">
-           <!-- <td class="govuk-table__cell">
-              <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
-                <input type="checkbox" class="govuk-checkboxes__input" id="mountain-aconcagua">
-                <label class="govuk-label govuk-checkboxes__label" for="mountain-aconcagua">
-                  <span class="govuk-visually-hidden">Select Aconcagua</span>
-                </label>
-              </div>
-            </td>-->
+
+            <td class="govuk-table__cell">3</td>
+           <td class="govuk-table__cell">06002874005326</td>
+
+           <td class="govuk-table__cell"><strong class="govuk-tag--green">
+           No Issues
+          </strong> </td>
+            <td class="govuk-table__cell"><a href="#">View report</a></td>
+          </tr>
+
+
+          <tr class="govuk-table__row govuk-table__row--selected">
+
+            <td class="govuk-table__cell">4</td>
+            <td class="govuk-table__cell">06002874005326</td>
+
+            <td class="govuk-table__cell"><strong class="govuk-tag--green">
+           No Issues
+          </strong> </td>
+            <td class="govuk-table__cell"><a href="#">View report</a></td>
+          </tr>
+
+
+          <tr class="govuk-table__row govuk-table__row--selected">
+
+            <td class="govuk-table__cell">5</td>
+            <td class="govuk-table__cell">06002874005034</td>
+
+          <td class="govuk-table__cell"><strong class="govuk-tag--green">
+           No Issues
+          </strong> </td>
+            <td class="govuk-table__cell"><a href="#">View report</a></td>
+          </tr>
+
+<!--
+
+commented for usability testing
+          <tr class="govuk-table__row govuk-table__row--selected">
+
             <td class="govuk-table__cell">6</td>
             <td class="govuk-table__cell">06002874006006</td>
             <td class="govuk-table__cell"><strong class="govuk-tag--green">
  					 No Issues
 				</strong> </td>
             <td class="govuk-table__cell"><a href="/bulkreport/check-change-report?error1=0&error2=0&errors=0">View report</a></td>
-            <!--<td class="govuk-table__cell">Edit property request</td>-->
+
           </tr>
 
           <tr class="govuk-table__row govuk-table__row--selected">
-            <!--<td class="govuk-table__cell">
-              <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
-                <input type="checkbox" class="govuk-checkboxes__input" id="mountain-aconcagua">
-                <label class="govuk-label govuk-checkboxes__label" for="mountain-aconcagua">
-                  <span class="govuk-visually-hidden">Select Aconcagua</span>
-                </label>
-              </div>
-            </td>-->
+
             <td class="govuk-table__cell">7</td>
             <td class="govuk-table__cell">06002874005106</td>
             <td class="govuk-table__cell"><strong class="govuk-tag--green">
  					 No Issues
 				</strong></td>
             <td class="govuk-table__cell"><a href="#">View report</a></td>
-            <!--<td class="govuk-table__cell">Edit property request</td>-->
+
           </tr>
 
 
           <tr class="govuk-table__row govuk-table__row--selected">
-           <!-- <td class="govuk-table__cell">
-              <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
-                <input type="checkbox" class="govuk-checkboxes__input" id="mountain-aconcagua">
-                <label class="govuk-label govuk-checkboxes__label" for="mountain-aconcagua">
-                  <span class="govuk-visually-hidden">Select Aconcagua</span>
-                </label>
-              </div>
-            </td>-->
+
             <td class="govuk-table__cell">8</td>
             <td class="govuk-table__cell">06002874005456</td>
             <td class="govuk-table__cell">
@@ -677,18 +608,11 @@
  					 No Issues
 			  </strong></td>
             <td class="govuk-table__cell"><a href="#">View report</a></td>
-            <!--<td class="govuk-table__cell">Edit property request</td>-->
+
           </tr>
 
           <tr class="govuk-table__row govuk-table__row--selected">
-            <!--<td class="govuk-table__cell">
-              <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
-                <input type="checkbox" class="govuk-checkboxes__input" id="mountain-aconcagua">
-                <label class="govuk-label govuk-checkboxes__label" for="mountain-aconcagua">
-                  <span class="govuk-visually-hidden">Select Aconcagua</span>
-                </label>
-              </div>
-            </td>-->
+
             <td class="govuk-table__cell">9</td>
             <td class="govuk-table__cell">06002874005786</td>
             <td class="govuk-table__cell">
@@ -697,19 +621,12 @@
 				</strong>
 			 </td>
             <td class="govuk-table__cell"><a href="#">View report</a></td>
-            <!--<td class="govuk-table__cell">Edit property request</td>-->
+
           </tr>
 
 
           <tr class="govuk-table__row govuk-table__row--selected">
-           <!-- <td class="govuk-table__cell">
-              <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
-                <input type="checkbox" class="govuk-checkboxes__input" id="mountain-aconcagua">
-                <label class="govuk-label govuk-checkboxes__label" for="mountain-aconcagua">
-                  <span class="govuk-visually-hidden">Select Aconcagua</span>
-                </label>
-              </div>
-            </td>-->
+
             <td class="govuk-table__cell">10</td>
             <td class="govuk-table__cell">06002874005896</td>
             <td class="govuk-table__cell">
@@ -719,18 +636,11 @@
 				</strong>
 			</td>
             <td class="govuk-table__cell"><a href="#">View report</a></td>
-            <!--<td class="govuk-table__cell">Edit property request</td>-->
+
           </tr>
 
 		  <tr class="govuk-table__row govuk-table__row--selected">
-        <!--<td class="govuk-table__cell">
-          <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
-            <input type="checkbox" class="govuk-checkboxes__input" id="mountain-aconcagua">
-            <label class="govuk-label govuk-checkboxes__label" for="mountain-aconcagua">
-              <span class="govuk-visually-hidden">Select Aconcagua</span>
-            </label>
-          </div>
-        </td>-->
+
         <td class="govuk-table__cell">11</td>
             <td class="govuk-table__cell">06002874005036</td>
             <td class="govuk-table__cell">
@@ -740,18 +650,11 @@
 				</strong>
 			</td>
             <td class="govuk-table__cell"><a href="#">View report</a></td>
-            <!--<td class="govuk-table__cell">Edit property request</td>-->
+
           </tr>
 
 		  <tr class="govuk-table__row govuk-table__row--selected">
-       <!-- <td class="govuk-table__cell">
-          <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
-            <input type="checkbox" class="govuk-checkboxes__input" id="mountain-aconcagua">
-            <label class="govuk-label govuk-checkboxes__label" for="mountain-aconcagua">
-              <span class="govuk-visually-hidden">Select Aconcagua</span>
-            </label>
-          </div>
-        </td>-->
+
         <td class="govuk-table__cell">12</td>
             <td class="govuk-table__cell">06002874005986</td>
             <td class="govuk-table__cell">
@@ -761,18 +664,11 @@
 				</strong>
 			</td>
             <td class="govuk-table__cell"><a href="#">View report</a></td>
-            <!--<td class="govuk-table__cell">Edit property request</td>-->
+
           </tr>
 
 		  <tr class="govuk-table__row govuk-table__row--selected">
-        <!--<td class="govuk-table__cell">
-          <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
-            <input type="checkbox" class="govuk-checkboxes__input" id="mountain-aconcagua">
-            <label class="govuk-label govuk-checkboxes__label" for="mountain-aconcagua">
-              <span class="govuk-visually-hidden">Select Aconcagua</span>
-            </label>
-          </div>
-        </td>-->
+
         <td class="govuk-table__cell">13</td>
             <td class="govuk-table__cell">06002874005426</td>
             <td class="govuk-table__cell">
@@ -782,18 +678,11 @@
 				</strong>
 			</td>
             <td class="govuk-table__cell"><a href="#">View report</a></td>
-            <!--<td class="govuk-table__cell">Edit property request</td>-->
+
           </tr>
 
 	     <tr class="govuk-table__row govuk-table__row--selected">
-           <!--<td class="govuk-table__cell">
-             <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
-               <input type="checkbox" class="govuk-checkboxes__input" id="mountain-aconcagua">
-               <label class="govuk-label govuk-checkboxes__label" for="mountain-aconcagua">
-                 <span class="govuk-visually-hidden">Select Aconcagua</span>
-               </label>
-             </div>
-           </td>-->
+
            <td class="govuk-table__cell">14</td>
                   <td class="govuk-table__cell">06002874005936</td>
                   <td class="govuk-table__cell">
@@ -803,20 +692,13 @@
       				</strong>
       			</td>
                   <td class="govuk-table__cell"><a href="#">View report</a></td>
-                  <!--<td class="govuk-table__cell">Edit property request</td>-->
+
           </tr>
 
 
 
           <tr class="govuk-table__row govuk-table__row--selected">
-              <!--<td class="govuk-table__cell">
-                <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
-                  <input type="checkbox" class="govuk-checkboxes__input" id="mountain-aconcagua">
-                  <label class="govuk-label govuk-checkboxes__label" for="mountain-aconcagua">
-                    <span class="govuk-visually-hidden">Select Aconcagua</span>
-                  </label>
-                </div>
-              </td>-->
+
               <td class="govuk-table__cell">15</td>
                      <td class="govuk-table__cell">06002874007896</td>
                      <td class="govuk-table__cell">
@@ -826,19 +708,12 @@
          				</strong>
          			</td>
                      <td class="govuk-table__cell"><a href="#">View report</a></td>
-                     <!--<td class="govuk-table__cell">Edit property request</td>-->
+
              </tr>
 
 
              <tr class="govuk-table__row govuk-table__row--selected">
-                 <!--<td class="govuk-table__cell">
-                   <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
-                     <input type="checkbox" class="govuk-checkboxes__input" id="mountain-aconcagua">
-                     <label class="govuk-label govuk-checkboxes__label" for="mountain-aconcagua">
-                       <span class="govuk-visually-hidden">Select Aconcagua</span>
-                     </label>
-                   </div>
-                 </td>-->
+
                  <td class="govuk-table__cell">16</td>
                         <td class="govuk-table__cell">06002874005979</td>
                         <td class="govuk-table__cell">
@@ -848,19 +723,12 @@
             				</strong>
             			</td>
                         <td class="govuk-table__cell"><a href="#">View report</a></td>
-                        <!--<td class="govuk-table__cell">Edit property request</td>-->
+
                 </tr>
 
 
 	   <tr class="govuk-table__row govuk-table__row--selected">
-                 <!--<td class="govuk-table__cell">
-                   <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
-                     <input type="checkbox" class="govuk-checkboxes__input" id="mountain-aconcagua">
-                     <label class="govuk-label govuk-checkboxes__label" for="mountain-aconcagua">
-                       <span class="govuk-visually-hidden">Select Aconcagua</span>
-                     </label>
-                   </div>
-                 </td>-->
+
                  <td class="govuk-table__cell">17</td>
                         <td class="govuk-table__cell">06002874005979</td>
                         <td class="govuk-table__cell">
@@ -870,19 +738,12 @@
             				</strong>
             			</td>
                         <td class="govuk-table__cell"><a href="#">View report</a></td>
-                        <!--<td class="govuk-table__cell">Edit property request</td>-->
+
                 </tr>
 
 
 	   <tr class="govuk-table__row govuk-table__row--selected">
-                 <!--<td class="govuk-table__cell">
-                   <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
-                     <input type="checkbox" class="govuk-checkboxes__input" id="mountain-aconcagua">
-                     <label class="govuk-label govuk-checkboxes__label" for="mountain-aconcagua">
-                       <span class="govuk-visually-hidden">Select Aconcagua</span>
-                     </label>
-                   </div>
-                 </td>-->
+
                  <td class="govuk-table__cell">18</td>
                         <td class="govuk-table__cell">06003874005979</td>
                         <td class="govuk-table__cell">
@@ -892,18 +753,11 @@
             				</strong>
             			</td>
                         <td class="govuk-table__cell"><a href="#">View report</a></td>
-                        <!--<td class="govuk-table__cell">Edit property request</td>-->
+
                 </tr>
 
 	   <tr class="govuk-table__row govuk-table__row--selected">
-                 <!--<td class="govuk-table__cell">
-                   <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
-                     <input type="checkbox" class="govuk-checkboxes__input" id="mountain-aconcagua">
-                     <label class="govuk-label govuk-checkboxes__label" for="mountain-aconcagua">
-                       <span class="govuk-visually-hidden">Select Aconcagua</span>
-                     </label>
-                   </div>
-                 </td>-->
+
                  <td class="govuk-table__cell">19</td>
                         <td class="govuk-table__cell">06002074005979</td>
                         <td class="govuk-table__cell">
@@ -913,18 +767,11 @@
             				</strong>
             			</td>
                         <td class="govuk-table__cell"><a href="#">View report</a></td>
-                        <!--<td class="govuk-table__cell">Edit property request</td>-->
+
                 </tr>
 
 	   <tr class="govuk-table__row govuk-table__row--selected">
-                 <!--<td class="govuk-table__cell">
-                   <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
-                     <input type="checkbox" class="govuk-checkboxes__input" id="mountain-aconcagua">
-                     <label class="govuk-label govuk-checkboxes__label" for="mountain-aconcagua">
-                       <span class="govuk-visually-hidden">Select Aconcagua</span>
-                     </label>
-                   </div>
-                 </td>-->
+
                  <td class="govuk-table__cell">20</td>
                         <td class="govuk-table__cell">06012874005979</td>
                         <td class="govuk-table__cell">
@@ -934,13 +781,24 @@
             				</strong>
             			</td>
                         <td class="govuk-table__cell"><a href="#">View report</a></td>
-                        <!--<td class="govuk-table__cell">Edit property request</td>-->
+
                 </tr>
+
+end of comments for usability testing
+
+
+
+    -->
+
 
 
 
         </tbody>
       </table>
+
+
+
+    <!--end of comments for usability testing
 
       <div class="govuk-!-margin-left-2 govuk-!-margin-top-4 govuk-!-margin-bottom-8">
       <nav class="moj-pagination" id="pagination-label">
@@ -972,7 +830,10 @@
         </nav>
       </div>
 
+      end of comments for usability testing
 
+
+      -->
 
 
 				<form method="post" novalidate action="/bulk-submission-report-list">
@@ -980,43 +841,7 @@
 	<input type="hidden" name="file-data-validation" id="file-data-validation" value="localcouncilreport.xls">
 
 
-  <!--<div class="govuk-form-group">
-    <fieldset class="govuk-fieldset" aria-describedby="add-another-hint">
-      <legend class="govuk-fieldset__legend govuk-fieldset__legend govuk-fieldset__legend--m">
-        Do you need to add another user?
-      </legend>
-      <div id="add-another-hint" class="govuk-hint">
-        You must tell us about all your users.
-      </div>
-      <div class="govuk-radios govuk-radios--inline">
-        <div class="govuk-radios__item">
-          <input class="govuk-radios__input" id="add-another" name="add-another" type="radio" value="Yes">
-          <label class="govuk-label govuk-radios__label" for="add-another">
-            Yes
-          </label>
-        </div>
-        <div class="govuk-radios__item">
-          <input class="govuk-radios__input" id="add-another-2" name="add-another" type="radio" value="No">
-          <label class="govuk-label govuk-radios__label" for="add-another-2">
-            No
-          </label>
-        </div>
-      </div>
 
-    </fieldset>
-  </div>-->
-
-
-<!--<p class="govuk-!-margin-top-4 govuk-!-margin-bottom-8"><a href="#">Download report failure as excel file</a></p>
--->
-
-
-
-
-
-<!--<div class="gem-c-print-link govuk-!-display-none-print govuk-!-margin-top-3 govuk-!-margin-bottom-3">
-  <button class="govuk-link govuk-body-s gem-c-print-link__button" data-module="print-link">Print this page</button>
-</div>-->
 
 
 

@@ -212,6 +212,40 @@ router.post('/signin', function (req, res) {
 
 //confirmremoverowissue
 
+
+
+
+router.post('/confirm-remove-delete-error-row', function (req, res) {
+
+
+  // Make a variable and give it the value from 'submit buttons'
+  var deleterow = req.session.data['confirmremoverowissue']
+  var removebref = req.session.data['removebref']
+
+
+  // Check whether the variable matches a condition
+  if (deleterow == "yes"){
+    // Send user to next page
+
+    res.redirect('/bulkreport/bulk-submission-report-list?dataissues=1&correctedissues=0&removerowissue=1&bref='+removebref)
+  } else if(deleterow == "no") {
+
+    // Send user to ineligible page
+    res.redirect('/bulkreport/bulk-submission-report-list?dataissues=1&correctedissues=0&removerowissue=0&bref='+removebref)
+  }
+
+	else{
+
+		res.redirect('/bulkreport/bulk-submission-confirmation')
+
+	}
+
+})
+
+
+
+
+
 // Run this code when a form is submitted to 'confirm-remove-delete-error-row'
 router.post('/email-address-page', function (req, res) {
   //notify.sendEmail(
