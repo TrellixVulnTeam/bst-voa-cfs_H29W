@@ -1,0 +1,102 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Are you sure you want to remove all failed reports? - Valuation Office Agency - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-one-third">
+			{{ govukBackLink({
+			  text: "Back",
+			  href: "javascript:window.history.back()"
+			}) }}
+		</div>
+		{% include "includes/header-section-signedin.html" %}
+	</div>
+{% endblock %}
+
+{% block content %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="/requests-for-information/ba-report-details#supporting-documents" method="post" class="form">
+      <div class="govuk-form-group">
+        <label class="govuk-heading-xl" for="event-name">
+         Are you sure you want to remove this file?
+        </label>
+
+
+        <table class="govuk-table">
+          <!--<caption class="govuk-table__caption govuk-table__caption--m">Report with data issue(s)</caption>-->
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header">Documents</th>
+              <th scope="col" class="govuk-table__header">File size</th>
+            </tr>
+          </thead>
+          <tbody class="govuk-table__body">
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">Place holder for text</th>
+              <td class="govuk-table__cell">
+
+
+				  <div>Place holder for file text.</div>
+
+				  <!--<div>
+				  Reason for omission of a planning reference number is missing.
+				  </div>-->
+
+
+				</td>
+            </tr>
+
+          </tbody>
+        </table>
+
+
+
+
+
+                <div class="govuk-radios" data-module="govuk-radios">
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="yesremove" name="confirmremoverowissue" type="radio" value="yes">
+                    <label class="govuk-label govuk-radios__label" for="yesdelete">
+                      Yes, I want to remove this file.
+                    </label>
+                  </div>
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="noremove" name="confirmremoverowissue" type="radio" value="no">
+                    <label class="govuk-label govuk-radios__label" for="nodelete">
+                      No, I don't want to remove this file.
+                    </label>
+                  </div>
+
+                </div>
+
+
+            </div>
+
+            <button class="govuk-button" data-module="govuk-button">
+              Continue
+            </button>
+          </form>
+
+
+
+
+
+  </div>
+</div>
+
+
+
+
+
+
+{% endblock %}

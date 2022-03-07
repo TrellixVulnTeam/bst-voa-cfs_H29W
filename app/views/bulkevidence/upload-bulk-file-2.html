@@ -1,0 +1,257 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+
+{%
+
+
+	if data['filetype'] == "Excel" %}
+			Upload an Excel file of reports using a template
+
+{%else%}
+		Upload an XML file of reports
+
+
+{%endif%}
+{% endblock %}
+
+{% block beforeContent %}
+
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-one-third">
+			{{ govukBackLink({
+			  text: "Back",
+			  href: "javascript:window.history.back()"
+			}) }}
+		</div>
+		{% include "includes/header-section-signedin.html" %}
+	</div>
+{% endblock %}
+
+{% block content %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="/bulkevidence/upload-bulk-file-3?filetype={{ data['filetype'] }}" method="post" class="form">
+      <div class="govuk-form-group">
+        <label class="govuk-heading-xl" for="event-name">
+				<!-- pagetitle widget for excel filetype -->
+					{%
+
+
+						if data['filetype'] == "Excel" %}
+			   				Upload an Excel file of reports using a template
+
+					{%else%}
+							Upload an XML file of reports
+
+
+					{%endif%}
+
+        </label>
+
+
+				<!-- details widget for excel filetype -->
+				{% if data['filetype'] == "Excel" %}
+
+
+            <details class="govuk-details" data-module="govuk-details">
+                <summary class="govuk-details__summary">
+                  <span class="govuk-details__summary-text">
+                    What is a valid document?
+                  </span>
+                </summary>
+                <div class="govuk-details__text">
+
+                  <p>
+                      All uploaded Excel files should be:
+                  </p>
+                  <ul>
+
+                    <li>Less than 10MB in size and have a file extension of .xls, .xlsx, or .xlt</li>
+
+                    <li>Free from viruses and uncorrupted</li>
+
+                    <li>Based on the latest Excel template provided by VOA</li>
+
+                  </ul>
+
+
+                </div>
+              </details>
+
+				{%else%}
+								<!-- details widget for xml filetype -->
+								<details class="govuk-details" data-module="govuk-details">
+										<summary class="govuk-details__summary">
+											<span class="govuk-details__summary-text">
+												What is a valid document?
+											</span>
+										</summary>
+										<div class="govuk-details__text">
+
+											<p>
+													All documents should be:
+											</p>
+											<ul>
+
+												<li>Documents can be a maximum of 10MB size per document.</li>
+
+												<li>Free from viruses and uncorrupted</li>
+
+												<li>Valid formate:JPG, PNG, PDF</li>
+
+												<!--<li>Based on the latest XML data schema provided by VOA</li>-->
+
+											</ul>
+
+
+										</div>
+									</details>
+
+
+
+			{%endif%}
+
+
+              <div class="govuk-form-group">
+                <label class="govuk-label" for="file-upload-1">
+                    <strong>
+											Upload files
+											<!--Click choose file to upload an {{ data['filetype'] }} file-->
+                    </strong>
+                </label>
+                <input class="govuk-file-upload" id="file-bulk-upload" name="file-bulk-upload" type="file">
+              </div>
+
+
+          <!--<div class="govuk-width-container">
+            <div class="govuk-grid-row">
+            <div class="govuk-grid-column-two-thirds">
+              <p><a href="#">See Instructions for the {{ data['filetype'] }} format (opens in a new tab)</a></p>
+            </div>
+            </div>
+          </div>-->
+
+
+
+
+
+
+					{% from "govuk/components/button/macro.njk" import govukButton %}
+					{% from "govuk/components/select/macro.njk" import govukSelect %}
+
+					{{ govukSelect({
+					  id: "select",
+					  name: "select",
+					  label: {
+					    text: "Document type"
+					  },
+					  items: [
+							{
+								value: "select",
+								text: "Select document type",
+								selected: true
+							},
+					    {
+					      value: "photograh",
+					      text: "Photograph type"
+					    },
+					    {
+					      value: "document",
+					      text: "Document type"
+
+					    }
+					  ]
+					}) }}
+					<!--how can i make this not the default when User first views page?-->
+
+					</div>
+
+					<br>
+					<!--what can I use instead <br> to have space between components?-->
+
+					{{ govukCharacterCount({
+			        name: "with-hint",
+			        id: "with-hint",
+			        maxlength: 500,
+			        label: {
+			          text: "Document description",
+			          classes: "govuk-label--m",
+			          isPageHeading: true
+			          },
+			          hint: {
+			            text: "Do not include personal or financial information like your National Insurance number or credit card details."
+			          }
+			        }) }}
+
+
+
+
+					<div class="govuk-button-group govuk-!-margin-bottom-8">
+					  {{ govukButton({
+					    text: "Add evidence"
+					  }) }}
+
+					  {{ govukButton({
+					    text: "Cancel",
+					    classes: "govuk-button--secondary"
+					  }) }}
+					</div>
+
+
+
+
+
+
+				<!--how can i make this dynmaic so table only shows when files have been uploaded?-->
+					<div class="govuk-form-group govuk-!-margin-bottom-8">
+						<label class="govuk-heading-m">
+						Document type
+						</label>
+
+						<table class="govuk-table" data-module="moj-sortable-table">
+		          <thead class="govuk-table__head">
+		            <tr class="govuk-table__row">
+		           <th class="govuk-table__header" class="govuk-table__header" aria-sort="none">Documents</th>
+		              <th scope="col" class="govuk-table__header" aria-sort="ascending">File size</th>
+		              <th scope="col" class="govuk-table__header" >Action</th>
+
+		              <!--<th scope="col" class="govuk-table__header" aria-sort="none">Action</th>-->
+		            </tr>
+		          </thead>
+		          <tbody class="govuk-table__body">
+		            <tr class="govuk-table__row govuk-table__row--selected">
+		        <td class="govuk-table__cell">Name_of_document.doc</td>
+		              <td class="govuk-table__cell">512Bytes</td>
+		              <td class="govuk-table__cell">
+		                    <a href="/bulkevidence/confirm-remove-file-row-1">Remove</a>
+		              </td>
+		            </tr>
+
+
+
+		          </tbody>
+		        </table>
+
+
+
+					            </div>
+				</form>
+
+									<a href="/bulkevidence/upload-validated-notification">
+					            <button class="govuk-button" data-module="govuk-button">
+					              Continue to upload
+					            </button>
+
+									</a>
+
+
+
+
+  </div>
+</div>
+
+{% endblock %}
