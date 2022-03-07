@@ -39,7 +39,14 @@
                      Filename
                    </dt>
                    <dd class="govuk-summary-list__value">
+                {% if data['file-bulk-upload'] != "" %}
                     {{ data['file-bulk-upload'] }}
+
+                {% else %}
+
+                    	localcouncilreport07022022.xml
+
+                {% endif %}
                    </dd>
                    <dd class="govuk-summary-list__actions">
                      <a class="govuk-link" href="upload-bulk-file?filetype={{ data['filetype'] }}">

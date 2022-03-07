@@ -34,27 +34,60 @@
         <table class="govuk-table">
           <caption class="govuk-table__caption govuk-table__caption--m">Report with data issue(s)</caption>
           <thead class="govuk-table__head">
+
             <tr class="govuk-table__row">
               <th scope="col" class="govuk-table__header">Billing authority reference number</th>
               <th scope="col" class="govuk-table__header">Data issue</th>
             </tr>
           </thead>
           <tbody class="govuk-table__body">
+
+  {%if data['bref'] == "06002874005006"%}
+
+
+
             <tr class="govuk-table__row">
               <th scope="row" class="govuk-table__header">06002874005006</th>
               <td class="govuk-table__cell">
 
 
-				  <div>Change date should not be in the future.
-				  </div>
+                <div class="govuk-!-margin-bottom-2">
 
-				  <div>
-				  Reason for omission of a planning reference number is missing.
-				  </div>
+                   Change date should not be in the future.
+
+                 </div>
+
+
+
+
+                 <div>Reason for omission of a planning reference number is missing.
+                 </div>
 
 
 				</td>
             </tr>
+
+  {%else%}
+
+
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">06002874005326</th>
+              <td class="govuk-table__cell">
+
+
+                <div class="govuk-!-margin-bottom-2">Postcode W2 7UT is invalid.</div>
+
+
+
+
+        				<div>Billing authority for this property is missing.</div>
+
+
+          </td>
+          </tr>
+
+  {%endif%}
+
 
           </tbody>
         </table>
@@ -81,6 +114,8 @@
 
 
             </div>
+
+              <input  id="removebref" name="removebref" type="hidden" value="{{data['bref']}}">
 
             <button class="govuk-button" data-module="govuk-button">
               Continue
