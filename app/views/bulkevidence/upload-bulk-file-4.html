@@ -1,4 +1,4 @@
-{% extends "layout.html" %}
+\{% extends "layout.html" %}
 
 {% block pageTitle %}
 
@@ -34,7 +34,7 @@
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <form action="/bulkevidence/upload-bulk-file-4" method="post" class="form">
+    <form action="/bulkevidence/upload-validated-notification"method="post" class="form">
       <div class="govuk-form-group">
         <label class="govuk-heading-xl" for="event-name">
 				<!-- pagetitle widget for excel filetype -->
@@ -233,6 +233,15 @@
 								</tr>
 
 
+								<tr class="govuk-table__row govuk-table__row--selected">
+						<td class="govuk-table__cell">Name_of_docuemnt_doc</td>
+									<td class="govuk-table__cell">450Bytes</td>
+									<td class="govuk-table__cell">
+												<a href="/bulkreport/bulk-submission-report-list?dataissues=0">Remove</a>
+									</td>
+								</tr>
+
+
 
 							</tbody>
 						</table>
@@ -243,9 +252,9 @@
 					            </div>
 
 											<a href="/bulkevidence/upload-validated-notification">
-							            <button class="govuk-button" data-module="govuk-button">
-							              Continue to upload
-							            </button>
+													<button class="govuk-button" data-module="govuk-button">
+														Continue to upload
+													</button>
 
 											</a>
 

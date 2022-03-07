@@ -75,8 +75,12 @@
  <!--<p class="govuk-!-padding-bottom-3">Showing 1 - 20 of 90 results</p>-->
 
 
+           <label class="govuk-heading-xl" for="event-name">
+           <!-- pagetitle widget for excel filetype -->
 
+                  Outstanding Reports
 
+           </label>
 
 
      <!--  <table class="govuk-table" data-module="moj-multi-select"  data-multi-select-checkbox="#select-all">
@@ -354,7 +358,7 @@
               </div>
             </td>-->
             <td class="govuk-table__cell">1</td>
-            <td class="govuk-table__cell"><a href="#">06002874006006</a></td>
+            <td class="govuk-table__cell"><a href="/requests-for-information/ba-report-details#report-details">06002874006006</a></td>
             <td class="govuk-table__cell">
 
           <div class="govuk-!-margin-bottom-2">
@@ -364,8 +368,8 @@
 
          </td>
 
-            <td class="govuk-table__cell"><a href="/requests-for-information/ba-report-details">Supporting documents</a>
-              <td class="govuk-table__cell"><a href="/requests-for-information/ba-report-details">Updates</a>
+            <td class="govuk-table__cell"><a href="/requests-for-information/ba-report-details#supporting-documents">Supporting documents</a>
+              <td class="govuk-table__cell"><a href="/requests-for-information/ba-report-details#updates">Updates</a>
             <!--<td class="govuk-table__cell">Edit property request</td>-->
           </tr>
 
@@ -379,14 +383,14 @@
               </div>
             </td>-->
             <td class="govuk-table__cell">2</td>
-            <td class="govuk-table__cell"><a href="#">06002874006006</a></td>
+            <td class="govuk-table__cell"><a href="/requests-for-information/ba-report-details#report-details">06002874006006</a></td>
             <td class="govuk-table__cell">  <div class="govuk-!-margin-bottom-2">
                   11 Added</div>
 
                <div> 3 Pending</div>
               </td>
-            <td class="govuk-table__cell"><a href="#">Supporting documents</a></td>
-              <td class="govuk-table__cell"><a href="#">Updates</a>
+            <td class="govuk-table__cell"><a href="/requests-for-information/ba-report-details#supporting-documents">Supporting documents</a></td>
+              <td class="govuk-table__cell"><a href="/requests-for-information/ba-report-details#updates">Updates</a>
             <!--<td class="govuk-table__cell">Edit property request</td>-->
           </tr>
 
@@ -780,6 +784,10 @@
 
       </div>
     </div>
-  </div>
+
+
+  {% include "includes/details-get-help.html" %}
+
+  
 
 {% endblock %}
