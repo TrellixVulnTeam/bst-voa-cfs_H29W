@@ -24,13 +24,34 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
+		
+		
+		<!--  confirmation message for the rows with data issues removed -->
+		 {%if data['dataissues'] == 3 %}
+          		<div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+          		  <div class="govuk-notification-banner__header">
+          			<h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+          			  Report(s) removed
+          			</h2>
+          		  </div>
+          		  <div class="govuk-notification-banner__content">
+          			<h3 class="govuk-notification-banner__heading">
+          			  You have removed all the report(s) with data issues.
+          			</h3>
+
+          		  </div>
+          		</div>
+		
+		
+
+          	{% endif %}
 
       <!--  Show heading with listed errors -->
   	{% if data['dataissues'] == 1 %}
 
 
 
-              <!--  confirmation message for the row removed -->
+              <!--  confirmation message for the single row removed -->
             {% if data['removerowissue'] == 1 %}
           		<div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
           		  <div class="govuk-notification-banner__header">
@@ -46,9 +67,10 @@
           		  </div>
           		</div>
 
-
-
+		
           	{% endif %}
+		
+		
 
 
       <h1 class="govuk-heading-xl">Your upload has failed data validation</h1>
