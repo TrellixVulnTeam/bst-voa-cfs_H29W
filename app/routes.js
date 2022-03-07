@@ -75,7 +75,7 @@ router.post('/confirm-delete-upload', function (req, res) {
 })
 
 
-router.post('/bulk-submission-report-list', function (req, res) {
+router.post('/bulk-submission-report-list', function (req, res, nex) {
 
 
   // Make a variable and give it the value from 'submit buttons'
@@ -96,8 +96,29 @@ router.post('/bulk-submission-report-list', function (req, res) {
   }
 
 	else{
+    console.log(req.body.emailAddress);
 
-		res.redirect('/bulkreport/bulk-submission-confirmation')
+  //  setTimeout(next,30000);
+
+    notify.sendEmail(
+      // this long string is the template ID, copy it from the template
+      // page in GOV.UK Notify. It's not a secret so it's fine to put it
+      // in your code.
+      'a07a78a1-73ce-47b2-9ccc-3152506a0c73',
+      // `emailAddress` here needs to match the name of the form field in
+      // your HTML page
+      req.body.emailAddress
+    )
+    .then(function () {
+      // This is the URL the users will be redirected to once the email
+      // has been sent
+      	res.redirect('/bulkreport/bulk-submission-confirmation');
+    })
+    .catch(function (err) {
+      res.status(500).send('Notify experienced an error:<br/><br/>' + err.message + '<br/><br/><pre>' + (err.stack || '').replace(/\\n/g, '<br/>') + '</pre>' + '<br/><br/><pre>' + JSON.stringify(err) + '</pre>')
+    })
+
+
 
 	}
 
@@ -174,27 +195,54 @@ console.log("COnfirm rempve = "+ confirmremove)
 
 })
 
+
+// Run this code when a form is submitted to 'confirm-remove-failed-report'
+router.post('/signin', function (req, res) {
+
+
+    // Send user to ineligible page
+  //  req.session.data = {}
+
+    res.redirect('/bahomepage')
+
+
+})
+
+
+
 //confirmremoverowissue
 
 // Run this code when a form is submitted to 'confirm-remove-delete-error-row'
 router.post('/email-address-page', function (req, res) {
-  notify.sendEmail(
+  //notify.sendEmail(
+
+
     // this long string is the template ID, copy it from the template
     // page in GOV.UK Notify. It's not a secret so it's fine to put it
     // in your code.
-    'a07a78a1-73ce-47b2-9ccc-3152506a0c73',
+
+    //'a07a78a1-73ce-47b2-9ccc-3152506a0c73',
+
     // `emailAddress` here needs to match the name of the form field in
+
     // your HTML page
-    req.body.emailAddress
-  )
-  .then(function () {
+
+
+    //req.body.emailAddress
+  //)
+//  .then(function () {
     // This is the URL the users will be redirected to once the email
     // has been sent
-    res.redirect('/confirmation-page');
-  })
-  .catch(function (err) {
-    res.status(500).send('Notify experienced an error:<br/><br/>' + err.message + '<br/><br/><pre>' + (err.stack || '').replace(/\\n/g, '<br/>') + '</pre>' + '<br/><br/><pre>' + JSON.stringify(err) + '</pre>')
-  })
+
+
+
+    res.redirect('/email-address-page?useradded=1');
+
+
+//  })
+//  .catch(function (err) {
+  //  res.status(500).send('Notify experienced an error:<br/><br/>' + err.message + '<br/><br/><pre>' + (err.stack || '').replace(/\\n/g, '<br/>') + '</pre>' + '<br/><br/><pre>' + JSON.stringify(err) + '</pre>')
+//  })
 
 });
 
@@ -205,25 +253,25 @@ router.post('/email-address-page', function (req, res) {
 
 // The URL here needs to match the URL of the page that the user is on
 // when they type in their email address
-router.post('/email-address-page', function (req, res) {
-  notify.sendEmail(
+//router.post('/email-address-page', function (req, res) {
+  //notify.sendEmail(
     // this long string is the template ID, copy it from the template
     // page in GOV.UK Notify. It's not a secret so it's fine to put it
     // in your code.
-    'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
+  //  'xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx',
     // `emailAddress` here needs to match the name of the form field in
     // your HTML page
-    req.body.emailAddress
-  )
-  .then(function () {
+  //  req.body.emailAddress
+//  )
+//  .then(function () {
     // This is the URL the users will be redirected to once the email
     // has been sent
-    res.redirect('/confirmation-page');
-  })
-  .catch(function (err) {
-    res.status(500).send(err.message)
-  })
+//    res.redirect('/confirmation-page');
+//  })
+//  .catch(function (err) {
+//    res.status(500).send(err.message)
+//  })
 
-});
+//});
 
 module.exports = router
