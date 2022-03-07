@@ -1,0 +1,62 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Upload an XML file of reports
+{% endblock %}
+
+{% block beforeContent %}
+
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-one-third">
+			{{ govukBackLink({
+			  text: "Back",
+			  href: "javascript:window.history.back()"
+			}) }}
+		</div>
+		{% include "includes/header-section-signedin.html" %}
+	</div>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <div class="govuk-panel govuk-panel--confirmation" style="background-color:#003078">
+        <h1 class="govuk-panel__title">Your upload is being validated
+ </h1>
+        <div class="govuk-panel__body">
+         You will receive an email once validation is complete
+        </div>
+      </div>
+
+      <div class="govuk-button-group govuk-!-margin-bottom-8">
+      <h2 class="govuk-heading-m">What happens next</h2>
+       	 <p>Uploaded reports can take up to [X] minutes to validate. During this time, the file will be scanned for viruses,
+           and the report data will be checked to ensure it meets the <a href="#">BAR submission standards (opens in a new tab)</a>.</p>
+
+
+           <p>Once the process of checking is complete, you will be notified by email. You will then need to return the service in order to check,
+             correct (if required) and submit the uploaded reports, and add any supporting documents that are necessary.</p>
+         </div>
+
+
+
+
+           <p>You can upload more evidence here. </p>
+
+             <a href="/bulkevidence/bulk-view-outstanding-reports2">
+                 <button class="govuk-button" data-module="govuk-button">
+                   Upload more evidence
+                 </button>
+
+             </a>
+
+
+        <p><a href="https://www.gov.uk/service-manual/user-centred-design/resources/patterns/feedback-pages.html">What did you think of this service?</a> (takes 30 seconds)</p>
+
+
+    </div>
+  </div>
+
+{% endblock %}
