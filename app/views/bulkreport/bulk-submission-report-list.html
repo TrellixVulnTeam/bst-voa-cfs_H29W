@@ -891,10 +891,12 @@ end of comments for usability testing
 
 
         <input type="hidden" name="answers-checked" value="true">
+{% if data['username-login-email'].length > 0 %}
 
-          <input type="hidden" name="emailAddress" id="email-address" value="{{data['username-login-email']}}">
-
-
+    <input type="hidden" name="emailAddress" id="email-address" value="{{data['username-login-email']}}">
+{%else%}
+    <input type="hidden" name="emailAddress" id="email-address" value="amolsingh.rajput@cognizant.com">
+{%endif%}
 
 
   <div class="govuk-button-group">

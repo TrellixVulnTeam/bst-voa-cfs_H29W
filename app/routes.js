@@ -138,7 +138,7 @@ router.post('/bulk-submission-confirmation', function (req, res) {
   if (bulksubmissionconfirm == "1"){
     // Send user to next page
 
-    res.redirect('/bulkreport/outstanding-reports')
+    res.redirect('/bulkevidence/bulk-view-outstanding-reports1')
   } else if(bulksubmissionconfirm == "0") {
 
     // Send user to ineligible page
