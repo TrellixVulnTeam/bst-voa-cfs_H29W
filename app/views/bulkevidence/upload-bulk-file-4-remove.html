@@ -1,4 +1,4 @@
-{% extends "layout.html" %}
+\{% extends "layout.html" %}
 
 {% block pageTitle %}
 
@@ -30,19 +30,32 @@
 
 {% block content %}
 
+				<div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+					<div class="govuk-notification-banner__header">
+					<h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+						File removed
+					</h2>
+					</div>
+					<div class="govuk-notification-banner__content">
+					<h3 class="govuk-notification-banner__heading">
+						You have removed the file "Name_of_docuemnt_doc"
+					</h3>
+
+					</div>
+				</div>
 
 
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
-    <form action="/bulkevidence/upload-bulk-file-4" method="post" class="form">
-      <div class="govuk-form-group">
-        <label class="govuk-heading-xl" for="event-name">
-				<!-- pagetitle widget for excel filetype -->
+			<div class="govuk-grid-row">
+			  <div class="govuk-grid-column-two-thirds">
+			    <form action="/bulkevidence/upload-validated-notification"method="post" class="form">
+			      <div class="govuk-form-group">
+			        <label class="govuk-heading-xl" for="event-name">
+							<!-- pagetitle widget for excel filetype -->
 
 
-							Billing authority reference number: 06002874005036
+										Billing authority reference number: 06002874005036
 
-        </label>
+			        </label>
 
 
 				<!-- details widget for excel filetype -->
@@ -233,7 +246,6 @@
 								</tr>
 
 
-
 							</tbody>
 						</table>
 
@@ -243,9 +255,9 @@
 					            </div>
 
 											<a href="/bulkevidence/upload-validated-notification">
-							            <button class="govuk-button" data-module="govuk-button">
-							              Continue to upload
-							            </button>
+													<button class="govuk-button" data-module="govuk-button">
+														Continue to upload
+													</button>
 
 											</a>
 

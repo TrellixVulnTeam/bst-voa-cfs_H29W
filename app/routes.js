@@ -1,5 +1,5 @@
-var NotifyClient = require('notifications-node-client').NotifyClient;
-const notify = new NotifyClient(process.env.NOTIFYAPIKEY);
+//var NotifyClient = require('notifications-node-client').NotifyClient;
+//const notify = new NotifyClient(process.env.NOTIFYAPIKEY);
 
 const express = require('express')
 const router = express.Router()

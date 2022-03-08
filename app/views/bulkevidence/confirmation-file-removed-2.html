@@ -1,0 +1,57 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Are you sure you want to remove all failed reports? - Valuation Office Agency - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-one-third">
+			{{ govukBackLink({
+			  text: "Back",
+			  href: "javascript:window.history.back()"
+			}) }}
+		</div>
+		{% include "includes/header-section-signedin.html" %}
+	</div>
+{% endblock %}
+
+{% block content %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="/bulkevidence/upload-bulk-file-1" method="post" class="form">
+      <div class="govuk-form-group">
+        <label class="govuk-heading-xl" for="event-name">
+         Your file has been removed
+        </label>
+
+
+
+
+
+            </div>
+
+            <button class="govuk-button" data-module="govuk-button">
+              Upload a different file
+            </button>
+          </form>
+
+
+
+
+
+  </div>
+</div>
+
+
+    {% include "includes/details-get-help.html" %}
+
+
+
+{% endblock %}
