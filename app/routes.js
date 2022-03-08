@@ -1,5 +1,5 @@
-//var NotifyClient = require('notifications-node-client').NotifyClient;
-//const notify = new NotifyClient(process.env.NOTIFYAPIKEY);
+var NotifyClient = require('notifications-node-client').NotifyClient;
+const notify = new NotifyClient(process.env.NOTIFYAPIKEY);
 
 const express = require('express')
 const router = express.Router()
@@ -229,19 +229,7 @@ router.post('/confirm-remove-delete-error-row', function (req, res) {
 
   console.log('in 2 row delete'+row1+'-row2'+row2)
 
-  if (row1 == "1" && row2 == "1"){
 
-          dataissues="0"
-
-    }
-    else if(correctedissues == "2" && row2 == "1"){
-            dataissues="0"
-      }
-      else
-        {
-            dataissues="1"
-
-        }
 
   // Check whether the variable matches a condition
   if (deleterow == "yes"){
