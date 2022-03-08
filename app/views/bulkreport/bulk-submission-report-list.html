@@ -24,8 +24,8 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
-		
-		
+
+
 		<!--  confirmation message for the rows with data issues removed -->
 		 {%if data['dataissues'] == 3 %}
           		<div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
@@ -41,36 +41,62 @@
 
           		  </div>
           		</div>
-		
-		
+
+
 
           	{% endif %}
+
+
+            <!--  confirmation message for the single row removed -->
+              {% if (data['removerowissue1'] == 1) or (data['removerowissue2'] == 1) %}
+            		<div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+            		  <div class="govuk-notification-banner__header">
+            			<h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+            			  Report removed
+            			</h2>
+            		  </div>
+            		  <div class="govuk-notification-banner__content">
+            			<h3 class="govuk-notification-banner__heading">
+            			  You have removed the report with data issues for billing authority reference number {{data['bref']}}.
+            			</h3>
+
+            		  </div>
+            		</div>
+
+
+    
+
+
+              {% elseif (data['correctedissues'] == 2) %}
+                <div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+                  <div class="govuk-notification-banner__header">
+                  <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+                    Report updated
+                  </h2>
+                  </div>
+                  <div class="govuk-notification-banner__content">
+                  <h3 class="govuk-notification-banner__heading">
+                    You have corrected the report with data issues for billing authority reference number 06002874005006.
+                  </h3>
+
+                  </div>
+                </div>
+
+
+              {% endif %}
+
+
+
+
 
       <!--  Show heading with listed errors -->
   	{% if data['dataissues'] == 1 %}
 
 
 
-              <!--  confirmation message for the single row removed -->
-            {% if data['removerowissue'] == 1 %}
-          		<div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
-          		  <div class="govuk-notification-banner__header">
-          			<h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
-          			  Report removed
-          			</h2>
-          		  </div>
-          		  <div class="govuk-notification-banner__content">
-          			<h3 class="govuk-notification-banner__heading">
-          			  You have removed the report with data issues for billing authority reference number {{data['bref']}}.
-          			</h3>
 
-          		  </div>
-          		</div>
 
-		
-          	{% endif %}
-		
-		
+
 
 
       <h1 class="govuk-heading-xl">Your upload has failed data validation</h1>
@@ -225,7 +251,7 @@
 
 
           <!-- if the row is removed using the remove link-->
-          {% if (data['bref'] != "06002874005006")%}
+          {% if (data['removerowissue1'] != "1")%}
                 <tr class="govuk-table__row govuk-table__row--selected">
                   <!--<td class="govuk-table__cell">
                     <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
@@ -291,7 +317,7 @@
 
                   {%else%}
 
-                      <a href="/bulkreport/check-change-report?error1=1&error2=1&errors=1">Edit</a> <a href="/bulkreport/confirm-remove-delete-error-row?bref=06002874005006">Remove</a>
+                      <a href="/bulkreport/check-change-report?error1=1&error2=1&errors=1">Edit</a> <a href="/bulkreport/confirm-remove-delete-error-row?bref=06002874005006&removerowissue1={{data['removerowissue1']}}&removerowissue2={{data['removerowissue2']}}&correctedissues={{data['correctedissues']}}">Remove</a>
 
 
 
@@ -353,7 +379,7 @@
 
           </tr>-->
 
-  {% if data['bref'] != "06002874005326" %}
+    {% if (data['removerowissue2'] != "1")%}
 
           <tr class="govuk-table__row govuk-table__row--selected">
 
@@ -374,13 +400,13 @@
             <td class="govuk-table__cell">
 
 
-              {%if data['correctedissues'] == 2%}
+              {%if data['dataissues'] == 0%}
 
                   <a href="/bulkreport/check-change-report?error1=0&error2=0&errors=0">View report</a>
 
               {%else%}
 
-                  <a href="/bulkreport/check-change-report?error1=1&error2=1&errors=1">Edit</a> <a href="/bulkreport/confirm-remove-delete-error-row?bref=06002874005326">Remove</a>
+                  <a href="/bulkreport/check-change-report?error1=1&error2=1&errors=1">Edit</a> <a href="/bulkreport/confirm-remove-delete-error-row?bref=06002874005326&removerowissue1={{data['removerowissue1']}}&removerowissue2={{data['removerowissue2']}}&correctedissues={{data['correctedissues']}}">Remove</a>
 
 
 
@@ -477,6 +503,8 @@ end of commented for usability testing
   <!-- show rows with no issues-->
 {% elseif data['dataissues'] == 0 %}
 
+      {%if data['removerowissue1'] != 1 %}
+
 			  <tr class="govuk-table__row govuk-table__row--selected">
 
 
@@ -488,8 +516,10 @@ end of commented for usability testing
 				</strong> </td>
             <td class="govuk-table__cell"><a href="#">View report</a></td>
           </tr>
+    {% endif %}
 
 
+      {%if data['removerowissue2'] != 1 %}
           <tr class="govuk-table__row govuk-table__row--selected">
 
             <td class="govuk-table__cell">2</td>
@@ -500,10 +530,10 @@ end of commented for usability testing
 				</strong> </td>
             <td class="govuk-table__cell"><a href="#">View report</a></td>
           </tr>
-
-
+          {% endif %}
 
 <!--
+
 
 commented for usability testing
           <tr class="govuk-table__row govuk-table__row--selected">
@@ -863,9 +893,12 @@ end of comments for usability testing
 	<input type="hidden" name="file-data-validation" id="file-data-validation" value="localcouncilreport.xls">
 
 
+  <input type="hidden" name="edit_issue" id="edit_issue" value="{{data['correctedissues']}}">
 
 
+      <input type="hidden" name="removerowissue1" id="removerowissue1" value="{{data['removerowissue1']}}">
 
+      <input type="hidden" name="removerowissue2" id="removerowissue2" value="{{data['removerowissue2']}}">
 
 
 
@@ -916,9 +949,15 @@ end of comments for usability testing
 {% if data['username-login-email'].length > 0 %}
 
     <input type="hidden" name="emailAddress" id="email-address" value="{{data['username-login-email']}}">
+{%elseif data['user'].length > 0%}
+    <input type="hidden" name="emailAddress" id="email-address" value="{{data['user']}}">
+
 {%else%}
     <input type="hidden" name="emailAddress" id="email-address" value="amolsingh.rajput@cognizant.com">
 {%endif%}
+
+
+
 
 
   <div class="govuk-button-group">

@@ -201,9 +201,11 @@ router.post('/signin', function (req, res) {
 
 
     // Send user to ineligible page
-  //  req.session.data = {}
+    var email_username = req.session.data['username-login-email']
 
-    res.redirect('/bahomepage')
+    req.session.data = {}
+    console.log(email_username)
+    res.redirect('/bahomepage?user='+email_username)
 
 
 })
@@ -221,17 +223,73 @@ router.post('/confirm-remove-delete-error-row', function (req, res) {
   // Make a variable and give it the value from 'submit buttons'
   var deleterow = req.session.data['confirmremoverowissue']
   var removebref = req.session.data['removebref']
+    var row1 = req.session.data['removerowissue1']
+    var row2 = req.session.data['removerowissue2']
+  var correctedissues = req.session.data['correctedissues']
 
+  console.log('in 2 row delete'+row1+'-row2'+row2)
+
+  if (row1 == "1" && row2 == "1"){
+
+          dataissues="0"
+
+    }
+    else if(correctedissues == "2" && row2 == "1"){
+            dataissues="0"
+      }
+      else
+        {
+            dataissues="1"
+
+        }
 
   // Check whether the variable matches a condition
   if (deleterow == "yes"){
     // Send user to next page
+    if(removebref=="06002874005006")
+    {
 
-    res.redirect('/bulkreport/bulk-submission-report-list?dataissues=1&correctedissues=0&removerowissue=1&bref='+removebref)
+      if (row2 == "1")
+       {
+
+              dataissues="0"
+
+        }
+        else if(correctedissues == "2"){
+                dataissues="0"
+          }
+          else
+            {
+                dataissues="1"
+
+            }
+    res.redirect('/bulkreport/bulk-submission-report-list?dataissues='+dataissues+'&correctedissues='+correctedissues+'&removerowissue1=1&removerowissue2='+row2+'&bref='+removebref)
+    }
+    else if(removebref=="06002874005326"){
+
+      if (row1 == "1")
+       {
+
+              dataissues="0"
+
+        }
+        else if(correctedissues == "2"){
+                dataissues="0"
+          }
+          else
+            {
+                dataissues="1"
+
+            }
+
+  		res.redirect('/bulkreport/bulk-submission-report-list?dataissues='+dataissues+'&correctedissues='+correctedissues+'&removerowissue1='+row1+'&removerowissue2=1&bref='+removebref)
+
+  	}
+
   } else if(deleterow == "no") {
 
     // Send user to ineligible page
-    res.redirect('/bulkreport/bulk-submission-report-list?dataissues=1&correctedissues=0&removerowissue=0&bref='+removebref)
+    res.redirect('/bulkreport/bulk-submission-report-list?dataissues='+dataissues+'&correctedissues='+correctedissues+'&removerowissue1='+row1+'&removerowissue2='+row2+'&bref='+removebref)
   }
 
 	else{
