@@ -1,5 +1,5 @@
-var NotifyClient = require('notifications-node-client').NotifyClient;
-const notify = new NotifyClient(process.env.NOTIFYAPIKEY);
+//var NotifyClient = require('notifications-node-client').NotifyClient;
+//const notify = new NotifyClient(process.env.NOTIFYAPIKEY);
 
 const express = require('express')
 const router = express.Router()
@@ -100,25 +100,42 @@ router.post('/bulk-submission-report-list', function (req, res, nex) {
 
   //  setTimeout(next,30000);
 
-    notify.sendEmail(
+// commented temporarily on 9th March 2022 to disable notify email feature
+
+    //notify.sendEmail(
+
+
       // this long string is the template ID, copy it from the template
       // page in GOV.UK Notify. It's not a secret so it's fine to put it
       // in your code.
-      'a07a78a1-73ce-47b2-9ccc-3152506a0c73',
+
+      //'a07a78a1-73ce-47b2-9ccc-3152506a0c73',
+
       // `emailAddress` here needs to match the name of the form field in
       // your HTML page
-      req.body.emailAddress
-    )
-    .then(function () {
+
+
+      //req.body.emailAddress
+
+
+    //)
+  //  .then(function () {
+
+
       // This is the URL the users will be redirected to once the email
       // has been sent
+
+
       	res.redirect('/bulkreport/bulk-submission-confirmation');
+/*
+
     })
     .catch(function (err) {
       res.status(500).send('Notify experienced an error:<br/><br/>' + err.message + '<br/><br/><pre>' + (err.stack || '').replace(/\\n/g, '<br/>') + '</pre>' + '<br/><br/><pre>' + JSON.stringify(err) + '</pre>')
     })
 
-
+*/
+// commented temporarily on 9th March 2022 to disable notify email feature
 
 	}
 
