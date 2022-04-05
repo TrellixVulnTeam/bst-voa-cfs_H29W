@@ -250,6 +250,44 @@ router.post('/reference-details', function (req, res) {
 })
 
 
+// Run this code when a form is submitted to 'confirm-remove-failed-report'
+router.post('/reference-details', function (req, res) {
+
+  // Make a variable and give it the value from 'how-many-balls'
+  var address_same_check = req.session.data['address_same_check']
+
+  // Check whether the variable matches a condition
+  if (address_same_check == "no"){
+    // Send user to next page
+    res.redirect('/address-postcode-lookup?requestreason=change')
+  } else {
+    // Send user to ineligible page
+    res.redirect('/reference-details')
+  }
+
+})
+
+
+// Run this code when a form is submitted to 'confirm-remove-failed-report'
+router.post('/address-verify', function (req, res) {
+
+  // Make a variable and give it the value from 'how-many-balls'
+  var addressupdate = req.session.data['addressupdate']
+
+  console.log("address="+addressupdate)
+
+  // Check whether the variable matches a condition
+  if (addressupdate == "add-address"){
+    // Send user to next page
+    res.redirect('/reference-details')
+  } else {
+    // Send user to ineligible page
+    res.redirect('/address-verify')
+  }
+
+})
+
+
 //postcode lookup property-postcode
 
 router.post('/address-list', function (req, res) {
@@ -261,7 +299,7 @@ router.post('/address-list', function (req, res) {
   if (property_postcode != "NA"){
     // Send user to next page
     res.redirect('/address-list')
-  } else{
+  } else {
     // Send user to ineligible page
     res.redirect('/address-no-results')
   }
@@ -269,6 +307,8 @@ router.post('/address-list', function (req, res) {
 })
 
 //confirmremoverowissue
+
+
 
 
 
