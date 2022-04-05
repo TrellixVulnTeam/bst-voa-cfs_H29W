@@ -7,7 +7,7 @@ const router = express.Router()
 const radioButtonRedirect = require('radio-button-redirect')
 router.use(radioButtonRedirect)
 
-var searchAddresses = [
+var addresses = [
     'Addenbrooke House, Ironmasters Way, Town Centre, Telford, Shropshire, TF3 4NT',
     'Cafe Go, Addenbrooke House, Ironmasters Way, Telford Town Centre, Telford, Shropshire, TF3 4NT',
     'Eighth Floor, Plaza One, Ironmasters Way, Telford Town Centre, Telford, Shropshire, TF3 4NT',
@@ -229,6 +229,45 @@ router.post('/signin', function (req, res) {
 
 
 
+//Owner/Occupier details
+
+
+// Run this code when a form is submitted to 'confirm-remove-failed-report'
+router.post('/reference-details', function (req, res) {
+
+  // Make a variable and give it the value from 'how-many-balls'
+  var address_same_check = req.session.data['address_same_check']
+
+  // Check whether the variable matches a condition
+  if (address_same_check == "no"){
+    // Send user to next page
+    res.redirect('/address-postcode-lookup?requestreason=change')
+  } else {
+    // Send user to ineligible page
+    res.redirect('/reference-details')
+  }
+
+})
+
+
+//postcode lookup property-postcode
+
+router.post('/address-list', function (req, res) {
+
+  // Make a variable and give it the value from 'how-many-balls'
+  var property_postcode = req.session.data['property-postcode']
+
+  // Check whether the variable matches a condition
+  if (property_postcode != "NA"){
+    // Send user to next page
+    res.redirect('/address-list')
+  } else{
+    // Send user to ineligible page
+    res.redirect('/address-no-results')
+  }
+
+})
+
 //confirmremoverowissue
 
 
@@ -344,6 +383,34 @@ router.post('/email-address-page', function (req, res) {
 });
 
 
+router.get('/address-list', function (req, res) {
+  res.render('address-list', {
+    addresses: [
+
+      'Cafe Go, Addenbrooke House, Ironmasters Way, Telford Town Centre, Telford, Shropshire, TF3 4NT',
+      'Eighth Floor, Plaza One, Ironmasters Way, Telford Town Centre, Telford, Shropshire, TF3 4NT',
+      'Fifth Floor, Plaza One, Ironmasters Way, Telford Town Centre, Telford, Shropshire, TF3 4NT',
+      'First Floor, Plaza One, Ironmasters Way, Telford Town Centre, Telford, Shropshire, TF3 4NT',
+      'Floor 1, Plaza Two, Ironmasters Way, Telford Town Centre, Telford, Shropshire, TF3 4NT',
+      'Floor 2, Plaza Two, Ironmasters Way, Telford Town Centre, Telford, Shropshire, TF3 4NT',
+      'Floor 3, Plaza Two, Ironmasters Way, Telford Town Centre, Telford, Shropshire, TF3 4NT'//,
+    //  'Floor 5, Plaza Two, Ironmasters Way, Telford Town Centre, Telford, Shropshire, TF3 4NT',
+      //'Ground Floor, Plaza One, Ironmasters Way, Telford Town Centre, Telford, Shropshire, TF3 4NT',
+      //'Ground Floor, Plaza Two, Ironmasters Way, Telford Town Centre, Telford, Shropshire, TF3 4NT',
+      //'Plaza One, Ironmasters Way, Town Centre, Telford, Shropshire, TF3 4NT',
+      //'Plaza Two, Ironmasters Way, Town Centre, Telford, Shropshire, TF3 4NT',
+      //'Reynolds House, Ironmasters Way, Telford Town Centre, Telford, Shropshire, TF3 4NT',
+      //'Seventh Floor, Plaza One, Ironmasters Way, Telford Town Centre, Telford, Shropshire, TF3 4NT',
+      //'Sixth Floor, Plaza One, Ironmasters Way, Telford Town Centre, Telford, Shropshire, TF3 4NT',
+      //'Third Floor, Plaza One, Ironmasters Way, Telford Town Centre, Telford, Shropshire, TF3 4NT',
+      //'Unit 5, Northern Quarter, Lawn Central, Telford Town Centre, Telford, Shropshire, TF3 4NT',
+      //'Unit 6, Northern Quarter, Lawn Central, Telford Town Centre, Telford, Shropshire, TF3 4NT'
+    ] })
+
+
+})
+
+var items = [{ title: "foo", id: 1 }, { title: "bar", id: 2}];
 
 
 

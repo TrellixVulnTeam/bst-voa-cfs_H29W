@@ -28,8 +28,8 @@
 
                 {{ govukRadios({
                       classes: "govuk-radios--inline",
-                      idPrefix: "changed-name",
-                      name: "changed-name",
+                      idPrefix: "owner_occupier_check",
+                      name: "owner_occupier_check",
                       fieldset: {
                         legend: {
                           text: "Is this for the owner or occupier",
@@ -96,8 +96,8 @@
 
                 {{ govukRadios({
                       classes: "govuk-radios--inline",
-                      idPrefix: "changed-name",
-                      name: "changed-name",
+                      idPrefix: "address_same_check",
+                      name: "address_same_check",
                       fieldset: {
                         legend: {
                           text: "Is the owner/occupier address the same as the property address?",
@@ -121,10 +121,15 @@
                 }) }}
 
 
-        <br/br>
+                <div class="govuk-button-group">
 
-          <button class="govuk-button" data-module="govuk-button">Continue</button>
+              			<button class="govuk-button" data-module="govuk-button" id="continueowner" name="continueowner" value="continueowner">
+              			     Continue
+              			</button>
 
+                </div>
+
+        </form>
         </div>
       </div>
 

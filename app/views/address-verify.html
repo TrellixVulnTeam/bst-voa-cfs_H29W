@@ -1,0 +1,153 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+    Review your property address
+{% endblock %}
+
+{% block beforeContent %}
+
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-one-third">
+			{{ govukBackLink({
+			  text: "Back",
+			  href: "javascript:window.history.back()"
+			}) }}
+		</div>
+		{% include "includes/header-section-signedin.html" %}
+	</div>
+{% endblock %}
+
+{% block content %}
+
+                <div class="govuk-grid-row">
+                  <div class="govuk-grid-column-two-thirds">
+
+
+                    <div class="govuk-form-group">
+
+
+                      <form class="form" action="/reference-details" method="post">
+
+                    {% if data['address'] != "" %}
+                        {% set addresslist = data['address'].split(',') %}
+
+
+
+                        {#    {{data['address']}}#}
+
+                        {% if data['property-address-line-1'] != "" %}
+
+                              {% set address1_value = data['property-address-line-1'] + ", " %}
+
+                        {%else%}
+
+                                {% set address1_value = addresslist[0] + ", " %}
+
+                        {%endif%}
+
+
+
+                        {% if data['property-address-line-2'] != "" %}
+
+
+                              {% set address2_value = data['property-address-line-2'] + ", " %}
+
+                        {%else%}
+
+                              {% set address2_value = addresslist[1] + ", " + addresslist[2] + ", " %}
+
+
+                        {%endif%}
+
+
+
+                        {% if data['property-address-line-3'] != "" %}
+
+
+                              {% set address3_value = data['property-address-line-3'] + ", " %}
+
+                        {%else%}
+
+                            {% set address3_value = addresslist[3] + ", "  %}
+
+
+                        {%endif%}
+
+
+                        {% if data['property-address-town-city'] != "" %}
+
+
+                              {% set address_city = data['property-address-town-city'] + ", " %}
+
+                        {%else%}
+
+                            {% set address_city = addresslist[4] + ", " + addresslist[5]+ ", " %}
+
+
+                        {%endif%}
+
+
+                        {% if data['property-address-postcode'] != "" %}
+
+
+                              {% set address_postcode = data['property-address-postcode'] + ", " %}
+
+                        {%else%}
+
+                            {% set address_postcode = addresslist[6] + ", "  %}
+
+
+                        {%endif%}
+
+
+
+                        {#  set address2_value = [addresslist[1], addresslist[2] ]|join(', ') #}
+
+
+                      {% endif%}
+
+
+
+                      <h1 class="govuk-heading-xl">Review your property address</h1>
+
+
+
+                        <p class="govuk-!-font-size-24">
+
+                            {{address1_value}}
+
+                            <br/>
+
+                            {{address2_value}}
+
+                            <br/>
+                            {{address3_value}}
+
+
+                            <br/>
+                                {{address_city}}
+                                <br/>
+                                    {{address_postcode}}
+
+                        </p>
+
+
+                          <p class="govuk-!-font-size-24"><a href="address-enter?action=edit">I want to edit this address</a></p>
+
+                        <div class="govuk-button-group">
+
+                      			<button class="govuk-button" data-module="govuk-button" id="continue" name="continue" value="">
+                      				Continue
+                      			</button>
+
+                        </div>
+
+                  </form>
+
+              </div>
+
+
+        </div>
+    </div>
+
+{% endblock %}

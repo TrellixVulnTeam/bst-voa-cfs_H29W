@@ -1,0 +1,57 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  We cannot find any addresses
+{% endblock %}
+
+{% block beforeContent %}
+
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-one-third">
+			{{ govukBackLink({
+			  text: "Back",
+			  href: "javascript:window.history.back()"
+			}) }}
+		</div>
+		{% include "includes/header-section-signedin.html" %}
+	</div>
+{% endblock %}
+
+{% block content %}
+
+
+                <div class="govuk-grid-row">
+                  <div class="govuk-grid-column-two-thirds">
+
+
+                    <div class="govuk-form-group">
+                    <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="event-name">
+
+                      </label>
+
+                      <form class="form" action="/property-playback" method="post">
+
+
+
+                      <h1 class="govuk-heading-xl">We cannot find any addresses for {{data['property-postcode']}}</h1>
+
+                      <p class="govuk-!-font-size-20 govuk-!-padding-bottom-4">        Postcode you entered: <strong>{{data['property-postcode']}}</strong>
+
+                              <a href="/add-new-address">Change Postcode</a></p>
+
+
+                			<form class="form" method="post">
+
+
+
+
+
+                        <div class="govuk-button-group">
+
+                      			<button class="govuk-button" data-module="govuk-button" id="condirmsubmit" name="bulkconfirm" value="2">
+                      				Add address manually
+                      			</button>
+
+                        </div>
+
+{% endblock %}
