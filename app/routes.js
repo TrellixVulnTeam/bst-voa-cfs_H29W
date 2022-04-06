@@ -379,6 +379,43 @@ console.log("requestreason = " +requestreason )
 })
 
 
+router.post('/reason-new-property', function (req, res) {
+
+  // Make a variable and give it the value from 'how-many-balls'
+
+//  var requestreason = req.session.data['requestreason']
+//console.log("requestreason = " +requestreason )
+  // Check whether the variable matches a condition
+
+
+    // Send user to ineligible page
+    res.redirect('/address-postcode-lookup?requestreason=new')
+
+
+
+})
+
+router.post('/reason-for-removal', function (req, res) {
+
+
+    res.redirect('/billing-reference')
+
+
+
+})
+
+
+router.post('/reason-for-amending', function (req, res) {
+
+
+    res.redirect('/billing-reference')
+
+
+
+})
+
+
+
 
 
 
