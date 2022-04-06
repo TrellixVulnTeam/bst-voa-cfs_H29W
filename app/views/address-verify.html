@@ -26,11 +26,11 @@
                     <div class="govuk-form-group">
 
 
-                      <form class="form" action="/address-verify" method="post">
+                      <form class="form" action="/address-verify?requestreason={{data['requestreason']}}" method="post">
 
 
 
-                    {% if data['address'] != "" %}
+                    {% if data['address'] != null %}
 
                         {% set addresslist = data['address'].split(',') %}
 
@@ -111,6 +111,8 @@
 
                                                 {%endif%}
 
+                                                  {% set property_address = address1_value + address2_value + address3_value + address_city + address_postcode %}
+
 
 
                                                 {#  set address2_value = [addresslist[1], addresslist[2] ]|join(', ') #}
@@ -154,6 +156,17 @@
                           <p class="govuk-!-font-size-24"><a href="address-enter?action=edit">I want to edit this address</a></p>
 
                         <div class="govuk-button-group">
+
+                          <input type="hidden" name="address_array" id="address_array" value="{{data['address']}}">
+
+                        {%if data['requestreason'] == "occupier"%}
+
+                            <input type="hidden" name="occupier_property_address" id="occupier_property_address" value="{{property_address}}">
+                        {%else%}
+
+                              <input type="hidden" name="property_new_address" id="property_new_address" value="{{property_address}}">
+
+                        {%endif%}
 
                       			<button class="govuk-button" data-module="govuk-button" id="addressupdate" name="addressupdate" value="add-address">
                       				Continue

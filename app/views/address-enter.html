@@ -35,35 +35,39 @@
 
                       </label>
 
-                      <form class="form" action="/address-verify" method="post">
+                      <form class="form" action="/address-enter" method="post">
 
                     {%if data['action']=='edit'%}
-                        {% set addresslist = data['address'].split(',') %}
+
+
+                      {%if data['address_array'] != null%}
+
+                                {% set addresslist = data['address_array'].split(',') %}
 
 
 
-                        {#    {{data['address']}}#}
+                                {#    {{data['address']}}#}
 
-                          {% set address1_value = addresslist[0] %}
+                                  {% set address1_value = addresslist[0] %}
 
-                          {% set address2_value = addresslist[1] + ", " + addresslist[2] %}
-
-
-
-                          {% set address3_value = addresslist[3] %}
-
-                          {% set address_city = addresslist[4] %}
-
-                          {% set address_postcode = addresslist[6] %}
+                                  {% set address2_value = addresslist[1] + ", " + addresslist[2] %}
 
 
+
+                                  {% set address3_value = addresslist[3] %}
+
+                                  {% set address_city = addresslist[4] %}
+
+                                  {% set address_postcode = addresslist[6] %}
 
 
 
 
 
-                        {#  set address2_value = [addresslist[1], addresslist[2] ]|join(', ') #}
 
+
+                                {#  set address2_value = [addresslist[1], addresslist[2] ]|join(', ') #}
+                            {% endif%}
 
                       {% endif%}
 

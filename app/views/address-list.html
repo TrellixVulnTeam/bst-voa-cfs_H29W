@@ -41,7 +41,7 @@
         <div class="govuk-grid-column-two-thirds">
 
 
-	<form class="form" method="post" action="/address-verify">
+	<form class="form" method="post" action="/address-list">
 
 
 
@@ -50,7 +50,7 @@
 
     <p class="govuk-!-padding-bottom-4">        Postcode you entered: <strong>{{show_postcode}}</strong>
 
-            <a href="/add-new-address">Change Postcode</a></p>
+            <a href="/address-postcode-lookup">Change Postcode</a></p>
 
 
 
@@ -137,7 +137,7 @@
 
 
   				</div>
-  				<p class="govuk-body govuk-!-font-size-24 govuk-!-padding-top-5 govuk-!-padding-bottom-2 "><a href="/address-enter?action=new">I can't find addresses in the list</a></p>
+  				<p class="govuk-body govuk-!-font-size-24 govuk-!-padding-top-5 govuk-!-padding-bottom-2 "><a href="/address-enter?action={{data['requestreason']}}">I can't find addresses in the list</a></p>
           <div class="govuk-button-group">
 
 

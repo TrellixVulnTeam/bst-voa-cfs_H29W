@@ -241,13 +241,40 @@ router.post('/reference-details', function (req, res) {
   // Check whether the variable matches a condition
   if (address_same_check == "no"){
     // Send user to next page
-    res.redirect('/address-postcode-lookup?requestreason=change')
+    res.redirect('/address-postcode-lookup?requestreason=occupier')
   } else {
     // Send user to ineligible page
     res.redirect('/reference-details')
   }
 
 })
+
+
+//reason-new-property
+
+//Owner/Occupier details
+
+
+// Run this code when a form is submitted to 'confirm-remove-failed-report'
+router.post('/billing-reference', function (req, res) {
+
+  // Make a variable and give it the value from 'how-many-balls'
+  var reason_new = req.session.data['new-property-reason']
+
+  console.log("reason"+reason_new)
+
+  // Check whether the variable matches a condition
+  if ((reason_new == "01") || (reason_new == "04")){
+    // Send user to next page
+    res.redirect('/address-postcode-lookup?requestreason=new')
+  } else {
+    // Send user to ineligible page
+    res.redirect('/billing-reference')
+  }
+
+})
+
+
 
 
 // Run this code when a form is submitted to 'confirm-remove-failed-report'
@@ -268,46 +295,88 @@ router.post('/reference-details', function (req, res) {
 })
 
 
-// Run this code when a form is submitted to 'confirm-remove-failed-report'
-router.post('/address-verify', function (req, res) {
 
-  // Make a variable and give it the value from 'how-many-balls'
-  var addressupdate = req.session.data['addressupdate']
 
-  console.log("address="+addressupdate)
 
-  // Check whether the variable matches a condition
-  if (addressupdate == "add-address"){
-    // Send user to next page
-    res.redirect('/reference-details')
-  } else {
-    // Send user to ineligible page
-    res.redirect('/address-verify')
-  }
 
-})
+
 
 
 //postcode lookup property-postcode
 
-router.post('/address-list', function (req, res) {
+//address-postcode-lookup?requestreason=new
+
+
+router.post('/address-postcode-lookup', function (req, res) {
 
   // Make a variable and give it the value from 'how-many-balls'
   var property_postcode = req.session.data['property-postcode']
-
+  var requestreason = req.session.data['requestreason']
+console.log("requestreason = " +requestreason )
   // Check whether the variable matches a condition
   if (property_postcode != "NA"){
     // Send user to next page
-    res.redirect('/address-list')
+    res.redirect('/address-list?requestreason='+requestreason)
   } else {
     // Send user to ineligible page
-    res.redirect('/address-no-results')
+    res.redirect('/address-no-results?requestreason='+requestreason)
   }
 
 })
 
-//confirmremoverowissue
 
+router.post('/address-list', function (req, res) {
+
+  // Make a variable and give it the value from 'how-many-balls'
+  var addressupdate = req.session.data['addressupdate']
+  var requestreason = req.session.data['requestreason']
+console.log("requestreason = " +requestreason )
+  // Check whether the variable matches a condition
+
+    // Send user to next page
+    res.redirect('/address-verify?requestreason='+requestreason)
+
+
+})
+
+
+
+router.post('/address-verify', function (req, res) {
+
+  // Make a variable and give it the value from 'how-many-balls'
+
+  var requestreason = req.session.data['requestreason']
+console.log("requestreason = " +requestreason )
+  // Check whether the variable matches a condition
+
+  if (requestreason == "new"){
+    // Send user to next page
+    res.redirect('/billing-reference?requestreason='+requestreason)
+  } else {
+    // Send user to ineligible page
+    res.redirect('/reference-details?requestreason='+requestreason)
+  }
+
+
+})
+
+
+
+router.post('/address-enter', function (req, res) {
+
+  // Make a variable and give it the value from 'how-many-balls'
+
+  var requestreason = req.session.data['requestreason']
+console.log("requestreason = " +requestreason )
+  // Check whether the variable matches a condition
+
+
+    // Send user to ineligible page
+    res.redirect('/address-verify?requestreason='+requestreason)
+
+
+
+})
 
 
 

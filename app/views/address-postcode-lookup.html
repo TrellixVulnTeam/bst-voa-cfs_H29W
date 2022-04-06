@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  {%if data['requestreason']=='change'%}
+  {%if data['requestreason']=='occupier'%}
 
 
         What is owner/occupier's UK postcode?
@@ -34,7 +34,7 @@
           <div class="govuk-form-group">
         <h1 class="govuk-heading-xl">
 
-            {%if data['requestreason']=='change'%}
+            {%if data['requestreason']=='occupier'%}
               What is owner/occupier's UK postcode?
             {%else%}
               What is UK postcode for this property?
@@ -51,7 +51,7 @@
 
 
 
-            <form class="form" action="/address-list" method="post">
+            <form class="form" action="/address-postcode-lookup?requestreason={{data['requestreason']}}" method="post">
 
 
 
@@ -94,7 +94,7 @@
 
 
 <div class="govuk-form-group">
-  <a class="govuk-list " href="address-enter?action=new">Enter the address manually</a>
+  <a class="govuk-list " href="address-enter?requestreason={{data['requestreason']}}&action=new">Enter the address manually</a>
 </div>
 
         			</form>

@@ -69,6 +69,35 @@
 
       <h2 class="govuk-heading-m">Property details</h2>
 
+      {%
+
+
+
+
+      if(data['property_new_address']==null)
+      %}
+      {%    set property_address = "Stratford 2, Jubliee House. 2 Farthingale Walk, London E15 AW"%}
+
+      {% else%}
+
+        {%   set property_address = data['property_new_address']%}
+
+      {%endif%}
+
+      {%  if(data['occupier_property_address']==null)
+        %}
+            {%set occupier_property_address = "1st, Custom House Annexe, 20 Lower Thames St, London EC3R 6EE"%}
+
+        {% else%}
+
+          {%  set occupier_property_address = data['occupier_property_address']%}
+
+        {%endif%}
+
+
+
+      %}
+
       {{ govukSummaryList({
         classes: 'govuk-!-margin-bottom-9',
         rows: [
@@ -94,7 +123,7 @@
               text: "Address"
             },
             value: {
-              text: "Stratford 2, Jubliee House, 2 Farthingale Walk, London, E15 AW"
+              text: property_address
             },
             actions: {
               items: [
@@ -246,7 +275,7 @@
               text: "Property occupier address"
             },
             value: {
-              html: "Stratford 2, Jubliee House.<br>2 Farthingale Walk, London<br>E15 AW"
+              html: occupier_property_address
             },
             actions: {
               items: [

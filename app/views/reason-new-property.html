@@ -14,13 +14,13 @@
       <div class="govuk-grid-column-two-thirds">
 
 
-      <form class="form" action="billing-reference" method="post">
+      <form class="form" action="/billing-reference" method="post">
 
 
                 {% set textHtml %}
                 {{ govukTextarea({
-                  id: "more-detail",
-                  name: "more-detail",
+                  id: "other-reason-detail",
+                  name: "other-reason-detail",
                   type: "tel",
                   autocomplete: "tel",
                   classes: "govuk-!-width-full",
@@ -31,8 +31,8 @@
                 {% endset -%}
 
                 {{ govukRadios({
-                  idPrefix: "contact",
-                  name: "contact",
+                  idPrefix: "new-property-reason",
+                  name: "new-property-reason",
                   fieldset: {
                     legend: {
                       text: "What is the reason for adding a new property?",
@@ -44,28 +44,28 @@
 
                   items: [
                     {
-                      value: "01 new",
+                      value: "01",
                       text: "01: New",
                       conditional: {
                         html: emailHtml
                       }
                     },
                     {
-                      value: "02 new (formerly domestic)",
+                      value: "02",
                       text: "02: New (formerly domestic)",
                       conditional: {
                         html: phoneHtml
                       }
                     },
                     {
-                      value: "03 new (formerly exempt)",
+                      value: "03",
                       text: "03: New (formerly exempt)",
                       conditional: {
                         html: nothing
                       }
                     },
                     {
-                      value: "04 new (other)",
+                      value: "04",
                       text: "04: New (other)",
                       conditional: {
                         html: textHtml
