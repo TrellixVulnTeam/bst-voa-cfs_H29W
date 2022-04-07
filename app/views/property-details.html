@@ -5,9 +5,17 @@
 {% endblock %}
 
 {% block beforeContent %}
-  <a class="govuk-back-link" href="">Back</a>
-{% endblock %}
 
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-one-third">
+			{{ govukBackLink({
+			  text: "Back",
+			  href: "javascript:window.history.back()"
+			}) }}
+		</div>
+		{% include "includes/header-section-signedin.html" %}
+	</div>
+{% endblock %}
 {% block content %}
 
   <div class="govuk-grid-row">
@@ -15,7 +23,7 @@
 
       <!--<h1 class="govuk-heading-xl">Comments</h1>-->
 
-      <form class="form" action="comments" method="post">
+      <form class="form" action="billing-reference" method="post">
 
     {{ govukCharacterCount({
         name: "with-hint",
@@ -27,7 +35,7 @@
           isPageHeading: true
           },
           hint: {
-            text: "Content to tell User we want details of new property ."
+            text: "Content to tell User we want details of new property needed."
           }
         }) }}
 
