@@ -4,10 +4,18 @@
   Reference details
 {% endblock %}
 
-          {% block beforeContent %}
-          <a href="owner-occupier-details" class="govuk-back-link">Back</a>
-          {% endblock %}
+{% block beforeContent %}
 
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-one-third">
+			{{ govukBackLink({
+			  text: "Back",
+			  href: "javascript:window.history.back()"
+			}) }}
+		</div>
+		{% include "includes/header-section-signedin.html" %}
+	</div>
+{% endblock %}
 {% block content %}
 
 
@@ -15,102 +23,105 @@
         <div class="govuk-grid-column-two-thirds">
 
 
-
                      <form class="form" action="/comments" method="post">
 
 
-              {% set yesHtml %}
-               {{ govukInput({
-                 id: "yes-property-planning-reference",
-                 name: "yes-property-planning-reference",
-                 type: "yes",
-                 autocomplete: "yes",
-                 spellcheck: false,
-                 classes: "govuk-!-width-one-half",
-                 label: {
-                   text: "Property planning reference"
-                 }
-               }) }}
-               {% endset -%}
+              <h1 class="govuk-heading-xl">Reference details</h1>
 
-               {% set noHtml %}
+              <h2 class="govuk-label govuk-label--m" for="event-name">
+                  British National Grid Coordinates (optional)
+                      </h2>
+
+                      <p>This allows us to locate the property clearly and easliy. Only for properties in rual areas.</p>
+
+                     <p>Content needed to inform Users who dont understand what British National Grid Coordinates.
+                        Another line to <a href="reference-details-explain">explain why to click this link</a></p>
+
+
+                    <div class="govuk-!-margin-top-6 govuk-!-margin-bottom-8">
+
+                        {{ govukInput({
+                          hint: {
+                            text: "X Coordinates"
+                          },
+                          classes: "govuk-input--width-10",
+                          id: "width-20",
+                          name: "width-20"
+                        }) }}
+
+                        {{ govukInput({
+                          hint: {
+                            text: "Y Coordinates"
+                          },
+                          classes: "govuk-input--width-10",
+                          id: "width-20",
+                          name: "width-20"
+                        }) }}
+
+                    </div>
+
+
+
+
+
+
+                {% set textHtml %}
                 {{ govukInput({
-                  id: "no-property-planning-reference",
-                  name: "no-property-planning-reference",
-                  type: "no",
-                  autocomplete: "no",
-                  spellcheck: false,
-                  classes: "govuk-!-width-one-half",
+                  id: "more-detail",
+                  name: "more-detail",
+                  type: "tel",
+                  autocomplete: "tel",
+                  classes: "govuk-input--width-20",
                   label: {
-                    text: "Place holder component. will be replaced with radio buttons"
+                    text: "Property planning reference"
                   }
                 }) }}
                 {% endset -%}
 
+                {{ govukRadios({
+                  idPrefix: "contact",
+                  name: "contact",
+                  fieldset: {
+                    legend: {
+                      text: "Planning reference number",
+                      isPageHeading: false,
+                      classes: "govuk-fieldset__legend--m"
+                    }
+              },
+                hint: {
+                 text: "Select one option."
+               },
+             items: [
+             {
+               value: "yes~comments",
+               text: "Yes",
+               conditional: {
+                 html: textHtml
+               }
+                    },
+                    {
+                      value: "no~why-no-planning",
+                      text: "No",
+                      conditional: {
+                        html: nothing
 
-               {{ govukRadios({
-                 idPrefix: "contact",
-                 name: "contact",
-                 fieldset: {
-                   legend: {
-                     text: "Reference details",
-                     isPageHeading: true,
-                     classes: "govuk-fieldset__legend--xl"
-                   }
-                 },
-                 hint: {
-                   text: "Does this property have planning reference"
-
-                 },
-                 items: [
-                   {
-                     value: "yes",
-                     text: "Yes",
-                     conditional: {
-                       html: yesHtml
-                     }
-
-                   },
-                   {
-                     value: "no",
-                     text: "No",
-                     conditional: {
-                       html: noHtml
-                     }
-                   }
-                 ]
-               }) }}
-
-
-                    <h2 class="govuk-label govuk-label--m" for="event-name">
-                           British National Grid Coordinates (optional)
-                         </h2>
-
-                       <p>This allows us to locate the property clearly and easliy. Only for properties in rual areas.</p>
-
-                       <p>Content needed to inform Users who dont understand what British National Grid Coordinates.
-                         Another line to <a href="reference-details-explain">explain why to click this link</a></p>
-
-
-
-                     {{ govukInput({
-                       hint: {
-                         text: "For example 06002832"
-                       },
-                       classes: "govuk-input--width-20",
-                       id: "width-20",
-                       name: "width-20"
-                     }) }}
+                      }
+                    }
+                  ]
+                }) }}
 
 
 
 
 
-                     <div class="govuk-!-margin-top-8 govuk-!-margin-bottom-6">
+
+
+
+                     <div class="govuk-!-margin-top-8 govuk-!-margin-bottom-8">
 
                       <button class="govuk-button" data-module="govuk-button">Continue</button>
 
-                    </div>
+
 
 
 
