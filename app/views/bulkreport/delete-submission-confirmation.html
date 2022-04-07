@@ -1,0 +1,117 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Your upload has failed file validation
+{% endblock %}
+
+{% block beforeContent %}
+
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-one-third">
+			{{ govukBackLink({
+			  text: "Back",
+			  href: "javascript:window.history.back()"
+			}) }}
+		</div>
+		{% include "includes/header-section-signedin.html" %}
+	</div>
+{% endblock %}
+{% block content %}
+
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="/bulkreport/select-file-format" method="post" class="form">
+      <div class="govuk-form-group">
+        <label class="govuk-heading-xl" for="event-name">
+      Your have removed the file
+
+			{%if data['file-bulk-upload'] > 3 %}
+
+						{{ data['file-bulk-upload'] }}
+				{%else%}
+
+						"localcouncilreport07022022.xml"
+
+				{%endif%}
+
+
+        </label>
+
+
+
+
+        <p class="govuk-!-padding-top-4 govuk-!-margin-padding-4">You will need to correct the issues, and reupload the file.</p>
+
+
+
+
+
+
+
+          <div class="govuk-width-container">
+            <div class="govuk-grid-row">
+            <div class="govuk-grid-column-full">
+
+
+
+							{% if data['filetype'] == "xml" %}
+            	  <p><a href="#">See Instructions for the xml format (opens in a new tab)</a></p>
+							{% else  %}
+								<p><a href="#">See Instructions for the excel format (opens in a new tab)</a></p>
+							{% endif %}
+
+            </div>
+            </div>
+          </div>
+
+
+
+
+
+
+            </div>
+
+
+
+            <div class="govuk-button-group">
+
+
+
+
+
+
+              <button class="govuk-button" name="uploadanother" id="uploadanother" value="1">
+              Upload another file
+            </button>
+
+
+            </div>
+
+
+  			<div class="govuk-width-container">
+  			  <div class="govuk-grid-row">
+  				<div class="govuk-grid-column-two-thirds">
+  				  <p><a href="#">Get help with this page</a></p>
+  				</div>
+  			  </div>
+  			</div>
+
+
+          </form>
+
+
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+{% endblock %}

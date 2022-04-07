@@ -23,7 +23,7 @@ Your upload has failed file validation
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <form action="/faileduploadxml" method="post" class="form">
+    <form action="/failed-upload-file" method="post" class="form">
       <div class="govuk-form-group">
         <label class="govuk-heading-xl" for="event-name">
       Your upload has failed file validation
@@ -43,7 +43,19 @@ Your upload has failed file validation
         </thead>
         <tbody class="govuk-table__body">
           <tr class="govuk-table__row govuk-table__row--selected">
-			<td class="govuk-table__cell">{{ data['file-bulk-upload'] }}</td>
+			<td class="govuk-table__cell">
+
+				{%if data['file-bulk-upload'].length > 0  %}
+
+						{{ data['file-bulk-upload']}}
+				{%else%}
+
+						localcouncilreport07022022.xml
+
+				{%endif%}
+
+
+			</td>
             <td class="govuk-table__cell">The file you uploaded is corrupt</td>
 
           </tr>

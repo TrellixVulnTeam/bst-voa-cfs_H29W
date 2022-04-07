@@ -33,6 +33,34 @@
       <div class="govuk-grid-column-two-thirds-from-desktop">
 
 
+  {% if (data['error1'] == 0) or  (data['error2'] == 0)%}
+        <div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+          <div class="govuk-notification-banner__header">
+          <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+          
+          {% if (data['errors'] == 1) %}
+            Property demolished effective date updated
+          {% elseif  (data['errors'] == 0) %}
+            Planning reference reason updated
+          {%endif%}
+          </h2>
+          </div>
+          <div class="govuk-notification-banner__content">
+          <h3 class="govuk-notification-banner__heading">
+
+            {%  if (data['errors'] == 1) %}
+              You have updated Property demolished effective
+            {% elseif  (data['errors'] == 0)%}
+              You have updated reason for no planning reference.
+            {%endif%}
+
+          </h3>
+
+          </div>
+        </div>
+  {%endif%}
+
+
 
 
 		  {% if (data['errors'] != 0) %}
@@ -421,17 +449,17 @@
         </dl>
 
 
-        {% if (data['errors'] == 0) %}
+        {#% if (data['errors'] == 0) %#}
         <form action="/bulkreport/bulk-submission-report-list?dataissues=1&correctedissues=2" method="post" novalidate>
 
           <input type="hidden" name="answers-checked" value="true">
 
           <button class="govuk-button" data-module="govuk-button">
-           Back to data issues list
+           Return to data issues list
           </button>
 
         </form>
-		{% endif %}
+		{#% endif %#}
       </div>
     </div>
   </main>
