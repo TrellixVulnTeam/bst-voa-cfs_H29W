@@ -1,17 +1,21 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-
-
-
-  Owner-occupier details
-
-
+  Owner or occupier details
 {% endblock %}
 
-        {% block beforeContent %}
-        <a href="request-detail" class="govuk-back-link">Back</a>
-        {% endblock %}
+{% block beforeContent %}
+
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-one-third">
+			{{ govukBackLink({
+			  text: "Back",
+			  href: "javascript:window.history.back()"
+			}) }}
+		</div>
+		{% include "includes/header-section-signedin.html" %}
+	</div>
+{% endblock %}
 
 {% block content %}
 
