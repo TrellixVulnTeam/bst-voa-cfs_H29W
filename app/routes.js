@@ -59,6 +59,7 @@ router.post('/confirm-delete-upload', function (req, res) {
 
   // Make a variable and give it the value from 'how-many-balls'
   var confirmdeleteupload = req.session.data['confirm-delete-upload']
+  var filetype = req.session.data['filetype']
 
 
 
@@ -69,7 +70,7 @@ router.post('/confirm-delete-upload', function (req, res) {
     res.redirect('/bulkreport/bulk-submission-report-list?dataissues=1')
   } else {
     // Send user to ineligible page
-    res.redirect('/bulkreport/uploaded-file-status?deletefile=2')
+    res.redirect('/bulkreport/delete-submission-confirmation?filetype='+filetype)
   }
 
 })
@@ -172,21 +173,24 @@ router.post('/bulk-submission-confirmation', function (req, res) {
 
 
 
-router.post('/faileduploadxml', function (req, res) {
+router.post('/failed-upload-file', function (req, res) {
 
 
   // Make a variable and give it the value from 'submit buttons'
   var deletefile = req.session.data['deletefile']
 
+  var filetype = req.session.data['filetype']
+
+
    console.log('routing'+deletefile);
 
 
   // Check whether the variable matches a condition
-  if (deletefile == "1"){
+//  if (deletefile == "1"){
     // Send user to next page
 
-    res.redirect('/bulkreport/uploaded-file-status?deletefile=1')
-  }
+    res.redirect('/bulkreport/confirm-delete-upload?deletefile='+deletefile+'&filetype='+filetype)
+  //}
 
 
 
@@ -346,12 +350,23 @@ router.post('/address-verify', function (req, res) {
   // Make a variable and give it the value from 'how-many-balls'
 
   var requestreason = req.session.data['requestreason']
-console.log("requestreason = " +requestreason )
+
+  var reason_new = req.session.data['new-property-reason']
+
+
+
+console.log("newpropertyreason = " +reason_new )
   // Check whether the variable matches a condition
 
   if (requestreason == "new"){
     // Send user to next page
-    res.redirect('/billing-reference?requestreason='+requestreason)
+    if ((reason_new == "01") || (reason_new == "04")){
+    res.redirect('/property-details?requestreason='+requestreason)
+    }
+    else {
+      res.redirect('/billing-reference?requestreason='+requestreason)
+    }
+
   } else {
     // Send user to ineligible page
     res.redirect('/reference-details?requestreason='+requestreason)
