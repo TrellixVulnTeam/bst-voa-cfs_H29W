@@ -356,7 +356,7 @@ router.post('/address-verify', function (req, res) {
 
 
 console.log("newpropertyreason = " +reason_new )
-  // Check whether the variable matches a condition
+  /// Check whether the variable matches a condition
 
   if (requestreason == "new"){
     // Send user to next page
