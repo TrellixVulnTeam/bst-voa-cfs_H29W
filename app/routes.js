@@ -387,7 +387,15 @@ console.log("requestreason = " +requestreason )
 
 
     // Send user to ineligible page
-    res.redirect('/address-verify?requestreason='+requestreason)
+
+
+    if ((reason_new == "01") || (reason_new == "04")){
+      res.redirect('/address-verify?requestreason='+requestreason)
+    }
+    else {
+      res.redirect('/billing-reference?requestreason='+requestreason)
+    }
+
 
 
 
