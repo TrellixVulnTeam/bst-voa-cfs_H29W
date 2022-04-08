@@ -39,11 +39,26 @@
   GOV.UK Prototype Kit
 {% endblock %}
 
+
+{% if(data['property'] == "ct")%}
+
+    {%set servicename_property =  serviceName+": " + "Council Tax"%}
+
+   {%elseif (data['property'] == "ndr") %}
+
+     {%set servicename_property =  serviceName+": " + "Non-Domestic rate"%}
+    {%else%}
+
+     {%set servicename_property =  serviceName%}
+{%endif%}
+
 {% block header %}
   {# Set serviceName in config.js. #}
+
+
   {{ govukHeader({
     homepageUrl: "/",
-    serviceName: serviceName,
+    serviceName: servicename_property,
     serviceUrl: "/",
     containerClasses: "govuk-width-container"
   }) }}

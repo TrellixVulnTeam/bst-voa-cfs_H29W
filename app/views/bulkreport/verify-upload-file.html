@@ -34,6 +34,58 @@
 
 
         <dl class="govuk-summary-list">
+
+
+
+                  <div class="govuk-summary-list__row">
+                   <dt class="govuk-summary-list__key">
+                     Property type
+                   </dt>
+                   <dd class="govuk-summary-list__value">
+
+                     {% if(data['property'] == "ct")%}
+
+                        Council Tax
+
+                        {%elseif (data['property'] == "ndr") %}
+
+                          Non-Domestic rate
+
+                     {%endif%}
+
+                   </dd>
+                   <dd class="govuk-summary-list__actions">
+
+
+                     <a class="govuk-link" href="
+                     {% if(data['property'] == "ct")%}
+                     /bahomepage#council-tax
+                     {%else%}
+                     /bahomepage#non-domestic-rates
+                    {%endif%}
+                     ">
+                       Change<span class="govuk-visually-hidden">Change</span>
+                     </a>
+                   </dd>
+                  </div>
+
+
+                  <div class="govuk-summary-list__row">
+                   <dt class="govuk-summary-list__key">
+                     File format
+                   </dt>
+                   <dd class="govuk-summary-list__value">
+                        {{data['filetype']}}
+                   </dd>
+                   <dd class="govuk-summary-list__actions">
+                     <a class="govuk-link" href="select-file-format?property={{data['property']}}">
+                       Change<span class="govuk-visually-hidden"> submission</span>
+                     </a>
+                   </dd>
+                  </div>
+
+
+
                   <div class="govuk-summary-list__row">
                    <dt class="govuk-summary-list__key">
                      Filename
