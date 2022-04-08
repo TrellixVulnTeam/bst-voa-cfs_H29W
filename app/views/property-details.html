@@ -23,7 +23,10 @@
 
       <!--<h1 class="govuk-heading-xl">Comments</h1>-->
 
-      <form class="form" action="billing-reference" method="post">
+
+      
+
+      <form class="form" action="/property-details?requestreason={{data['requestreason']}}" method="post">
 
     {{ govukCharacterCount({
         name: "with-hint",

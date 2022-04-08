@@ -418,6 +418,25 @@ router.post('/reason-new-property', function (req, res) {
 
 })
 
+
+
+router.post('/property-details', function (req, res) {
+
+  // Make a variable and give it the value from 'how-many-balls'
+
+//  var requestreason = req.session.data['requestreason']
+//console.log("requestreason = " +requestreason )
+  // Check whether the variable matches a condition
+
+
+    // Send user to ineligible page
+    var requestreason = req.session.data['requestreason']
+    res.redirect('/request-details?requestreason='+requestreason)
+
+
+
+})
+
 router.post('/reason-for-removal', function (req, res) {
 
 
