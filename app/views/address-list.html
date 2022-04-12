@@ -58,6 +58,8 @@
 
 
   				<div class="govuk-radios {% if error %} form-group-error {% endif %}">
+					
+					
   					{% if error %}
   					<span class="error-message">Select a business address</span>
   					{% endif %}
@@ -137,7 +139,7 @@
 
 
   				</div>
-  				<p class="govuk-body govuk-!-font-size-24 govuk-!-padding-top-5 govuk-!-padding-bottom-2 "><a href="/address-enter?action={{data['requestreason']}}">I can't find addresses in the list</a></p>
+  				<p class="govuk-body govuk-!-font-size-24 govuk-!-padding-top-5 govuk-!-padding-bottom-2 "><a href="/address-enter?requestreason={{data['requestreason']}}&reasoncode={{data['new-property-reason']}}">I can't find addresses in the list</a></p>
           <div class="govuk-button-group">
 
 

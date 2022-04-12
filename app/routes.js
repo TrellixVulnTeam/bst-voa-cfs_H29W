@@ -1,5 +1,5 @@
-//var NotifyClient = require('notifications-node-client').NotifyClient;
-//const notify = new NotifyClient(process.env.NOTIFYAPIKEY);
+var NotifyClient = require('notifications-node-client').NotifyClient;
+const notify = new NotifyClient(process.env.NOTIFYAPIKEY);
 
 const express = require('express')
 const router = express.Router()
@@ -97,30 +97,32 @@ router.post('/bulk-submission-report-list', function (req, res, nex) {
   }
 
 	else{
-    console.log(req.body.emailAddress);
+    console.log("email = " + req.body.emailAddress);
+		
+	
 
   //  setTimeout(next,30000);
 
 // commented temporarily on 9th March 2022 to disable notify email feature
 
-    //notify.sendEmail(
+    notify.sendEmail(
 
 
       // this long string is the template ID, copy it from the template
       // page in GOV.UK Notify. It's not a secret so it's fine to put it
       // in your code.
 
-      //'a07a78a1-73ce-47b2-9ccc-3152506a0c73',
+      '1a0f7c6e-6fd1-4bbd-bfa6-3115e946e618',
 
       // `emailAddress` here needs to match the name of the form field in
       // your HTML page
 
 
-      //req.body.emailAddress
+      req.body.emailAddress
 
 
-    //)
-  //  .then(function () {
+    )
+    .then(function () {
 
 
       // This is the URL the users will be redirected to once the email
@@ -128,14 +130,13 @@ router.post('/bulk-submission-report-list', function (req, res, nex) {
 
 
       	res.redirect('/bulkreport/bulk-submission-confirmation');
-/*
+
 
     })
     .catch(function (err) {
       res.status(500).send('Notify experienced an error:<br/><br/>' + err.message + '<br/><br/><pre>' + (err.stack || '').replace(/\\n/g, '<br/>') + '</pre>' + '<br/><br/><pre>' + JSON.stringify(err) + '</pre>')
     })
 
-*/
 // commented temporarily on 9th March 2022 to disable notify email feature
 
 	}
@@ -264,16 +265,17 @@ router.post('/billing-reference', function (req, res) {
 
   // Make a variable and give it the value from 'how-many-balls'
   var reason_new = req.session.data['new-property-reason']
+  var requestreason= req.session.data['requestreason']
 
   console.log("reason"+reason_new)
 
   // Check whether the variable matches a condition
   if ((reason_new == "01") || (reason_new == "04")){
     // Send user to next page
-    res.redirect('/address-postcode-lookup?requestreason=new')
+    res.redirect('/request-details?requestreason=new')
   } else {
     // Send user to ineligible page
-    res.redirect('/billing-reference')
+    res.redirect('/property-playback?requestreason='+requestreason)
   }
 
 })
@@ -382,8 +384,15 @@ router.post('/address-enter', function (req, res) {
   // Make a variable and give it the value from 'how-many-balls'
 
   var requestreason = req.session.data['requestreason']
-console.log("requestreason = " +requestreason )
+  
+  var reason_new = req.session.data['new-property-reason']
+  
+  
+console.log("requestreason = " +reason_new )
   // Check whether the variable matches a condition
+	
+	
+	
 
 
     // Send user to ineligible page
@@ -420,6 +429,8 @@ router.post('/reason-new-property', function (req, res) {
 
 
 
+
+
 router.post('/property-details', function (req, res) {
 
   // Make a variable and give it the value from 'how-many-balls'
@@ -431,7 +442,7 @@ router.post('/property-details', function (req, res) {
 
     // Send user to ineligible page
     var requestreason = req.session.data['requestreason']
-    res.redirect('/request-details?requestreason='+requestreason)
+    res.redirect('/billing-reference?requestreason='+requestreason)
 
 
 
@@ -598,7 +609,122 @@ router.get('/address-list', function (req, res) {
 
 })
 
-var items = [{ title: "foo", id: 1 }, { title: "bar", id: 2}];
+
+//post bulk evidence
+
+
+router.post('/bulkevidence/upload-bulk-evidence', function (req, res) {
+
+
+	 var filetype = req.session.data['filetype']
+
+	 var filecount = req.session.data['filecount']
+
+  // Make a variable and give it the value from 'how-many-balls'
+
+//  var requestreason = req.session.data['requestreason']
+//console.log("requestreason = " +requestreason )
+  // Check whether the variable matches a condition
+
+
+    // Send user to ineligible page
+
+	 console.log("filecount"+filecount)
+
+	if(filecount==0)
+    {
+		res.redirect('/bulkevidence/upload-bulk-evidence?filetype='+filetype+'&filecount=1&deletefile=0')
+	}
+	else if(filecount==1)
+		{
+
+		res.redirect('/bulkevidence/upload-bulk-evidence?filetype='+filetype+'&filecount=2&deletefile=0')
+
+		}
+
+	else if(filecount==2)
+		{
+
+		res.redirect('/bulkevidence/upload-bulk-evidence?filetype='+filetype+'&filecount=3&deletefile=0')
+
+		}
+
+	else if((filecount==3) && (deletefile==1))
+		{
+
+		res.redirect('/bulkevidence/upload-bulk-evidence?filetype='+filetype+'&filecount=3&deletefile=0')
+
+		}
+
+
+})
+
+
+router.post('/bulkevidence/confirm-remove-file-row', function (req, res) {
+
+
+	 var confirmremoverowissue = req.session.data['confirmremoverowissue']
+
+	 var filecount = req.session.data['filecount']
+
+	 var filetype = req.session.data['filetype']
+
+	 var filerow = req.session.data['filerow']
+
+  // Make a variable and give it the value from 'how-many-balls'
+
+//  var requestreason = req.session.data['requestreason']
+//console.log("requestreason = " +requestreason )
+  // Check whether the variable matches a condition
+
+
+    // Send user to ineligible page
+
+	 console.log("filerow"+filerow)
+
+	if(filerow==1)
+    {
+
+		if(confirmremoverowissue=="yes")
+		   {
+
+          if(filecount==1)
+          {
+
+              res.redirect('/bulkevidence/upload-bulk-evidence?filecount=0&deletefile=1')
+
+          }
+          else if(filecount>1){
+            res.redirect('/bulkevidence/upload-bulk-evidence?filecount='+filecount+'&deletefile=1')
+
+          }
+
+
+
+		   }
+		   else
+			{
+        console.log("in no")
+			  res.redirect('/bulkevidence/upload-bulk-evidence?filecount='+filecount+'&deletefile=0')
+
+			}
+
+	}
+	else{
+
+		res.redirect('/bulkevidence/upload-bulk-evidence?deletefile=0')
+
+
+	}
+
+
+
+})
+
+
+
+
+
 
 
 
