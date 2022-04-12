@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  Do you have a copy of the business rates bill for this property? - Valuation Office Agency - GOV.UK
+  Upload multiple reports
 {% endblock %}
 
 {% block beforeContent %}
@@ -26,48 +26,43 @@
     <form action="/select-file-format" method="post" class="form">
       <div class="govuk-form-group">
         <label class="govuk-heading-xl" for="event-name">
-        What is the format of file you are uploading?
+        Upload multiple reports
         </label>
 
 
-          <div class="govuk-warning-text">
-            <span class="govuk-warning-text__icon" aria-hidden="true">!</span>
-            <strong class="govuk-warning-text__text">
-              <span class="govuk-warning-text__assistive">Warning</span>
-              Files must conform to our security and data standards.
-              Check with our <a href="#">Instructions for XML and Excel formats</a> before uploading.
-            </strong>
-          </div>
+         <p>
+              You can upload multiple reports as either an XML file, or through an <a href="#" target="_blank">Excel template (Opens in a new window or tab)</a>. Uploaded files must follow the <a href="#" target="_blank">billing authority report submission standards (Opens in a new window or tab)</a>.
+           </p>
+		  
+					<legend>
+					  <h2 class="heading-medium">
+						In which format will you upload your reports?
+					  </h2>
+					</legend>
 
-
-
-
-          <p class="govuk-!-margin-top-3 govuk-!-margin-bottom-6">
-            You can use the below desired format to make a bulk report submission.
-          </p>
-
-                <div class="govuk-radios" data-module="govuk-radios">
+					<div class="govuk-radios" data-module="govuk-radios">
                   <div class="govuk-radios__item">
                     <input class="govuk-radios__input" id="xmlformat" name="selectformat" type="radio" value="xml">
                     <label class="govuk-label govuk-radios__label" for="xmlformat">
-                      XML document
+                      XML 
                     </label>
                   </div>
                   <div class="govuk-radios__item">
                     <input class="govuk-radios__input" id="xlsformat" name="selectformat" type="radio" value="Excel">
                     <label class="govuk-label govuk-radios__label" for="xlsformat">
-                      Excel document (XLS, XLSX, XLT) using a template
+                      Excel
                     </label>
-                  </div>
-
-                </div>
-
+                  </div>  
 
             </div>
+		  
+		  <div class="govuk-button-group govuk-!-margin-top-6">
 
             <button class="govuk-button" data-module="govuk-button">
               Continue
             </button>
+			  
+		  </div>
           </form>
 
 

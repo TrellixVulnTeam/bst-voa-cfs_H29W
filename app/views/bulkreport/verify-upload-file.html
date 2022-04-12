@@ -1,7 +1,8 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  Check and confirm this submission
+  Check and send file
+
 
 
 
@@ -29,7 +30,8 @@
     <form action="/bulkreport/bulk-report-progress?file-bulk-upload={{ data['file-bulk-upload'] }}" method="post" class="form">
       <div class="govuk-form-group">
         <label class="govuk-heading-xl" for="event-name">
-          Check and confirm this upload
+         Check and send file
+
         </label>
 
 
@@ -40,6 +42,7 @@
                   <div class="govuk-summary-list__row">
                    <dt class="govuk-summary-list__key">
                      Property type
+
                    </dt>
                    <dd class="govuk-summary-list__value">
 
@@ -72,10 +75,12 @@
 
                   <div class="govuk-summary-list__row">
                    <dt class="govuk-summary-list__key">
-                     File format
+                     File type
                    </dt>
                    <dd class="govuk-summary-list__value">
-                        {{data['filetype']}}
+                       
+					   
+					   {{ data['filetype'] | upper }}
                    </dd>
                    <dd class="govuk-summary-list__actions">
                      <a class="govuk-link" href="select-file-format?property={{data['property']}}">
@@ -88,7 +93,7 @@
 
                   <div class="govuk-summary-list__row">
                    <dt class="govuk-summary-list__key">
-                     Filename
+                     File
                    </dt>
                    <dd class="govuk-summary-list__value">
                 {% if data['file-bulk-upload'] != "" %}

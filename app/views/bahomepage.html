@@ -17,9 +17,16 @@
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
 
-      <h1 class="govuk-heading-xl">Billing Authority Reports</h1>
+      <h1 class="govuk-heading-xl">Local authority dashboard
+		</h1>
+	  
+	  <p>Use this page to submit and update reports for council tax or non-domestic rates. If you need help, <a href="#" target="_blank" rel="noopener noreferrer">visit our help pages (opens in a new window or tab)</a>.</p>
 
     </div>
+	
+	
+	
+	
 </div>
 <div class="govuk-tabs" data-module="govuk-tabs">
   <h2 class="govuk-tabs__title">
@@ -33,20 +40,20 @@
     </li>
     <li class="govuk-tabs__list-item">
       <a class="govuk-tabs__tab" href="#non-domestic-rates">
-      Non-Domestic Rates
+      Non-domestic rates
       </a>
     </li>
 
   </ul>
   <div class="govuk-tabs__panel" id="council-tax">
-    <h2 class="govuk-heading-l">Create reports</h2>
+    <h2 class="govuk-heading-l">Create billing authority reports</h2>
 
 											<div class="flex-container govuk-grid-row">
 
 																<div class="card">
 																	<div class="card-body active" style="height: 125px">
-																		<h2 class="govuk-heading-s card-heading"><a href="bulkreport/select-file-format?property=ct&user={{data['user']}}">Upload reports</a></h2>
-																		<p>Upload multiple Council Tax reports using an XML or Excel template</p>
+																		<h2 class="govuk-heading-s card-heading"><a href="/bulkreport/select-file-format?property=ndr&user={{data['user']}}">Upload multiple reports</a></h2>
+																		<p>Submit multiple Council Tax reports using a template</p>
 																	</div>
 
 																</div>
@@ -54,8 +61,8 @@
 
 																<div class="card">
 																	<div class="card-body active" style="height: 125px">
-																		<h2 class="govuk-heading-s card-heading"><a href="bulkreport/uploaded-file-status?property=ct&deletefile=0&?user={{data['user']}}"><!--Correct and submit-->Submit uploaded reports</a></h2>
-																		<p>Correct upload errors and submit to the VOA</p>
+																		<h2 class="govuk-heading-s card-heading"><a href="bulkreport/uploaded-file-status?property=ct&deletefile=0&?user={{data['user']}}"><!--Correct and submit-->Fix upload errors</a></h2>
+																		<p>Correct any errors in your uploaded reports and submit</p>
 																	</div>
 
 																</div>
@@ -64,8 +71,8 @@
 
 																<div class="card">
 																	<div class="card-body active" style="height: 125px">
-																		<h2 class="govuk-heading-s card-heading"><a href="webform/ct/request-reason?property=ct&">Create reports manually</a></h2>
-																		<p>Create and submit reports using an online form</p>
+																		<h2 class="govuk-heading-s card-heading"><a href="webform/ct/request-reason?property=ct&">Create single reports</a></h2>
+																		<p>Create and submit reports manually using an online form</p>
 																	</div>
 
 																</div>
@@ -80,17 +87,17 @@
 													<div class="flex-container govuk-grid-row">
 
 															<div class="card">
-																		<div class="card-body active" style="height: 125px">
-																			<h2 class="govuk-heading-s card-heading"><a href="/bulkevidence/bulk-view-outstanding-reports1?property=ct">View/Update reports</a></h2>
-																			<p>View submitted reports and update with supporting documents and/or comments</p>
+																		<div class="card-body active" style="height: 145px">
+																			<h2 class="govuk-heading-s card-heading"><a href="/bulkevidence/bulk-view-outstanding-reports1?property=ct">Add supporting documents</a></h2>
+																			<p>Add supporting documents or information to uploaded reports</p>
 																		</div>
 															</div>
 
 
 															<div class="card">
-																		<div class="card-body active" style="height: 125px">
-																			<h2 class="govuk-heading-s card-heading"><a href="/requests-for-information/latest-requests?property=ct">Requests for information</a></h2>
-																			<p>View and respond to requests for information</p>
+																		<div class="card-body active" style="height: 145px">
+																			<h2 class="govuk-heading-s card-heading"><a href="/requests-for-information/latest-requests?property=ct">Messages</a></h2>
+																			<p>Read latest  messages and respond to requests for information from the Valuation Office   Agency</p>
 																		</div>
 															</div>
 
@@ -103,7 +110,7 @@
 																		<div class="card">
 																				<div class="card-body active" style="height: 125px">
 																					<h2 class="govuk-heading-s card-heading"><a href="messages">Download schedules</a></h2>
-																					<p>Download your latest Council Tax schedules</p>
+																					<p>Download the latest Council Tax schedules</p>
 																				</div>
 																		</div>
 														</div>
@@ -138,14 +145,15 @@
 
 
 
-			<h2 class="govuk-heading-l">Create reports</h2>
+			<h2 class="govuk-heading-l">Create billing authority reports</h2>
 
 												<div class="flex-container govuk-grid-row">
 
 																	<div class="card">
 																		<div class="card-body active" style="height: 125px">
-																			<h2 class="govuk-heading-s card-heading"><a href="bulkreport/select-file-format?property=ndr&user={{data['user']}}">Upload reports</a></h2>
-																			<p>Upload multiple Non-Domestic Rates reports using an XML or Excel template</p>
+																			<h2 class="govuk-heading-s card-heading"><a href="bulkreport/select-file-format?property=ndr&user={{data['user']}}">Upload multiple reports</a></h2>
+																			<p>Submit multiple Non-domestic rate reports using a template
+</p>
 																		</div>
 
 																	</div>
@@ -153,8 +161,8 @@
 
 																	<div class="card">
 																		<div class="card-body active" style="height: 125px">
-																			<h2 class="govuk-heading-s card-heading"><a href="bulkreport/uploaded-file-status?property=ndr&deletefile=0&?user={{data['user']}}"><!--Correct and submit-->Submit uploaded reports</a></h2>
-																			<p>Correct upload errors and submit to the VOA</p>
+																			<h2 class="govuk-heading-s card-heading"><a href="bulkreport/uploaded-file-status?property=ndr&deletefile=0&?user={{data['user']}}"><!--Correct and submit-->Fix upload errors</a></h2>
+																			<p>Correct any errors in your uploaded reports and submit</p>
 																		</div>
 
 																	</div>
@@ -163,8 +171,8 @@
 
 																	<div class="card">
 																		<div class="card-body active" style="height: 125px">
-																			<h2 class="govuk-heading-s card-heading"><a href="request-reason?property=ndr">Create reports manually</a></h2>
-																			<p>Create and submit reports using an online form</p>
+																			<h2 class="govuk-heading-s card-heading"><a href="request-reason?property=ndr">Create single reports</a></h2>
+																			<p>Create and submit reports manually using an online form</p>
 																		</div>
 
 																	</div>
@@ -179,17 +187,17 @@
 														<div class="flex-container govuk-grid-row">
 
 																<div class="card">
-																			<div class="card-body active" style="height: 125px">
-																				<h2 class="govuk-heading-s card-heading"><a href="/bulkevidence/bulk-view-outstanding-reports1?property=ndr">View/Update reports</a></h2>
-																				<p>View submitted reports and update with supporting documents and/or comments</p>
+																			<div class="card-body active" style="height: 145px">
+																				<h2 class="govuk-heading-s card-heading"><a href="/bulkevidence/bulk-view-outstanding-reports1?property=ndr">Add supporting documents</a></h2>
+																				<p>Add supporting documents or information to uploaded reports</p>
 																			</div>
 																</div>
 
 
 																<div class="card">
-																			<div class="card-body active" style="height: 125px">
-																				<h2 class="govuk-heading-s card-heading"><a href="/requests-for-information/latest-requests?property=ndr">Requests for information</a></h2>
-																				<p>View and respond to requests for information</p>
+																			<div class="card-body active" style="height: 145px">
+																				<h2 class="govuk-heading-s card-heading"><a href="/requests-for-information/latest-requests?property=ndr">Messages</a></h2>
+																				<p>Read latest  messages and respond to requests for information from the Valuation Office   Agency</p>
 																			</div>
 																</div>
 
@@ -202,7 +210,7 @@
 																			<div class="card">
 																					<div class="card-body active" style="height: 125px">
 																						<h2 class="govuk-heading-s card-heading"><a href="messages">Download schedules</a></h2>
-																						<p>Download your latest Council Tax schedules</p>
+																						<p>Download the latest Non-domestic rate schedules</p>
 																					</div>
 																			</div>
 															</div>
