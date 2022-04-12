@@ -23,23 +23,21 @@
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
+	  
+	  
+	  
+	  <h1 class="govuk-heading-l">Upload multiple reports</h1>
+
+<p class="govuk-body"> You can upload multiple reports as either an XML file, or through an <a href="#" target="_blank">Excel template (opens in a new window or tab)</a>. Uploaded files must follow the <a href="#" target="_blank">billing authority report submission standards (opens in a new window or tab)</a>.</p>
     <form action="/select-file-format" method="post" class="form">
-      <div class="govuk-form-group">
-        <label class="govuk-heading-xl" for="event-name">
-        Upload multiple reports
-        </label>
-
-
-         <p>
-              You can upload multiple reports as either an XML file, or through an <a href="#" target="_blank">Excel template (opens in a new window or tab)</a>. Uploaded files must follow the <a href="#" target="_blank">billing authority report submission standards (opens in a new window or tab)</a>.
-           </p>
-		  
-					<legend>
-					  <h2 class="heading-medium">
-						In which format will you upload your reports?
-					  </h2>
-					</legend>
-
+		
+		
+		<div class="govuk-form-group">
+            <fieldset class="govuk-fieldset">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+               In which format will you upload your reports?
+              </legend>
+             
 					<div class="govuk-radios" data-module="govuk-radios">
                   <div class="govuk-radios__item">
                     <input class="govuk-radios__input" id="xmlformat" name="selectformat" type="radio" value="xml">
@@ -54,7 +52,13 @@
                     </label>
                   </div>  
 
-            </div>
+            </fieldset>
+          </div>
+		
+   
+
+       
+		  
 		  
 		  <div class="govuk-button-group govuk-!-margin-top-6">
 
