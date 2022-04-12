@@ -6,10 +6,10 @@
 
 
 	if data['filetype'] == "Excel" %}
-			Upload an Excel file of reports using a template
+			Upload Excel file
 
 {%else%}
-		Upload an XML file of reports
+		Upload XML file 
 
 
 {%endif%}
@@ -42,10 +42,10 @@
 
 
 						if data['filetype'] == "Excel" %}
-			   				Upload an Excel file of reports using a template
+			   				Upload Excel file
 
 					{%else%}
-							Upload an XML file of reports
+							Upload XML file
 
 
 					{%endif%}
@@ -57,58 +57,38 @@
 				{% if data['filetype'] == "Excel" %}
 
 
-            <details class="govuk-details" data-module="govuk-details">
-                <summary class="govuk-details__summary">
-                  <span class="govuk-details__summary-text">
-                    What is a valid Excel file?
-                  </span>
-                </summary>
-                <div class="govuk-details__text">
+         
 
-                  <p>
-                      All uploaded Excel files should be:
-                  </p>
-                  <ul>
+                 
+		  		
+		   <p class="govuk-body">The Excel file should be:</p>
+			<ul class="govuk-list govuk-list--bullet">
+			 	 <li>less than 10MB in size</li>
 
-                    <li>Less than 10MB in size and have a file extension of .xls, .xlsx, or .xlt</li>
+                   <li>have .xls, .xlsx, or .xlt as its file extension</li>
 
-                    <li>Free from viruses and uncorrupted</li>
+                    <li>based on the latest Excel template</li>
 
-                    <li>Based on the latest Excel template provided by VOA</li>
-
-                  </ul>
+			</ul>
 
 
-                </div>
-              </details>
+            
 
 				{%else%}
-								<!-- details widget for xml filetype -->
-								<details class="govuk-details" data-module="govuk-details">
-										<summary class="govuk-details__summary">
-											<span class="govuk-details__summary-text">
-												What is a valid xml file?
-											</span>
-										</summary>
-										<div class="govuk-details__text">
+		  
+		  
+		  <p class="govuk-body">The XML file should be:</p>
+			<ul class="govuk-list govuk-list--bullet">
+			 	<li>less than 10MB in size</li>
+				<li>have .xml as its file extension</li>
+				<li>based on the latest XML data schema</li>
 
-											<p>
-													All uploaded XML files should be:
-											</p>
-											<ul>
+			</ul>
+								
 
-												<li>Less than 10MB in size and have a file extension of .xml</li>
+		  
 
-												<li>Free from viruses and uncorrupted</li>
-
-												<li>Based on the latest XML data schema provided by VOA</li>
-
-											</ul>
-
-
-										</div>
-									</details>
-
+									
 
 
 			{%endif%}
@@ -117,20 +97,14 @@
               <div class="govuk-form-group">
                 <label class="govuk-label" for="file-upload-1">
                     <strong>
-											 Choose a file to upload an {{ data['filetype'] }} file
+											 Choose a file to upload
                     </strong>
                 </label>
                 <input class="govuk-file-upload" id="file-bulk-upload" name="file-bulk-upload" type="file">
               </div>
 
 
-          <div class="govuk-width-container">
-            <div class="govuk-grid-row">
-            <div class="govuk-grid-column-two-thirds">
-              <p><a href="#">See Instructions for the {{ data['filetype'] }} format (opens in a new tab)</a></p>
-            </div>
-            </div>
-          </div>
+         
 
 
 
