@@ -1,7 +1,8 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  Your upload is being validated
+  We are now checking your file
+
 {% endblock %}
 
 {% block beforeContent %}
@@ -23,19 +24,27 @@
     <div class="govuk-grid-column-two-thirds">
 
       <div class="govuk-panel govuk-panel--confirmation" style="background-color:#003078">
-        <h1 class="govuk-panel__title">Your upload is being validated
+        <h1 class="govuk-panel__title">We are now checking your file
+
  </h1>
         <div class="govuk-panel__body">
-         You will receive an email once validation is complete
+         You will receive an email when this is finished
         </div>
       </div>
+		
+		
+		<p class="govuk-body">
+		
+			Checking uploaded files can take up to [X] minutes. You can close this window.
+		</p>
 
 
       <h2 class="govuk-heading-m">What happens next</h2>
-       	 <p>Uploaded reports can take up to [X] minutes to validate. During this time, the file will be scanned for viruses, and the report data will be checked to ensure it meets the <a href="#">BAR submission standards (opens in a new tab)</a>.
+       	 <p class="govuk-body">We will email you when your file has been checked. If the file passes our checks then you should return to the dashboard and add supporting documents to your reports.</p>
+		
+		<p class="govuk-body">If the email says there are any errors in your file you will need to return to the dashboard and select 'fix and submit' to amend the reports and submit them again.</p>
 
-  		     </p>
-     	 <p>Once the process of checking is complete, you will be notified by email. You will then need to return the service in order to check, correct (if required) and submit the uploaded reports, and add any supporting documents that are necessary.</p>
+  		     
 
 <form method="post" action="/bahomepage">
        <div class="govuk-button-group">
