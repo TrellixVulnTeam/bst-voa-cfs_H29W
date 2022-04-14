@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  Are you sure you want to remove all failed reports? - Valuation Office Agency - GOV.UK
+  Confirm delete report
 {% endblock %}
 
 {% block beforeContent %}
@@ -27,12 +27,14 @@
     <form action="/confirm-remove-delete-error-row" method="post" class="form">
       <div class="govuk-form-group">
         <label class="govuk-heading-xl" for="event-name">
-         Are you sure you want to remove this report from your submission
+         
+ 				Confirm delete report
+ 
         </label>
 
 
         <table class="govuk-table">
-          <caption class="govuk-table__caption govuk-table__caption--m">Report with data issue(s)</caption>
+          
           <thead class="govuk-table__head">
 
             <tr class="govuk-table__row">
@@ -51,17 +53,24 @@
               <td class="govuk-table__cell">
 
 
-                <div class="govuk-!-margin-bottom-2">
+                
 
-                   Change date should not be in the future.
+                   
+				  
+				  <ul class="govuk-list govuk-list--bullet">
+			 	 <li>change date should not be in the future</li>
 
-                 </div>
+                   <li>reason for omission of a planning reference number is missing</li>
+
+				
+
+			</ul>
+
+                 
 
 
 
 
-                 <div>Reason for omission of a planning reference number is missing.
-                 </div>
 
 
 				</td>
@@ -75,12 +84,12 @@
               <td class="govuk-table__cell">
 
 
-                <div class="govuk-!-margin-bottom-2">Postcode W2 7UT is invalid.</div>
+                <div class="govuk-!-margin-bottom-2">postcode W2 7UT is invalid.</div>
 
 
 
 
-        				<div>Billing authority for this property is missing.</div>
+        				<div>billing authority for this property is missing.</div>
 
 
           </td>
@@ -91,29 +100,41 @@
 
           </tbody>
         </table>
-
-
-
-
-
-                <div class="govuk-radios" data-module="govuk-radios">
+		  
+		  
+		  <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+               Are you sure you want to delete this report?
+              </legend>
+             
+					 <div class="govuk-radios" data-module="govuk-radios">
                   <div class="govuk-radios__item">
                     <input class="govuk-radios__input" id="yesremove" name="confirmremoverowissue" type="radio" value="yes">
                     <label class="govuk-label govuk-radios__label" for="yesdelete">
-                      Yes, I want to remove this report with data issues.
+                      Yes.
                     </label>
                   </div>
                   <div class="govuk-radios__item">
                     <input class="govuk-radios__input" id="noremove" name="confirmremoverowissue" type="radio" value="no">
                     <label class="govuk-label govuk-radios__label" for="nodelete">
-                      No, I don't want to remove this report with data issues.
+                      No
                     </label>
                   </div>
 
                 </div>
 
+            </fieldset>
+          </div>
 
-            </div>
+
+
+
+
+               
+
+
+            <div class="govuk-button-group govuk-!-margin-top-6">
 
               <input  id="removebref" name="removebref" type="hidden" value="{{data['bref']}}">
 
@@ -128,6 +149,8 @@
             <button class="govuk-button" data-module="govuk-button">
               Continue
             </button>
+				
+		  </div>
           </form>
 
 

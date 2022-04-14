@@ -1,5 +1,5 @@
-var NotifyClient = require('notifications-node-client').NotifyClient;
-const notify = new NotifyClient(process.env.NOTIFYAPIKEY);
+//var NotifyClient = require('notifications-node-client').NotifyClient;
+//const notify = new NotifyClient(process.env.NOTIFYAPIKEY);
 
 const express = require('express')
 const router = express.Router()
@@ -60,18 +60,54 @@ router.post('/confirm-delete-upload', function (req, res) {
   // Make a variable and give it the value from 'how-many-balls'
   var confirmdeleteupload = req.session.data['confirm-delete-upload']
   var filetype = req.session.data['filetype']
+  var errortype = req.session.data['errortype']
+  var property = req.session.data['property']
+  
+  
+
+
+ 
+  if(errortype == 'data')
+	  
+	  {
+		  
+		  
+		  		  // Check whether the variable matches a condition
+				  if (confirmdeleteupload == "no"){
+					// Send user to next page
+					res.redirect('/bulkreport/bulk-submission-report-list?dataissues=1')
+				  } else {
+					// Send user to ineligible page
+					res.redirect('/bulkreport/bulk-submission-report-list?dataissues=3')
+				  }
+		  
+		  	
+	  }
+		  
+		else
+			{
+				
+				  if (confirmdeleteupload == "no"){
+					// Send user to next page
+					res.redirect('/bulkreport/uploaded-file-status?filetype='+filetype+'&property='+property+'&deletefile=0')
+					  
+					  
+					 
+					  
+				  } else {
+					// Send user to ineligible page
+					res.redirect('/bulkreport/delete-submission-confirmation?filetype='+filetype+'&property='+property)
+				  }
+				
+				
+				
+			}
+		  
+		  
+	  
 
 
 
-
-  // Check whether the variable matches a condition
-  if (confirmdeleteupload == "no"){
-    // Send user to next page
-    res.redirect('/bulkreport/bulk-submission-report-list?dataissues=1')
-  } else {
-    // Send user to ineligible page
-    res.redirect('/bulkreport/delete-submission-confirmation?filetype='+filetype)
-  }
 
 })
 
@@ -93,13 +129,13 @@ router.post('/bulk-submission-report-list', function (req, res, nex) {
   } else if(bulkconfirm == "0") {
 
     // Send user to ineligible page
-    res.redirect('/bulkreport/confirm-delete-upload')
+    res.redirect('/bulkreport/confirm-delete-upload?errortype=data')
   }
 
 	else{
     console.log("email = " + req.body.emailAddress);
-		
-	
+
+
 
   //  setTimeout(next,30000);
 
@@ -181,6 +217,8 @@ router.post('/failed-upload-file', function (req, res) {
   var deletefile = req.session.data['deletefile']
 
   var filetype = req.session.data['filetype']
+  
+  var property = req.session.data['property']
 
 
    console.log('routing'+deletefile);
@@ -190,7 +228,7 @@ router.post('/failed-upload-file', function (req, res) {
 //  if (deletefile == "1"){
     // Send user to next page
 
-    res.redirect('/bulkreport/confirm-delete-upload?deletefile='+deletefile+'&filetype='+filetype)
+    res.redirect('/bulkreport/confirm-delete-upload??errortype=file&deletefile='+deletefile+'&filetype='+filetype+'&property='+property)
   //}
 
 
@@ -384,15 +422,15 @@ router.post('/address-enter', function (req, res) {
   // Make a variable and give it the value from 'how-many-balls'
 
   var requestreason = req.session.data['requestreason']
-  
+
   var reason_new = req.session.data['new-property-reason']
-  
-  
+
+
 console.log("requestreason = " +reason_new )
   // Check whether the variable matches a condition
-	
-	
-	
+
+
+
 
 
     // Send user to ineligible page

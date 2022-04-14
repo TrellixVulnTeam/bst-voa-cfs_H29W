@@ -39,9 +39,9 @@
           <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
           
           {% if (data['errors'] == 1) %}
-            Property demolished effective date updated
+            Details updated
           {% elseif  (data['errors'] == 0) %}
-            Planning reference reason updated
+            Details updated
           {%endif%}
           </h2>
           </div>
@@ -49,9 +49,9 @@
           <h3 class="govuk-notification-banner__heading">
 
             {%  if (data['errors'] == 1) %}
-              You have updated Property demolished effective
+              Property demolished effective date updated
             {% elseif  (data['errors'] == 0)%}
-              You have updated reason for no planning reference.
+              Reason for no planning reference updated
             {%endif%}
 
           </h3>
@@ -73,7 +73,7 @@
 					{% if data['error1'] != 0 %}
 
 				  <li>
-					<a href="#property-demolished-effective-date-change">Property demolished effective date should not be in the future.</a>
+					<a href="#property-demolished-effective-date-change">Date should not be in the future</a>
 				  </li>
 
 					{% endif %}
@@ -81,7 +81,7 @@
 						{% if data['error2'] != 0 %}
 
 				  <li>
-					<a href="#planning-reference-option-change">Reason for omission of a planning reference number is missing.</a>
+					<a href="#planning-reference-option-change">Reason missing</a>
 				  </li>
 
 						{% endif %}
@@ -261,7 +261,7 @@
 				{% if data['error1'] != 0 %}
 			 <p id="property-demolished-effective-date-error" class="govuk-error-message">
   				<span class="govuk-visually-hidden">Error:</span>
-				Property demolished effective date should not be in the future.
+				Date should not be in the future
   			</p>
 			<p style="color:#505050;">25th March 2022</p>
 
@@ -395,7 +395,7 @@
 			{% if data['error2'] != 0 %}
 			 <p id="planning-reference-number-omission-reason-error" class="govuk-error-message">
   				<span class="govuk-visually-hidden">Error:</span>
-				Reason for omission of a planning reference number is missing
+				Reason missing
   			</p>
 
               <p style="color:#505050;">This is blank</p>
@@ -455,7 +455,7 @@
           <input type="hidden" name="answers-checked" value="true">
 
           <button class="govuk-button" data-module="govuk-button">
-           Return to data issues list
+           Return to data errors list
           </button>
 
         </form>

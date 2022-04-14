@@ -1,7 +1,8 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  Are you sure you want to remove all failed reports? - Valuation Office Agency - GOV.UK
+  Are you sure you want to delete all reports with data errors?
+
 {% endblock %}
 
 {% block beforeContent %}
@@ -27,23 +28,27 @@
     <form action="/confirm-remove-failed-report" method="post" class="form">
       <div class="govuk-form-group">
         <label class="govuk-heading-xl" for="event-name">
-        Are you sure you want to remove all the reports with data issues?
+        Are you sure you want to delete all reports with data errors?
+
         </label>
 
 
+		<div id="changed-name-hint" class="govuk-hint">
+      If you select 'Yes' you will need to correct any errors and re-upload the file
 
+    </div>
 
                 <div class="govuk-radios" data-module="govuk-radios">
                   <div class="govuk-radios__item">
                     <input class="govuk-radios__input" id="yesremove" name="confirmremove" type="radio" value="yes">
                     <label class="govuk-label govuk-radios__label" for="yesdelete">
-                      Yes, I want to remove all the reports with data issues.
+                      Yes
                     </label>
                   </div>
                   <div class="govuk-radios__item">
                     <input class="govuk-radios__input" id="noremove" name="confirmremove" type="radio" value="no">
                     <label class="govuk-label govuk-radios__label" for="nodelete">
-                      No, I don't want to remove all the reports with data issues.
+                      No
                     </label>
                   </div>
 

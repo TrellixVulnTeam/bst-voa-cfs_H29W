@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Your upload has failed file validation
+The file has been deleted
 {% endblock %}
 
 {% block beforeContent %}
@@ -26,16 +26,16 @@ Your upload has failed file validation
     <form action="/bulkreport/select-file-format" method="post" class="form">
       <div class="govuk-form-group">
         <label class="govuk-heading-xl" for="event-name">
-      Your have removed the file
+      The file has been deleted
 
-			{%if data['file-bulk-upload'] > 3 %}
+			{#%if data['file-bulk-upload'] > 3 %#}
 
-						{{ data['file-bulk-upload'] }}
-				{%else%}
+						{#{ data['file-bulk-upload'] }#}
+				{#%else%#}
 
-						"localcouncilreport07022022.xml"
+					<!--	"localcouncilreport07022022.xml"-->
 
-				{%endif%}
+				{#%endif%#}
 
 
         </label>
@@ -43,12 +43,49 @@ Your upload has failed file validation
 
 
 
-        <p class="govuk-!-padding-top-4 govuk-!-margin-padding-4">You will need to correct the issues, and reupload the file.</p>
+        <p class="govuk-!-padding-top-4 govuk-!-margin-padding-4">Correct any file errors and reupload the file.
+</p>
 
 
+		 <table class="govuk-table" data-module="moj-sortable-table">
+	   <!--<table class="govuk-table" data-module="moj-sortable-table">-->
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+        <!-- <th class="govuk-table__header" class="govuk-table__header" aria-sort="none">Filename</th>-->
+		 <th class="govuk-table__header" class="govuk-table__header">File</th>
+           <!-- <th scope="col" class="govuk-table__header" aria-sort="ascending">File issues</th>-->
+		<th scope="col" class="govuk-table__header">File errors</th>
+
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row govuk-table__row--selected">
+			<td class="govuk-table__cell">
+
+				{%if data['file-bulk-upload'].length > 0  %}
+
+						{{ data['file-bulk-upload']}}
+				{%else%}
+
+						localcouncilreport07022022.xml
+
+				{%endif%}
 
 
+			</td>
+            <td class="govuk-table__cell">File is corrupt</td>
 
+          </tr>
+
+		</table>
+
+		<p class="govuk-body">
+	
+	
+						<a href="#" target="_blank">Download the list of file errors as an Excel file</a>.
+
+					
+					</p>
 
 
           <div class="govuk-width-container">
@@ -57,10 +94,11 @@ Your upload has failed file validation
 
 
 
+							
 							{% if data['filetype'] == "xml" %}
-            	  <p><a href="#">See Instructions for the xml format (opens in a new tab)</a></p>
+            	  <p><a href="#">Read guidance on fixing file errors in XML files (opens in a new window or tab)</a></p>
 							{% else  %}
-								<p><a href="#">See Instructions for the excel format (opens in a new tab)</a></p>
+								<p><a href="#">Read guidance on fixing file errors in Excel files (opens in a new window or tab)</a></p>
 							{% endif %}
 
             </div>
@@ -84,7 +122,7 @@ Your upload has failed file validation
 
 
               <button class="govuk-button" name="uploadanother" id="uploadanother" value="1">
-              Upload another file
+              Return to file upload
             </button>
 
 

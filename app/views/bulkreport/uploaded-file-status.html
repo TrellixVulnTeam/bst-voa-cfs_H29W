@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Uploaded report files
+Fix upload errors
 {% endblock %}
 
 {% block beforeContent %}
@@ -51,67 +51,56 @@ Uploaded report files
 					{% endif %}
 
 {% if data['deletefile'] == 0 %}
-      <h1 class="govuk-heading-xl">Uploaded reports</h1>
+      <h1 class="govuk-heading-xl">Fix upload errors</h1>
+		
+	<p class="govuk-body">
+		
+		The files listed below contain errors and need to be fixed before they can be submitted.
+
+		
+		</p>
 
 
 		<details class="govuk-details" data-module="govuk-details">
                 <summary class="govuk-details__summary">
                   <span class="govuk-details__summary-text">
-                  I want to understand the different statuses
+                  			What each file status means
                   </span>
                 </summary>
                 <div class="govuk-details__text">
 
-                  <p>
-
-											All uploaded files of reports are validated by this service to check they do not contain errors or issues,
-											both within the file and its report data. The file statuses help you understand the outcomes of this validation.
-                  </p>
-
-
-									<p>
-											There are four possible statuses for validation outcomes:
-									</p>
+                 
                   <ul>
 
-                    <li class="govuk-!-margin-top-3 govuk-!-margin-bottom-3">
+                    <li class="govuk-list govuk-list--bullet">
 												<strong class="govuk-tag govuk-tag--yellow">
 	               				 Processing
 	             			 	  </strong>
 
-									 				The status of ‘Processing’ means the validation of the uploaded file is in progress. You will receive an email once validation is complete.
+									 				Your file is still being checked. We will email you when this is finished.
 										</li>
 
-                    <li class="govuk-!-margin-top-3 govuk-!-margin-bottom-3">
+                    <li class="govuk-list govuk-list--bullet">
 						<strong class="govuk-tag govuk-tag--red">
-               				 FILE VALIDATION FAILURE
+               				 FILE ERRORS
              			 </strong>
 
-									 		File validation failure’ occurs when an uploaded file has failed validation because either it contains a virus,
-											it is corrupt, or there are faults within its file structure. Files that have failed file validation will need to be removed, corrected, and re-uploaded.
+									 		There is a problem with the file. Go to 'View errors' to see what the errors are, then remove the file, correct any errors and re-upload it.
 					</li>
 
 
 
-					  <li class="govuk-!-margin-top-3 govuk-!-margin-bottom-3">
+					  <li class="govuk-list govuk-list--bullet">
 						  <strong class="govuk-tag govuk-tag--orange">
-               				 DATA VALIDATION FAILURE
+               				 DATA ERRORS
              			 </strong>
 
-									 		‘Data validation failure’ occurs when the actual data within individual reports does not meet the BAR submission standards. In this situation,
-											it is possible to view the report and correct any errors within the service. Alternatively, you can remove the file, correct any errors, then re-upload the corrected file.
+									 		The information in the file does not meet <a href="#" target="_blank">submission standards (opens in a new window or tab)</a>. Go to 'Fix errors' where you can edit any reports that have issues. You can also remove the file, correct any errors, then re-upload it.
 						</li>
 
 
 
-					  <li class="govuk-!-margin-top-3">
-						  <strong class="govuk-tag govuk-tag--green">
-               				 VALIDATED
-             			 </strong>
-
-									 	A status of ‘validated’ means the uploaded file (and all of its data) has passed validation and the reports it contains are ready to be submitted to the VOA.
-
-					  </li>
+					 
 
 
 
@@ -137,8 +126,8 @@ Uploaded report files
       <table class="govuk-table" data-module="moj-sortable-table">
         <thead class="govuk-table__head">
           <tr class="govuk-table__row">
-         <th class="govuk-table__header" class="govuk-table__header" aria-sort="none">Filename</th>
-            <th scope="col" class="govuk-table__header" aria-sort="ascending">Last updated Date and Time</th>
+         <th class="govuk-table__header" class="govuk-table__header" aria-sort="none">File</th>
+            <th scope="col" class="govuk-table__header" aria-sort="ascending">Last updated</th>
             <th scope="col" class="govuk-table__header" aria-sort="none">Status</th>
             <th scope="col" class="govuk-table__header" aria-sort="none">Action</th>
 
@@ -169,7 +158,7 @@ Uploaded report files
           <tr class="govuk-table__row govuk-table__row--selected">
 			<td class="govuk-table__cell">
 
-					{% if data['file-bulk-upload'] == "" %}
+					{% if ((data['file-bulk-upload'] == "") or (data['file-bulk-upload'] == null)) %}
 
 						localcouncilreport07022022.xml
 
@@ -185,11 +174,11 @@ Uploaded report files
 			</td>
             <td class="govuk-table__cell">09 Mar 2022 12:27</td>
             <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--red">
-                File Validation failure
+                FILE ERRORS
               </strong>
            </td>
             <td class="govuk-table__cell">
-                  <a href="/bulkreport/failed-upload-file?filetype=xml">View Errors</a>
+                  <a href="/bulkreport/failed-upload-file?filetype=xml&property={{data['property']}}">View errors</a>
             </td>
           </tr>
 
@@ -206,7 +195,7 @@ Uploaded report files
 			</td>
             <td class="govuk-table__cell">09 Mar 2022 11:27</td>
             <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--orange">
-                Data Validation failure
+                DATA ERRORS
               </strong>
            </td>
             <td class="govuk-table__cell">
