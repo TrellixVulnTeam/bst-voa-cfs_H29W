@@ -49,9 +49,9 @@
           <h3 class="govuk-notification-banner__heading">
 
             {%  if (data['errors'] == 1) %}
-              Property demolished effective date updated
+              Property demolished effective date updated.
             {% elseif  (data['errors'] == 0)%}
-              Reason for no planning reference updated
+              Reason for no planning reference updated.
             {%endif%}
 
           </h3>
@@ -73,7 +73,7 @@
 					{% if data['error1'] != 0 %}
 
 				  <li>
-					<a href="#property-demolished-effective-date-change">Date should not be in the future</a>
+					<a href="#property-demolished-effective-date-change">Effective date should be in the past</a>
 				  </li>
 
 					{% endif %}
@@ -81,7 +81,7 @@
 						{% if data['error2'] != 0 %}
 
 				  <li>
-					<a href="#planning-reference-option-change">Reason missing</a>
+					<a href="#planning-reference-option-change">Add a reason for not including a planning reference</a>
 				  </li>
 
 						{% endif %}
@@ -261,7 +261,7 @@
 				{% if data['error1'] != 0 %}
 			 <p id="property-demolished-effective-date-error" class="govuk-error-message">
   				<span class="govuk-visually-hidden">Error:</span>
-				Date should not be in the future
+				Effective date should be in the past
   			</p>
 			<p style="color:#505050;">25th March 2022</p>
 
@@ -395,7 +395,7 @@
 			{% if data['error2'] != 0 %}
 			 <p id="planning-reference-number-omission-reason-error" class="govuk-error-message">
   				<span class="govuk-visually-hidden">Error:</span>
-				Reason missing
+				Add a reason for not including a planning reference.
   			</p>
 
               <p style="color:#505050;">This is blank</p>

@@ -27,7 +27,7 @@
 
 
 		<!--  confirmation message for the rows with data issues removed -->
-		 {%if data['dataissues'] == 3 %}
+		 {%if ((data['dataissues'] == 3) and (data['removerowissue1'] == 0)) %}
           		<div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
           		  <div class="govuk-notification-banner__header">
           			<h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
@@ -80,7 +80,7 @@
                   <h3 class="govuk-notification-banner__heading">
                    
 					  
-					  You have updated the report for billing authority reference number {{data['bref']}}
+					  You have updated the report for billing authority reference number {{data['bref']}}.
                   </h3>
 
                   </div>
@@ -117,13 +117,13 @@
 				     <!-- update count once the user removes the 1 issue with data error -->
 						  {% if data['removerowissue'] == 1 %}
 
-							  1 report has data errors.
+							  1 report has data errors
 
 						  <!-- update count once the user corrects the 2 issues using webform -->
 						  {%elseif data['correctedissues'] == 2%}
 							 1 report has data errors.
 						  {%else%}
-								2 reports have data errors.
+								2 reports have data errors
 						  {% endif %}
 
 
@@ -135,7 +135,7 @@
 			</div>
 
 
-<p class="govuk-body">You must fix or remove these before you can submit your reports</p>
+<p class="govuk-body">You must fix or remove these before you can submit your reports.</p>
 
 
 {%else%}
@@ -286,7 +286,7 @@
 
                   {%else%}
 
-                      <a href="/bulkreport/check-change-report?error1=1&error2=1&errors=1">Edit</a> 
+                      <a href="/bulkreport/check-change-report?bref=06002874005006&error1=1&error2=1&errors=1">Edit</a> 
 					  
 					  <a href="/bulkreport/confirm-remove-delete-error-row?bref=06002874005006&removerowissue1={{data['removerowissue1']}}&removerowissue2={{data['removerowissue2']}}&correctedissues={{data['correctedissues']}}">Delete</a>
 
@@ -377,7 +377,7 @@
 
               {%else%}
 
-                  <a href="/bulkreport/check-change-report?error1=1&error2=1&errors=1">Edit</a> <a href="/bulkreport/confirm-remove-delete-error-row?bref=06002874005326&removerowissue1={{data['removerowissue1']}}&removerowissue2={{data['removerowissue2']}}&correctedissues={{data['correctedissues']}}">Delete</a>
+                  <a href="/bulkreport/check-change-report?bref=06002874005326&error1=1&error2=1&errors=1">Edit</a> <a href="/bulkreport/confirm-remove-delete-error-row?bref=06002874005326&removerowissue1={{data['removerowissue1']}}&removerowissue2={{data['removerowissue2']}}&correctedissues={{data['correctedissues']}}">Delete</a>
 
 
 
@@ -938,7 +938,7 @@ end of comments for usability testing
   <div class="govuk-button-group">
 
 			<button class="govuk-button" data-module="govuk-button" id="condirmsubmit" name="bulkconfirm" value="2">
-				Confirm and Submit to VOA
+				Confirm and submit to VOA
 			</button>
 
   </div>
