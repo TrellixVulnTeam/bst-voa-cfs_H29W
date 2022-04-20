@@ -20,20 +20,20 @@
 
 {% block content %}
 
-{%if data['filerow'] == 1 %}		 
+{%if data['filerow'] == 1 %}
 
 {%set filenm = "Planning_document.doc"%}
-	{%set filesize = "512Bytes."%}	
-	
-{%elseif data['filerow'] == 2 %}	
+	{%set filesize = "512Bytes."%}
+
+{%elseif data['filerow'] == 2 %}
 
 	{%set filenm = "Document-photo.png"%}
-	{%set filesize = "2MB"%}	
+	{%set filesize = "2MB"%}
 
-{%elseif data['filerow'] == 3 %}	
+{%elseif data['filerow'] == 3 %}
 
 	{%set filenm = "inspector_report.pdf"%}
-	{%set filesize = "450bytes."%}	
+	{%set filesize = "450bytes."%}
 
 
 {%endif%}
@@ -59,10 +59,10 @@
             </tr>
           </thead>
           <tbody class="govuk-table__body">
-			  
-			  
-	{%if data['filerow'] != "" %}		  
-			  
+
+
+	{%if data['filerow'] != "" %}
+
             <tr class="govuk-table__row">
               <th scope="row" class="govuk-table__header">{{filenm}}</th>
               <td class="govuk-table__cell">
@@ -77,11 +77,11 @@
 
 				</td>
             </tr>
-	
+
 	{%endif%}
-			  
-	
-	
+
+
+
           </tbody>
         </table>
 
@@ -93,13 +93,13 @@
                   <div class="govuk-radios__item">
                     <input class="govuk-radios__input" id="yesremove" name="confirmremoverowissue" type="radio" value="yes">
                     <label class="govuk-label govuk-radios__label" for="yesdelete">
-                      Yes, I want to remove this file.
+                      Yes
                     </label>
                   </div>
                   <div class="govuk-radios__item">
                     <input class="govuk-radios__input" id="noremove" name="confirmremoverowissue" type="radio" value="no">
                     <label class="govuk-label govuk-radios__label" for="nodelete">
-                      No, I don't want to remove this file.
+                      No
                     </label>
                   </div>
 

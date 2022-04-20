@@ -62,16 +62,16 @@ router.post('/confirm-delete-upload', function (req, res) {
   var filetype = req.session.data['filetype']
   var errortype = req.session.data['errortype']
   var property = req.session.data['property']
-  
-  
 
 
- 
+
+
+
   if(errortype == 'data')
-	  
+
 	  {
-		  
-		  
+
+
 		  		  // Check whether the variable matches a condition
 				  if (confirmdeleteupload == "no"){
 					// Send user to next page
@@ -80,31 +80,31 @@ router.post('/confirm-delete-upload', function (req, res) {
 					// Send user to ineligible page
 					res.redirect('/bulkreport/bulk-submission-report-list?dataissues=3&removerowissue1=0')
 				  }
-		  
-		  	
+
+
 	  }
-		  
+
 		else
 			{
-				
+
 				  if (confirmdeleteupload == "no"){
 					// Send user to next page
 					res.redirect('/bulkreport/uploaded-file-status?filetype='+filetype+'&property='+property+'&deletefile=0')
-					  
-					  
-					 
-					  
+
+
+
+
 				  } else {
 					// Send user to ineligible page
 					res.redirect('/bulkreport/delete-submission-confirmation?filetype='+filetype+'&property='+property)
 				  }
-				
-				
-				
+
+
+
 			}
-		  
-		  
-	  
+
+
+
 
 
 
@@ -217,7 +217,7 @@ router.post('/failed-upload-file', function (req, res) {
   var deletefile = req.session.data['deletefile']
 
   var filetype = req.session.data['filetype']
-  
+
   var property = req.session.data['property']
 
 
@@ -671,26 +671,26 @@ router.post('/bulkevidence/upload-bulk-evidence', function (req, res) {
 
 	if(filecount==0)
     {
-		res.redirect('/bulkevidence/upload-bulk-evidence?filetype='+filetype+'&filecount=1&deletefile=0')
+		res.redirect('/bulkevidence/upload-bulk-evidence?filetype='+filetype+'&filecount=1&deletefile=0&filerow=0')
 	}
 	else if(filecount==1)
 		{
 
-		res.redirect('/bulkevidence/upload-bulk-evidence?filetype='+filetype+'&filecount=2&deletefile=0')
+		res.redirect('/bulkevidence/upload-bulk-evidence?filetype='+filetype+'&filecount=2&deletefile=0&filerow=0')
 
 		}
 
 	else if(filecount==2)
 		{
 
-		res.redirect('/bulkevidence/upload-bulk-evidence?filetype='+filetype+'&filecount=3&deletefile=0')
+		res.redirect('/bulkevidence/upload-bulk-evidence?filetype='+filetype+'&filecount=3&deletefile=0&filerow=0')
 
 		}
 
 	else if((filecount==3) && (deletefile==1))
 		{
 
-		res.redirect('/bulkevidence/upload-bulk-evidence?filetype='+filetype+'&filecount=3&deletefile=0')
+		res.redirect('/bulkevidence/upload-bulk-evidence?filetype='+filetype+'&filecount=3&deletefile=0&filerow=0')
 
 		}
 
@@ -720,8 +720,8 @@ router.post('/bulkevidence/confirm-remove-file-row', function (req, res) {
 
 	 console.log("filerow"+filerow)
 
-	if(filerow==1)
-    {
+	//if(filerow==1)
+  //  {
 
 		if(confirmremoverowissue=="yes")
 		   {
@@ -729,11 +729,14 @@ router.post('/bulkevidence/confirm-remove-file-row', function (req, res) {
           if(filecount==1)
           {
 
-              res.redirect('/bulkevidence/upload-bulk-evidence?filecount=0&deletefile=1')
+              res.redirect('/bulkevidence/upload-bulk-evidence?filecount=0&deletefile=1&filerow='+filerow)
 
           }
-          else if(filecount>1){
-            res.redirect('/bulkevidence/upload-bulk-evidence?filecount='+filecount+'&deletefile=1')
+          else if(filecount>1)
+          {
+
+            var new_filecount = filecount-1
+            res.redirect('/bulkevidence/upload-bulk-evidence?filecount='+new_filecount+'&deletefile=1&filerow='+filerow)
 
           }
 
@@ -747,13 +750,13 @@ router.post('/bulkevidence/confirm-remove-file-row', function (req, res) {
 
 			}
 
-	}
-	else{
+//	}
+	//else{
 
-		res.redirect('/bulkevidence/upload-bulk-evidence?deletefile=0')
+	//	res.redirect('/bulkevidence/upload-bulk-evidence?deletefile=0')
 
 
-	}
+//	}
 
 
 
@@ -768,7 +771,7 @@ router.post('/bulkevidence/confirm-delete-evidence', function (req, res) {
   var deletefile = req.session.data['deletefile']
 
   var confirmfilename = req.session.data['confirmfilename']
-  
+
    var confirmdeleteevidence = req.session.data['confirmdeleteevidence']
 
 

@@ -103,7 +103,7 @@ Upload Bulk evidence
 
 
 
-filerow -- {{data['filerow']}}
+
 
 {% include "includes/upload-evidence-template.html" %}
 
@@ -113,7 +113,9 @@ filerow -- {{data['filerow']}}
 
 
 
-			{%if ((data['filecount']) != 0 or (data['deletefile'])!=0) %}
+			{%if data['filecount'] > 0  %}
+
+
 
 			<hr class="govuk-section-break govuk-section-break--visible">
 
@@ -137,7 +139,7 @@ filerow -- {{data['filerow']}}
 
 
 
-									{%if ((data['filecount'] >= 1) and (data['deletefile'] != 1))  %}
+									{%if ((data['filecount'] >= 1) and (data['filerow'] != 1))  %}
 
 											<tr class="govuk-table__row govuk-table__row--selected">
 									<td class="govuk-table__cell">Planning_document.doc</td>
@@ -149,7 +151,9 @@ filerow -- {{data['filerow']}}
 
 									{%endif%}
 
-									{%if data['filecount'] >= 2   %}
+									{#{data['filerow']}#}
+
+									{%if ((data['filecount'] >= 2) and (data['filerow']!=2))  %}
 
 											<tr class="govuk-table__row govuk-table__row--selected">
 									<td class="govuk-table__cell">Document-photo.png</td>
@@ -161,7 +165,7 @@ filerow -- {{data['filerow']}}
 									{%endif%}
 
 
-									{%if data['filecount'] >= 3   %}
+									{%if ((data['filecount'] >= 3) and (data['filerow']!=3))  %}
 
 											<tr class="govuk-table__row govuk-table__row--selected">
 									<td class="govuk-table__cell">inspector_report.pdf</td>
