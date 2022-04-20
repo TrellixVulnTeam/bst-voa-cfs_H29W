@@ -78,7 +78,7 @@ router.post('/confirm-delete-upload', function (req, res) {
 					res.redirect('/bulkreport/bulk-submission-report-list?dataissues=1')
 				  } else {
 					// Send user to ineligible page
-					res.redirect('/bulkreport/bulk-submission-report-list?dataissues=3')
+					res.redirect('/bulkreport/bulk-submission-report-list?dataissues=3&removerowissue1=0')
 				  }
 		  
 		  	
@@ -141,24 +141,24 @@ router.post('/bulk-submission-report-list', function (req, res, nex) {
 
 // commented temporarily on 9th March 2022 to disable notify email feature
 
-    notify.sendEmail(
+   // notify.sendEmail(
 
 
       // this long string is the template ID, copy it from the template
       // page in GOV.UK Notify. It's not a secret so it's fine to put it
       // in your code.
 
-      '1a0f7c6e-6fd1-4bbd-bfa6-3115e946e618',
+     // '1a0f7c6e-6fd1-4bbd-bfa6-3115e946e618',
 
       // `emailAddress` here needs to match the name of the form field in
       // your HTML page
 
 
-      req.body.emailAddress
+      //req.body.emailAddress
 
 
-    )
-    .then(function () {
+   // )
+   // .then(function () {
 
 
       // This is the URL the users will be redirected to once the email
@@ -168,10 +168,10 @@ router.post('/bulk-submission-report-list', function (req, res, nex) {
       	res.redirect('/bulkreport/bulk-submission-confirmation');
 
 
-    })
-    .catch(function (err) {
-      res.status(500).send('Notify experienced an error:<br/><br/>' + err.message + '<br/><br/><pre>' + (err.stack || '').replace(/\\n/g, '<br/>') + '</pre>' + '<br/><br/><pre>' + JSON.stringify(err) + '</pre>')
-    })
+   // })
+  //  .catch(function (err) {
+   //   res.status(500).send('Notify experienced an error:<br/><br/>' + err.message + '<br/><br/><pre>' + (err.stack || '').replace(/\\n/g, '<br/>') + '</pre>' + '<br/><br/><pre>' + JSON.stringify(err) + '</pre>')
+   // })
 
 // commented temporarily on 9th March 2022 to disable notify email feature
 
@@ -761,7 +761,38 @@ router.post('/bulkevidence/confirm-remove-file-row', function (req, res) {
 
 
 
+router.post('/bulkevidence/confirm-delete-evidence', function (req, res) {
 
+  // Make a variable and give it the value from 'how-many-balls'
+
+  var deletefile = req.session.data['deletefile']
+
+  var confirmfilename = req.session.data['confirmfilename']
+  
+   var confirmdeleteevidence = req.session.data['confirmdeleteevidence']
+
+
+console.log("confirmfilename = " +confirmfilename )
+  // Check whether the variable matches a condition
+
+
+
+
+
+    // Send user to ineligible page
+
+
+    if (confirmdeleteevidence == "yes") {
+      res.redirect('/requests-for-information/ba-report-details?deletedfilename='+confirmfilename+'&deletefile=1#supporting-documents')
+    }
+    else {
+      res.redirect('/requests-for-information/ba-report-details?deletedfilename=0&deletefile=0#supporting-documents')
+    }
+
+
+
+
+})
 
 
 

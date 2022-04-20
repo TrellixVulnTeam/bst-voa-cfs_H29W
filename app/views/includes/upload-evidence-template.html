@@ -1,0 +1,112 @@
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="/bulkevidence/upload-bulk-evidence?filetype={{ data['filetype'] }}" method="post" class="form">
+      <div class="govuk-form-group">
+        <label class="govuk-heading-xl" for="event-name">
+				<!-- pagetitle widget for excel filetype -->
+
+							Upload supporting documents for 06002874005036
+
+        </label>
+
+
+		  
+		  
+		   
+
+				
+								<!-- details widget for xml filetype -->
+								<details class="govuk-details" data-module="govuk-details">
+										<summary class="govuk-details__summary">
+											<span class="govuk-details__summary-text">
+												Document requirements
+											</span>
+										</summary>
+										<div class="govuk-details__text">
+
+											<p class="govuk-body">Each document should be:</p>
+												<ul class="govuk-list govuk-list--bullet">
+													 <li>no more than 10MB in size</li>
+
+													   <li>in JPG, PNG, PDF format</li>
+
+													
+
+												</ul>
+											
+											
+											<p class="govuk-body">Examples of supporting information include:</p>
+												<ul class="govuk-list govuk-list--bullet">
+													 <li>an inspector’s report</li>
+
+													   <li>photos</li>
+
+													<li>planning documents</a></li>
+
+												</ul>
+
+
+										</div>
+									</details>
+
+
+
+
+              <div class="govuk-form-group">
+                <label class="govuk-label" for="file-upload-1">
+                    <strong>
+											Upload files
+											<!--Click choose file to upload an {{ data['filetype'] }} file-->
+                    </strong>
+                </label>
+                <input class="govuk-file-upload" id="file-bulk-upload" name="file-bulk-upload" type="file">
+              </div>
+
+
+
+
+
+
+
+
+					{% from "govuk/components/button/macro.njk" import govukButton %}
+					{% from "govuk/components/select/macro.njk" import govukSelect %}
+
+					
+					<!--how can i make this not the default when User first views page?-->
+
+					</div>
+
+				
+					<!--what can I use instead <br> to have space between components?-->
+
+					{{ govukCharacterCount({
+			        name: "with-hint",
+			        id: "with-hint",
+			        maxlength: 500,
+			        label: {
+			          text: "Document description(optional)",
+			          classes: "govuk-label--s",
+			          isPageHeading: true
+			          }
+			        }) }}
+
+
+
+
+					<div class="govuk-button-group">
+
+				  <button class="govuk-button" data-module="govuk-button">
+				    Add 
+				  </button>
+
+				  <button class="govuk-button govuk-button--secondary" data-module="govuk-button">
+				    Cancel
+				  </button>
+				</div>
+
+	  </form>
+
+
+  </div>
+</div>

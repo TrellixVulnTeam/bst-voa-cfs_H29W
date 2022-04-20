@@ -1,0 +1,128 @@
+
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Are you sure you want to remove evidence? - Valuation Office Agency - GOV.UK
+{% endblock %}
+
+{% block beforeContent %}
+
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-one-third">
+			{{ govukBackLink({
+			  text: "Back",
+			  href: "javascript:window.history.back()"
+			}) }}
+		</div>
+		{% include "includes/header-section-signedin.html" %}
+	</div>
+{% endblock %}
+
+{% block content %}
+
+{%if data['filerow'] == 1 %}		 
+
+{%set filenm = "Planning_document.doc"%}
+	{%set filesize = "512Bytes."%}	
+	
+{%elseif data['filerow'] == 2 %}	
+
+	{%set filenm = "Document-photo.png"%}
+	{%set filesize = "2MB"%}	
+
+{%elseif data['filerow'] == 3 %}	
+
+	{%set filenm = "inspector_report.pdf"%}
+	{%set filesize = "450bytes."%}	
+
+
+{%endif%}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+
+    <form action="/bulkevidence/confirm-remove-file-row?filecount={{data['filecount']}}" method="post" class="form">
+      <div class="govuk-form-group">
+        <label class="govuk-heading-xl" for="event-name">
+         Are you sure you want to remove this file?
+        </label>
+
+
+        <table class="govuk-table">
+          <!--<caption class="govuk-table__caption govuk-table__caption--m">Report with data issue(s)</caption>-->
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header">Documents</th>
+              <th scope="col" class="govuk-table__header">File size</th>
+            </tr>
+          </thead>
+          <tbody class="govuk-table__body">
+			  
+			  
+	{%if data['filerow'] != "" %}		  
+			  
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">{{filenm}}</th>
+              <td class="govuk-table__cell">
+
+				<input type="hidden" name="deletedfilename" id="deletedfilename" value="{{filenm}}" />
+				  <div>{{filesize}}</div>
+
+				  <!--<div>
+				  Reason for omission of a planning reference number is missing.
+				  </div>-->
+
+
+				</td>
+            </tr>
+	
+	{%endif%}
+			  
+	
+	
+          </tbody>
+        </table>
+
+
+
+
+
+                <div class="govuk-radios" data-module="govuk-radios">
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="yesremove" name="confirmremoverowissue" type="radio" value="yes">
+                    <label class="govuk-label govuk-radios__label" for="yesdelete">
+                      Yes, I want to remove this file.
+                    </label>
+                  </div>
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="noremove" name="confirmremoverowissue" type="radio" value="no">
+                    <label class="govuk-label govuk-radios__label" for="nodelete">
+                      No, I don't want to remove this file.
+                    </label>
+                  </div>
+
+                </div>
+
+
+            </div>
+
+            <button class="govuk-button" data-module="govuk-button">
+              Continue
+            </button>
+          </form>
+
+
+
+
+
+  </div>
+</div>
+
+
+
+  {% include "includes/details-get-help.html" %}
+
+
+{% endblock %}

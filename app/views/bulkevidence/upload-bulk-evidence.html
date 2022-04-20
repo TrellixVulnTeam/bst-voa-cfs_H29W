@@ -1,0 +1,202 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+
+Upload Bulk evidence
+
+
+{% endblock %}
+
+{% block beforeContent %}
+
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-one-third">
+			{{ govukBackLink({
+			  text: "Back",
+			  href: "javascript:window.history.back()"
+			}) }}
+		</div>
+		{% include "includes/header-section-signedin.html" %}
+	</div>
+{% endblock %}
+
+{% block content %}
+
+<!--
+	filecount{{data['deletedfilename']}}
+
+								deletefile {{data['deletefile']}}
+-->
+
+ {%if data['deletefile']!=null  %}
+
+	 {%if ((data['deletedfilename'] != "") and (data['deletefile'])==1)  %}
+
+					<div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+					  <div class="govuk-notification-banner__header">
+						<h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+						  Supporting document removed
+						</h2>
+					  </div>
+					  <div class="govuk-notification-banner__content">
+						<h3 class="govuk-notification-banner__heading">
+						  You have removed the document "{{data['deletedfilename']}}".
+						</h3>
+
+					  </div>
+					</div>
+
+
+
+				{% endif %}
+	{% endif %}
+
+									{%if ((data['filecount'] != 0)and (data['deletefile'] != 1)) %}
+
+
+									{%if data['filecount'] == 1 %}
+
+										{%set filenm = "Planning_document.doc"%}
+
+
+									{%elseif data['filecount'] == 2 %}
+
+										{%set filenm = "Document-photo.png"%}
+
+
+									{%elseif data['filecount'] == 3 %}
+
+										{%set filenm = "inspector_report.pdf"%}
+
+
+									{%endif%}
+
+
+
+
+
+
+
+          	{% endif %}
+
+
+
+	{%if ((data['filecount'] != 0)and (data['deletefile'] != 1)) %}
+						<div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+									<div class="govuk-notification-banner__header">
+									<h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+										Supporting document added
+									</h2>
+									</div>
+									<div class="govuk-notification-banner__content"  style="border:1px solid red;">
+									<h3 class="govuk-notification-banner__heading" >
+										You have added the document "{{filenm}}".
+									</h3>
+
+									</div>
+								</div>
+
+
+		{% endif %}
+
+
+
+
+
+filerow -- {{data['filerow']}}
+
+{% include "includes/upload-evidence-template.html" %}
+
+
+
+
+
+
+
+			{%if ((data['filecount']) != 0 or (data['deletefile'])!=0) %}
+
+			<hr class="govuk-section-break govuk-section-break--visible">
+
+
+			<div class="govuk-form-group govuk-!-margin-bottom-8 govuk-!-margin-top-8">
+									<label class="govuk-heading-m">
+									Your Supporting documents
+									</label>
+
+									<table class="govuk-table" data-module="moj-sortable-table">
+										<thead class="govuk-table__head">
+											<tr class="govuk-table__row">
+										 <th class="govuk-table__header" class="govuk-table__header" aria-sort="none">Documents</th>
+												<th scope="col" class="govuk-table__header" aria-sort="ascending">File size</th>
+												<th scope="col" class="govuk-table__header" >Action</th>
+
+												<!--<th scope="col" class="govuk-table__header" aria-sort="none">Action</th>-->
+											</tr>
+										</thead>
+										<tbody class="govuk-table__body">
+
+
+
+									{%if ((data['filecount'] >= 1) and (data['deletefile'] != 1))  %}
+
+											<tr class="govuk-table__row govuk-table__row--selected">
+									<td class="govuk-table__cell">Planning_document.doc</td>
+												<td class="govuk-table__cell">512Bytes</td>
+												<td class="govuk-table__cell">
+															<a href="/bulkevidence/confirm-remove-file-row?filerow=1&filecount={{data['filecount']}}">Remove</a>
+												</td>
+											</tr>
+
+									{%endif%}
+
+									{%if data['filecount'] >= 2   %}
+
+											<tr class="govuk-table__row govuk-table__row--selected">
+									<td class="govuk-table__cell">Document-photo.png</td>
+												<td class="govuk-table__cell">2MB</td>
+												<td class="govuk-table__cell">
+															<a href="/bulkevidence/confirm-remove-file-row?filerow=2&filecount={{data['filecount']}}">Remove</a>
+												</td>
+											</tr>
+									{%endif%}
+
+
+									{%if data['filecount'] >= 3   %}
+
+											<tr class="govuk-table__row govuk-table__row--selected">
+									<td class="govuk-table__cell">inspector_report.pdf</td>
+												<td class="govuk-table__cell">450Bytes</td>
+												<td class="govuk-table__cell">
+															<a href="/bulkevidence/confirm-remove-file-row?filerow=3&filecount={{data['filecount']}}">Remove</a>
+												</td>
+											</tr>
+
+									{%endif%}
+
+							</tbody>
+						</table>
+
+
+
+
+					            </div>
+
+
+								  <div class="govuk-button-group">
+
+											<a href="/bulkevidence/upload-validated-notification">
+													<button class="govuk-button" data-module="govuk-button">
+														Continue to upload
+													</button>
+
+											</a>
+									</div>
+
+					</div>
+
+
+
+
+{%endif%}
+
+{% endblock %}

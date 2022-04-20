@@ -21,8 +21,30 @@
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
+	  
+	  
+	  
+	  {%if ((data['deletedfilename'] != "") and (data['deletefile'])!=0)  %}
 
-      <h1 class="govuk-heading-xl">Billing Authority reference number 06002874006006</h1>
+					<div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+					  <div class="govuk-notification-banner__header">
+						<h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+						  Supporting document deleted
+						</h2>
+					  </div>
+					  <div class="govuk-notification-banner__content">
+						<h3 class="govuk-notification-banner__heading">
+						  You have deleted the document "{{data['deletedfilename']}}".
+						</h3>
+
+					  </div>
+					</div>
+
+
+
+	  {% endif %}
+
+      <h1 class="govuk-heading-xl">Billing authority reference number: 06002874006006</h1>
 
     </div>
 </div>
@@ -38,7 +60,7 @@
     </li>
     <li class="govuk-tabs__list-item">
       <a class="govuk-tabs__tab" href="#supporting-documents">
-      Supporting Documents
+      Supporting documents
       </a>
     </li>
 
@@ -102,7 +124,7 @@
           <dl class="govuk-summary-list govuk-!-margin-bottom-9">
                 <div class="govuk-summary-list__row">
                   <dt class="govuk-summary-list__key">
-                   Billing property reference number
+                   Billing authority report number
                   </dt>
                   <dd class="govuk-summary-list__value">
                     06002874005006
@@ -408,20 +430,12 @@
       <details class="govuk-details" data-module="govuk-details">
                   <summary class="govuk-details__summary">
                     <span class="govuk-details__summary-text">
-                    I want to understand the different statuses
+                   What each file status means
                     </span>
                   </summary>
                   <div class="govuk-details__text">
 
-                    <p>
-                        All uploaded files of reports are validated by this service to check they do not contain errors or issues,
-                        both within the file and its report data. The file statuses help you understand the outcomes of this validation.
-                    </p>
-
-                    <p>
-                        There are four possible statuses for validation outcomes:
-                    </p>
-
+                   
                     <ul>
 
                       <li class="govuk-!-margin-top-3 govuk-!-margin-bottom-3">
@@ -429,25 +443,25 @@
                            Processing
                           </strong>
 
-                            The status of ‘Processing’ means the validation of the uploaded file is in progress. You will receive an email once validation is complete.
+                             This document is still being checked.
                       </li>
 
                       <li class="govuk-!-margin-top-3 govuk-!-margin-bottom-3">
               <strong class="govuk-tag govuk-tag--red">
-                         FAILED
+                         FILE ERROR
                      </strong>
 
-                        File validation failure’ occurs when an uploaded file has failed validation because either it contains a virus,
-                        it is corrupt, or there are faults within its file structure. Files that have failed file validation will need to be removed, corrected, and re-uploaded.
+                       The file is corrupt, has a virus, or an issue with its structure. You will need
+to remove the file and then correct any errors before re-uploading it.
             </li>
 
 
               <li class="govuk-!-margin-top-3">
                 <strong class="govuk-tag govuk-tag--green">
-                         UPLOADED
+                         CHECKED
                      </strong>
 
-                      A status of ‘validated’ means the uploaded file (and all of its data) has passed validation and the reports it contains are ready to be submitted to the VOA.
+                      The document has been checked and is ready for submission.
 
               </li>
 
@@ -462,9 +476,9 @@
         <!--Table-->
 
         {% if data['deletefile'] == 1 %}
-      		<p>Showing 1 - 3 of 3 results</p>
+      		<p>Showing 1 - 2 of 2 results</p>
       	{% else %}
-            <p>Showing 1 - 4 of 4 results</p>
+            <p>Showing 1 - 3 of 3 results</p>
       	{% endif %}
 
         <table class="govuk-table" data-module="moj-sortable-table">
@@ -479,47 +493,52 @@
             </tr>
           </thead>
           <tbody class="govuk-table__body">
+			  
+			
+			  
+	  {%if ((data['deletedfilename'] == 0) and (data['deletefile'])==0)  %}
+			  
             <tr class="govuk-table__row govuk-table__row--selected">
-        <td class="govuk-table__cell">Name_of_document.doc</td>
+        <td class="govuk-table__cell">Planning_document.doc</td>
               <td class="govuk-table__cell">512Bytes</td>
               <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--yellow">
                   Processing
                 </strong>
              </td>
               <td class="govuk-table__cell">
-                    <a href="/bulkevidence/confirm-remove-file-row-2?filetype=xml">Remove</a>
+                    <a href="/bulkevidence/confirm-delete-evidence?deletefile=0&filenm=1">Delete</a>
               </td>
             </tr>
 
-
+		{%endif %}
 
             <tr class="govuk-table__row govuk-table__row--selected">
-        <td class="govuk-table__cell">Name_of_document.doc</td>
+        <td class="govuk-table__cell">Document-photo.doc</td>
               <td class="govuk-table__cell">400Bytes</td>
               <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--yellow">
                   Processing
                 </strong>
              </td>
               <td class="govuk-table__cell">
-                    <a href="/bulkevidence/confirm-remove-file-row-2?filetype=xml">Remove</a>
+                    <a href="#">Delete</a>
               </td>
             </tr>
 
 
 
             <tr class="govuk-table__row govuk-table__row--selected">
-        <td class="govuk-table__cell">Name_of_document.doc</td>
+        <td class="govuk-table__cell">inspector_report.pdf</td>
               <td class="govuk-table__cell">350Bytes</td>
-              <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--yellow">
-                  Processing
+              <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">
+                  CHECKED
                 </strong>
              </td>
               <td class="govuk-table__cell">
-                    <a href="/bulkreport/bulk-submission-report-list?dataissues=1&correctedissues=0&removerowissue=0">Remove</a>
+                    <a href="#">Delete</a>
               </td>
             </tr>
 
-
+<!--
             <tr class="govuk-table__row govuk-table__row--selected">
         <td class="govuk-table__cell">Housing_info_01.doc</td>
               <td class="govuk-table__cell">450Bytes</td>
@@ -609,7 +628,7 @@
                     <a href="/bulkreport/bulk-submission-report-list?dataissues=0">Remove</a>
               </td>
             </tr>
-
+-->
 
 
           </tbody>
@@ -619,7 +638,7 @@
 
           <form method="post" novalidate action="/bulkevidence/upload-bulk-file-1">
 
-            <div class="govuk-!-margin-left-2 govuk-!-margin-top-4 govuk-!-margin-bottom-8">
+          <!--  <div class="govuk-!-margin-left-2 govuk-!-margin-top-4 govuk-!-margin-bottom-8">
             <nav class="moj-pagination" id="pagination-label">
 
               <p class="moj-pagination__results">Showing <b>1</b> to <b>20</b> of <b>90</b> results</p>
@@ -647,10 +666,10 @@
                     </ul>
 
               </nav>
-            </div>
+            </div>-->
 
 
-            <p>If you want to upload supporting documents to another report</p>
+          
 
 
             <div class="govuk-button-group">
@@ -767,17 +786,18 @@
   </div>
 
 
- <div class="govuk-button-group govuk-!-margin-top-9">
+ <div class="govuk-button-group govuk-!-margin-top-3">
 
 
 
-		<form action="/bulkevidence/bulk-view-outstanding-reports1" method="post" class="form" id="updates-form">
+		
 
+ <a href="/bulkevidence/bulk-view-outstanding-reports1?pending=1">
+                 <button class="govuk-button" data-module="govuk-button">
+                   Return to reports
+                 </button>
 
-              <button class="govuk-button" name="deletefile" id="deletefile" value="1">
-              Return to outstanding reports
-            </button>
-	 </form>
+             </a>
 
 
  </div>

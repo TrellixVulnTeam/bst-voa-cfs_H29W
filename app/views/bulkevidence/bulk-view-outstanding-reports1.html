@@ -31,11 +31,21 @@
           <label class="govuk-heading-xl" for="event-name">
           <!-- pagetitle widget for excel filetype -->
 
-                 Outstanding Reports
+                Add supporting documents
 
           </label>
 
-            <p class="govuk-!-padding-bottom-6">You can attach multiple evidence against the property requests.</p>
+            <p class="govuk-body">These are your outstanding reports. Add supporting documents for review by the Valuation Office
+Agency. Once they are reviewed and accepted reports will be removed from this list and added to the
+schedules. This process usually takes about 90 days.</p>
+		
+		
+		<p class="govuk-body">In each report, you can:</p>
+							<ul class="govuk-list govuk-list--bullet">
+							  <li>view uploaded supporting documents and each document's current status</li>
+							  <li>send a message to the Valuation Office Agency regarding the report</li>
+							  <li>view messages from the Valuation Office Agency about the report</li>
+							</ul>
 
      <!--  <table class="govuk-table" data-module="moj-multi-select"  data-multi-select-checkbox="#select-all">
 -->
@@ -53,11 +63,13 @@
 
 
 
-
-              <th scope="col" class="govuk-table__header" aria-sort="none">Row</th>
-            <th scope="col" class="govuk-table__header" aria-sort="none">Billing authority reference number</th>
-            <th scope="col" class="govuk-table__header" aria-sort="none">Documents status</th>
-            <th scope="col" class="govuk-table__header" aria-sort="">Addtional information</th>
+			<th scope="col" class="govuk-table__header" aria-sort="none" width="25%">Billing authority reference number</th>
+             <th scope="col" class="govuk-table__header" aria-sort="none" width="20%">Date created</th>
+            
+			  <th scope="col" class="govuk-table__header" aria-sort="none" width="15%">Postcode</th>
+			   <th scope="col" class="govuk-table__header" aria-sort="none" width="15%">Supporting documents</th>
+            <!--<th scope="col" class="govuk-table__header" aria-sort="none">Documents status</th>-->
+            <th scope="col" class="govuk-table__header" aria-sort="">Action</th>
             <!--<th scope="col" class="govuk-table__header" aria-sort="none">Action</th>-->
           </tr>
         </thead>
@@ -67,275 +79,202 @@
 
 
 <!--FROM HERE BELOW IS WHERE THE CODE HAS BEEN EDITED-->
+	{%if data['pending'] == 1 %}
+			
+		 <tr class="govuk-table__row govuk-table__row--selected">
+           
+            <td class="govuk-table__cell">06002874006006</td>
+			  <td class="govuk-table__cell">25 Apr 2022 14:45</td>
+			<td class="govuk-table__cell">DN22 6SB</td>
+			<td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--yellow">
+	               				 Pending
+	             			 	  </strong></td>
+            <td class="govuk-table__cell"><a href="/requests-for-information/ba-report-details?deletedfilename=0&deletefile=0#supporting-documents">View supporting documents</a>
+            <!--< <a href="/requests-for-information/ba-report-details#updates">Updates</a>
+            td class="govuk-table__cell">Edit property request</td>-->
+          </tr>	
+	{%	else	%}
 
           <tr class="govuk-table__row govuk-table__row--selected">
-           <!-- <td class="govuk-table__cell">
-              <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
-                <input type="checkbox" class="govuk-checkboxes__input" id="mountain-aconcagua">
-                <label class="govuk-label govuk-checkboxes__label" for="mountain-aconcagua">
-                  <span class="govuk-visually-hidden">Select Aconcagua</span>
-                </label>
-              </div>
-            </td>-->
-            <td class="govuk-table__cell">1</td>
-            <td class="govuk-table__cell"><a href="/requests-for-information/ba-report-details#report-details">06002874006006</a></td>
-            <td class="govuk-table__cell"></td>
-            <td class="govuk-table__cell"><a href="upload-bulk-file-1">Supporting documents</a>
-             <a href="/requests-for-information/ba-report-details#updates">Updates</a>
-            <!--<td class="govuk-table__cell">Edit property request</td>-->
+           
+            <td class="govuk-table__cell">06002874006006</td>
+			  <td class="govuk-table__cell">25 Apr 2022 14:45</td>
+			<td class="govuk-table__cell">DN22 6SB</td>
+			<td class="govuk-table__cell">0</td>
+            <td class="govuk-table__cell"><a href="upload-bulk-evidence?filecount=0&deletefile=0&filerow=0">Add supporting documents</a>
+            <!--< <a href="/requests-for-information/ba-report-details#updates">Updates</a>
+            td class="govuk-table__cell">Edit property request</td>-->
           </tr>
+			
+	{%	endif	%}
 
           <tr class="govuk-table__row govuk-table__row--selected">
-            <!--<td class="govuk-table__cell">
-              <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
-                <input type="checkbox" class="govuk-checkboxes__input" id="mountain-aconcagua">
-                <label class="govuk-label govuk-checkboxes__label" for="mountain-aconcagua">
-                  <span class="govuk-visually-hidden">Select Aconcagua</span>
-                </label>
-              </div>
-            </td>-->
-            <td class="govuk-table__cell">2</td>
-            <td class="govuk-table__cell"><a href="#">06002874006006</a></td>
-            <td class="govuk-table__cell"></td>
-            <td class="govuk-table__cell"><a href="upload-bulk-file-1">Supporting documents</a>
-             <a href="/requests-for-information/ba-report-details#updates">Updates</a></td>
-            <!--<td class="govuk-table__cell">Edit property request</td>-->
-          </tr>
 
-
-          <tr class="govuk-table__row govuk-table__row--selected">
-           <!-- <td class="govuk-table__cell">
-              <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
-                <input type="checkbox" class="govuk-checkboxes__input" id="mountain-aconcagua">
-                <label class="govuk-label govuk-checkboxes__label" for="mountain-aconcagua">
-                  <span class="govuk-visually-hidden">Select Aconcagua</span>
-                </label>
-              </div>
-            </td>-->
-            <td class="govuk-table__cell">3</td>
-            <td class="govuk-table__cell"><a href="#">06002874005456</a></td>
-            <td class="govuk-table__cell"></td>
-            <td class="govuk-table__cell"><a href="upload-bulk-file-1">Supporting documents</a>
-             <a href="/requests-for-information/ba-report-details#updates">Updates</a></td>
-            <!--<td class="govuk-table__cell">Edit property request</td>-->
-          </tr>
-
-          <tr class="govuk-table__row govuk-table__row--selected">
-            <!--<td class="govuk-table__cell">
-              <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
-                <input type="checkbox" class="govuk-checkboxes__input" id="mountain-aconcagua">
-                <label class="govuk-label govuk-checkboxes__label" for="mountain-aconcagua">
-                  <span class="govuk-visually-hidden">Select Aconcagua</span>
-                </label>
-              </div>
-            </td>-->
-            <td class="govuk-table__cell">4</td>
-            <td class="govuk-table__cell"><a href="#">06002874005786</a></td>
-            <td class="govuk-table__cell"></td>
-          <td class="govuk-table__cell"><a href="upload-bulk-file-1">Supporting documents</a>
-             <a href="/requests-for-information/ba-report-details#updates">Updates</a></td>
-           <!--<td class="govuk-table__cell">Edit property request</td>-->
+          
+            <td class="govuk-table__cell">06002874005326</td>
+			   <td class="govuk-table__cell">25 Apr 2022 14:45</td>
+			<td class="govuk-table__cell">FK5 3JU</td>
+			  <td class="govuk-table__cell">0</td>
+            <td class="govuk-table__cell"><a href="upload-bulk-evidence?filecount=0&deletefile=0&filerow=0">Add supporting documents</a>
+            <!-- <a href="/requests-for-information/ba-report-details#updates">Updates</a></td>
+            <td class="govuk-table__cell">Edit property request</td>-->
           </tr>
 
 
           <tr class="govuk-table__row govuk-table__row--selected">
-           <!-- <td class="govuk-table__cell">
-              <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
-                <input type="checkbox" class="govuk-checkboxes__input" id="mountain-aconcagua">
-                <label class="govuk-label govuk-checkboxes__label" for="mountain-aconcagua">
-                  <span class="govuk-visually-hidden">Select Aconcagua</span>
-                </label>
-              </div>
-            </td>-->
-            <td class="govuk-table__cell">5</td>
-            <td class="govuk-table__cell"><a href="#">06002874005896</a></td>
-            <td class="govuk-table__cell"></td>
-            <td class="govuk-table__cell"><a href="upload-bulk-file-1">Supporting documents</a>
-             <a href="/requests-for-information/ba-report-details#updates">Updates</a></td>
-            <!--<td class="govuk-table__cell">Edit property request</td>-->
+
+
+
+            <td class="govuk-table__cell">06002874005327</td>
+			  <td class="govuk-table__cell">25 Apr 2022 14:45</td>
+			<td class="govuk-table__cell">W13 8AE</td>
+			  <td class="govuk-table__cell">0</td>
+            <td class="govuk-table__cell"><a href="upload-bulk-evidence?filecount=0&deletefile=0&filerow=0">Add supporting documents</a>
+            <!-- <a href="/requests-for-information/ba-report-details#updates">Updates</a>--></td>
+
           </tr>
 
+          <tr class="govuk-table__row govuk-table__row--selected">
+
+
+			
+            <td class="govuk-table__cell">06002874005328</td>
+			  <td class="govuk-table__cell">25 Apr 2022 14:45</td>
+			<td class="govuk-table__cell">TF1 6TT</td>
+			  <td class="govuk-table__cell">0</td>
+          <td class="govuk-table__cell"><a href="upload-bulk-evidence?filecount=0&deletefile=0&filerow=0">Add supporting documents</a>
+            <!-- <a href="/requests-for-information/ba-report-details#updates">Updates</a>-->
+
+		    </td>
+
+          </tr>
+
+
+          <tr class="govuk-table__row govuk-table__row--selected">
+
+
+           
+            <td class="govuk-table__cell">06002874005329</td>
+			  <td class="govuk-table__cell">25 Apr 2022 14:45</td>
+			<td class="govuk-table__cell">ST6 3NW</td>
+			  <td class="govuk-table__cell">0</td>
+            <td class="govuk-table__cell"><a href="upload-bulk-evidence?filecount=0&deletefile=0&filerow=0">Add supporting documents</a>
+            <!-- <a href="/requests-for-information/ba-report-details#updates">Updates</a>-->
+
+			  </td>
+
+          </tr>
+<!--
 		  <tr class="govuk-table__row govuk-table__row--selected">
-        <!--<td class="govuk-table__cell">
-          <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
-            <input type="checkbox" class="govuk-checkboxes__input" id="mountain-aconcagua">
-            <label class="govuk-label govuk-checkboxes__label" for="mountain-aconcagua">
-              <span class="govuk-visually-hidden">Select Aconcagua</span>
-            </label>
-          </div>
-        </td>-->
+
         <td class="govuk-table__cell">6</td>
             <td class="govuk-table__cell"><a href="#">06002874005036</a></td>
             <td class="govuk-table__cell"></td>
             <td class="govuk-table__cell"><a href="upload-bulk-file-1">Supporting documents</a>
              <a href="/requests-for-information/ba-report-details#updates">Updates</a></td>
-            <!--<td class="govuk-table__cell">Edit property request</td>-->
+
           </tr>
 
 		  <tr class="govuk-table__row govuk-table__row--selected">
-       <!-- <td class="govuk-table__cell">
-          <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
-            <input type="checkbox" class="govuk-checkboxes__input" id="mountain-aconcagua">
-            <label class="govuk-label govuk-checkboxes__label" for="mountain-aconcagua">
-              <span class="govuk-visually-hidden">Select Aconcagua</span>
-            </label>
-          </div>
-        </td>-->
+
         <td class="govuk-table__cell">7</td>
             <td class="govuk-table__cell"><a href="#">06002874005986</a></td>
             <td class="govuk-table__cell"></td>
             <td class="govuk-table__cell"><a href="upload-bulk-file-1">Supporting documents</a>
              <a href="/requests-for-information/ba-report-details#updates">Updates</a></td>
-            <!--<td class="govuk-table__cell">Edit property request</td>-->
+
           </tr>
 
 		  <tr class="govuk-table__row govuk-table__row--selected">
-        <!--<td class="govuk-table__cell">
-          <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
-            <input type="checkbox" class="govuk-checkboxes__input" id="mountain-aconcagua">
-            <label class="govuk-label govuk-checkboxes__label" for="mountain-aconcagua">
-              <span class="govuk-visually-hidden">Select Aconcagua</span>
-            </label>
-          </div>
-        </td>-->
+
         <td class="govuk-table__cell">8</td>
             <td class="govuk-table__cell"><a href="#">06002874005426</a></td>
             <td class="govuk-table__cell"></td>
              <td class="govuk-table__cell"><a href="upload-bulk-file-1">Supporting documents</a>
              <a href="/requests-for-information/ba-report-details#updates">Updates</a></td>
-              <!--<td class="govuk-table__cell">Edit property request</td>-->
+
           </tr>
 
 	     <tr class="govuk-table__row govuk-table__row--selected">
-           <!--<td class="govuk-table__cell">
-             <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
-               <input type="checkbox" class="govuk-checkboxes__input" id="mountain-aconcagua">
-               <label class="govuk-label govuk-checkboxes__label" for="mountain-aconcagua">
-                 <span class="govuk-visually-hidden">Select Aconcagua</span>
-               </label>
-             </div>
-           </td>-->
+
            <td class="govuk-table__cell">9</td>
                   <td class="govuk-table__cell"><a href="#">06002874005936</a></td>
                   <td class="govuk-table__cell"></td>
       <td class="govuk-table__cell"><a href="upload-bulk-file-1">Supporting documents</a>
              <a href="/requests-for-information/ba-report-details#updates">Updates</a></td>
-                  <!--<td class="govuk-table__cell">Edit property request</td>-->
+
           </tr>
 
 
 
           <tr class="govuk-table__row govuk-table__row--selected">
-              <!--<td class="govuk-table__cell">
-                <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
-                  <input type="checkbox" class="govuk-checkboxes__input" id="mountain-aconcagua">
-                  <label class="govuk-label govuk-checkboxes__label" for="mountain-aconcagua">
-                    <span class="govuk-visually-hidden">Select Aconcagua</span>
-                  </label>
-                </div>
-              </td>-->
+
               <td class="govuk-table__cell">10</td>
                      <td class="govuk-table__cell"><a href="#">06002874007896</a></td>
                      <td class="govuk-table__cell"></td>
                       <td class="govuk-table__cell"><a href="upload-bulk-file-1">Supporting documents</a>
              <a href="/requests-for-information/ba-report-details#updates">Updates</a></td>
-                      <!--<td class="govuk-table__cell">Edit property request</td>-->
+
              </tr>
 
 
              <tr class="govuk-table__row govuk-table__row--selected">
-                 <!--<td class="govuk-table__cell">
-                   <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
-                     <input type="checkbox" class="govuk-checkboxes__input" id="mountain-aconcagua">
-                     <label class="govuk-label govuk-checkboxes__label" for="mountain-aconcagua">
-                       <span class="govuk-visually-hidden">Select Aconcagua</span>
-                     </label>
-                   </div>
-                 </td>-->
+
                  <td class="govuk-table__cell">11</td>
                         <td class="govuk-table__cell"><a href="#">06002874005979</a></td>
                         <td class="govuk-table__cell"></td>
                         <td class="govuk-table__cell"><a href="upload-bulk-file-1">Supporting documents</a>
              <a href="/requests-for-information/ba-report-details#updates">Updates</a></td>
-                        <!--<td class="govuk-table__cell">Edit property request</td>-->
-                </tr>
+
 
 
 	   <tr class="govuk-table__row govuk-table__row--selected">
-                 <!--<td class="govuk-table__cell">
-                   <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
-                     <input type="checkbox" class="govuk-checkboxes__input" id="mountain-aconcagua">
-                     <label class="govuk-label govuk-checkboxes__label" for="mountain-aconcagua">
-                       <span class="govuk-visually-hidden">Select Aconcagua</span>
-                     </label>
-                   </div>
-                 </td>-->
+
                  <td class="govuk-table__cell">12</td>
                         <td class="govuk-table__cell"><a href="#">06002874005979</a></td>
                         <td class="govuk-table__cell"></td>
                        <td class="govuk-table__cell"><a href="upload-bulk-file-1">Supporting documents</a>
              <a href="/requests-for-information/ba-report-details#updates">Updates</a></td>
-                        <!--<td class="govuk-table__cell">Edit property request</td>-->
+
                 </tr>
 
 
 	   <tr class="govuk-table__row govuk-table__row--selected">
-                 <!--<td class="govuk-table__cell">
-                   <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
-                     <input type="checkbox" class="govuk-checkboxes__input" id="mountain-aconcagua">
-                     <label class="govuk-label govuk-checkboxes__label" for="mountain-aconcagua">
-                       <span class="govuk-visually-hidden">Select Aconcagua</span>
-                     </label>
-                   </div>
-                 </td>-->
+
                  <td class="govuk-table__cell">13</td>
                         <td class="govuk-table__cell"><a href="#">06002874005979</a></td>
                         <td class="govuk-table__cell"></td>
                        <td class="govuk-table__cell"><a href="upload-bulk-file-1">Supporting documents</a>
              <a href="/requests-for-information/ba-report-details#updates">Updates</a></td>
-                        <!--<td class="govuk-table__cell">Edit property request</td>-->
+
                 </tr>
 
 	   <tr class="govuk-table__row govuk-table__row--selected">
-                 <!--<td class="govuk-table__cell">
-                   <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
-                     <input type="checkbox" class="govuk-checkboxes__input" id="mountain-aconcagua">
-                     <label class="govuk-label govuk-checkboxes__label" for="mountain-aconcagua">
-                       <span class="govuk-visually-hidden">Select Aconcagua</span>
-                     </label>
-                   </div>
-                 </td>-->
+
                  <td class="govuk-table__cell">14</td>
                         <td class="govuk-table__cell"><a href="#">06002874005979</a></td>
                         <td class="govuk-table__cell"></td>
                        <td class="govuk-table__cell"><a href="upload-bulk-file-1">Supporting documents</a>
              <a href="/requests-for-information/ba-report-details#updates">Updates</a></td>
-                        <!--<td class="govuk-table__cell">Edit property request</td>-->
+
                 </tr>
 
 	   <tr class="govuk-table__row govuk-table__row--selected">
-                 <!--<td class="govuk-table__cell">
-                   <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
-                     <input type="checkbox" class="govuk-checkboxes__input" id="mountain-aconcagua">
-                     <label class="govuk-label govuk-checkboxes__label" for="mountain-aconcagua">
-                       <span class="govuk-visually-hidden">Select Aconcagua</span>
-                     </label>
-                   </div>
-                 </td>-->
+
                  <td class="govuk-table__cell">15</td>
                         <td class="govuk-table__cell"><a href="#">06002874005979</a></td>
                         <td class="govuk-table__cell"></td>
                    <td class="govuk-table__cell"><a href="upload-bulk-file-1">Supporting documents</a>
              <a href="/requests-for-information/ba-report-details#updates">Updates</a></td>
-                        <!--<td class="govuk-table__cell">Edit property request</td>-->
-                </tr>
 
+                </tr>
+-->
 
 
         </tbody>
       </table>
 
-      <div class="govuk-!-margin-left-2 govuk-!-margin-top-4 govuk-!-margin-bottom-8">
+    <!--  <div class="govuk-!-margin-left-2 govuk-!-margin-top-4 govuk-!-margin-bottom-8">
       <nav class="moj-pagination" id="pagination-label">
 
         <p class="moj-pagination__results">Showing <b>1</b> to <b>20</b> of <b>90</b> results</p>
@@ -363,7 +302,7 @@
               </ul>
 
         </nav>
-      </div>
+      </div>-->
 
 
 

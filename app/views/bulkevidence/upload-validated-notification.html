@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  Upload an XML file of reports
+ We are now checking the documents
 {% endblock %}
 
 {% block beforeContent %}
@@ -23,29 +23,35 @@
     <div class="govuk-grid-column-two-thirds">
 
       <div class="govuk-panel govuk-panel--confirmation" style="background-color:#003078">
-        <h1 class="govuk-panel__title">Your uploaded supporting documents are being validated
+        <h1 class="govuk-panel__title">We are now checking the documents
  </h1>
         <div class="govuk-panel__body">
-         You will receive an email once validation is complete
+        You will receive an email if there are any issues with these files
         </div>
       </div>
 
-      <div class="govuk-button-group govuk-!-margin-bottom-8">
+      <div class="govuk-button-group govuk-!-margin-bottom-4">
       <h2 class="govuk-heading-m">What happens next</h2>
-       	 <p>Uploaded supporting documents can take up to [X] minutes to validate. During this time, each document will be scanned for viruses and checked for file issues.</p>
+       	 <p class="govuk-body">
+		
+			Checking uploaded files can take up to [X] minutes. You can close this window.
+		</p>
 
-         <p>Once the process of validation is complete, you will be notified by email.</p>
 
-         <p>You may then need to correct and re-upload any files that have failed validation.
-           You can upload more supporting documents for this or other reports by returning to the Outstanding reports page.</p>
+      <h2 class="govuk-heading-m">What happens next</h2>
+       	 <p class="govuk-body">You can close this window or return to your reports to continue adding supporting documents to this
+report, or other reports.</p>
+		
+		<p class="govuk-body">You will receive an email if there are any issues with your upload. If there is, you may need to correct
+and re-upload some files if they do not meet requirements or contain errors.</p>
 
          </div>
 
-           <p>You can upload more evidence here. </p>
+          
 
-             <a href="/bulkevidence/bulk-view-outstanding-reports2">
+             <a href="/bulkevidence/bulk-view-outstanding-reports1?pending=1">
                  <button class="govuk-button" data-module="govuk-button">
-                   Return to Oustanding reports
+                   Return to reports
                  </button>
 
              </a>
