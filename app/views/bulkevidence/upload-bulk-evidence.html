@@ -28,9 +28,11 @@ Upload Bulk evidence
 								deletefile {{data['deletefile']}}
 -->
 
+
+
  {%if data['deletefile']!=null  %}
 
-	 {%if ((data['deletedfilename'] != "") and (data['deletefile'])==1)  %}
+	 {%if ((data['deletedfilename'] != "") and (data['action'] == "remove"))  %}
 
 					<div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
 					  <div class="govuk-notification-banner__header">
@@ -81,7 +83,7 @@ Upload Bulk evidence
 
 
 
-	{%if ((data['filecount'] != 0)and (data['deletefile'] != 1)) %}
+	{%if ((data['filecount'] != 0)and (data['action'] == "add")) %}
 						<div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
 									<div class="govuk-notification-banner__header">
 									<h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">

@@ -658,42 +658,46 @@ router.post('/bulkevidence/upload-bulk-evidence', function (req, res) {
 
 	 var filecount = req.session.data['filecount']
 
-  // Make a variable and give it the value from 'how-many-balls'
+ var add_evidence = req.session.data['add_evidence']
 
-//  var requestreason = req.session.data['requestreason']
-//console.log("requestreason = " +requestreason )
-  // Check whether the variable matches a condition
+var cancel_add_evidence = req.session.data['cancel_add_evidence']
 
 
-    // Send user to ineligible page
+var document_description = req.session.data['document_description']
 
-	 console.log("filecount"+filecount)
+if(add_evidence="add")
 
-	if(filecount==0)
-    {
-		res.redirect('/bulkevidence/upload-bulk-evidence?filetype='+filetype+'&filecount=1&deletefile=0&filerow=0')
-	}
-	else if(filecount==1)
-		{
+{
+      	 console.log("desc="+document_description+"---add = "+add_evidence+ " - cancel" + cancel_add_evidence)
 
-		res.redirect('/bulkevidence/upload-bulk-evidence?filetype='+filetype+'&filecount=2&deletefile=0&filerow=0')
+      	if(filecount==0)
+          {
+      		res.redirect('/bulkevidence/upload-bulk-evidence?filetype='+filetype+'&filecount=1&deletefile=0&filerow=0&action=add')
+      	}
+      	else if(filecount==1)
+      		{
 
-		}
+      		res.redirect('/bulkevidence/upload-bulk-evidence?filetype='+filetype+'&filecount=2&deletefile=0&filerow=0&action=add')
 
-	else if(filecount==2)
-		{
+      		}
 
-		res.redirect('/bulkevidence/upload-bulk-evidence?filetype='+filetype+'&filecount=3&deletefile=0&filerow=0')
+      	else if(filecount==2)
+      		{
 
-		}
+      		res.redirect('/bulkevidence/upload-bulk-evidence?filetype='+filetype+'&filecount=3&deletefile=0&filerow=0&action=add')
 
-	else if((filecount==3) && (deletefile==1))
-		{
+      		}
 
-		res.redirect('/bulkevidence/upload-bulk-evidence?filetype='+filetype+'&filecount=3&deletefile=0&filerow=0')
+      	else if((filecount==3) && (deletefile==1))
+      		{
 
-		}
+      		res.redirect('/bulkevidence/upload-bulk-evidence?filetype='+filetype+'&filecount=3&deletefile=0&filerow=0&action=add')
 
+      		}
+}
+else {
+
+}
 
 })
 
@@ -729,14 +733,14 @@ router.post('/bulkevidence/confirm-remove-file-row', function (req, res) {
           if(filecount==1)
           {
 
-              res.redirect('/bulkevidence/upload-bulk-evidence?filecount=0&deletefile=1&filerow='+filerow)
+              res.redirect('/bulkevidence/upload-bulk-evidence?filecount=0&deletefile=1&filerow='+filerow+'&action=remove')
 
           }
           else if(filecount>1)
           {
 
             var new_filecount = filecount-1
-            res.redirect('/bulkevidence/upload-bulk-evidence?filecount='+new_filecount+'&deletefile=1&filerow='+filerow)
+            res.redirect('/bulkevidence/upload-bulk-evidence?filecount='+new_filecount+'&deletefile=1&filerow='+filerow+'&action=remove')
 
           }
 
@@ -746,7 +750,7 @@ router.post('/bulkevidence/confirm-remove-file-row', function (req, res) {
 		   else
 			{
         console.log("in no")
-			  res.redirect('/bulkevidence/upload-bulk-evidence?filecount='+filecount+'&deletefile=0')
+			  res.redirect('/bulkevidence/upload-bulk-evidence?filecount='+filecount+'&deletefile=0&action=0&filerow=0')
 
 			}
 

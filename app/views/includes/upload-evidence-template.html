@@ -10,11 +10,11 @@
         </label>
 
 
-		  
-		  
-		   
 
-				
+
+
+
+
 								<!-- details widget for xml filetype -->
 								<details class="govuk-details" data-module="govuk-details">
 										<summary class="govuk-details__summary">
@@ -30,11 +30,11 @@
 
 													   <li>in JPG, PNG, PDF format</li>
 
-													
+
 
 												</ul>
-											
-											
+
+
 											<p class="govuk-body">Examples of supporting information include:</p>
 												<ul class="govuk-list govuk-list--bullet">
 													 <li>an inspector’s report</li>
@@ -72,17 +72,17 @@
 					{% from "govuk/components/button/macro.njk" import govukButton %}
 					{% from "govuk/components/select/macro.njk" import govukSelect %}
 
-					
+
 					<!--how can i make this not the default when User first views page?-->
 
 					</div>
 
-				
+
 					<!--what can I use instead <br> to have space between components?-->
 
 					{{ govukCharacterCount({
-			        name: "with-hint",
-			        id: "with-hint",
+			        name: "document_description",
+			        id: "document_description",
 			        maxlength: 500,
 			        label: {
 			          text: "Document description(optional)",
@@ -96,11 +96,14 @@
 
 					<div class="govuk-button-group">
 
-				  <button class="govuk-button" data-module="govuk-button">
-				    Add 
-				  </button>
 
-				  <button class="govuk-button govuk-button--secondary" data-module="govuk-button">
+
+          <button class="govuk-button" data-module="govuk-button" id="add_evidence" name="add_evidence" value="add">
+          Add
+          </button>
+
+
+				  <button class="govuk-button govuk-button--secondary" data-module="govuk-button" id="cancel_add_evidence" name="cancel_add_evidence" value="cancel">
 				    Cancel
 				  </button>
 				</div>
