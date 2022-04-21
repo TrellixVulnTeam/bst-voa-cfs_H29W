@@ -1,0 +1,139 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Your upload contains errors
+{% endblock %}
+
+{% block beforeContent %}
+
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-one-third">
+			{{ govukBackLink({
+			  text: "Back",
+			  href: "javascript:window.history.back()"
+			}) }}
+		</div>
+		{% include "includes/header-section-signedin.html" %}
+	</div>
+{% endblock %}
+{% block content %}
+
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="/bulkevidence/failed-upload-evidence-error" method="post" class="form">
+      <div class="govuk-form-group">
+        <label class="govuk-heading-xl" for="event-name">
+      Your upload contains errors
+        </label>
+	<p class="govuk-body">
+		  Delete the file, fix the errors and then upload the file again.
+
+		  </p>
+
+       <table class="govuk-table" data-module="moj-sortable-table">
+	   <!--<table class="govuk-table" data-module="moj-sortable-table">-->
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+        <!-- <th class="govuk-table__header" class="govuk-table__header" aria-sort="none">Filename</th>-->
+		 <th class="govuk-table__header" class="govuk-table__header">File</th>
+           <!-- <th scope="col" class="govuk-table__header" aria-sort="ascending">File issues</th>-->
+		<th scope="col" class="govuk-table__header">File errors</th>
+
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+          <tr class="govuk-table__row govuk-table__row--selected">
+			<td class="govuk-table__cell">
+
+					{{	data['filename']}}
+
+
+
+
+			</td>
+            <td class="govuk-table__cell">File is corrupt</td>
+
+          </tr>
+
+		</table>
+
+
+
+
+
+
+
+
+
+          <div class="govuk-width-container">
+            <div class="govuk-grid-row">
+            <div class="govuk-grid-column-full">
+
+
+
+
+            	  <p><a href="#">Read guidance on fixing file errors (opens in a new window or tab)</a></p>
+
+            </div>
+            </div>
+          </div>
+
+
+
+
+
+
+            </div>
+
+<p class="govuk-body">
+
+
+						<a href="#" target="_blank">Download the list of file errors as an Excel file</a>.
+
+
+					</p>
+
+            <div class="govuk-button-group">
+
+
+
+
+							<button class="govuk-button govuk-button--secondary" data-module="govuk-button">
+	    					Print this page
+	  					</button>
+
+              <button class="govuk-button" name="deletefile" id="deletefile" value="1">
+              Delete the file
+            </button>
+
+
+            </div>
+
+
+  			<div class="govuk-width-container">
+  			  <div class="govuk-grid-row">
+  				<div class="govuk-grid-column-two-thirds">
+  				  <p><a href="#">Get help with this page</a></p>
+  				</div>
+  			  </div>
+  			</div>
+
+
+          </form>
+
+
+
+  </div>
+</div>
+
+
+
+
+
+
+
+
+{% endblock %}

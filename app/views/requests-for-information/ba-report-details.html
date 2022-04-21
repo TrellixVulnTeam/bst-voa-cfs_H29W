@@ -21,10 +21,10 @@
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-full">
-	  
-	  
-	  
-	  {%if ((data['deletedfilename'] != "") and (data['deletefile'])!=0)  %}
+
+
+
+	  {%if ((data['deletedfilename'] != "") and (data['action'])=="delete")  %}
 
 					<div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
 					  <div class="govuk-notification-banner__header">
@@ -34,7 +34,7 @@
 					  </div>
 					  <div class="govuk-notification-banner__content">
 						<h3 class="govuk-notification-banner__heading">
-						  You have deleted the document "{{data['deletedfilename']}}".
+						  You have deleted "{{data['deletedfilename']}}".
 						</h3>
 
 					  </div>
@@ -59,14 +59,14 @@
       </a>
     </li>
     <li class="govuk-tabs__list-item">
-      <a class="govuk-tabs__tab" href="#supporting-documents">
+      <a class="govuk-tabs__tab" href="/requests-for-information/ba-report-details?deletedfilename=0&deletefile=0#supporting-documents">
       Supporting documents
       </a>
     </li>
 
 		<li class="govuk-tabs__list-item">
-			<a class="govuk-tabs__tab" href="#updates">
-			Updates
+			<a class="govuk-tabs__tab" href="#Messages">
+			Messages
 			</a>
 		</li>
 
@@ -421,7 +421,7 @@
 
   <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="supporting-documents">
 
-			<h2 class="govuk-heading-l">Supporting Documents</h2>
+			<h2 class="govuk-heading-l">Supporting documents</h2>
 
 <!--TABLE CONTENT BELOW-->
 
@@ -435,7 +435,7 @@
                   </summary>
                   <div class="govuk-details__text">
 
-                   
+
                     <ul>
 
                       <li class="govuk-!-margin-top-3 govuk-!-margin-bottom-3">
@@ -452,7 +452,7 @@
                      </strong>
 
                        The file is corrupt, has a virus, or an issue with its structure. You will need
-to remove the file and then correct any errors before re-uploading it.
+to remove the file and correct any errors before re-uploading it.
             </li>
 
 
@@ -461,7 +461,7 @@ to remove the file and then correct any errors before re-uploading it.
                          CHECKED
                      </strong>
 
-                      The document has been checked and is ready for submission.
+                      The document has been accepted and added to the report.
 
               </li>
 
@@ -493,11 +493,11 @@ to remove the file and then correct any errors before re-uploading it.
             </tr>
           </thead>
           <tbody class="govuk-table__body">
-			  
-			
-			  
+
+
+
 	  {%if ((data['deletedfilename'] == 0) and (data['deletefile'])==0)  %}
-			  
+
             <tr class="govuk-table__row govuk-table__row--selected">
         <td class="govuk-table__cell">Planning_document.doc</td>
               <td class="govuk-table__cell">512Bytes</td>
@@ -515,12 +515,12 @@ to remove the file and then correct any errors before re-uploading it.
             <tr class="govuk-table__row govuk-table__row--selected">
         <td class="govuk-table__cell">Document-photo.doc</td>
               <td class="govuk-table__cell">400Bytes</td>
-              <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--yellow">
-                  Processing
+              <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--red">
+                  FILE ERROR
                 </strong>
              </td>
               <td class="govuk-table__cell">
-                    <a href="#">Delete</a>
+                    <a href="/bulkevidence/failed-upload-evidence-error?filename=document_photo.doc&property={{data['property']}}">View errors</a>
               </td>
             </tr>
 
@@ -669,7 +669,7 @@ to remove the file and then correct any errors before re-uploading it.
             </div>-->
 
 
-          
+
 
 
             <div class="govuk-button-group">
@@ -699,17 +699,22 @@ to remove the file and then correct any errors before re-uploading it.
 
   <!--CODE FOR UPDATES TAB-->
 
-	<div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="updates">
+	<div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="Messages">
 
-			<h2 class="govuk-heading-l">Updates</h2>
+			<h2 class="govuk-heading-l">Messages</h2>
 
+
+      <P class="govuk-body">
+          Send the Valuation Office Agency a message about this report.
+
+      </p>
 
 
 			<form action="/docs/examples/pass-data/vehicle-features" method="post" class="form" id="updates-form">
 
         <div class="govuk-!-margin-2 govuk-!-margin-bottom-6 govuk-!-padding-top-2 ">
 
-          <h3 class="govuk-heading-m">Add an update</h3>
+
           <div class="govuk-form-group">
             <label class="govuk-label govuk-label--s" for="subject">Subject</label>
             <input class="govuk-input" id="subject" name="subject" type="text">
@@ -724,31 +729,31 @@ to remove the file and then correct any errors before re-uploading it.
                             </label>
 
                     <div id="with-hint-hint" class="govuk-hint">
-                      Do not include personal or financial information.
+                      <!--Do not include personal or financial information.-->
                     </div>
                     <textarea class="govuk-textarea govuk-js-character-count" id="body" name="body" rows="5" aria-describedby="with-hint-info with-hint-hint"></textarea>
                   </div>
 
                   <div id="with-hint-info" class="govuk-hint govuk-character-count__message" aria-live="polite">
-                    You can enter up to 200 characters
+                    You can enter up to 500 characters
                   </div>
 
           </div>
 
-          <button type="button" class="govuk-button govuk-button--secondary" data-module="govuk-button" onclick="insertRow();">Add update</button>
+          <button type="button" class="govuk-button" data-module="govuk-button" onclick="insertRow();">Send Message</button>
 
         </div>
 
         <hr class="govuk-section-break govuk-section-break--l govuk-section-break--visible">
 
-        <h3 class="govuk-heading-m">Updates history</h3>
+        <h3 class="govuk-heading-m">Message history</h3>
         <table class="govuk-table" id="updates-history">
           <caption class="govuk-table__caption govuk-table__caption--m govuk-visually-hidden">Upload results</caption>
           <thead class="govuk-table__head">
             <tr class="govuk-table__row">
               <th scope="col" class="govuk-table__header">Date</th>
-              <th scope="col" class="govuk-table__header">Update</th>
-              <th scope="col" class="govuk-table__header">Created by</th>
+              <th scope="col" class="govuk-table__header">Message</th>
+              <th scope="col" class="govuk-table__header">Sent by</th>
               <th scope="col" class="govuk-table__header">Action</th>
             </tr>
           </thead>
@@ -790,7 +795,7 @@ to remove the file and then correct any errors before re-uploading it.
 
 
 
-		
+
 
  <a href="/bulkevidence/bulk-view-outstanding-reports1?pending=1">
                  <button class="govuk-button" data-module="govuk-button">

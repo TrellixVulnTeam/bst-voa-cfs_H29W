@@ -754,6 +754,10 @@ router.post('/bulkevidence/confirm-remove-file-row', function (req, res) {
 
 			}
 
+
+
+
+
 //	}
 	//else{
 
@@ -763,6 +767,75 @@ router.post('/bulkevidence/confirm-remove-file-row', function (req, res) {
 //	}
 
 
+
+})
+
+
+
+
+
+router.post('/bulkevidence/failed-upload-evidence-error', function (req, res) {
+
+
+
+
+  var filename = req.session.data['filename']
+  var property = req.session.data['property']
+
+
+
+
+  // Check whether the variable matches a condition
+
+    res.redirect('/bulkevidence/confirm-delete-evidence-error?filename='+filename+'&property='+property)
+
+
+})
+
+router.post('/bulkevidence/delete-evidence-confirmation', function (req, res) {
+
+
+
+
+  var filename = req.session.data['filename']
+  var property = req.session.data['property']
+
+
+
+
+  // Check whether the variable matches a condition
+
+    res.redirect('/bulkevidence/upload-bulk-evidence?action=0&filecount=0&deletefile=0&filerow=0&property='+property)
+
+
+})
+
+
+
+
+
+
+// Run this code when a form is submitted to 'select-file-format'
+router.post('/bulkevidence/confirm-delete-evidence-error', function (req, res) {
+
+
+
+  // Make a variable and give it the value from 'how-many-balls'
+  var confirmdeleteevidence = req.session.data['confirm-delete-evidence']
+  var filename = req.session.data['filename']
+  var property = req.session.data['property']
+
+  console.log(confirmdeleteevidence+'evidence')
+
+
+  // Check whether the variable matches a condition
+  if (confirmdeleteevidence == "yes"){
+    // Send user to next page
+    res.redirect('/bulkevidence/delete-evidence-confirmation?filename='+filename+'&property='+property)
+  } else if(confirmdeleteevidence == "no"){
+    // Send user to ineligible page
+    res.redirect('/bulkevidence/failed-upload-evidence-error?filename='+filename+'&property='+property)
+  }
 
 })
 
@@ -790,10 +863,10 @@ console.log("confirmfilename = " +confirmfilename )
 
 
     if (confirmdeleteevidence == "yes") {
-      res.redirect('/requests-for-information/ba-report-details?deletedfilename='+confirmfilename+'&deletefile=1#supporting-documents')
+      res.redirect('/requests-for-information/ba-report-details?deletedfilename='+confirmfilename+'&deletefile=1&action=delete#supporting-documents')
     }
     else {
-      res.redirect('/requests-for-information/ba-report-details?deletedfilename=0&deletefile=0#supporting-documents')
+      res.redirect('/requests-for-information/ba-report-details?deletedfilename=0&deletefile=0&action=0#supporting-documents')
     }
 
 

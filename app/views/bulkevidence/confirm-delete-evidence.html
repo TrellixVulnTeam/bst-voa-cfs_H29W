@@ -2,7 +2,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  Are you sure you want to delete the file?
+  Are you sure you want to delete this file?
 {% endblock %}
 
 {% block beforeContent %}
@@ -20,20 +20,20 @@
 
 {% block content %}
 
-{%if data['filenm'] == 1 %}		 
+{%if data['filenm'] == 1 %}
 
 {%set filenm = "Planning_document.doc"%}
-	{%set filesize = "512Bytes."%}	
-	
-{%elseif data['filenm'] == 2 %}	
+	{%set filesize = "512Bytes."%}
+
+{%elseif data['filenm'] == 2 %}
 
 	{%set filenm = "Document-photo.png"%}
-	{%set filesize = "2MB"%}	
+	{%set filesize = "2MB"%}
 
-{%elseif data['filenm'] == 3 %}	
+{%elseif data['filenm'] == 3 %}
 
 	{%set filenm = "inspector_report.pdf"%}
-	{%set filesize = "450bytes."%}	
+	{%set filesize = "450bytes."%}
 
 
 {%endif%}
@@ -44,7 +44,7 @@
     <form action="/bulkevidence/confirm-delete-evidence" method="post" class="form">
       <div class="govuk-form-group">
         <label class="govuk-heading-xl" for="event-name">
-         Are you sure you want to delete the file?
+         Are you sure you want to delete this file?
         </label>
 
 
@@ -59,9 +59,9 @@
           <tbody class="govuk-table__body">
             <tr class="govuk-table__row">
               <th scope="row" class="govuk-table__header">{{filenm}}
-				
+
 				<input type="hidden" name="confirmfilename" value="{{filenm}}" id="confirmfilename">
-				
+
 				</th>
               <td class="govuk-table__cell">
 

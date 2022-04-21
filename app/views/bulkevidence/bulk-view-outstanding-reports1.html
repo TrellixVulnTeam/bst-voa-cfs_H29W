@@ -35,16 +35,16 @@
 
           </label>
 
-            <p class="govuk-body">These are your outstanding reports. Add supporting documents for review by the Valuation Office
-Agency. Once they are reviewed and accepted reports will be removed from this list and added to the
-schedules. This process usually takes about 90 days.</p>
-		
-		
+            <p class="govuk-body">These are your outstanding reports.
+              Add supporting documents to outstanding reports for review by the Valuation Office Agency. 
+              Reports are added to schedules after they've been reviewed, which takes about 90 days.</p>
+
+
 		<p class="govuk-body">In each report, you can:</p>
 							<ul class="govuk-list govuk-list--bullet">
 							  <li>view uploaded supporting documents and each document's current status</li>
-							  <li>send a message to the Valuation Office Agency regarding the report</li>
-							  <li>view messages from the Valuation Office Agency about the report</li>
+							  <li>send a message to the Valuation Office Agency about the report</li>
+							  <li>read messages from the Valuation Office Agency about the report</li>
 							</ul>
 
      <!--  <table class="govuk-table" data-module="moj-multi-select"  data-multi-select-checkbox="#select-all">
@@ -65,7 +65,7 @@ schedules. This process usually takes about 90 days.</p>
 
 			<th scope="col" class="govuk-table__header" aria-sort="none" width="25%">Billing authority reference number</th>
              <th scope="col" class="govuk-table__header" aria-sort="none" width="20%">Date created</th>
-            
+
 			  <th scope="col" class="govuk-table__header" aria-sort="none" width="15%">Postcode</th>
 			   <th scope="col" class="govuk-table__header" aria-sort="none" width="15%">Supporting documents</th>
             <!--<th scope="col" class="govuk-table__header" aria-sort="none">Documents status</th>-->
@@ -80,10 +80,14 @@ schedules. This process usually takes about 90 days.</p>
 
 <!--FROM HERE BELOW IS WHERE THE CODE HAS BEEN EDITED-->
 	{%if data['pending'] == 1 %}
-			
+
 		 <tr class="govuk-table__row govuk-table__row--selected">
-           
-            <td class="govuk-table__cell">06002874006006</td>
+
+            <td class="govuk-table__cell">
+                <a href="/requests-for-information/ba-report-details?action=0&property={{data['property']}}#report-details">
+              06002874006006
+              </a>
+            </td>
 			  <td class="govuk-table__cell">25 Apr 2022 14:45</td>
 			<td class="govuk-table__cell">DN22 6SB</td>
 			<td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--yellow">
@@ -92,30 +96,38 @@ schedules. This process usually takes about 90 days.</p>
             <td class="govuk-table__cell"><a href="/requests-for-information/ba-report-details?deletedfilename=0&deletefile=0#supporting-documents">View supporting documents</a>
             <!--< <a href="/requests-for-information/ba-report-details#updates">Updates</a>
             td class="govuk-table__cell">Edit property request</td>-->
-          </tr>	
+          </tr>
 	{%	else	%}
 
           <tr class="govuk-table__row govuk-table__row--selected">
-           
-            <td class="govuk-table__cell">06002874006006</td>
+
+            <td class="govuk-table__cell">
+
+                  <a href="/requests-for-information/ba-report-details?action=0&property={{data['property']}}#report-details">06002874006006</a>
+
+            </td>
 			  <td class="govuk-table__cell">25 Apr 2022 14:45</td>
 			<td class="govuk-table__cell">DN22 6SB</td>
 			<td class="govuk-table__cell">0</td>
-            <td class="govuk-table__cell"><a href="upload-bulk-evidence?filecount=0&deletefile=0&filerow=0">Add supporting documents</a>
+            <td class="govuk-table__cell"><a href="upload-bulk-evidence?action=0&filecount=0&deletefile=0&filerow=0">Add supporting documents</a>
             <!--< <a href="/requests-for-information/ba-report-details#updates">Updates</a>
             td class="govuk-table__cell">Edit property request</td>-->
           </tr>
-			
+
 	{%	endif	%}
 
           <tr class="govuk-table__row govuk-table__row--selected">
 
-          
-            <td class="govuk-table__cell">06002874005326</td>
+
+            <td class="govuk-table__cell">
+              <a href="/requests-for-information/ba-report-details?action=0&property={{data['property']}}#report-details">
+                06002874005326
+              </a>
+            </td>
 			   <td class="govuk-table__cell">25 Apr 2022 14:45</td>
 			<td class="govuk-table__cell">FK5 3JU</td>
 			  <td class="govuk-table__cell">0</td>
-            <td class="govuk-table__cell"><a href="upload-bulk-evidence?filecount=0&deletefile=0&filerow=0">Add supporting documents</a>
+            <td class="govuk-table__cell"><a href="upload-bulk-evidence?action=0&filecount=0&deletefile=0&filerow=0">Add supporting documents</a>
             <!-- <a href="/requests-for-information/ba-report-details#updates">Updates</a></td>
             <td class="govuk-table__cell">Edit property request</td>-->
           </tr>
@@ -125,11 +137,15 @@ schedules. This process usually takes about 90 days.</p>
 
 
 
-            <td class="govuk-table__cell">06002874005327</td>
+            <td class="govuk-table__cell">
+              <a href="/requests-for-information/ba-report-details?action=0&property={{data['property']}}#report-details">
+              06002874005327
+              </a>
+            </td>
 			  <td class="govuk-table__cell">25 Apr 2022 14:45</td>
 			<td class="govuk-table__cell">W13 8AE</td>
 			  <td class="govuk-table__cell">0</td>
-            <td class="govuk-table__cell"><a href="upload-bulk-evidence?filecount=0&deletefile=0&filerow=0">Add supporting documents</a>
+            <td class="govuk-table__cell"><a href="upload-bulk-evidence?action=0&filecount=0&deletefile=0&filerow=0">Add supporting documents</a>
             <!-- <a href="/requests-for-information/ba-report-details#updates">Updates</a>--></td>
 
           </tr>
@@ -137,12 +153,16 @@ schedules. This process usually takes about 90 days.</p>
           <tr class="govuk-table__row govuk-table__row--selected">
 
 
-			
-            <td class="govuk-table__cell">06002874005328</td>
+
+            <td class="govuk-table__cell">
+                <a href="/requests-for-information/ba-report-details?action=0&property={{data['property']}}#report-details">
+              06002874005328
+              </a>
+            </td>
 			  <td class="govuk-table__cell">25 Apr 2022 14:45</td>
 			<td class="govuk-table__cell">TF1 6TT</td>
 			  <td class="govuk-table__cell">0</td>
-          <td class="govuk-table__cell"><a href="upload-bulk-evidence?filecount=0&deletefile=0&filerow=0">Add supporting documents</a>
+          <td class="govuk-table__cell"><a href="upload-bulk-evidence?action=0&filecount=0&deletefile=0&filerow=0">Add supporting documents</a>
             <!-- <a href="/requests-for-information/ba-report-details#updates">Updates</a>-->
 
 		    </td>
@@ -153,12 +173,17 @@ schedules. This process usually takes about 90 days.</p>
           <tr class="govuk-table__row govuk-table__row--selected">
 
 
-           
-            <td class="govuk-table__cell">06002874005329</td>
+
+            <td class="govuk-table__cell">
+
+              <a href="/requests-for-information/ba-report-details?action=0&property={{data['property']}}#report-details">
+              06002874005329
+              </a>
+            </td>
 			  <td class="govuk-table__cell">25 Apr 2022 14:45</td>
 			<td class="govuk-table__cell">ST6 3NW</td>
 			  <td class="govuk-table__cell">0</td>
-            <td class="govuk-table__cell"><a href="upload-bulk-evidence?filecount=0&deletefile=0&filerow=0">Add supporting documents</a>
+            <td class="govuk-table__cell"><a href="upload-bulk-evidence?action=0&filecount=0&deletefile=0&filerow=0">Add supporting documents</a>
             <!-- <a href="/requests-for-information/ba-report-details#updates">Updates</a>-->
 
 			  </td>
