@@ -805,7 +805,8 @@ router.post('/bulkevidence/delete-evidence-confirmation', function (req, res) {
 
   // Check whether the variable matches a condition
 
-    res.redirect('/bulkevidence/upload-bulk-evidence?action=0&filecount=0&deletefile=0&filerow=0&property='+property)
+
+    res.redirect('/requests-for-information/ba-report-details?action=0&property='+property+'#supporting_documents')
 
 
 })
@@ -863,10 +864,10 @@ console.log("confirmfilename = " +confirmfilename )
 
 
     if (confirmdeleteevidence == "yes") {
-      res.redirect('/requests-for-information/ba-report-details?deletedfilename='+confirmfilename+'&deletefile=1&action=delete#supporting-documents')
+      res.redirect('/requests-for-information/ba-report-details?deletedfilename='+confirmfilename+'&deletefile=1&action=delete#supporting_documents')
     }
     else {
-      res.redirect('/requests-for-information/ba-report-details?deletedfilename=0&deletefile=0&action=0#supporting-documents')
+      res.redirect('/requests-for-information/ba-report-details?deletedfilename=0&deletefile=0&action=0#supporting_documents')
     }
 
 
