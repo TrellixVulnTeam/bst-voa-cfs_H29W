@@ -112,6 +112,36 @@ router.post('/confirm-delete-upload', function (req, res) {
 })
 
 
+
+
+router.post('/upload_another_submission', function (req, res) {
+ // console.log(req.body.todo + " is added to top of the list.");
+	
+	var property = req.session.data['property']
+  res.redirect('/bulkreport/select-file-format?property='+property);
+});
+
+// when Add to Bottom button is clicked
+router.post('/return_dashboard', function (req, res) {
+  console.log(req.body.todo + " is added to bottom of the list.");
+	var property = req.session.data['property']
+	
+	if (property=="ct")
+		{
+			
+			res.redirect('/bahomepage#council-tax');
+		
+		}
+	else
+		
+		{
+			res.redirect('bahomepage#non-domestic-rates');
+			
+		}
+  
+});
+
+
 router.post('/bulk-submission-report-list', function (req, res, nex) {
 
 

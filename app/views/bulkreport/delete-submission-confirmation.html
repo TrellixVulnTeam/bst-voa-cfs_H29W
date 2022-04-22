@@ -23,7 +23,7 @@ The file has been deleted
 
 <div class="govuk-grid-row">
   <div class="govuk-grid-column-two-thirds">
-    <form action="/bulkreport/select-file-format" method="post" class="form">
+    <form action="" method="post" class="form">
       <div class="govuk-form-group">
         <label class="govuk-heading-xl" for="event-name">
       The file has been deleted
@@ -121,8 +121,12 @@ The file has been deleted
 
 
 
-              <button class="govuk-button" name="uploadanother" id="uploadanother" value="1">
-              Return to file upload
+              <button class="govuk-button" name="uploadanother" id="uploadanother" value="1" formaction="/upload_another_submission">
+              Upload another file
+            </button>
+				
+				 <button class="govuk-button govuk-button--secondary" name="dashboard" id="dashboard" value="2" formaction="/return_dashboard">
+              Return to dashboard
             </button>
 
 
