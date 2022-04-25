@@ -37,7 +37,7 @@
         <div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
           <div class="govuk-notification-banner__header">
           <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
-          
+
           {% if (data['errors'] == 1) %}
             Details updated
           {% elseif  (data['errors'] == 0) %}
@@ -238,7 +238,7 @@
             <dd class="govuk-summary-list__value">
 
 
-				<p>C0136</p>
+				<p>06342832</p>
 
 
 
@@ -450,7 +450,7 @@
 
 
         {#% if (data['errors'] == 0) %#}
-        <form action="/bulkreport/bulk-submission-report-list?dataissues=1&correctedissues=2" method="post" novalidate>
+        <form action="/bulkreport/bulk-submission-report-list?dataissues=1&correctedissues=2&action=edit" method="post" novalidate>
 
           <input type="hidden" name="answers-checked" value="true">
 

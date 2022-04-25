@@ -21,7 +21,6 @@
 
 
 
-
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-full">
 
@@ -57,8 +56,8 @@
             		  </div>
             		  <div class="govuk-notification-banner__content">
             			<h3 class="govuk-notification-banner__heading">
-            			  
-							
+
+
 							You have deleted the report for billing authority reference number {{data['bref']}}'.
             			</h3>
 
@@ -69,7 +68,8 @@
 
 
 
-              {% elseif (data['correctedissues'] == 2) %}
+
+              {% elseif ((data['correctedissues'] == 2) and (data['action'] == 'edit'))%}
                 <div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
                   <div class="govuk-notification-banner__header">
                   <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
@@ -78,9 +78,9 @@
                   </div>
                   <div class="govuk-notification-banner__content">
                   <h3 class="govuk-notification-banner__heading">
-                   
-					  
-					  You have updated the report for billing authority reference number {{data['bref']}}.
+
+
+					  You have updated the report  for billing authority reference number {{data['bref']}}.
                   </h3>
 
                   </div>
@@ -128,10 +128,10 @@
 
 
 
-				
+
 			  </strong>
-			
-						
+
+
 			</div>
 
 
@@ -170,14 +170,14 @@
 							  <li>delete reports with data errors and submit the reports without data errors</li>
 							  <li>delete all reports, correct your original file and then reupload it</li>
 							</ul>
-                 
+
 				<p class="govuk-body">If you delete reports with errors then those reports will not be submitted and will need to be added later once they’ve been fixed.</p>
-					
-				
+
+
 				<p class="govuk-body">You can download a list of reports with data errors as an Excel file to help you do this.
 				</p>
 
-                 
+
                 </div>
       </details>
 {%endif%}
@@ -286,8 +286,8 @@
 
                   {%else%}
 
-                      <a href="/bulkreport/check-change-report?bref=06002874005006&error1=1&error2=1&errors=1">Edit</a> 
-					  
+                      <a href="/bulkreport/check-change-report?bref=06002874005006&error1=1&error2=1&errors=1">Edit</a>
+
 					  <a href="/bulkreport/confirm-remove-delete-error-row?bref=06002874005006&removerowissue1={{data['removerowissue1']}}&removerowissue2={{data['removerowissue2']}}&correctedissues={{data['correctedissues']}}">Delete</a>
 
 
@@ -878,11 +878,11 @@ end of comments for usability testing
 
 
 				<p class="govuk-body">
-	
-	
+
+
 						<a href="#" target="_blank">Download the list of data errors as an Excel file</a>.
 
-					
+
 					</p>
 
 

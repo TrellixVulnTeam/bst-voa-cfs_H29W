@@ -23,9 +23,9 @@
 
 
 <div class="govuk-grid-row">
-	
-	
-	
+
+
+
 	{% from "govuk/components/error-summary/macro.njk" import govukErrorSummary %}
 
 		{{ govukErrorSummary({
@@ -37,10 +37,10 @@
 			}
 		  ]
 		}) }}
-	
-	
-	
-	
+
+
+
+
         <div class="govuk-grid-column-two-thirds">
 
                   <div class="govuk-form-group">
@@ -50,22 +50,23 @@
 
                      <form class="form" action="/bulkreport/check-change-report?error1=0&errors=1" method="post">
 
-                   
+
 
                          {{ govukInput({
 							  label: {
-								text: "Billing Authority report number."
+								text: "Billing Authority report number"
 							  },
 							  hint: {
 								text: "This allows us to cross reference and track reports. For example 06002832."
 							  },
 							  id: "billing-authority-report-number",
-							  name: "billing-authority-report-number"
-							  
+							  name: "billing-authority-report-number",
+                value: "06342832"
+
 							}) }}
 
 
-                        
+
 							{{ govukDateInput({
 							  fieldset: {
 								legend: {

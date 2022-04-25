@@ -37,24 +37,10 @@
                      <form class="form" action="/bulkreport/check-change-report?error2=0&errors=0" method="post">
 
 
-              {% set yesHtml %}
-               {{ govukInput({
-                 id: "yes-property-planning-reference",
-                 name: "yes-property-planning-reference",
-                 type: "yes",
-                 autocomplete: "yes",
-                 spellcheck: false,
-                 classes: "govuk-!-width-one-half",
-                 label: {
-                   text: "Property planning reference"
-                 }
-               }) }}
-               {% endset -%}
 
-               {% set noHtml %}
-               
-						 
-				
+
+
+
 
 						{{ govukRadios({
 						  idPrefix: "no-property-planning-reference-reason",
@@ -62,11 +48,11 @@
 						  fieldset: {
 							legend: {
 							  text: "Why is there no planning reference?",
-							  
-							  classes: "govuk-fieldset__legend--m"
+                isPageHeading: true,
+							  classes: "govuk-fieldset__legend--l"
 							}
 						  },
-						  
+
 						  errorMessage: {
 							text: "Add a reason for not including a planning reference"
 						  },
@@ -95,62 +81,12 @@ no plan-PD"
 							  text: "No planning application has been submitted - no plan-NPAS"
 							}
 						  ]
-						}) }}			 
-				
-						 
-                {% endset -%}
+						}) }}
 
 
-               {{ govukRadios({
-                 idPrefix: "contact",
-                 name: "contact",
-                 fieldset: {
-                   legend: {
-                     text: "Reference details",
-                     isPageHeading: true,
-                     classes: "govuk-fieldset__legend--xl"
-                   }
-                 },
-                 hint: {
-                   text: "Does this property have planning reference"
-
-                 },
-                 items: [
-                   {
-                     value: "yes",
-                     text: "Yes",
-                     conditional: {
-                       html: yesHtml
-                     }
-
-                   },
-                   {
-                     value: "no",
-                     text: "No",
-					 checked: true,
-                     conditional: {
-                       html: noHtml
-                     }
-                   }
-                 ]
-               }) }}
 
 
-                    <h2 class="govuk-label govuk-label--m" for="event-name">
-                           OS Grid reference details (optional)
-                         </h2>
 
-                       <p>This allows us to locate the property clearly and easliy. Only for properties in rual areas.</p>
-
-
-                     {{ govukInput({
-                       hint: {
-                         text: "For example 06002832"
-                       },
-                       classes: "govuk-input--width-20",
-                       id: "width-20",
-                       name: "width-20"
-                     }) }}
 
 
 

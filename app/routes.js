@@ -116,7 +116,7 @@ router.post('/confirm-delete-upload', function (req, res) {
 
 router.post('/upload_another_submission', function (req, res) {
  // console.log(req.body.todo + " is added to top of the list.");
-	
+
 	var property = req.session.data['property']
   res.redirect('/bulkreport/select-file-format?property='+property);
 });
@@ -125,20 +125,20 @@ router.post('/upload_another_submission', function (req, res) {
 router.post('/return_dashboard', function (req, res) {
   console.log(req.body.todo + " is added to bottom of the list.");
 	var property = req.session.data['property']
-	
+
 	if (property=="ct")
 		{
-			
+
 			res.redirect('/bahomepage#council-tax');
-		
+
 		}
 	else
-		
+
 		{
 			res.redirect('bahomepage#non-domestic-rates');
-			
+
 		}
-  
+
 });
 
 
@@ -273,14 +273,17 @@ router.post('/confirm-remove-failed-report', function (req, res) {
 
   // Make a variable and give it the value from 'how-many-balls'
   var confirmremove = req.session.data['confirmremove']
+  var correctedissues = req.session.data['correctedissues']
+
+
 console.log("COnfirm rempve = "+ confirmremove)
   // Check whether the variable matches a condition
   if (confirmremove == "yes"){
     // Send user to next page
-    res.redirect('/bulkreport/bulk-submission-report-list?dataissues=3')
+    res.redirect('/bulkreport/bulk-submission-report-list?dataissues=3&correctedissues=0')
   } else {
     // Send user to ineligible page
-    res.redirect('/bulkreport/bulk-submission-report-list?dataissues=1')
+    res.redirect('/bulkreport/bulk-submission-report-list?dataissues=1&correctedissues='+correctedissues+'&action=0')
   }
 
 })
