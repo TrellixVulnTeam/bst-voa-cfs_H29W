@@ -42,52 +42,61 @@
           		</div>
 
 
-
-          	{% endif %}
-
-
-            <!--  confirmation message for the single row removed -->
-              {% if (data['removerowissue1'] == 1) or (data['removerowissue2'] == 1) %}
-            		<div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
-            		  <div class="govuk-notification-banner__header">
-            			<h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
-            			  Report deleted
-            			</h2>
-            		  </div>
-            		  <div class="govuk-notification-banner__content">
-            			<h3 class="govuk-notification-banner__heading">
+    {%else%}
 
 
-							You have deleted the report for billing authority reference number {{data['bref']}}'.
-            			</h3>
 
-            		  </div>
-            		</div>
+                <!--  confirmation message for the single row removed -->
+                  {% if (data['removerowissue1'] == 1) or (data['removerowissue2'] == 1) %}
+                    <div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+                      <div class="govuk-notification-banner__header">
+                      <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+                        Report deleted
+                      </h2>
+                      </div>
+                      <div class="govuk-notification-banner__content">
+                      <h3 class="govuk-notification-banner__heading">
 
 
+                  You have deleted the report for billing authority reference number {{data['bref']}}'.
+                      </h3>
+
+                      </div>
+                    </div>
 
 
 
 
-              {% elseif ((data['correctedissues'] == 2) and (data['action'] == 'edit'))%}
-                <div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
-                  <div class="govuk-notification-banner__header">
-                  <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
-                    Report updated
-                  </h2>
-                  </div>
-                  <div class="govuk-notification-banner__content">
-                  <h3 class="govuk-notification-banner__heading">
 
 
-					  You have updated the report  for billing authority reference number {{data['bref']}}.
-                  </h3>
+                  {% elseif ((data['correctedissues'] >= 1) and (data['action'] == 'edit'))%}
+                    <div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+                      <div class="govuk-notification-banner__header">
+                      <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+                        Report updated
+                      </h2>
+                      </div>
+                      <div class="govuk-notification-banner__content">
+                      <h3 class="govuk-notification-banner__heading">
 
-                  </div>
-                </div>
+
+                You have updated the report  for billing authority reference number {{data['bref']}}.
+                      </h3>
+
+                      </div>
+                    </div>
 
 
-              {% endif %}
+                  {% endif %}
+
+
+
+    {% endif %}
+
+
+
+
+
 
 
 
@@ -189,7 +198,6 @@
 
 
 
-
      <!--  <table class="govuk-table" data-module="moj-multi-select"  data-multi-select-checkbox="#select-all">
 -->
 
@@ -215,347 +223,387 @@
           </tr>
         </thead>
         <tbody class="govuk-table__body">
-<!-- show rows with listed data errors-->
-	{% if data['dataissues'] == 1 %}
+<!-- start of show rows with listed data errors-->
+{% if data['dataissues'] == 1 %}
 
 
-          <!-- if the row is removed using the remove link-->
-          {% if (data['removerowissue1'] != "1")%}
-                <tr class="govuk-table__row govuk-table__row--selected">
-                  <!--<td class="govuk-table__cell">
-                    <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
-                      <input type="checkbox" class="govuk-checkboxes__input" id="mountain-aconcagua">
-                      <label class="govuk-label govuk-checkboxes__label" for="mountain-aconcagua">
-                        <span class="govuk-visually-hidden">Select Aconcagua</span>
-                      </label>
-                    </div>
-                  </td>-->
 
-                    <td class="govuk-table__cell">1</td>
-                  <td class="govuk-table__cell">06002874005006</td>
+                                    <!-- if the row is removed using the remove link-->
+                                    {% if (data['removerowissue1'] != "1")%}
+                                          <tr class="govuk-table__row govuk-table__row--selected">
+                                            <!--<td class="govuk-table__cell">
+                                              <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
+                                                <input type="checkbox" class="govuk-checkboxes__input" id="mountain-aconcagua">
+                                                <label class="govuk-label govuk-checkboxes__label" for="mountain-aconcagua">
+                                                  <span class="govuk-visually-hidden">Select Aconcagua</span>
+                                                </label>
+                                              </div>
+                                            </td>-->
 
-                  <td class="govuk-table__cell">
-              <!--if issues are corrected using manual check answers page hide error message and replace with No errors tag-->
+                                              <td class="govuk-table__cell">1</td>
+                                            <td class="govuk-table__cell">06002874005006</td>
 
-                  {%if data['correctedissues'] == 2%}
+                                            <td class="govuk-table__cell">
+                                        <!--if issues are corrected using manual check answers page hide error message and replace with No errors tag-->
 
+                                            {%if data['correctedissues'] == 2%}
 
-                        <strong class="govuk-tag--green">
-                         No errors
-                         </strong>
 
-                  {%else%}
+                                                  <strong class="govuk-tag--green">
+                                                   No errors
+                                                   </strong>
 
-										 <div class="govuk-!-margin-bottom-2">
+                                            {%else%}
 
-												Change date should not be in the future.
+                                               <div class="govuk-!-margin-bottom-2">
 
-					  					</div>
+                                                  Change date should not be in the future.
 
+                                                </div>
 
 
 
-										  <div>Reason for omission of a planning reference number is missing.
-											</div>
 
-<!--
-                      <ol class="govuk-list govuk-list--number">
-                        <li>Delivery address.</li>
-                        <li>Payment.</li>
-                        <li>Confirmation.</li>
-                      </ol>
--->
+                                                <div>Reason for omission of a planning reference number is missing.
+                                                </div>
 
+                          <!--
+                                                <ol class="govuk-list govuk-list--number">
+                                                  <li>Delivery address.</li>
+                                                  <li>Payment.</li>
+                                                  <li>Confirmation.</li>
+                                                </ol>
+                          -->
 
 
 
-					</td>
 
+                                    </td>
 
-                  {% endif %}
 
+                                            {% endif %}
 
-                  <td class="govuk-table__cell">
 
+                                            <td class="govuk-table__cell">
 
 
-                  <!--if issues are corrected using manual check answers page hide edit remove link and replace with view report link-->
-                  {%if data['correctedissues'] == 2%}
 
-                      <a href="/bulkreport/check-change-report?error1=0&error2=0&errors=0">View report</a>
+                                            <!--if issues are corrected using manual check answers page hide edit remove link and replace with view report link-->
+                                            {%if data['correctedissues'] == 2%}
 
-                  {%else%}
+                                                <a href="/bulkreport/check-change-report?error1=0&error2=0&errors=0">View report</a>
 
-                      <a href="/bulkreport/check-change-report?bref=06002874005006&error1=1&error2=1&errors=1">Edit</a>
+                                            {%else%}
 
-					  <a href="/bulkreport/confirm-remove-delete-error-row?bref=06002874005006&removerowissue1={{data['removerowissue1']}}&removerowissue2={{data['removerowissue2']}}&correctedissues={{data['correctedissues']}}">Delete</a>
+                                                <a href="/bulkreport/check-change-report?bref=06002874005006&error1=1&error2=1&errors=1">Edit</a>
 
+                                      <a href="/bulkreport/confirm-remove-delete-error-row?bref=06002874005006&removerowissue1={{data['removerowissue1']}}&removerowissue2={{data['removerowissue2']}}&correctedissues={{data['correctedissues']}}">Delete</a>
 
 
-                  {% endif %}
 
-                  </td>
-                </tr>
-          {% endif %}
+                                            {% endif %}
 
+                                            </td>
+                                          </tr>
+                                    {% endif %}
 
-         <!-- <tr class="govuk-table__row govuk-table__row--selected">-->
-             <!-- <td class="govuk-table__cell">
-              <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
-                <input type="checkbox" class="govuk-checkboxes__input" id="mountain-aconcagua">
-                <label class="govuk-label govuk-checkboxes__label" for="mountain-aconcagua">
-                  <span class="govuk-visually-hidden">Select Aconcagua</span>
-                </label>
-              </div>
-            </td>-->
-           <!-- <td class="govuk-table__cell">2</td>
-            <td class="govuk-table__cell">06002874005006</td>
 
-            <td class="govuk-table__cell">-->
-              <!--if issues are corrected using manual webform check answers page hide error message and replace with No errors tag
+                                   <!-- <tr class="govuk-table__row govuk-table__row--selected">-->
+                                       <!-- <td class="govuk-table__cell">
+                                        <div class="govuk-checkboxes__item govuk-checkboxes--small moj-multi-select__checkbox">
+                                          <input type="checkbox" class="govuk-checkboxes__input" id="mountain-aconcagua">
+                                          <label class="govuk-label govuk-checkboxes__label" for="mountain-aconcagua">
+                                            <span class="govuk-visually-hidden">Select Aconcagua</span>
+                                          </label>
+                                        </div>
+                                      </td>-->
+                                     <!-- <td class="govuk-table__cell">2</td>
+                                      <td class="govuk-table__cell">06002874005006</td>
 
+                                      <td class="govuk-table__cell">-->
+                                        <!--if issues are corrected using manual webform check answers page hide error message and replace with No errors tag
 
 
 
-                  <strong class="govuk-tag--green">
-                   No errors
-                   </strong>
 
+                                            <strong class="govuk-tag--green">
+                                             No errors
+                                             </strong>
 
 
-            <div class="govuk-error-message">Please provide reason for omission of a planning reference number	</div></td>-->
 
+                                      <div class="govuk-error-message">Please provide reason for omission of a planning reference number	</div></td>-->
 
 
 
- <!--
-            <td class="govuk-table__cell">
-             if issues are corrected using manual webform check answers page hide edit remove link and replace with view report link
 
-            {%if data['correctedissues'] == 2%}
+                           <!--
+                                      <td class="govuk-table__cell">
+                                       if issues are corrected using manual webform check answers page hide edit remove link and replace with view report link
 
-                <a href="/bulkreport/check-change-report?error1=0&error2=0&errors=0">View report</a>
+                                      {%if data['correctedissues'] == 2%}
 
-            {%else%}
+                                          <a href="/bulkreport/check-change-report?error1=0&error2=0&errors=0">View report</a>
 
-                    <a href="/bulkreport/check-change-report?error1=1&error2=1&errors=1">Edit</a> <a href="/bulkreport/confirm-remove-delete-error-row">Remove</a>
+                                      {%else%}
 
+                                              <a href="/bulkreport/check-change-report?error1=1&error2=1&errors=1">Edit</a> <a href="/bulkreport/confirm-remove-delete-error-row">Remove</a>
 
 
-            {% endif %}
 
-            </td>
+                                      {% endif %}
 
+                                      </td>
 
 
-          </tr>-->
 
-    {% if (data['removerowissue2'] != "1")%}
+                                    </tr>-->
 
-          <tr class="govuk-table__row govuk-table__row--selected">
+                              {% if (data['removerowissue2'] != "1")%}
 
-            <td class="govuk-table__cell">2</td>
-           <td class="govuk-table__cell">06002874005326</td>
+                                    <tr class="govuk-table__row govuk-table__row--selected">
 
-            <td class="govuk-table__cell">
+                                      <td class="govuk-table__cell">2</td>
+                                     <td class="govuk-table__cell">06002874005326</td>
 
+                                      <td class="govuk-table__cell">
 
-				<div class="govuk-!-margin-bottom-2">Postcode W2 7UT is invalid.</div>
 
+                                  <div class="govuk-!-margin-bottom-2">Postcode W2 7UT is invalid.</div>
 
 
 
-				<div>Billing authority for this property is missing.</div>
 
-		    </td>
-            <td class="govuk-table__cell">
+                                  <div>Billing authority for this property is missing.</div>
 
+                                  </td>
+                                      <td class="govuk-table__cell">
 
-              {%if data['dataissues'] == 0%}
 
-                  <a href="/bulkreport/check-change-report?error1=0&error2=0&errors=0">View report</a>
+                                        {%if data['dataissues'] == 0%}
 
-              {%else%}
+                                            <a href="/bulkreport/check-change-report?error1=0&error2=0&errors=0">View report</a>
 
-                  <a href="/bulkreport/check-change-report?bref=06002874005326&error1=1&error2=1&errors=1">Edit</a> <a href="/bulkreport/confirm-remove-delete-error-row?bref=06002874005326&removerowissue1={{data['removerowissue1']}}&removerowissue2={{data['removerowissue2']}}&correctedissues={{data['correctedissues']}}">Delete</a>
+                                        {%else%}
 
+                                          <!--  <a href="/bulkreport/check-change-report?bref=06002874005326&error1=1&error2=1&errors=1">Edit</a> <a href="/bulkreport/confirm-remove-delete-error-row?bref=06002874005326&removerowissue1={{data['removerowissue1']}}&removerowissue2={{data['removerowissue2']}}&correctedissues={{data['correctedissues']}}">Delete</a>-->
 
+                                          <a href="#">Edit</a> <a href="/bulkreport/confirm-remove-delete-error-row?bref=06002874005326&removerowissue1={{data['removerowissue1']}}&removerowissue2={{data['removerowissue2']}}&correctedissues={{data['correctedissues']}}">Delete</a>
 
-              {% endif %}
+                                        {% endif %}
 
 
 
 
-            </td>
-          </tr>
+                                      </td>
+                                    </tr>
 
 
-{% endif %}
+                          {% endif %}
 
-<!--
-          <tr class="govuk-table__row govuk-table__row--selected">
+                          <!--
+                                    <tr class="govuk-table__row govuk-table__row--selected">
 
-            <td class="govuk-table__cell">3</td>
-            <td class="govuk-table__cell">06002874005034</td>
+                                      <td class="govuk-table__cell">3</td>
+                                      <td class="govuk-table__cell">06002874005034</td>
 
-            <td class="govuk-table__cell">
+                                      <td class="govuk-table__cell">
 
-					<div class="govuk-!-margin-bottom-2"> Change date should not be in the future.
-				    </div>
+                                    <div class="govuk-!-margin-bottom-2"> Change date should not be in the future.
+                                      </div>
 
 
 
 
-				 	 <div> Comments for the report is missing.
-					</div>
+                                     <div> Comments for the report is missing.
+                                    </div>
 
 
 
-			</td>
-            <td class="govuk-table__cell"><a href="#">Edit</a> <a href="#">Remove</a></td>
-          </tr>
+                                </td>
+                                      <td class="govuk-table__cell"><a href="#">Edit</a> <a href="#">Remove</a></td>
+                                    </tr>
 
 
 
 
-start of ommented for usability testing
+                          start of ommented for usability testing
 
 
-          <tr class="govuk-table__row govuk-table__row--selected">
+                                    <tr class="govuk-table__row govuk-table__row--selected">
 
-            <td class="govuk-table__cell">4</td>
-            <td class="govuk-table__cell">06002874005398</td>
+                                      <td class="govuk-table__cell">4</td>
+                                      <td class="govuk-table__cell">06002874005398</td>
 
-            <td class="govuk-table__cell">
+                                      <td class="govuk-table__cell">
 
-					<div class="govuk-!-margin-bottom-2">
-						  Billing authority for this property is missing.
-				    </div>
+                                    <div class="govuk-!-margin-bottom-2">
+                                        Billing authority for this property is missing.
+                                      </div>
 
 
 
 
-				 	 <div> Postcode W2 89U is invalid.
-					</div>
+                                     <div> Postcode W2 89U is invalid.
+                                    </div>
 
 
-			</td>
-            <td class="govuk-table__cell"><a href="#">Edit</a> <a href="#">Remove</a></td>
-          </tr>
+                                </td>
+                                      <td class="govuk-table__cell"><a href="#">Edit</a> <a href="#">Remove</a></td>
+                                    </tr>
 
 
 
 
-          <tr class="govuk-table__row govuk-table__row--selected">
+                                    <tr class="govuk-table__row govuk-table__row--selected">
 
-           <td class="govuk-table__cell">5</td>
-            <td class="govuk-table__cell">06002874005566</td>
+                                     <td class="govuk-table__cell">5</td>
+                                      <td class="govuk-table__cell">06002874005566</td>
 
-            <td class="govuk-table__cell">
+                                      <td class="govuk-table__cell">
 
-				 <div> Reason for omission of a planning reference number is missing.
-					</div>
+                                   <div> Reason for omission of a planning reference number is missing.
+                                    </div>
 
 
-			</td>
-            <td class="govuk-table__cell"><a href="#">Edit</a> <a href="#">Remove</a></td>
+                                </td>
+                                      <td class="govuk-table__cell"><a href="#">Edit</a> <a href="#">Remove</a></td>
 
-          </tr>
+                                    </tr>
 
 
-end of commented for usability testing
+                          end of commented for usability testing
 
-  -->
+                            -->
 
 
 
 
 
-  <!-- show rows with No errors-->
+<!-- show rows with No errors-->
 {% elseif data['dataissues'] == 0 %}
 
-      {%if data['removerowissue1'] != 1 %}
+                                {%if data['removerowissue1'] != 1 %}
 
-			  <tr class="govuk-table__row govuk-table__row--selected">
-
-
-              <td class="govuk-table__cell">1</td>
-            <td class="govuk-table__cell">06002874005006</td>
-
-          <td class="govuk-table__cell"><strong class="govuk-tag--green">
- 					 No errors
-				</strong> </td>
-            <td class="govuk-table__cell"><a href="#">View report</a></td>
-          </tr>
-    {% endif %}
+                                  <tr class="govuk-table__row govuk-table__row--selected">
 
 
-      {%if data['removerowissue2'] != 1 %}
-          <tr class="govuk-table__row govuk-table__row--selected">
+                                        <td class="govuk-table__cell">1</td>
+                                      <td class="govuk-table__cell">06002874005006</td>
 
-            <td class="govuk-table__cell">2</td>
-            <td class="govuk-table__cell">06002874005096</td>
-
-           <td class="govuk-table__cell"><strong class="govuk-tag--green">
- 					 No errors
-				</strong> </td>
-            <td class="govuk-table__cell"><a href="#">View report</a></td>
-          </tr>
-          {% endif %}
-
-<!--
+                                    <td class="govuk-table__cell"><strong class="govuk-tag--green">
+                                     No errors
+                                  </strong> </td>
+                                      <td class="govuk-table__cell"><a href="#">View report</a></td>
+                                    </tr>
+                              {% endif %}
 
 
-commented for usability testing
-          <tr class="govuk-table__row govuk-table__row--selected">
+                                {%if data['removerowissue2'] != 1 %}
+                                    <tr class="govuk-table__row govuk-table__row--selected">
 
-            <td class="govuk-table__cell">6</td>
-            <td class="govuk-table__cell">06002874005034</td>
+                                      <td class="govuk-table__cell">2</td>
+                                      <td class="govuk-table__cell">06002874005096</td>
 
-             <td class="govuk-table__cell"><strong class="govuk-tag--green">
- 					 No errors
-				</strong> </td>
-            <td class="govuk-table__cell">
-              <a href="/bulkreport/check-change-report?error1=0&error2=0&errors=0">View report</a>
-            </td>
-          </tr>
+                                     <td class="govuk-table__cell"><strong class="govuk-tag--green">
+                                     No errors
+                                  </strong> </td>
+                                      <td class="govuk-table__cell"><a href="#">View report</a></td>
+                                    </tr>
+                                    {% endif %}
 
-          <tr class="govuk-table__row govuk-table__row--selected">
-
-            <td class="govuk-table__cell">7</td>
-            <td class="govuk-table__cell">06002874005398</td>
-
-          <td class="govuk-table__cell"><strong class="govuk-tag--green">
- 					 No errors
-				</strong> </td>
-            <td class="govuk-table__cell"><a href="#">View report</a></td>
-          </tr>
+                          <!--
 
 
-          <tr class="govuk-table__row govuk-table__row--selected">
+                          commented for usability testing
+                                    <tr class="govuk-table__row govuk-table__row--selected">
 
-           <td class="govuk-table__cell">8</td>
-            <td class="govuk-table__cell">06002874005398</td>
+                                      <td class="govuk-table__cell">6</td>
+                                      <td class="govuk-table__cell">06002874005034</td>
 
-           <td class="govuk-table__cell"><strong class="govuk-tag--green">
- 					 No errors
-				</strong> </td>
-            <td class="govuk-table__cell"><a href="#">View report</a></td>
-          </tr>
+                                       <td class="govuk-table__cell"><strong class="govuk-tag--green">
+                                     No errors
+                                  </strong> </td>
+                                      <td class="govuk-table__cell">
+                                        <a href="/bulkreport/check-change-report?error1=0&error2=0&errors=0">View report</a>
+                                      </td>
+                                    </tr>
 
-          <tr class="govuk-table__row govuk-table__row--selected">
+                                    <tr class="govuk-table__row govuk-table__row--selected">
 
-           <td class="govuk-table__cell">9</td>
-            <td class="govuk-table__cell">06002874005566</td>
+                                      <td class="govuk-table__cell">7</td>
+                                      <td class="govuk-table__cell">06002874005398</td>
 
-        	 <td class="govuk-table__cell"><strong class="govuk-tag--green">
- 					 No errors
-				</strong> </td>
-            <td class="govuk-table__cell"><a href="#">View report</a></td>
+                                    <td class="govuk-table__cell"><strong class="govuk-tag--green">
+                                     No errors
+                                  </strong> </td>
+                                      <td class="govuk-table__cell"><a href="#">View report</a></td>
+                                    </tr>
 
-          </tr>
 
--->
+                                    <tr class="govuk-table__row govuk-table__row--selected">
+
+                                     <td class="govuk-table__cell">8</td>
+                                      <td class="govuk-table__cell">06002874005398</td>
+
+                                     <td class="govuk-table__cell"><strong class="govuk-tag--green">
+                                     No errors
+                                  </strong> </td>
+                                      <td class="govuk-table__cell"><a href="#">View report</a></td>
+                                    </tr>
+
+                                    <tr class="govuk-table__row govuk-table__row--selected">
+
+                                     <td class="govuk-table__cell">9</td>
+                                      <td class="govuk-table__cell">06002874005566</td>
+
+                                     <td class="govuk-table__cell"><strong class="govuk-tag--green">
+                                     No errors
+                                  </strong> </td>
+                                      <td class="govuk-table__cell"><a href="#">View report</a></td>
+
+                                    </tr>
+
+                          -->
+
+
+
+<!-- end of show rows wilt listed errors -->
+
+{% elseif ((data['dataissues'] == 3) and (data['correctedissues'] == 2))  %}
+
+
+
+
+                                {%if data['removerowissue1'] != 1 %}
+
+                                  <tr class="govuk-table__row govuk-table__row--selected">
+
+
+                                        <td class="govuk-table__cell">1</td>
+                                      <td class="govuk-table__cell">06002874005006</td>
+
+                                    <td class="govuk-table__cell"><strong class="govuk-tag--green">
+                                     No errors
+                                  </strong> </td>
+                                      <td class="govuk-table__cell"><a href="#">View report</a></td>
+                                    </tr>
+                              {% endif %}
+
+
+                                {%if data['removerowissue2'] != 1 %}
+                                    <tr class="govuk-table__row govuk-table__row--selected">
+
+                                      <td class="govuk-table__cell">2</td>
+                                      <td class="govuk-table__cell">06002874005096</td>
+
+                                     <td class="govuk-table__cell"><strong class="govuk-tag--green">
+                                     No errors
+                                  </strong> </td>
+                                      <td class="govuk-table__cell"><a href="#">View report</a></td>
+                                    </tr>
+                                    {% endif %}
+
 
 
 {% endif %}

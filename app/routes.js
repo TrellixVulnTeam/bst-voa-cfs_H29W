@@ -78,7 +78,7 @@ router.post('/confirm-delete-upload', function (req, res) {
 					res.redirect('/bulkreport/bulk-submission-report-list?dataissues=1')
 				  } else {
 					// Send user to ineligible page
-					res.redirect('/bulkreport/bulk-submission-report-list?dataissues=3&removerowissue1=0')
+					res.redirect('/bulkreport/delete-submission-confirmation?filetype=xml&property='+property)
 				  }
 
 
@@ -96,7 +96,7 @@ router.post('/confirm-delete-upload', function (req, res) {
 
 				  } else {
 					// Send user to ineligible page
-					res.redirect('/bulkreport/delete-submission-confirmation?filetype='+filetype+'&property='+property)
+					res.redirect('/bulkreport/delete-submission-confirmation?filetype=xml&property='+property)
 				  }
 
 
@@ -147,6 +147,7 @@ router.post('/bulk-submission-report-list', function (req, res, nex) {
 
   // Make a variable and give it the value from 'submit buttons'
   var bulkconfirm = req.session.data['bulkconfirm']
+  var correctedissues = req.session.data['correctedissues']
 
    console.log('parmaeters'+req.method);
 
@@ -155,7 +156,7 @@ router.post('/bulk-submission-report-list', function (req, res, nex) {
   if (bulkconfirm == "1"){
     // Send user to next page
 
-    res.redirect('/bulkreport/confirm-remove-failed-report')
+    res.redirect('/bulkreport/confirm-remove-failed-report?correctedissues='+correctedissues)
   } else if(bulkconfirm == "0") {
 
     // Send user to ineligible page
@@ -274,13 +275,15 @@ router.post('/confirm-remove-failed-report', function (req, res) {
   // Make a variable and give it the value from 'how-many-balls'
   var confirmremove = req.session.data['confirmremove']
   var correctedissues = req.session.data['correctedissues']
+  var removerowissue2 = req.session.data['removerowissue2']
+
 
 
 console.log("COnfirm rempve = "+ confirmremove)
   // Check whether the variable matches a condition
   if (confirmremove == "yes"){
     // Send user to next page
-    res.redirect('/bulkreport/bulk-submission-report-list?dataissues=3&correctedissues=0')
+    res.redirect('/bulkreport/bulk-submission-report-list?dataissues=3&correctedissues='+correctedissues+'&removerowissue2=1')
   } else {
     // Send user to ineligible page
     res.redirect('/bulkreport/bulk-submission-report-list?dataissues=1&correctedissues='+correctedissues+'&action=0')
