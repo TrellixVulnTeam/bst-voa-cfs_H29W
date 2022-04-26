@@ -151,11 +151,22 @@ Upload Bulk evidence
 												</td>
 											</tr>
 
+									{%elseif (data['filerow'] == 1)%}
+									<tr class="govuk-table__row govuk-table__row--selected">
+							<td class="govuk-table__cell">Document-photo.png</td>
+										<td class="govuk-table__cell">2MB</td>
+										<td class="govuk-table__cell">
+													<a href="/bulkevidence/confirm-remove-file-row?filerow=2&filecount={{data['filecount']}}">Remove</a>
+										</td>
+									</tr>
+
 									{%endif%}
 
 									{#{data['filerow']}#}
 
-									{%if ((data['filecount'] >= 2) and (data['filerow']!=2))  %}
+
+
+									{%if ((data['filecount'] >=2) and (data['filerow']!=2) and (data['deletefile']==0))  %}
 
 											<tr class="govuk-table__row govuk-table__row--selected">
 									<td class="govuk-table__cell">Document-photo.png</td>
@@ -164,6 +175,19 @@ Upload Bulk evidence
 															<a href="/bulkevidence/confirm-remove-file-row?filerow=2&filecount={{data['filecount']}}">Remove</a>
 												</td>
 											</tr>
+
+											{%elseif ((data['filecount'] == 2) and (data['deletefile']==1))%}
+
+
+											<tr class="govuk-table__row govuk-table__row--selected">
+									<td class="govuk-table__cell">inspector_report.pdf</td>
+												<td class="govuk-table__cell">450Bytes</td>
+												<td class="govuk-table__cell">
+															<a href="/bulkevidence/confirm-remove-file-row?filerow=3&filecount={{data['filecount']}}">Remove</a>
+												</td>
+											</tr>
+
+
 									{%endif%}
 
 
