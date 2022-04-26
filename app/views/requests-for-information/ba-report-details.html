@@ -497,7 +497,7 @@ to remove the file and correct any errors before re-uploading it.
           <tbody class="govuk-table__body">
 
 
-   {%if data['deletefile']!=1  %}
+   {%if ((data['deletefile']!=1) and (data['filename1']!=1)) %}
 
             <tr class="govuk-table__row govuk-table__row--selected">
         <td class="govuk-table__cell">Planning_document.doc</td>
@@ -514,7 +514,7 @@ to remove the file and correct any errors before re-uploading it.
 	    {%endif %}
 
 
-     {%if data['deletefile']!=2  %}
+     {%if ((data['deletefile']!=2) and (data['filename2']!=1)) %}
 
             <tr class="govuk-table__row govuk-table__row--selected">
         <td class="govuk-table__cell">Document-photo.doc</td>
