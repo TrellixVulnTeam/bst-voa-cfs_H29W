@@ -59,7 +59,9 @@
       </a>
     </li>
     <li class="govuk-tabs__list-item">
-      <a class="govuk-tabs__tab" href="/requests-for-information/ba-report-details?deletedfilename=0&deletefile=0#supporting_documents">
+    <!--  <a class="govuk-tabs__tab" href="/requests-for-information/ba-report-details?deletedfilename=0&deletefile=0#supporting-documents">-->
+        <a class="govuk-tabs__tab" href="#supporting-documents">
+
       Supporting documents
       </a>
     </li>
@@ -419,7 +421,7 @@
 
 </div>
 
-  <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="supporting_documents">
+  <div class="govuk-tabs__panel govuk-tabs__panel--hidden" id="supporting-documents">
 
 			<h2 class="govuk-heading-l">Supporting documents</h2>
 
@@ -495,8 +497,7 @@ to remove the file and correct any errors before re-uploading it.
           <tbody class="govuk-table__body">
 
 
-
-	  {%if ((data['deletedfilename'] == 0) and (data['deletefile'])==0)  %}
+   {%if data['deletefile']!=1  %}
 
             <tr class="govuk-table__row govuk-table__row--selected">
         <td class="govuk-table__cell">Planning_document.doc</td>
@@ -510,7 +511,10 @@ to remove the file and correct any errors before re-uploading it.
               </td>
             </tr>
 
-		{%endif %}
+	    {%endif %}
+
+
+     {%if data['deletefile']!=2  %}
 
             <tr class="govuk-table__row govuk-table__row--selected">
         <td class="govuk-table__cell">Document-photo.doc</td>
@@ -524,7 +528,7 @@ to remove the file and correct any errors before re-uploading it.
               </td>
             </tr>
 
-
+	     {%endif %}
 
             <tr class="govuk-table__row govuk-table__row--selected">
         <td class="govuk-table__cell">inspector_report.pdf</td>
