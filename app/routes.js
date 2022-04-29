@@ -569,15 +569,15 @@ router.post('/confirm-remove-delete-error-row', function (req, res) {
       if (row2 == "1")
        {
 
-              dataissues="0"
+              var dataissues="0"
 
         }
         else if(correctedissues == "2"){
-                dataissues="0"
+               var dataissues="0"
           }
           else
             {
-                dataissues="1"
+                var dataissues="1"
 
             }
     res.redirect('/bulkreport/bulk-submission-report-list?dataissues='+dataissues+'&correctedissues='+correctedissues+'&removerowissue1=1&removerowissue2='+row2+'&bref='+removebref)
@@ -587,7 +587,7 @@ router.post('/confirm-remove-delete-error-row', function (req, res) {
       if (row1 == "1")
        {
 
-              dataissues="0"
+              var dataissues="0"
 
         }
         else if(correctedissues == "2"){
@@ -595,7 +595,7 @@ router.post('/confirm-remove-delete-error-row', function (req, res) {
           }
           else
             {
-                dataissues="1"
+                var dataissues="1"
 
             }
 
