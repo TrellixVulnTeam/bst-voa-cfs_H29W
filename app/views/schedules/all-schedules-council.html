@@ -1,0 +1,896 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Council Tax schedules
+{% endblock %}
+{% block beforeContent %}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <h1 class="govuk-heading-xl">Council Tax schedules</h1>
+
+      <!--<h3 class="govuk-heading-m ">See and download schedules available for this week</h3>-->
+
+      <p>Search for and download Council Tax schedules for your local authority.
+        Use the filter to find schedules based on factors like dates, bands, descriptions and no actions.’</p>
+
+      <!--<p>Showing 1 - 10 of 10 results</p>-->
+
+      <!--FILTER COMPONENT START-->
+
+            <div class="moj-filter-layout">
+
+        <div class="moj-filter-layout__filter">
+
+          <div class="moj-filter">
+
+            <!--NOTE START: this code removes the grey bars from the filter component-->
+
+            <!--<div class="moj-filter__header">
+
+          <div class="moj-filter__header-title">
+                  <h2 class="govuk-heading-m">Filter</h2>
+                </div>
+
+              <div class="moj-filter__header-action">
+
+              </div>
+            </div>-->
+
+            <!--NOTE END: this code removes the grey bars from the filter component-->
+
+            <div class="moj-filter__content">
+
+              <div class="moj-filter">
+
+                <div class="moj-filter__selected-heading">
+
+              <!--<div class="moj-filter__heading-title">
+                    <h2 class="govuk-heading-m">Selected filters</h2>
+                  </div>
+
+            <div class="moj-filter__heading-action">
+                    <p><a class="govuk-link govuk-link--no-visited-state" href="">Clear filters</a></p>
+                  </div>-->
+
+                </div>
+
+                <!--<h3 class="govuk-heading-s govuk-!-margin-bottom-0">Colour</h3>
+
+                <ul class="moj-filter-tags">
+
+                  <li><a class="moj-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span> Blue</a></li>
+
+                  <li><a class="moj-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span> Yellow</a></li>
+
+                </ul>
+
+                <h3 class="govuk-heading-s govuk-!-margin-bottom-0">Status</h3>
+
+                <ul class="moj-filter-tags">
+
+                  <li><a class="moj-filter__tag" href="#"><span class="govuk-visually-hidden">Remove this filter</span> Complete</a></li>
+
+                </ul>-->
+
+              </div>
+
+
+        <div class="moj-filter__options">
+
+
+          <div class="govuk-form-group">
+            <label class="govuk-label govuk-label--m" for="keywords">
+              Keywords
+            </label>
+
+            <input class="govuk-input" id="keywords" name="keywords" type="text">
+          </div>
+
+          <div class="govuk-form-group">
+
+            <fieldset class="govuk-fieldset">
+
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+
+                Rating year
+
+              </legend>
+
+              <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="type" name="type" type="checkbox" value="1" checked>
+                  <label class="govuk-label govuk-checkboxes__label" for="type">
+                    All Rating years
+                  </label>
+
+                </div>
+
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="type-2" name="type" type="checkbox" value="2" checked>
+                  <label class="govuk-label govuk-checkboxes__label" for="type-2">
+                    1993
+                  </label>
+
+                </div>
+
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="type-3" name="type" type="checkbox" value="3">
+                  <label class="govuk-label govuk-checkboxes__label" for="type-3">
+                    2005
+                  </label>
+
+                </div>
+
+              </div>
+
+            </fieldset>
+
+          </div>
+
+          <div class="govuk-form-group">
+
+            <fieldset class="govuk-fieldset">
+
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+
+                Description
+
+              </legend>
+
+              <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="status" name="status" type="checkbox" value="1" checked>
+                  <label class="govuk-label govuk-checkboxes__label" for="status">
+                    All schedules
+                  </label>
+
+                </div>
+
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="status-2" name="status" type="checkbox" value="2">
+                  <label class="govuk-label govuk-checkboxes__label" for="status-2">
+                    Update schedule
+                  </label>
+
+                </div>
+
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="status-3" name="status" type="checkbox" value="3">
+                  <label class="govuk-label govuk-checkboxes__label" for="status-3">
+                    No action schedules
+                  </label>
+
+                </div>
+
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="status-3" name="status" type="checkbox" value="3">
+                  <label class="govuk-label govuk-checkboxes__label" for="status-3">
+                    Banding totals
+                  </label>
+
+                </div>
+
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="status-3" name="status" type="checkbox" value="3">
+                  <label class="govuk-label govuk-checkboxes__label" for="status-3">
+                    Full council tax
+                  </label>
+
+                </div>
+
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="status-3" name="status" type="checkbox" value="3">
+                  <label class="govuk-label govuk-checkboxes__label" for="status-3">
+                    Other schedules
+                  </label>
+
+
+                  <!--DATE AND TIME START-->
+                </div>
+
+              </div>
+
+            </fieldset>
+
+          </div>
+
+          <div class="govuk-form-group">
+
+            <fieldset class="govuk-fieldset">
+
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+
+                Publish
+
+              </legend>
+
+            <!-- Date and time field 1 START-->
+              <div class="govuk-form-group">
+                  <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
+                    <legend class="govuk-fieldset__legend">
+                      From
+                    </legend>
+                    <div id="passport-issued-hint" class="govuk-hint">
+                      For example, 27 3 2007
+                    </div>
+                    <div class="govuk-date-input" id="passport-issued">
+                      <div class="govuk-date-input__item">
+                        <div class="govuk-form-group">
+                          <label class="govuk-label govuk-date-input__label" for="passport-issued-day">
+                            Day
+                          </label>
+                          <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-day" name="passport-issued-day" type="text" pattern="[0-9]*" inputmode="numeric">
+                        </div>
+                      </div>
+                      <div class="govuk-date-input__item">
+                        <div class="govuk-form-group">
+                          <label class="govuk-label govuk-date-input__label" for="passport-issued-month">
+                            Month
+                          </label>
+                          <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-month" name="passport-issued-month" type="text" pattern="[0-9]*" inputmode="numeric">
+                        </div>
+                      </div>
+                      <div class="govuk-date-input__item">
+                        <div class="govuk-form-group">
+                          <label class="govuk-label govuk-date-input__label" for="passport-issued-year">
+                            Year
+                          </label>
+                          <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="passport-issued-year" name="passport-issued-year" type="text" pattern="[0-9]*" inputmode="numeric">
+                        </div>
+                      </div>
+                    </div>
+
+                </fieldset>
+              </div>
+              <!-- Date and time field 1 END-->
+
+              <!-- Date and time field 2 START-->
+              <div class="govuk-form-group">
+                  <fieldset class="govuk-fieldset" role="group" aria-describedby="passport-issued-hint">
+                    <legend class="govuk-fieldset__legend">
+                      To
+                    </legend>
+                    <div id="passport-issued-hint" class="govuk-hint">
+                      For example, 27 3 2007
+                    </div>
+                    <div class="govuk-date-input" id="passport-issued">
+                      <div class="govuk-date-input__item">
+                        <div class="govuk-form-group">
+                          <label class="govuk-label govuk-date-input__label" for="passport-issued-day">
+                            Day
+                          </label>
+                          <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-day" name="passport-issued-day" type="text" pattern="[0-9]*" inputmode="numeric">
+                        </div>
+                      </div>
+                      <div class="govuk-date-input__item">
+                        <div class="govuk-form-group">
+                          <label class="govuk-label govuk-date-input__label" for="passport-issued-month">
+                            Month
+                          </label>
+                          <input class="govuk-input govuk-date-input__input govuk-input--width-2" id="passport-issued-month" name="passport-issued-month" type="text" pattern="[0-9]*" inputmode="numeric">
+                        </div>
+                      </div>
+                      <div class="govuk-date-input__item">
+                        <div class="govuk-form-group">
+                          <label class="govuk-label govuk-date-input__label" for="passport-issued-year">
+                            Year
+                          </label>
+                          <input class="govuk-input govuk-date-input__input govuk-input--width-4" id="passport-issued-year" name="passport-issued-year" type="text" pattern="[0-9]*" inputmode="numeric">
+                        </div>
+                      </div>
+                    </div>
+
+                </fieldset>
+                <!-- Date and time field 2 END-->
+
+                <div class="govuk-!-margin-top-8 govuk-!-margin-bottom-4">
+
+                <button class="govuk-button" data-module="govuk-button">
+                  Apply filters
+                </button>
+
+                </div>
+
+
+            </fieldset>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="moj-filter-layout__content">
+
+    <div class="moj-action-bar">
+
+      <div class="moj-action-bar__filter"></div>
+
+      <div class="moj-button-menu">
+        <div class="moj-button-menu__wrapper">
+
+          <!--<button class="govuk-button moj-button-menu__item govuk-button--secondary " data-module="govuk-button">
+            Action 1
+          </button>
+
+          <button class="govuk-button moj-button-menu__item govuk-button--secondary " data-module="govuk-button">
+            Action 2
+          </button>-->
+
+
+        </div>
+      </div>
+
+    </div>
+
+    <!--FILTER COMPONENT FINISH-->
+
+            <nav class="moj-pagination" aria-labelledby="pagination-label">
+
+              <p class="govuk-visually-hidden" id="pagination-label">Pagination navigation</p>
+
+              <ul class="moj-pagination__list">
+              <li class="moj-pagination__item  moj-pagination__item--prev">
+              <a class="moj-pagination__link" href="">Previous<span class="govuk-visually-hidden"> set of pages</span></a>
+              </li>
+
+              <li class="moj-pagination__item moj-pagination__item--active">1</li>
+
+              <li class="moj-pagination__item"><a class="moj-pagination__link" href="/page=1">2</a></li>
+
+              <li class="moj-pagination__item"><a class="moj-pagination__link" href="/page=3">3</a></li>
+
+              <li class="moj-pagination__item moj-pagination__item--dots">...</li>
+
+              <li class="moj-pagination__item"><a class="moj-pagination__link" href="/page=5">5</a></li>
+
+              <li class="moj-pagination__item  moj-pagination__item--next">
+              <a class="moj-pagination__link" href="">Next<span class="govuk-visually-hidden"> set of pages</span></a>
+              </li>
+              </ul>
+              <p class="moj-pagination__results">Showing <b>1</b> to <b>20</b> of <b>200</b> schedules</p>
+
+            </nav>
+
+
+        <div class="moj-scrollable-pane">
+
+          <div class="moj-scrollable-pane__wrapper">
+
+            <div class="govuk-!-margin-top-6 govuk-!-margin-bottom-4">
+
+            <a href="#" role="button" draggable="false" class="govuk-button moj-button-menu__item  " data-module="govuk-button">
+              Download as PDF
+            </a>
+
+            <a href="#" role="button" draggable="false" class="govuk-button moj-button-menu__item " data-module="govuk-button">
+              Download as XML
+            </a>
+
+            <a href="#" role="button" draggable="false" class="govuk-button moj-button-menu__item " data-module="govuk-button">
+              Download as CSV
+            </a>
+
+            <a href="#" role="button" draggable="false" class="govuk-button moj-button-menu__item " data-module="govuk-button">
+              Download as ASV
+            </a>
+
+            </div>
+        </div>
+
+
+
+<!--TABLE START-->
+
+      <div data-module="moj-multi-select" data-multi-select-checkbox="#select-all">
+          <table class="govuk-table" data-module="moj-sortable-table">
+
+
+          <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+
+
+          <th scope="col" class="govuk-table__header" id="select-all"</th>
+
+          <th scope="col" class="govuk-table__header" aria-sort="ascending">Schedule</th>
+
+          <th scope="col" class="govuk-table__header" aria-sort="none">Rating year</th>
+
+          <th scope="col" class="govuk-table__header" aria-sort="none">Description</th>
+
+          <th scope="col" class="govuk-table__header" aria-sort="none">Publish</th>
+
+          <th scope="col" class="govuk-table__header" aria-sort="none">Last download</th>
+
+
+          </tr>
+          </thead>
+
+
+          <tbody class="govuk-table__body">
+
+          <tr class="govuk-table__row">
+
+          <td class="govuk-table__cell">
+            <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+             <div class="govuk-checkboxes__item">
+               <input class="govuk-checkboxes__input" id="organisation" name="organisation" type="checkbox" value="hmrc">
+               <label class="govuk-label govuk-checkboxes__label" for="organisation">
+                 <span class=" govuk-visually-hidden">HM Revenue and Customs</span>
+               </label>
+             </div>
+
+             <td class="govuk-table__cell"><a href="#">F0840199328MAR2021P</a></td>
+             <td class="govuk-table__cell">1993</td>
+             <td class="govuk-table__cell">Update schedule of alterration</td>
+             <td class="govuk-table__cell">28 Dec 2021</td>
+             <td class="govuk-table__cell"></td>
+
+          </tr>
+
+
+          <tr class="govuk-table__row">
+
+            <td class="govuk-table__cell">
+              <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+               <div class="govuk-checkboxes__item">
+                 <input class="govuk-checkboxes__input" id="organisation" name="organisation" type="checkbox" value="hmrc">
+                 <label class="govuk-label govuk-checkboxes__label" for="organisation">
+                   <span class=" govuk-visually-hidden">HM Revenue and Customs</span>
+                 </label>
+               </div>
+
+
+            <td class="govuk-table__cell"><a href="#">F0840199327DEC2020P</a></td>
+            <td class="govuk-table__cell">1993</td>
+            <td class="govuk-table__cell">Full Council tax valuation list</td>
+            <td class="govuk-table__cell">28 Dec 2021</td>
+            <td class="govuk-table__cell"></td>
+
+          </tr>
+
+
+          <tr class="govuk-table__row">
+
+            <td class="govuk-table__cell">
+              <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+               <div class="govuk-checkboxes__item">
+                 <input class="govuk-checkboxes__input" id="organisation" name="organisation" type="checkbox" value="hmrc">
+                 <label class="govuk-label govuk-checkboxes__label" for="organisation">
+                   <span class=" govuk-visually-hidden">HM Revenue and Customs</span>
+                 </label>
+               </div>
+
+
+            <td class="govuk-table__cell"><a href="#">T0840199328MAR2021P</a></td>
+            <td class="govuk-table__cell">1993</td>
+            <td class="govuk-table__cell">Full Council tax valuation list</td>
+            <td class="govuk-table__cell">26 Dec 2021</td>
+            <td class="govuk-table__cell"></td>
+
+          </tr>
+
+
+          <tr class="govuk-table__row">
+
+            <td class="govuk-table__cell">
+              <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+               <div class="govuk-checkboxes__item">
+                 <input class="govuk-checkboxes__input" id="organisation" name="organisation" type="checkbox" value="hmrc">
+                 <label class="govuk-label govuk-checkboxes__label" for="organisation">
+                   <span class=" govuk-visually-hidden">HM Revenue and Customs</span>
+                 </label>
+               </div>
+
+
+            <td class="govuk-table__cell"><a href="#">T0840199327DEC2020P</a></td>
+            <td class="govuk-table__cell">1993</td>
+            <td class="govuk-table__cell">Full Council tax valuation list</td>
+            <td class="govuk-table__cell">26 Dec 2021</td>
+            <td class="govuk-table__cell"></td>
+
+          </tr>
+
+
+          <tr class="govuk-table__row">
+
+            <td class="govuk-table__cell">
+              <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+               <div class="govuk-checkboxes__item">
+                 <input class="govuk-checkboxes__input" id="organisation" name="organisation" type="checkbox" value="hmrc">
+                 <label class="govuk-label govuk-checkboxes__label" for="organisation">
+                   <span class=" govuk-visually-hidden">HM Revenue and Customs</span>
+                 </label>
+               </div>
+
+
+            <td class="govuk-table__cell"><a href="/schedules/preview-selected-schedule-council">U0840199321JUL2021P</a></td>
+            <td class="govuk-table__cell">1993</td>
+            <td class="govuk-table__cell">Full Council tax valuation list</td>
+            <td class="govuk-table__cell">24 Dec 2021</td>
+            <td class="govuk-table__cell"></td>
+
+          </tr>
+
+
+          <tr class="govuk-table__row">
+
+            <td class="govuk-table__cell">
+              <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+               <div class="govuk-checkboxes__item">
+                 <input class="govuk-checkboxes__input" id="organisation" name="organisation" type="checkbox" value="hmrc">
+                 <label class="govuk-label govuk-checkboxes__label" for="organisation">
+                   <span class=" govuk-visually-hidden">HM Revenue and Customs</span>
+                 </label>
+               </div>
+
+
+            <td class="govuk-table__cell"><a href="/schedules/preview-selected-schedule-council">U0840199318JUL2021P</a></td>
+            <td class="govuk-table__cell">1993</td>
+            <td class="govuk-table__cell">Full Council tax valuation list</td>
+            <td class="govuk-table__cell">23 Dec 2021</td>
+            <td class="govuk-table__cell"</td>
+
+          </tr>
+
+
+          <tr class="govuk-table__row">
+
+            <td class="govuk-table__cell">
+              <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+               <div class="govuk-checkboxes__item">
+                 <input class="govuk-checkboxes__input" id="organisation" name="organisation" type="checkbox" value="hmrc">
+                 <label class="govuk-label govuk-checkboxes__label" for="organisation">
+                   <span class=" govuk-visually-hidden">HM Revenue and Customs</span>
+                 </label>
+               </div>
+
+
+            <td class="govuk-table__cell"><a href="/schedules/preview-selected-schedule-council">U0840199314JUL2021P</a></td>
+            <td class="govuk-table__cell">1993</td>
+            <td class="govuk-table__cell">Full Council tax valuation list</td>
+            <td class="govuk-table__cell">20 Nov 2021</td>
+            <td class="govuk-table__cell">13 Nov 2021</td>
+
+          </tr>
+
+
+          <tr class="govuk-table__row">
+
+            <td class="govuk-table__cell">
+              <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+               <div class="govuk-checkboxes__item">
+                 <input class="govuk-checkboxes__input" id="organisation" name="organisation" type="checkbox" value="hmrc">
+                 <label class="govuk-label govuk-checkboxes__label" for="organisation">
+                   <span class=" govuk-visually-hidden">HM Revenue and Customs</span>
+                 </label>
+               </div>
+
+
+            <td class="govuk-table__cell"><a href="/schedules/preview-selected-schedule-council">U0840199304JUL2021P</a></td>
+            <td class="govuk-table__cell">1993</td>
+            <td class="govuk-table__cell">Banding totals for full Council tax valuation list</td>
+            <td class="govuk-table__cell">17 Nov 2021</td>
+            <td class="govuk-table__cell">17 Nov 2021</td>
+
+          </tr>
+
+          <tr class="govuk-table__row">
+
+            <td class="govuk-table__cell">
+              <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+               <div class="govuk-checkboxes__item">
+                 <input class="govuk-checkboxes__input" id="organisation" name="organisation" type="checkbox" value="hmrc">
+                 <label class="govuk-label govuk-checkboxes__label" for="organisation">
+                   <span class=" govuk-visually-hidden">HM Revenue and Customs</span>
+                 </label>
+               </div>
+
+
+            <td class="govuk-table__cell"><a href="#">U0840199304JUN2021P</a></td>
+            <td class="govuk-table__cell">1993</td>
+            <td class="govuk-table__cell">Update schedule of alterration</td>
+            <td class="govuk-table__cell">12 Nov 2021</td>
+            <td class="govuk-table__cell">11 Nov 2021</td>
+
+          </tr>
+
+
+          <tr class="govuk-table__row">
+
+            <td class="govuk-table__cell">
+              <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+               <div class="govuk-checkboxes__item">
+                 <input class="govuk-checkboxes__input" id="organisation" name="organisation" type="checkbox" value="hmrc">
+                 <label class="govuk-label govuk-checkboxes__label" for="organisation">
+                   <span class=" govuk-visually-hidden">HM Revenue and Customs</span>
+                 </label>
+               </div>
+
+
+            <td class="govuk-table__cell"><a href="#">U0840199323JUN2021P</a></td>
+            <td class="govuk-table__cell">1993</td>
+            <td class="govuk-table__cell">Update schedule of alterration</td>
+            <td class="govuk-table__cell">24 Oct 2021</td>
+            <td class="govuk-table__cell">21 Oct 2021</td>
+
+          </tr>
+
+
+          <tr class="govuk-table__row">
+
+            <td class="govuk-table__cell">
+              <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+               <div class="govuk-checkboxes__item">
+                 <input class="govuk-checkboxes__input" id="organisation" name="organisation" type="checkbox" value="hmrc">
+                 <label class="govuk-label govuk-checkboxes__label" for="organisation">
+                   <span class=" govuk-visually-hidden">HM Revenue and Customs</span>
+                 </label>
+               </div>
+
+
+            <td class="govuk-table__cell"><a href="#">U0840199320JUN2021P</a></td>
+            <td class="govuk-table__cell">1993</td>
+            <td class="govuk-table__cell">Update schedule of alterration</td>
+            <td class="govuk-table__cell">20 Oct 2021</td>
+            <td class="govuk-table__cell">16 Oct 2021</td>
+
+          </tr>
+
+
+          <tr class="govuk-table__row">
+
+            <td class="govuk-table__cell">
+              <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+               <div class="govuk-checkboxes__item">
+                 <input class="govuk-checkboxes__input" id="organisation" name="organisation" type="checkbox" value="hmrc">
+                 <label class="govuk-label govuk-checkboxes__label" for="organisation">
+                   <span class=" govuk-visually-hidden">HM Revenue and Customs</span>
+                 </label>
+               </div>
+
+
+            <td class="govuk-table__cell"><a href="#">U0840199316JUN2021P</a></td>
+            <td class="govuk-table__cell">1993</td>
+            <td class="govuk-table__cell">Update schedule of alterration</td>
+            <td class="govuk-table__cell">19 Oct 2021</td>
+            <td class="govuk-table__cell">14 Oct 2021</td>
+
+          </tr>
+
+
+          <tr class="govuk-table__row">
+
+            <td class="govuk-table__cell">
+              <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+               <div class="govuk-checkboxes__item">
+                 <input class="govuk-checkboxes__input" id="organisation" name="organisation" type="checkbox" value="hmrc">
+                 <label class="govuk-label govuk-checkboxes__label" for="organisation">
+                   <span class=" govuk-visually-hidden">HM Revenue and Customs</span>
+                 </label>
+               </div>
+
+
+            <td class="govuk-table__cell"><a href="#">U0840199316JUN2021P</a></td>
+            <td class="govuk-table__cell">1993</td>
+            <td class="govuk-table__cell">Update schedule of alterration</td>
+            <td class="govuk-table__cell">17 Oct 2021</td>
+            <td class="govuk-table__cell">13 Oct 2021</td>
+
+          </tr>
+
+
+          <tr class="govuk-table__row">
+
+            <td class="govuk-table__cell">
+              <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+               <div class="govuk-checkboxes__item">
+                 <input class="govuk-checkboxes__input" id="organisation" name="organisation" type="checkbox" value="hmrc">
+                 <label class="govuk-label govuk-checkboxes__label" for="organisation">
+                   <span class=" govuk-visually-hidden">HM Revenue and Customs</span>
+                 </label>
+               </div>
+
+
+            <td class="govuk-table__cell"><a href="#">U0840199313JUN2021P</a></td>
+            <td class="govuk-table__cell">1993</td>
+            <td class="govuk-table__cell">Banding totals for full Council tax valuation list</td>
+            <td class="govuk-table__cell">14 Oct 2021</td>
+            <td class="govuk-table__cell">8 Oct 2021</td>
+
+          </tr>
+
+
+          <tr class="govuk-table__row">
+
+            <td class="govuk-table__cell">
+              <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+               <div class="govuk-checkboxes__item">
+                 <input class="govuk-checkboxes__input" id="organisation" name="organisation" type="checkbox" value="hmrc">
+                 <label class="govuk-label govuk-checkboxes__label" for="organisation">
+                   <span class=" govuk-visually-hidden">HM Revenue and Customs</span>
+                 </label>
+               </div>
+
+
+            <td class="govuk-table__cell"><a href="#">U0840199309JUL2021P</a></td>
+            <td class="govuk-table__cell">1993</td>
+            <td class="govuk-table__cell">Update Schedule of Aleteration to the Council Tax Valuation List</td>
+            <td class="govuk-table__cell">10 Oct 2021</td>
+            <td class="govuk-table__cell">8 Oct 2021</td>
+
+          </tr>
+
+
+          <tr class="govuk-table__row">
+
+            <td class="govuk-table__cell">
+              <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+               <div class="govuk-checkboxes__item">
+                 <input class="govuk-checkboxes__input" id="organisation" name="organisation" type="checkbox" value="hmrc">
+                 <label class="govuk-label govuk-checkboxes__label" for="organisation">
+                   <span class=" govuk-visually-hidden">HM Revenue and Customs</span>
+                 </label>
+               </div>
+
+
+            <td class="govuk-table__cell"><a href="#">U0840199306JUL2021P</a></td>
+            <td class="govuk-table__cell">1993</td>
+            <td class="govuk-table__cell">Full Council tax valuation list</td>
+            <td class="govuk-table__cell">9 Oct 2021</td>
+            <td class="govuk-table__cell">7 Oct 2021</td>
+
+          </tr>
+
+
+          <tr class="govuk-table__row">
+
+            <td class="govuk-table__cell">
+              <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+               <div class="govuk-checkboxes__item">
+                 <input class="govuk-checkboxes__input" id="organisation" name="organisation" type="checkbox" value="hmrc">
+                 <label class="govuk-label govuk-checkboxes__label" for="organisation">
+                   <span class=" govuk-visually-hidden">HM Revenue and Customs</span>
+                 </label>
+               </div>
+
+
+            <td class="govuk-table__cell"><a href="#">U0840199303JUL2021P</a></td>
+            <td class="govuk-table__cell">1993</td>
+            <td class="govuk-table__cell">Update Schedule of Aleteration to the Council Tax Valuation List</td>
+            <td class="govuk-table__cell">9 Oct 2021</td>
+            <td class="govuk-table__cell">5 Oct 2021</td>
+
+          </tr>
+
+
+          <tr class="govuk-table__row">
+
+            <td class="govuk-table__cell">
+              <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+               <div class="govuk-checkboxes__item">
+                 <input class="govuk-checkboxes__input" id="organisation" name="organisation" type="checkbox" value="hmrc">
+                 <label class="govuk-label govuk-checkboxes__label" for="organisation">
+                   <span class=" govuk-visually-hidden">HM Revenue and Customs</span>
+                 </label>
+               </div>
+
+
+            <td class="govuk-table__cell"><a href="#">N0840199314APR2021P</a></td>
+            <td class="govuk-table__cell">1993</td>
+            <td class="govuk-table__cell">Full Council tax valuation list</td>
+            <td class="govuk-table__cell">24 Sep 2021</td>
+            <td class="govuk-table__cell">20 Sep 2021</td>
+
+          </tr>
+
+
+          <tr class="govuk-table__row">
+
+            <td class="govuk-table__cell">
+              <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+               <div class="govuk-checkboxes__item">
+                 <input class="govuk-checkboxes__input" id="organisation" name="organisation" type="checkbox" value="hmrc">
+                 <label class="govuk-label govuk-checkboxes__label" for="organisation">
+                   <span class=" govuk-visually-hidden">HM Revenue and Customs</span>
+                 </label>
+               </div>
+
+
+            <td class="govuk-table__cell"><a href="#">N0840199311APR2021P</a></td>
+            <td class="govuk-table__cell">1993</td>
+            <td class="govuk-table__cell">Full Council tax valuation list</td>
+            <td class="govuk-table__cell">22 Sep 2021</td>
+            <td class="govuk-table__cell">17 Sep 2021</td>
+
+          </tr>
+
+
+          <tr class="govuk-table__row">
+
+            <td class="govuk-table__cell">
+              <div class="govuk-checkboxes govuk-checkboxes--small" data-module="govuk-checkboxes">
+               <div class="govuk-checkboxes__item">
+                 <input class="govuk-checkboxes__input" id="organisation" name="organisation" type="checkbox" value="hmrc">
+                 <label class="govuk-label govuk-checkboxes__label" for="organisation">
+                   <span class=" govuk-visually-hidden">HM Revenue and Customs</span>
+                 </label>
+               </div>
+
+
+            <td class="govuk-table__cell"><a href="#">N0840199307APR2021P</a></td>
+            <td class="govuk-table__cell">1993</td>
+            <td class="govuk-table__cell">Full Council tax valuation list</td>
+            <td class="govuk-table__cell">21 Sep 2021</td>
+            <td class="govuk-table__cell">19 Sep 2021</td>
+
+          </tr>
+
+
+
+
+
+
+
+       </tbody>
+    </table>
+
+
+
+
+ <!--TABLE END-->
+
+    <form method="post" novalidate action="#">
+
+
+  <!--<div class="govuk-form-group">
+    <fieldset class="govuk-fieldset" aria-describedby="add-another-hint">
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend govuk-fieldset__legend--m">
+        Do you need to add another user?
+      </legend>
+      <div id="add-another-hint" class="govuk-hint">
+        You must tell us about all your users.
+      </div>
+      <div class="govuk-radios govuk-radios--inline">
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="add-another" name="add-another" type="radio" value="Yes">
+          <label class="govuk-label govuk-radios__label" for="add-another">
+            Yes
+          </label>
+        </div>
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="add-another-2" name="add-another" type="radio" value="No">
+          <label class="govuk-label govuk-radios__label" for="add-another-2">
+            No
+          </label>
+        </div>
+      </div>
+
+    </fieldset>
+  </div>-->
+
+        <!--<div>
+            <a class="govuk-link" href="#">See previous schedules</a>
+        </div>-->
+
+            <!--<button class="govuk-button" data-module="govuk-button">
+            Continue
+            </button>-->
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}

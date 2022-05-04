@@ -1,0 +1,124 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Bulk report issues
+{% endblock %}
+{% block beforeContent %}
+  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+      <h1 class="govuk-heading-xl">Non-domestic rates schedule preview</h1>
+
+
+      <!--TABLE START-->
+        <table class="govuk-table">
+          <!--<caption class="govuk-table__caption govuk-table__caption--m">Dates and amounts</caption>-->
+          <thead class="govuk-table__head">
+            <tr class="govuk-table__row">
+              <th scope="col" class="govuk-table__header">File name</th>
+              <td class="govuk-table__cell">08402017017NRP</td>
+            </tr>
+          </thead>
+          <tbody class="govuk-table__body">
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">Rating year</th>
+              <td class="govuk-table__cell">1993</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">Description</th>
+              <td class="govuk-table__cell">£109.80 per week</td>
+            </tr>
+            <tr class="govuk-table__row">
+              <th scope="row" class="govuk-table__header">Last download</th>
+              <td class="govuk-table__cell">26 Dec 2021</td>
+            </tr>
+          </tbody>
+        </table>
+        <!--TABLE END-->
+
+
+        <h2 class="govuk-heading-m">Download Schedule</h2>
+
+
+              <div class="moj-scrollable-pane">
+
+                <div class="moj-scrollable-pane__wrapper">
+
+                  <div class="govuk-!-margin-top-6 govuk-!-margin-bottom-4">
+
+                  <a href="#" role="button" draggable="false" class="govuk-button moj-button-menu__item  " data-module="govuk-button">
+                    Download as PDF
+                  </a>
+
+                  <a href="#" role="button" draggable="false" class="govuk-button moj-button-menu__item " data-module="govuk-button">
+                    Download as XML
+                  </a>
+
+                  <a href="#" role="button" draggable="false" class="govuk-button moj-button-menu__item " data-module="govuk-button">
+                    Download as CSV
+                  </a>
+
+                  <a href="#" role="button" draggable="false" class="govuk-button moj-button-menu__item " data-module="govuk-button">
+                    Download as ASV
+                  </a>
+
+                  </div>
+              </div>
+
+
+
+                <img src="/public/images/schedulepreview.png" width="100%" height="100%""
+
+
+
+
+    <form method="post" novalidate action="#">
+
+
+
+
+
+  <!--<div class="govuk-form-group">
+    <fieldset class="govuk-fieldset" aria-describedby="add-another-hint">
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend govuk-fieldset__legend--m">
+        Do you need to add another user?
+      </legend>
+      <div id="add-another-hint" class="govuk-hint">
+        You must tell us about all your users.
+      </div>
+      <div class="govuk-radios govuk-radios--inline">
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="add-another" name="add-another" type="radio" value="Yes">
+          <label class="govuk-label govuk-radios__label" for="add-another">
+            Yes
+          </label>
+        </div>
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="add-another-2" name="add-another" type="radio" value="No">
+          <label class="govuk-label govuk-radios__label" for="add-another-2">
+            No
+          </label>
+        </div>
+      </div>
+
+    </fieldset>
+  </div>-->
+
+        <!--<div>
+            <a class="govuk-link" href="#">See previous schedules</a>
+        </div>-->
+
+            <!--<button class="govuk-button" data-module="govuk-button">
+            Continue
+            </button>-->
+      </form>
+
+    </div>
+  </div>
+
+{% endblock %}
