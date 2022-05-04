@@ -1,0 +1,68 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Request reason
+{% endblock %}
+
+{% block beforeContent %}
+
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-one-third">
+			{{ govukBackLink({
+			  text: "Back",
+			  href: "javascript:window.history.back()"
+			}) }}
+		</div>
+		{% include "includes/header-section-signedin.html" %}
+	</div>
+{% endblock %}
+{% block content %}
+
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+
+        <form class="form" action="" method="post">
+
+
+                    {{ govukRadios({
+            idPrefix: "Why are you creating this report?",
+            name: "Why are you creating this report?",
+            fieldset: {
+              legend: {
+                text: "Why are you creating this report?",
+                isPageHeading: true,
+                classes: "govuk-fieldset__legend--l"
+              }
+            },
+               
+            items: [
+              {
+                value: "removing a property~/webform/ct/request-sub-reason?reason=remove",
+                text: "Removing a property"
+              },
+              {
+                value: "making amendments to a property~/webform/ct/request-sub-reason?reason=amend",
+                text: "Making amendments to a property"
+              },
+              {
+                value: "adding a new property~/webform/ct/request-sub-reason?reason=new",
+                text: "Adding a new property"
+              }
+            ]
+
+          }) }}
+
+            
+
+              <button class="govuk-button" data-module="govuk-button">Save and Continue</button>
+
+        </form>
+
+          </div>
+        </div>
+
+
+
+{% endblock %}

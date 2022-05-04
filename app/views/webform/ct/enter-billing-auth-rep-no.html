@@ -1,0 +1,56 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Enter the billing authority report number
+{% endblock %}
+
+{% block beforeContent %}
+
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-one-third">
+			{{ govukBackLink({
+			  text: "Back",
+			  href: "javascript:window.history.back()"
+			}) }}
+		</div>
+		{% include "includes/header-section-signedin.html" %}
+	</div>
+{% endblock %}
+{% block content %}
+
+<form method="post" action="/webform/ct/enter-billing-auth-rep-no">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+                  <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                <h1 class="govuk-fieldset__heading">
+                  Enter the billing authority report number
+                </h1>
+              </legend>
+             
+				<input class="govuk-input govuk-input--width-20" id="input-bill-auth-ref-no" name="input-bill-auth-ref-no" >
+				
+				
+				
+				
+            
+
+            </fieldset>
+          </div>
+
+          <button class="govuk-button" data-module="govuk-button">
+            Save and Continue
+          </button>
+
+                   
+
+       
+
+        
+
+        </div>
+      </div>
+</form>
+{% endblock %}
