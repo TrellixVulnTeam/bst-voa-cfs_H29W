@@ -30,7 +30,7 @@
     <div class="govuk-grid-row">
       <div class="govuk-grid-column-two-thirds">
 
-        <form class="form" action="/reason-for-removal" method="post">
+        <form class="form" action="/webform/ct/request-sub-reason" method="post">
 
 {%if data['reason']=="remove"%}
 
@@ -64,14 +64,14 @@
 
               items: [
                 {
-                  value: "CR01: Demolished or Uninhabitable (deletion from council tax list)",
+                  value: "CR01",
                   text: "CR01: Demolished or Uninhabitable (deletion from council tax list)",
                   conditional: {
                     html: emailHtml
                   }
                 },
                 {
-                  value: "CR07: demolition of part - potential reduction in band",
+                  value: "CR07",
                   text: "CR07: demolition of part - potential reduction in band",
                   conditional: {
                     html: phoneHtml
@@ -115,56 +115,56 @@
 
               items: [
                 {
-                  value: "CR02: change from domestic use (deletion from council tax list)",
+                  value: "CR02",
                   text: "CR02: change from domestic use (deletion from council tax list)",
                   conditional: {
                     html: emailHtml
                   }
                 },
                 {
-                  value: "CR04: change to domestic use (e.g, previously non-domestic rate or exempt)",
+                  value: "CR04",
                   text: "CR04: change to domestic use (e.g, previously non-domestic rate or exempt)",
                   conditional: {
                     html: phoneHtml
                   }
                 },
                 {
-                  value: "CR05: reconstituted property (e.g. a split of a house into flats or the merger of flats into a single dwelling or the additions of a annexe)",
+                  value: "CR05",
                   text: "CR05: reconstituted property (e.g. a split of a house into flats or the merger of flats into a single dwelling or the additions of a annexe)",
                   conditional: {
                     html: otherAmendHtml1
                   }
                 },
 				{
-                  value: "CR06: composite dwelling (where there is a domestic and non-domestic element)",
+                  value: "CR06",
                   text: "CR06: composite dwelling (where there is a domestic and non-domestic element)",
                   conditional: {
                     html: otherAmendHtml2
                   }
                 },
 				{
-                  value: "CR09: reference number or effective date change only",
+                  value: "CR09",
                   text: "CR09: reference number or effective date change only",
                   conditional: {
                     html: otherAmendHtml3
                   }
                 },
 				{
-                  value: "CR10: improvements / alterations (for review after the next sale)",
+                  value: "CR10",
                   text: "CR10: improvements / alterations (for review after the next sale)",
                   conditional: {
                     html: otherAmendHtml4
                   }
                 },
 				{
-                  value: "CR12: major address change",
+                  value: "CR12",
                   text: "CR12: major address change",
                   conditional: {
                     html: otherAmendHtml5
                   }
                 },
                 {
-                  value: "CR14: minor address change (for obvious errors or minor postcode changes or small additions to the first line of the address)",
+                  value: "CR14",
                   text: "CR14: minor address change (for obvious errors or minor postcode changes or small additions to the first line of the address)",
                   conditional: {
                     html: textHtml123
@@ -192,7 +192,7 @@
 				  },
 				  items: [
 					{
-					  value: "CR03: new",
+					  value: "CR03",
 					  text: "CR03: new"
 					}
 				  ]
@@ -205,7 +205,7 @@
          
 
 
-                <button class="govuk-button" data-module="govuk-button">Continue</button>
+                <button class="govuk-button" data-module="govuk-button">Save and Continue</button>
 
         </div>
         </div>

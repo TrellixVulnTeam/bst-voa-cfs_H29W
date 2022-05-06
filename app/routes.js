@@ -912,6 +912,48 @@ console.log("confirmfilename = " +confirmfilename )
 })
 
 
+//webform prototype
+
+
+
+
+
+router.post('/webform/ct/request-sub-reason', function (req, res) {
+
+  // Make a variable and give it the value from 'how-many-balls'
+	
+var reason = req.session.data['reason']
+var property = req.session.data['property']
+
+  var reason_remove = req.session.data['reason-remove']
+
+  var reason_amend = req.session.data['reason-amend']
+
+   var reason_new = req.session.data['reason-new']
+
+
+console.log("reason = " +reason )
+  // Check whether the variable matches a condition
+
+
+
+
+
+    // Send user to ineligible page
+
+
+    if (reason == "remove") {
+      res.redirect('/webform/ct/billing-reference?reason='+reason+'&property='+property)
+    }
+    
+
+
+
+
+})
+
+
+
 
 
 
