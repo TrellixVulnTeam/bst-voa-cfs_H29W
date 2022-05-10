@@ -23,8 +23,8 @@
 
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
-		
-		
+
+
 		{%if data['property-billing-ref-no-input']!="" %}
 
 			{%set billing_ref_no = data['property-billing-ref-no-input'] %}
@@ -35,16 +35,16 @@
 
 		{%endif%}
 
-      <h1 class="govuk-heading-xl">Check and confirm the address and description for billing authority reference number: {{billing_ref_no}}.</h1>
-		
-		
-
-    
+      <h1 class="govuk-heading-l">Check and confirm the address and description for billing authority reference number: {{billing_ref_no}}</h1>
 
 
-      <h2 class="govuk-heading-l govuk-!-margin-bottom-2">
-		  
-		  Is this the correct address?
+
+
+
+
+      <h2 class="govuk-heading-s govuk-!-margin-bottom-2">
+
+		  Address
         </h2>
 
         <ul class="govuk-list">
@@ -56,14 +56,14 @@
         </ul>
 
 
-        <h2 class="govuk-heading-m govuk-!-margin-bottom-2">Description</h2>
-            <p class="govuk-body">Pub</p>
+        <h2 class="govuk-heading-s govuk-!-margin-bottom-2">Description</h2>
+            <p class="govuk-body">Resedential property</p>
 
-
+            <!--
           <h2 class="govuk-heading-m govuk-!-margin-bottom-2">Rateable value</h2>
               <p class="govuk-body">£1.350.000.00</p>
 
-
+            -->
           {{ govukDetails({
               summaryText: "If the address is incorrect",
               text: "Go back and re-enter the billing property reference number. If the details are still incorrect, contact the Valuation Office Agency."
@@ -73,7 +73,7 @@
 	<form method="post" action="">
           <div class="govuk-button-group">
             {{ govukButton({
-              text: "Continue",
+              text: "Confirm",
                 href: "council-tax-band"
             }) }}
 

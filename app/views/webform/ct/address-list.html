@@ -1,0 +1,160 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Choose your address
+{% endblock %}
+
+{% block beforeContent %}
+
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-one-third">
+			{{ govukBackLink({
+			  text: "Back",
+			  href: "javascript:window.history.back()"
+			}) }}
+		</div>
+		{% include "includes/header-section-signedin.html" %}
+	</div>
+{% endblock %}
+
+{% block content %}
+
+{%
+
+
+      if(data['property-postcode']=="")
+%}
+
+        {%set show_postcode = "TF3 4NT"%}
+
+      {%else%}
+
+        {%set show_postcode = data['property-postcode']%}
+
+      {%endif%}
+
+
+
+
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+
+	<form class="form" method="post" action="/webform/ct/address-list">
+
+
+
+
+    <h1 class="govuk-heading-xl">Choose your address</h1>
+
+    <p class="govuk-!-padding-bottom-4">        Postcode you entered: <strong>{{show_postcode}}</strong>
+
+            <a href="/webform/ct/address-postcode-lookup">Change Postcode</a></p>
+
+
+
+
+
+
+  				<div class="govuk-radios {% if error %} form-group-error {% endif %}">
+					
+					
+  					{% if error %}
+  					<span class="error-message">Select a business address</span>
+  					{% endif %}
+
+            <legend class="govuk-fieldset__legend">
+             Select your address
+           </legend>
+  					{% for address in addresses%}
+                  {%set radioid = "address" + loop.index0
+              %}
+  					<div class="govuk-radios__item">
+  						<input class="govuk-radios__input" id="{{radioid}}" name="address" type="radio" value="{{address}}">
+  						<label class="govuk-label govuk-radios__label" for="{{radioid}}">
+  							{{ address }}
+  						</label>
+  					</div>
+
+            {%else%}
+
+
+            <div class="govuk-form-group">
+                <fieldset class="govuk-fieldset">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+
+                </legend>
+                <div class="govuk-radios" data-module="govuk-radios">
+
+                    <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="address1" name="address" type="radio" value="Addenbrooke House, Ironmasters Way, Town Centre, Telford, Shropshire, TF3 4NT">
+                    <label class="govuk-label govuk-radios__label" for="address1">
+                    Addenbrooke House, Ironmasters Way, Town Centre, Telford, Shropshire, TF3 4NT
+                    </label>
+                    </div>
+
+                    <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="address2" name="address" type="radio" value="Cafe Go, Addenbrooke House, Ironmasters Way, Telford Town Centre, Telford, Shropshire, TF3 4NT">
+                    <label class="govuk-label govuk-radios__label" for="address2">
+                    Cafe Go, Addenbrooke House, Ironmasters Way, Telford Town Centre, Telford, Shropshire, TF3 4NT
+                    </label>
+                    </div>
+
+                    <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="address3" name="address" type="radio" value="Eighth Floor, Plaza One, Ironmasters Way, Telford Town Centre, Telford, Shropshire, TF3 4NT">
+                    <label class="govuk-label govuk-radios__label" for="address3">
+                    Eighth Floor, Plaza One, Ironmasters Way, Telford Town Centre, Telford, Shropshire, TF3 4NT
+                    </label>
+                    </div>
+
+
+                    <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="address4" name="address" type="radio" value="Fifth Floor, Plaza One, Ironmasters Way, Telford Town Centre, Telford, Shropshire, TF3 4NT">
+                    <label class="govuk-label govuk-radios__label" for="address4">
+                    Fifth Floor, Plaza One, Ironmasters Way, Telford Town Centre, Telford, Shropshire, TF3 4NT
+                    </label>
+                    </div>
+
+                    <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="address5" name="address" type="radio" value="First Floor, Plaza One, Ironmasters Way, Telford Town Centre, Telford, Shropshire, TF3 4NT">
+                    <label class="govuk-label govuk-radios__label" for="address5">
+                    First Floor, Plaza One, Ironmasters Way, Telford Town Centre, Telford, Shropshire, TF3 4NT
+                    </label>
+                    </div>
+
+
+
+
+                </div>
+
+                </fieldset>
+            </div>
+
+
+
+
+  					{% endfor %}
+
+
+
+  				</div>
+  				<p class="govuk-body govuk-!-font-size-24 govuk-!-padding-top-5 govuk-!-padding-bottom-2 "><a href="/webform/ct/address-enter?propertyreason={{data['propertyreason']}}&action=new">I can't find addresses in the list</a></p>
+          <div class="govuk-button-group">
+
+
+
+
+    {{ govukButton({
+      text: "Continue",
+      value: "addressconfirm"
+    }) }}
+
+        </form>
+
+          </div>
+        </div>
+
+
+
+{% endblock %}

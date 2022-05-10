@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  Choose council tax band for this property
+  Select council tax band for this property
 {% endblock %}
 
 {% block beforeContent %}
@@ -29,31 +29,31 @@
         <div class="govuk-grid-column-two-thirds">
 
 
-	<form class="form" method="post" action="/address-list">
-		
-		
+	<form class="form" method="post" action="/webform/ct/property-request-details">
+
+
 		<div class="govuk-form-group">
-    
+
       <fieldset class="govuk-fieldset" aria-describedby="propose-band-hint">
-  
-    
-        <legend class="govuk-fieldset__legend govuk-fieldset__legend--xl">
-          
+
+
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+
             <h1 class="govuk-fieldset__heading">
-              Choose council tax band for this property
+              Select council tax band for this property
             </h1>
-          
+
         </legend>
-      
-  
-  <div id="propose-band-hint" class="govuk-hint">
-  The band should reflect the value of the property on 1 April 1991 for England and on 1 April 2003 for properties in Wales. <a class="govuk-link" href="https://www.gov.uk/guidance/understand-how-council-tax-bands-are-assessed" target="_blank">Find out how properties are assessed for Council Tax bands (opens in a new tab)</a>.
+
+
+  <div id="propose-band-hint" class="govuk-body">
+  The band should reflect the value of the property on 1 April 1991 for England and on 1 April 2003 for properties in Wales. <a class="govuk-link" href="https://www.gov.uk/guidance/understand-how-council-tax-bands-are-assessed" target="_blank">Find out how properties are assessed for Council Tax bands (opens in a new window or tab)</a>.
 </div>
 
 
 
 
-   
+
 		{%if data['property-billing-ref-no-input']!="" %}
 
 			{%set billing_ref_no = data['property-billing-ref-no-input'] %}
@@ -63,26 +63,21 @@
 			{%set billing_ref_no = "06002874005006" %}
 
 		{%endif%}
-		  
-		  
-		<p class="govuk-body">    
-		
-		<h3 class="govuk-heading-s">Address for the billing authority reference number {{billing_ref_no}}</h3>
-		
-		
-   
-			
-			<ul class="govuk-list">
+
+
+	
+		<h3 class="govuk-heading-s">Address</h3>
+		<ul class="govuk-list">
             <li>Straford 2, Jubliee House,</li>
             <li>2 Farthingale Walk,</li>
             <li>London,</li>
             <li>SW1Y 4NO</li>
 
         </ul>
-			
-			</p>
 
-           
+	
+
+
 
 
 
@@ -90,20 +85,17 @@
 
 
   				<div class="govuk-radios">
-					
-					
-  					
 
-            <legend class="govuk-heading-s">
-				Select your council tax band for this property
-           </legend>
-  				
+
+
+
+
 
 
             <div class="govuk-form-group">
                 <fieldset class="govuk-fieldset">
-                <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
-
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+					What is the Council Tax band for this property?
                 </legend>
                 <div class="govuk-radios" data-module="govuk-radios">
 
@@ -113,8 +105,8 @@
                     Band A
                     </label>
                     </div>
-					
-					
+
+
 					<div class="govuk-radios__item">
                     <input class="govuk-radios__input" id="council_tax_band2" name="council_tax_band" type="radio" value="Band B">
                     <label class="govuk-label govuk-radios__label" for="council_tax_band2">
@@ -128,53 +120,53 @@
                     Band C
                     </label>
                     </div>
-					
-					
+
+
 					<div class="govuk-radios__item">
                     <input class="govuk-radios__input" id="council_tax_band4" name="council_tax_band" type="radio" value="Band D">
                     <label class="govuk-label govuk-radios__label" for="council_tax_band4">
                     Band D
                     </label>
                     </div>
-					
+
 					 <div class="govuk-radios__item">
                     <input class="govuk-radios__input" id="council_tax_band5" name="council_tax_band" type="radio" value="Band E">
                     <label class="govuk-label govuk-radios__label" for="council_tax_band5">
                     Band E
                     </label>
                     </div>
-					
-					
+
+
 					<div class="govuk-radios__item">
                     <input class="govuk-radios__input" id="council_tax_band6" name="council_tax_band" type="radio" value="Band F">
                     <label class="govuk-label govuk-radios__label" for="council_tax_band6">
                     Band F
                     </label>
                     </div>
-					
+
 					 <div class="govuk-radios__item">
                     <input class="govuk-radios__input" id="council_tax_band7" name="council_tax_band" type="radio" value="Band G">
                     <label class="govuk-label govuk-radios__label" for="council_tax_band7">
                     Band G
                     </label>
                     </div>
-					
+
 					<div class="govuk-radios__item">
                     <input class="govuk-radios__input" id="council_tax_band8" name="council_tax_band" type="radio" value="Band H">
                     <label class="govuk-label govuk-radios__label" for="council_tax_band8">
                     Band H
                     </label>
                     </div>
-					
-					
+
+
 					<div class="govuk-radios__item">
                     <input class="govuk-radios__input" id="council_tax_band9" name="council_tax_band" type="radio" value="Band I(For Wales only)">
                     <label class="govuk-label govuk-radios__label" for="council_tax_band9">
                     Band I (for wales only)
                     </label>
                     </div>
-					
-	
+
+
 
                 </div>
 
@@ -184,8 +176,7 @@
 
 
 
-  				</div>
-  				 <br/>
+  			
           <div class="govuk-button-group">
 
 
@@ -195,7 +186,7 @@
       text: "Continue",
       value: "addressconfirm"
     }) }}
-			  
+
 			</div>
 
         </form>

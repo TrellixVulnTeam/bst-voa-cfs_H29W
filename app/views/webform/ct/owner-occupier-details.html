@@ -1,0 +1,148 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Contact details for property
+{% endblock %}
+
+{% block beforeContent %}
+
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-one-third">
+			{{ govukBackLink({
+			  text: "Back",
+			  href: "javascript:window.history.back()"
+			}) }}
+		</div>
+		{% include "includes/header-section-signedin.html" %}
+	</div>
+{% endblock %}
+
+{% block content %}
+
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+
+          <div class="govuk-form-group">
+          <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--xl" for="event-name">
+              Contact details for property
+            </label>
+
+            <form class="form" action="/webform/ct/owner-occupier-details" method="post">
+
+              <div class="govuk-form-group">
+
+              
+
+                {{ govukInput({
+                  label: {
+                    text: "First name"
+                  },
+                  id: "first-name",
+                  name: "first-name",
+                  autocomplete: "name",
+                  spellcheck: false
+                }) }}
+
+                {{ govukInput({
+                  label: {
+                    text: "Last name"
+                  },
+                  id: "last-name",
+                  name: "last-name",
+                  autocomplete: "name",
+                  spellcheck: false
+                }) }}
+
+
+                {{ govukInput({
+                  label: {
+                    text: "Email address (optional)"
+                  },
+                  classes: "govuk-!-width-two-thirds",
+                  id: "two-thirds",
+                  name: "two-thirds"
+                }) }}
+
+                {{ govukInput({
+                  label: {
+                    text: "Phone number (optional)"
+                  },
+                  classes: "govuk-!-width-two-thirds",
+                  id: "two-thirds",
+                  name: "two-thirds"
+                }) }}
+
+                <br>
+
+                {{ govukRadios({
+                      classes: "govuk-radios--inline",
+                      idPrefix: "owner_occupier_check",
+                      name: "owner_occupier_check",
+                      fieldset: {
+                        legend: {
+                          text: "They are the:",
+                          isPageHeading: true,
+                          classes: "govuk-fieldset__legend--m"
+                        }
+                      },
+                      hint: {
+                        text: ""
+                      },
+                      items: [
+                        {
+                          value: "Owner",
+                          text: "Owner"
+                        },
+                        {
+                          value: "Occupier",
+                          text: "Occupier"
+                    }
+                  ]
+                }) }}
+				  
+				  
+				  
+
+                {{ govukRadios({
+                      classes: "govuk-radios--inline",
+                      idPrefix: "address_same_check",
+                      name: "address_same_check",
+                      fieldset: {
+                        legend: {
+                          text: "Is their address the same as the property address?",
+                          isPageHeading: false,
+                          classes: "govuk-fieldset__legend--m"
+                        }
+                      },
+                      hint: {
+                        text: "If the address is not the same, you will be asked to add their address on the next page"
+                      },
+                      items: [
+                        {
+                          value: "yes",
+                          text: "Yes"
+                        },
+                        {
+                          value: "no",
+                          text: "No"
+                    }
+                  ]
+                }) }}
+
+
+
+                <div class="govuk-button-group">
+
+              			<button class="govuk-button" data-module="govuk-button" id="continueowner" name="continueowner" value="continueowner">
+              			     Continue
+              			</button>
+
+                </div>
+
+        </form>
+        </div>
+      </div>
+
+{% endblock %}

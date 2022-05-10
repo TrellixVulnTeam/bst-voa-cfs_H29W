@@ -1,0 +1,217 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+
+{%if data['action']=='new'%}
+      Enter new property address
+{%else%}
+      Edit your property address
+{%endif%}
+
+
+{% endblock %}
+
+{% block beforeContent %}
+
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-one-third">
+			{{ govukBackLink({
+			  text: "Back",
+			  href: "javascript:window.history.back()"
+			}) }}
+		</div>
+		{% include "includes/header-section-signedin.html" %}
+	</div>
+{% endblock %}
+
+{% block content %}
+
+                <div class="govuk-grid-row">
+                  <div class="govuk-grid-column-two-thirds">
+
+
+                    <div class="govuk-form-group">
+                    <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="event-name">
+
+                      </label>
+
+                      <form class="form" action="/webform/ct/address-enter" method="post">
+
+
+                    {%if data['action']=='edit'%}
+						
+					
+
+								  {%if data['address'] != null%}
+
+
+
+											{% set addresslist = data['address'].split(',') %}
+
+
+
+											{#    {{data['address']}}#}
+
+											  {% set address1_value = addresslist[0] %}
+
+											  {% set address2_value = addresslist[1] + ", " + addresslist[2] %}
+
+
+
+											  {% set address3_value = addresslist[3] %}
+
+											  {% set address_city = addresslist[4] %}
+
+											  {% set address_postcode = addresslist[6] %}
+
+
+
+											{#  set address2_value = [addresslist[1], addresslist[2] ]|join(', ') #}
+
+
+
+								  {%else%}
+
+								  {% set address1_value = "Eighth Floor" %}
+
+								  {% set address2_value = "Plaza One, Ironmasters Way" %}
+
+
+
+								  {% set address3_value = "Telford Town Centre" %}
+
+								  {% set address_city = "Telford, Shropshire" %}
+
+								  {% set address_postcode = "TF3 4NT" %}
+
+
+
+                     			 {% endif%}
+						  
+						  
+				 {%else%}
+						  
+						  
+						   {% set address1_value = "" %}
+
+								  {% set address2_value = "" %}
+
+
+
+								  {% set address3_value = "" %}
+
+								  {% set address_city = "" %}
+
+								  {% set address_postcode = "" %}
+
+						  
+						  
+				 {% endif%}	  
+						
+
+                      {%if data['action']=='new'%}
+
+                      {% set page_header = "Enter new property address" %}
+
+
+
+                      {%else%}
+
+                        {% set page_header = "Edit your property address" %}
+
+
+                      {%endif%}
+
+
+                            {% call govukFieldset({
+                              legend: {
+                                text: page_header,
+                                classes: "govuk-fieldset__legend--xl",
+                                isPageHeading: true
+                              }
+                            }) %}
+
+
+
+
+
+
+
+
+
+
+                    {{ govukInput({
+                      label: {
+                        html: 'Address line 1 <span class="govuk-visually-hidden">line 1 of 2</span>'
+                      },
+                      classes: "govuk-!-width-two-thirds",
+                      id: "property-address-line-1",
+                      name: "property-address-line-1",
+                      value: address1_value,
+                      autocomplete: "address-line1"
+                    }) }}
+
+
+                    {{ govukInput({
+                      label: {
+                        text: "Address line 2 (optional)"
+                      },
+                      classes: "govuk-!-width-two-thirds",
+                      id: "property-address-line-2",
+                      name: "property-address-line-2",
+                      value: address2_value,
+                      autocomplete: "address-level2"
+                    }) }}
+
+                    {{ govukInput({
+                      label: {
+                        text: "Address line 3 (optional)"
+                      },
+                      classes: "govuk-!-width-two-thirds",
+                      id: "property-address-line-3",
+                      name: "property-address-line-3",
+                      value: address3_value,
+                      autocomplete: "address-level2"
+                    }) }}
+
+                    {{ govukInput({
+                      label: {
+                        text: "Town/city"
+                      },
+                      classes: "govuk-!-width-two-thirds",
+                      id: "property-address-town-city",
+                      value: address_city,
+                      name: "property-address-town-city"
+                    }) }}
+
+                    {{ govukInput({
+                      label: {
+                        text: "Postcode"
+                      },
+                      hint: {
+                          text: "For example SW1 6GH"
+                    },
+
+                      classes: "govuk-input--width-10",
+                      id: "property-address-postcode",
+                      name: "property-address-postcode",
+                      value: address_postcode,
+                      autocomplete: "postal-code"
+
+                    }) }}
+
+
+            {% endcall %}
+
+
+
+            <div class="govuk-button-group govuk-!-padding-top-6">
+
+
+      {{ govukButton({
+        text: "Continue"
+      }) }}
+
+          </div>
+
+{% endblock %}

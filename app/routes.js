@@ -921,7 +921,7 @@ console.log("confirmfilename = " +confirmfilename )
 router.post('/webform/ct/request-sub-reason', function (req, res) {
 
   // Make a variable and give it the value from 'how-many-balls'
-	
+
 var reason = req.session.data['reason']
 var property = req.session.data['property']
 
@@ -932,7 +932,7 @@ var property = req.session.data['property']
    var reason_new = req.session.data['reason-new']
 
 
-console.log("reason = " +reason )
+console.log("reason code = " +reason_remove )
   // Check whether the variable matches a condition
 
 
@@ -945,13 +945,181 @@ console.log("reason = " +reason )
     if (reason == "remove") {
       res.redirect('/webform/ct/billing-reference?reason='+reason+'&property='+property)
     }
-    
+
+
+
+
+
+})// Run this code when a form is submitted to 'confirm-remove-failed-report'
+
+
+
+
+// Run this code when a form is submitted to 'confirm-remove-failed-report'
+router.post('/reference-details', function (req, res) {
+
+  // Make a variable and give it the value from 'how-many-balls'
+  var address_same_check = req.session.data['address_same_check']
+
+  // Check whether the variable matches a condition
+  if (address_same_check == "no"){
+    // Send user to next page
+    res.redirect('/address-postcode-lookup?requestreason=occupier')
+  } else {
+    // Send user to ineligible page
+    res.redirect('/reference-details')
+  }
+
+})
+
+
+
+// Run this code when a form is submitted to 'confirm-remove-failed-report'
+router.post('/webform/ct/owner-occupier-details', function (req, res) {
+
+  // Make a variable and give it the value from 'how-many-balls'
+  var address_same_check = req.session.data['address_same_check']
+
+  // Check whether the variable matches a condition
+  if (address_same_check == "no"){
+    // Send user to next page
+    res.redirect('/webform/ct/address-postcode-lookup?propertyreason=occupier')
+  } else {
+    // Send user to ineligible page
+    res.redirect('/webform/ct/location-details')
+  }
+
+})
+
+
+router.post('/webform/ct/no-planning-reference', function (req, res) {
+
+
+    res.redirect('/webform/ct/owner-occupier-details?propertyreason=occupier')
+
+})
+
+
+
+
+
+
+
+//postcode lookup property-postcode
+
+//address-postcode-lookup?requestreason=new
+
+
+router.post('/webform/ct/address-postcode-lookup', function (req, res) {
+
+  // Make a variable and give it the value from 'how-many-balls'
+  var property_postcode = req.session.data['property-postcode']
+  var propertyreason = req.session.data['propertyreason']
+console.log("propertyreason = " +propertyreason )
+  // Check whether the variable matches a condition
+  if (property_postcode != "NA"){
+    // Send user to next page
+    res.redirect('/webform/ct/address-list?propertyreason='+propertyreason)
+  } else {
+    // Send user to ineligible page
+    res.redirect('/webform/ct/address-no-results?propertyreason='+propertyreason)
+  }
+
+})
+
+
+router.post('/webform/ct/address-list', function (req, res) {
+
+  // Make a variable and give it the value from 'how-many-balls'
+  var addressupdate = req.session.data['addressupdate']
+  var propertyreason = req.session.data['propertyreason']
+console.log("propertyreason = " +propertyreason )
+  // Check whether the variable matches a condition
+
+    // Send user to next page
+    res.redirect('/webform/ct/address-verify?propertyreason='+propertyreason)
+
+
+})
+
+
+
+router.post('/webform/ct/address-verify', function (req, res) {
+
+  // Make a variable and give it the value from 'how-many-balls'
+
+  var propertyreason = req.session.data['propertyreason']
+
+  var reason_new = req.session.data['new-property-reason']
+
+
+
+console.log("newpropertyreason = " +reason_new )
+  /// Check whether the variable matches a condition
+
+  if (propertyreason == "new"){
+    // Send user to next page
+    if ((reason_new == "01") || (reason_new == "04")){
+    res.redirect('/property-details?propertyreason='+propertyreason)
+    }
+    else {
+      res.redirect('/billing-reference?propertyreason='+propertyreason)
+    }
+
+  } else {
+    // Send user to ineligible page
+    res.redirect('/webform/ct/location-details?propertyreason='+propertyreason)
+  }
+
+
+})
+
+
+
+router.post('/webform/ct/address-enter', function (req, res) {
+
+  // Make a variable and give it the value from 'how-many-balls'
+
+  var propertyreason = req.session.data['propertyreason']
+
+  var reason_new = req.session.data['new-property-reason']
+
+
+console.log("requestreason = " +reason_new )
+  // Check whether the variable matches a condition
+
+
+
+
+
+    // Send user to ineligible page
+
+
+
+      res.redirect('/webform/ct/address-verify?propertyreason='+propertyreason)
+
 
 
 
 
 })
 
+
+router.post('/reason-new-property', function (req, res) {
+
+  // Make a variable and give it the value from 'how-many-balls'
+
+//  var requestreason = req.session.data['requestreason']
+//console.log("requestreason = " +requestreason )
+  // Check whether the variable matches a condition
+
+
+    // Send user to ineligible page
+    res.redirect('/address-postcode-lookup?requestreason=new')
+
+
+
+})
 
 
 

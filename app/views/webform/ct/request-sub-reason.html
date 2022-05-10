@@ -7,7 +7,7 @@
 {%elseif data['reason']=="amend"%}
 	Why does the property need to be amended?
 {%else%}
-	Why does the property need to be added?
+	Code CR03: new will be added to the report
 {%endif%}
 
 {% endblock %}
@@ -55,7 +55,7 @@
                   text: "Why does the property need to be removed?",
                   isPageHeading: false,
                   classes: "govuk-fieldset__legend--l"
-				  
+
                 }
               },
 				hint: {
@@ -65,26 +65,26 @@
               items: [
                 {
                   value: "CR01",
-                  text: "CR01: Demolished or Uninhabitable (deletion from council tax list)",
+                  text: "CR01: demolished or uninhabitable",
                   conditional: {
                     html: emailHtml
                   }
                 },
                 {
                   value: "CR07",
-                  text: "CR07: demolition of part - potential reduction in band",
+                  text: "CR07: demolition of part",
                   conditional: {
                     html: phoneHtml
                   }
                 }
-                
+
               ]
             }) }}
 
 
 {%elseif data['reason']=="amend"%}
-	
-			
+
+
 			  {% set otherAmendHtml %}
             {{ govukTextarea({
               id: "other-detail-amend",
@@ -106,7 +106,7 @@
                   text: "Why does the property need to be amended?",
                   isPageHeading: false,
                   classes: "govuk-fieldset__legend--l"
-				  
+
                 }
               },
 				hint: {
@@ -116,28 +116,28 @@
               items: [
                 {
                   value: "CR02",
-                  text: "CR02: change from domestic use (deletion from council tax list)",
+                  text: "CR02: change from domestic use",
                   conditional: {
                     html: emailHtml
                   }
                 },
                 {
                   value: "CR04",
-                  text: "CR04: change to domestic use (e.g, previously non-domestic rate or exempt)",
+                  text: "CR04: change to domestic use",
                   conditional: {
                     html: phoneHtml
                   }
                 },
                 {
                   value: "CR05",
-                  text: "CR05: reconstituted property (e.g. a split of a house into flats or the merger of flats into a single dwelling or the additions of a annexe)",
+                  text: "CR05: reconstituted property",
                   conditional: {
                     html: otherAmendHtml1
                   }
                 },
 				{
                   value: "CR06",
-                  text: "CR06: composite dwelling (where there is a domestic and non-domestic element)",
+                  text: "CR06: composite dwelling",
                   conditional: {
                     html: otherAmendHtml2
                   }
@@ -151,7 +151,7 @@
                 },
 				{
                   value: "CR10",
-                  text: "CR10: improvements / alterations (for review after the next sale)",
+                  text: "CR10: improvements or alterations",
                   conditional: {
                     html: otherAmendHtml4
                   }
@@ -165,44 +165,26 @@
                 },
                 {
                   value: "CR14",
-                  text: "CR14: minor address change (for obvious errors or minor postcode changes or small additions to the first line of the address)",
+                  text: "CR14: minor address change",
                   conditional: {
                     html: textHtml123
                   }
                 }
               ]
             }) }}
-			
-			
+
+
 {%else%}
-		  
-			
-			{{ govukCheckboxes({
-				  idPrefix: "reason-new",
-				  name: "reason-new",
-				  fieldset: {
-					legend: {
-					  text: "Why does the property need to be added?",
-					  isPageHeading: true,
-					  classes: "govuk-fieldset__legend--l"
-					}
-				  },
-				  hint: {
-					text: "The code you choose will be added to the report"
-				  },
-				  items: [
-					{
-					  value: "CR03",
-					  text: "CR03: new"
-					}
-				  ]
-				}) }}
-			
-	
-			
-			
+
+
+<h1 class="govuk-heading-xl">Code CR03: new will be added to the report</h1>
+<input type="hidden" name="reason-new" id="reason-new" value="CR03: new" />
+
+
+
+
 {%endif%}
-         
+
 
 
                 <button class="govuk-button" data-module="govuk-button">Save and Continue</button>

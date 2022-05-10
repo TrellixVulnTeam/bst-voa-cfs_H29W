@@ -1,0 +1,108 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  {%if data['propertyreason']=='occupier'%}
+
+
+        What is UK postcode for contact details?
+  {%else%}
+        What is UK postcode for this property?
+  {%endif%}
+
+{% endblock %}
+
+{% block beforeContent %}
+
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-one-third">
+			{{ govukBackLink({
+			  text: "Back",
+			  href: "javascript:window.history.back()"
+			}) }}
+		</div>
+		{% include "includes/header-section-signedin.html" %}
+	</div>
+{% endblock %}
+
+{% block content %}
+
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+
+          <div class="govuk-form-group">
+        <h1 class="govuk-heading-xl">
+
+            {%if data['propertyreason']=='occupier'%}
+              What is UK postcode for contact details?
+            {%else%}
+              What is UK postcode for this property?
+            {%endif%}
+
+
+
+            </h1>
+
+            <p class="govuk-body">
+                Enter a postode within UK where you like to look for property address.
+          </p>
+
+
+
+
+            <form class="form" action="address-postcode-lookup?propertyreason={{data['propertyreason']}}" method="post">
+
+
+
+
+        				<div class="govuk-form-group {% if error %} form-group-error {% endif %}">
+        					<label class="govuk-label" for="postcode">
+        						Postcode
+        					 </label>
+
+                   <div id="event-name-hint" class="govuk-hint">
+                      For example SW1 6GH
+                    </div>
+
+        					<input type="text" class="govuk-input govuk-input--width-10" id="property-postcode" name="property-postcode" autocomplete="off">
+        				</div>
+
+
+
+
+<!--
+        				<div class="govuk-form-group">
+        					<label class="govuk-label" for="nameNo">
+        						Property name or number (optional)
+        					 </label>
+        					 <label class="govuk-hint" for="nameNo">
+         						For example, The Mill, 116 or Flat 37a
+         					 </label>
+        					<input type="text" class="govuk-input govuk-input--width-20" id="nameNo" name="nameNo" autocomplete="off">
+        				</div>
+
+-->
+
+<div class="govuk-button-group">
+
+    <button class="govuk-button" data-module="govuk-button" id="condirmsubmit" name="bulkconfirm" value="2">
+      Find Address
+    </button>
+
+</div>
+
+
+<div class="govuk-form-group">
+  <a class="govuk-list " href="/webform/ct/address-enter?propertyreason={{data['propertyreason']}}&action=new">Enter the address manually</a>
+</div>
+
+        			</form>
+
+
+
+        		</div>
+        	</div>
+
+
+{% endblock %}
