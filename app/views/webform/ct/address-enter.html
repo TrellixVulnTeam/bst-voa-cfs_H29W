@@ -3,9 +3,9 @@
 {% block pageTitle %}
 
 {%if data['action']=='new'%}
-      Enter new property address
+      Enter address manually
 {%else%}
-      Edit your property address
+      Edit address
 {%endif%}
 
 
@@ -39,8 +39,8 @@
 
 
                     {%if data['action']=='edit'%}
-						
-					
+
+
 
 								  {%if data['address'] != null%}
 
@@ -87,11 +87,11 @@
 
 
                      			 {% endif%}
-						  
-						  
+
+
 				 {%else%}
-						  
-						  
+
+
 						   {% set address1_value = "" %}
 
 								  {% set address2_value = "" %}
@@ -104,20 +104,20 @@
 
 								  {% set address_postcode = "" %}
 
-						  
-						  
-				 {% endif%}	  
-						
+
+
+				 {% endif%}
+
 
                       {%if data['action']=='new'%}
 
-                      {% set page_header = "Enter new property address" %}
+                      {% set page_header = "Enter address manually" %}
 
 
 
                       {%else%}
 
-                        {% set page_header = "Edit your property address" %}
+                        {% set page_header = "Edit address" %}
 
 
                       {%endif%}

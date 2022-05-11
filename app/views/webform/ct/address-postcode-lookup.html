@@ -4,9 +4,9 @@
   {%if data['propertyreason']=='occupier'%}
 
 
-        What is UK postcode for contact details?
+        Enter the owner or occupier's postcode
   {%else%}
-        What is UK postcode for this property?
+        Enter the postcode for this property
   {%endif%}
 
 {% endblock %}
@@ -35,19 +35,14 @@
         <h1 class="govuk-heading-xl">
 
             {%if data['propertyreason']=='occupier'%}
-              What is UK postcode for contact details?
+             Enter the owner or occupier's postcode
             {%else%}
-              What is UK postcode for this property?
+            Enter the postcode for this property
             {%endif%}
 
 
 
             </h1>
-
-            <p class="govuk-body">
-                Enter a postode within UK where you like to look for property address.
-          </p>
-
 
 
 
@@ -65,29 +60,16 @@
                       For example SW1 6GH
                     </div>
 
-        					<input type="text" class="govuk-input govuk-input--width-10" id="property-postcode" name="property-postcode" autocomplete="off">
+        					<input type="text" class="govuk-input govuk-input--width-10" id="property-postcode" name="property-postcode" autocomplete="off" value="{{data['postcode']}}">
         				</div>
 
 
 
-
-<!--
-        				<div class="govuk-form-group">
-        					<label class="govuk-label" for="nameNo">
-        						Property name or number (optional)
-        					 </label>
-        					 <label class="govuk-hint" for="nameNo">
-         						For example, The Mill, 116 or Flat 37a
-         					 </label>
-        					<input type="text" class="govuk-input govuk-input--width-20" id="nameNo" name="nameNo" autocomplete="off">
-        				</div>
-
--->
 
 <div class="govuk-button-group">
 
     <button class="govuk-button" data-module="govuk-button" id="condirmsubmit" name="bulkconfirm" value="2">
-      Find Address
+      Find address
     </button>
 
 </div>

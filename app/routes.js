@@ -942,9 +942,15 @@ console.log("reason code = " +reason_remove )
     // Send user to ineligible page
 
 
-    if (reason == "remove") {
+    if ((reason == "remove")||(reason == "amend")) {
       res.redirect('/webform/ct/billing-reference?reason='+reason+'&property='+property)
-    }
+      }
+      else {
+        res.redirect('/webform/ct/address-postcode-lookup?reason='+reason+'&property='+property+'&propertyreason=new')
+      }
+
+
+
 
 
 
@@ -1033,10 +1039,13 @@ router.post('/webform/ct/address-list', function (req, res) {
   // Make a variable and give it the value from 'how-many-balls'
   var addressupdate = req.session.data['addressupdate']
   var propertyreason = req.session.data['propertyreason']
-console.log("propertyreason = " +propertyreason )
+  var address = req.session.data['address']
+console.log("address = " +address )
   // Check whether the variable matches a condition
 
     // Send user to next page
+
+
     res.redirect('/webform/ct/address-verify?propertyreason='+propertyreason)
 
 

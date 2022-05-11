@@ -27,8 +27,8 @@
 
 
                     {{ govukRadios({
-            idPrefix: "Why are you creating this report?",
-            name: "Why are you creating this report?",
+            idPrefix: "report_reason",
+            name: "report_reason",
             fieldset: {
               legend: {
                 text: "Why are you creating this report?",
@@ -36,7 +36,7 @@
                 classes: "govuk-fieldset__legend--l"
               }
             },
-               
+
             items: [
               {
                 value: "removing a property~/webform/ct/request-sub-reason?reason=remove",
@@ -54,7 +54,7 @@
 
           }) }}
 
-            
+
 
               <button class="govuk-button" data-module="govuk-button">Save and Continue</button>
 

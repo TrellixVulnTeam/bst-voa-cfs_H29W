@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-    Review your property address
+    Review address
 {% endblock %}
 
 {% block beforeContent %}
@@ -28,38 +28,44 @@
 
                       <form class="form" action="/webform/ct/address-verify?propertyreason={{data['propertyreason']}}" method="post">
 
-		{{data['action']}}
 
-                    {% if data['address'] != null %}
+                        {%if data['address']%}
 
-                        {% set addresslist = data['address'].split(',') %}
+                            {% set addresslist = data['address'].split(',') %}
+
+                        {%else%}
+                            {%set printaddress = "Addenbrooke House,
+                            Ironmasters Way,
+                            Town Centre,
+                            Telford, Shropshire,
+                            TF3 4NT"%}
+                        {%endif%}
 
 
 
-                    {% endif%}
 
 
 
 
 
 
-                                                {% if data['property-address-line-1'] != null %}
+
+                                                {% if data['property-address-line-1'].length > 0 %}
+
 
                                                       {% set address1_value = data['property-address-line-1'] + ", " %}
 
                                                 {%else%}
 
-
-
                                                         {% set address1_value = addresslist[0] + ", " %}
 
-                                                        {{test123}}
+
 
                                                 {%endif%}
 
 
 
-                                                {% if data['property-address-line-2'] != null %}
+                                                {% if data['property-address-line-2'].length > 0%}
 
 
                                                       {% set address2_value = data['property-address-line-2'] + ", " %}
@@ -73,7 +79,7 @@
 
 
 
-                                                {% if data['property-address-line-3'] != null %}
+                                                {% if data['property-address-line-3'].length > 0 %}
 
 
                                                       {% set address3_value = data['property-address-line-3'] + ", " %}
@@ -86,7 +92,7 @@
                                                 {%endif%}
 
 
-                                                {% if data['property-address-town-city'] != null %}
+                                                {% if data['property-address-town-city'].length > 0 %}
 
 
                                                       {% set address_city = data['property-address-town-city'] + ", " %}
@@ -99,7 +105,7 @@
                                                 {%endif%}
 
 
-                                                {% if data['property-address-postcode'] != null %}
+                                                {% if data['property-address-postcode'].length > 0 %}
 
 
                                                       {% set address_postcode = data['property-address-postcode']  %}
@@ -129,45 +135,53 @@
 
 
 
-                      <h1 class="govuk-heading-xl">Review your property address</h1>
+                      <h1 class="govuk-heading-xl">Review address</h1>
 
 
-			   {% if data['action'] != "new" %}
+
                         <p class="govuk-body">
 
-                            {{address1_value}}
-
-                            <br/>
-
-                            {{address2_value}}
-
-                            <br/>
-                            {{address3_value}}
 
 
-                            <br/>
-                                {{address_city}}
+                          {%if data['address']%}
+
+
+
+
+                                {{address1_value}}
+
                                 <br/>
-                                    {{address_postcode}}
+
+                                {{address2_value}}
+
+                                <br/>
+                                {{address3_value}}
+
+
+                                <br/>
+                                    {{address_city}}
+                                    <br/>
+                                        {{address_postcode}}
+
+                          {%else%}
+
+
+
+                              {{ printaddress | striptags(true) | escape | nl2br }}
+
+                          {%endif%}
+
 
                         </p>
-						  
-			{%else%}
-						   <p class="govuk-body">
-						  
-						  		Fifth Floor,  <br/>Plaza One, Ironmasters Way,  <br/>Telford Town Centre,  <br/>Telford, Shropshire,  <br/>TF3 4NT
-							   
-						  </p>
-			 {%endif%}
 
 
-                          <p class="govuk-!-font-size-24"><a href="/webform/ct/address-enter?action=edit">I want to edit this address</a></p>
+                          <p class="govuk-body"><a href="/webform/ct/address-enter?action=edit">Edit</a></p>
 
                         <div class="govuk-button-group">
 
                           <input type="hidden" name="address_array" id="address_array" value="{{data['address']}}">
 
-                        {%if data['propertyreason'] == "occupier"%}
+                        {%if data['requestreason'] == "occupier"%}
 
                             <input type="hidden" name="occupier_property_address" id="occupier_property_address" value="{{property_address}}">
                         {%else%}

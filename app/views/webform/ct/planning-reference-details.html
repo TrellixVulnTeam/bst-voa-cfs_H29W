@@ -26,7 +26,7 @@ Does this property have a planning portal reference?
                      <form class="form" action="/webform/ct/planning-reference-details" method="post">
 
 
-              <h1 class="govuk-heading-xl">Does this property have a planning portal reference?</h1>
+           
 
 
 
@@ -42,7 +42,7 @@ Does this property have a planning portal reference?
                   autocomplete: "tel",
                   classes: "govuk-input--width-20",
                   label: {
-                    text: "Property planning reference"
+                    text: "Planning portal reference number"
                   }
                 }) }}
                 {% endset -%}
@@ -52,14 +52,12 @@ Does this property have a planning portal reference?
                   name: "planning_reference_number_available",
                   fieldset: {
                     legend: {
-                      text: "Planning reference number",
-                      isPageHeading: false,
-                      classes: "govuk-fieldset__legend--m"
+                      text: "Does this property have a planning portal reference?",
+                      isPageHeading: true,
+                      classes: "govuk-fieldset__legend--l"
                     }
               },
-                hint: {
-                 text: "This helps the Valuation Office Agency decide if an inspection is necessary. If you select ‘No’ you will need to explain why on the next page"
-               },
+                
              items: [
              {
                value: "yes~owner-occupier-details?propertyreason=occupier",

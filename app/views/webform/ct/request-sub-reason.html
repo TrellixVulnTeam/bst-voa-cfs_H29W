@@ -48,8 +48,8 @@
             {% endset -%}
 
             {{ govukRadios({
-              idPrefix: "reason-remove",
-              name: "reason-remove",
+              idPrefix: "sub_reason_option",
+              name: "sub_reason_option",
               fieldset: {
                 legend: {
                   text: "Why does the property need to be removed?",
@@ -64,14 +64,15 @@
 
               items: [
                 {
-                  value: "CR01",
+                  value: "CR01: demolished or uninhabitable",
                   text: "CR01: demolished or uninhabitable",
                   conditional: {
                     html: emailHtml
                   }
                 },
+
                 {
-                  value: "CR07",
+                  value: "CR07: demolition of part",
                   text: "CR07: demolition of part",
                   conditional: {
                     html: phoneHtml
@@ -79,6 +80,15 @@
                 }
 
               ]
+            }) }}
+
+              <!--hidden field-->
+            {{ govukInput({
+
+              id: "sub_reason_question",
+              name: "sub_reason_question",
+              value: "Why does the property need to be removed?",
+              type: "hidden"
             }) }}
 
 
@@ -99,8 +109,8 @@
             {% endset -%}
 
             {{ govukRadios({
-              idPrefix: "reason-amend",
-              name: "reason-amend",
+              idPrefix: "sub_reason_option",
+              name: "sub_reason_option",
               fieldset: {
                 legend: {
                   text: "Why does the property need to be amended?",
@@ -115,56 +125,56 @@
 
               items: [
                 {
-                  value: "CR02",
+                  value: "CR02: change from domestic use",
                   text: "CR02: change from domestic use",
                   conditional: {
                     html: emailHtml
                   }
                 },
                 {
-                  value: "CR04",
+                  value: "CR04: change to domestic use",
                   text: "CR04: change to domestic use",
                   conditional: {
                     html: phoneHtml
                   }
                 },
                 {
-                  value: "CR05",
+                  value: "CR05: reconstituted property",
                   text: "CR05: reconstituted property",
                   conditional: {
                     html: otherAmendHtml1
                   }
                 },
 				{
-                  value: "CR06",
+                  value: "CR06: composite dwelling",
                   text: "CR06: composite dwelling",
                   conditional: {
                     html: otherAmendHtml2
                   }
                 },
 				{
-                  value: "CR09",
+                  value: "CR09: reference number or effective date change only",
                   text: "CR09: reference number or effective date change only",
                   conditional: {
                     html: otherAmendHtml3
                   }
                 },
 				{
-                  value: "CR10",
+                  value: "CR10: improvements or alterations",
                   text: "CR10: improvements or alterations",
                   conditional: {
                     html: otherAmendHtml4
                   }
                 },
 				{
-                  value: "CR12",
+                  value: "CR12: major address change",
                   text: "CR12: major address change",
                   conditional: {
                     html: otherAmendHtml5
                   }
                 },
                 {
-                  value: "CR14",
+                  value: "CR14: minor address change",
                   text: "CR14: minor address change",
                   conditional: {
                     html: textHtml123
@@ -173,15 +183,34 @@
               ]
             }) }}
 
+            <!--hidden field-->
+            {{ govukInput({
+
+              id: "sub_reason_question",
+              name: "sub_reason_question",
+              value: "Why does the property need to be amended?",
+              type: "hidden"
+            }) }}
+
+
+
+
 
 {%else%}
 
 
 <h1 class="govuk-heading-xl">Code CR03: new will be added to the report</h1>
-<input type="hidden" name="reason-new" id="reason-new" value="CR03: new" />
+<input type="hidden" name="rsub_reason_option" id="sub_reason_option" value="CR03: new" />
 
 
+        <!--hidden field-->
+        {{ govukInput({
 
+          id: "sub_reason_question",
+          name: "sub_reason_question",
+          value: "Code CR03: new will be added to the report",
+          type: "hidden"
+        }) }}
 
 {%endif%}
 

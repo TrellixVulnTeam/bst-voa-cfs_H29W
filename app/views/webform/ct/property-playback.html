@@ -27,14 +27,14 @@
 
 		{%if data['property-billing-ref-no-input']!="" %}
 
-			{%set billing_ref_no = data['property-billing-ref-no-input'] %}
+			{%set billing_ref_no = data['input_property_billing_ref_no'] %}
 
 		{%else%}
 
-			{%set billing_ref_no = "06002874005006" %}
+			{%set billing_ref_no = "14463691044000" %}
 
 		{%endif%}
-
+<form method="post" action="/webform/ct/council-tax-band">
       <h1 class="govuk-heading-l">Check and confirm the address and description for billing authority reference number: {{billing_ref_no}}</h1>
 
 
@@ -55,9 +55,26 @@
 
         </ul>
 
+        <!--hidden field-->
+      {{ govukInput({
+
+        id: "static_property_address",
+        name: "static_property_address",
+        value: "Straford 2, Jubliee House,\n2 Farthingale Walk,\nLondon,\nSW1Y 4NO",
+        type: "hidden"
+      }) }}
+
 
         <h2 class="govuk-heading-s govuk-!-margin-bottom-2">Description</h2>
             <p class="govuk-body">Resedential property</p>
+
+            {{ govukInput({
+
+              id: "static_property_description",
+              name: "static_property_description",
+              value: "Resedential property",
+              type: "hidden"
+            }) }}
 
             <!--
           <h2 class="govuk-heading-m govuk-!-margin-bottom-2">Rateable value</h2>
@@ -70,11 +87,10 @@
           }) }}
 
           <br/>
-	<form method="post" action="">
+
           <div class="govuk-button-group">
             {{ govukButton({
-              text: "Confirm",
-                href: "council-tax-band"
+              text: "Confirm"
             }) }}
 
             {{ govukButton({

@@ -1,7 +1,22 @@
 {% extends "layout.html" %}
 
+{%
+
+
+      if(data['property-postcode']=="")
+%}
+
+        {%set show_postcode = "TF3 4NT"%}
+
+      {%else%}
+
+        {%set show_postcode = data['property-postcode']%}
+
+      {%endif%}
+
+
 {% block pageTitle %}
-  Choose your address
+Addresses for {{show_postcode}}
 {% endblock %}
 
 {% block beforeContent %}
@@ -19,19 +34,6 @@
 
 {% block content %}
 
-{%
-
-
-      if(data['property-postcode']=="")
-%}
-
-        {%set show_postcode = "TF3 4NT"%}
-
-      {%else%}
-
-        {%set show_postcode = data['property-postcode']%}
-
-      {%endif%}
 
 
 
@@ -46,11 +48,10 @@
 
 
 
-    <h1 class="govuk-heading-xl">Choose your address</h1>
+    <h1 class="govuk-heading-l">Addresses for {{show_postcode}}</h1>
 
-    <p class="govuk-!-padding-bottom-4">        Postcode you entered: <strong>{{show_postcode}}</strong>
 
-            <a href="/webform/ct/address-postcode-lookup">Change Postcode</a></p>
+
 
 
 
@@ -58,14 +59,14 @@
 
 
   				<div class="govuk-radios {% if error %} form-group-error {% endif %}">
-					
-					
+
+
   					{% if error %}
   					<span class="error-message">Select a business address</span>
   					{% endif %}
 
             <legend class="govuk-fieldset__legend">
-             Select your address
+             Select an address
            </legend>
   					{% for address in addresses%}
                   {%set radioid = "address" + loop.index0
@@ -139,7 +140,7 @@
 
 
   				</div>
-  				<p class="govuk-body govuk-!-font-size-24 govuk-!-padding-top-5 govuk-!-padding-bottom-2 "><a href="/webform/ct/address-enter?propertyreason={{data['propertyreason']}}&action=new">I can't find addresses in the list</a></p>
+  				<p class="govuk-body govuk-!-padding-top-1 govuk-!-padding-bottom-3 "><a href="/webform/ct/address-enter?propertyreason={{data['propertyreason']}}&action=new">What should I do if the address is not listed?</a></p>
           <div class="govuk-button-group">
 
 
@@ -149,6 +150,18 @@
       text: "Continue",
       value: "addressconfirm"
     }) }}
+
+    {{ govukButton({
+      text: "Change postcode",
+      href: "address-postcode-lookup?postcode=" + show_postcode,
+      classes: "govuk-button--secondary"
+
+    }) }}
+
+
+
+
+
 
         </form>
 

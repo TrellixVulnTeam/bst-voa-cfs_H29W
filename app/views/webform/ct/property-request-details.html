@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  Property request details
+  Change request details
 {% endblock %}
 
 {% block beforeContent %}
@@ -24,39 +24,39 @@
 
                   <div class="govuk-form-group">
                     <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="event-name">
-                          Property request details
+                          Change request details
                       </label>
-						
+
 						<p class="govuk-body">
-						
+
 							Include any additional information you have about the change you’re requesting for this property. Further guidance on what to include is in the <a href="#" target="_blank">billing authority reports submission standards (opens in a new window or tab)</a>.
-						
+
 						</p>
 
                      <form class="form" action="/webform/ct/planning-reference-details" method="post">
-						 
-						
-						 
+
+
+
 						 {%if data['reason-remove'] != "" %}
-						 
-						 
+
+
 						 {%set comment_hint = "You need to add comments relevant to request code " + data['reason-remove']%}
-						 
+
 						 {%elseif data['reason-amend'] != ""%}
-						 
+
 						 {%set comment_hint = "You need to add details relevant to request code " + data['reason-amend']%}
-						 
-						 
+
+
 						 {%else%}
-						 
+
 						  {%set comment_hint = "You need to add details relevant to request code " + data['reason-new']%}
-						
-						 
+
+
 						 {%endif%}
 
                         {{ govukCharacterCount({
-                            name: "with-hint",
-                            id: "with-hint",
+                            name: "textarea_comments",
+                            id: "textarea_comments",
                             maxlength: 2000,
                             label: {
                               text: "Comments",
@@ -66,8 +66,8 @@
                             }) }}
 
                           {{ govukDateInput({
-                              id: "effective-date",
-                              namePrefix: "effective-date",
+                              id: "effective_date",
+                              namePrefix: "effective_date",
                               fieldset: {
                                 legend: {
                                   text: "Property demolished effective date",

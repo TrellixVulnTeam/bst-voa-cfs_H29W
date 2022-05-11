@@ -24,24 +24,24 @@
 
 
           <div class="govuk-form-group">
-          <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--xl" for="event-name">
+          <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="event-name">
               What is the billing authority reference number for this property?
             </label>
 
             <form class="form" action="/webform/ct/property-playback" method="post">
 
-           
+
 
 
             {{ govukInput({
-            
+
               classes: "govuk-input--width-20",
-              id: "property-billing-ref-no-input",
-              name: "property-billing-ref-no-input"
+              id: "input_property_billing_ref_no",
+              name: "input_property_billing_ref_no"
             }) }}
 
-  
-				
+
+
 				<div class="govuk-button-group">
 
 			  <button class="govuk-button" data-module="govuk-button">Save and Continue</button>

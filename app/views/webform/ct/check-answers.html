@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  Check answers
+  Check your answers
 {% endblock %}
 
 {% block beforeContent %}
@@ -21,19 +21,57 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">
 
-      <h1 class="govuk-heading-l">Check your answers before sending your application</h1>
+      <h1 class="govuk-heading-l">Check your answers</h1>
 
-      <h2 class="govuk-heading-m">Property request</h2>
+      <h2 class="govuk-heading-m">Report reference</h2>
+
+      {%if data['input-bill-auth-ref-no'].length>0%}
+
+
+
+        {%set input_bill_auth_ref_no = data['input-bill-auth-ref-no']%}
+
+      {%else%}
+
+        {%set input_bill_auth_ref_no = "C01324"%}
+
+      {%endif%}
 
       {{ govukSummaryList({
         classes: 'govuk-!-margin-bottom-9',
         rows: [
           {
             key: {
-              text: "What do you need to do with this property"
+              text: "Enter the billing authority report number"
             },
             value: {
-              text: "Remove this property from the Non-Domestic rating list"
+              text: input_bill_auth_ref_no
+            },
+            actions: {
+              items: [
+                {
+                  href: "request-reason",
+                  text: "Change",
+                  visuallyHiddenText: "name"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+
+        <h2 class="govuk-heading-m">Change reason</h2>
+
+      {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
+        rows: [
+          {
+            key: {
+              text: "Why are you creating this report?"
+            },
+            value: {
+              text: data['report_reason']
             },
             actions: {
               items: [
@@ -47,10 +85,10 @@
           },
           {
             key: {
-              text: "Why should the property be removed"
+              text: data['sub_reason_question']
             },
             value: {
-              text: "05: Its has been demolished"
+              text: data['sub_reason_option']
             },
             actions: {
               items: [
@@ -58,6 +96,44 @@
                   href: "#",
                   text: "Change",
                   visuallyHiddenText: "date of birth"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+
+      <h2 class="govuk-heading-m">Property reference</h2>
+
+      {%if data['input_property_billing_ref_no'].length>0%}
+
+
+
+        {%set input_property_billing_ref_no = data['input_property_billing_ref_no']%}
+
+      {%else%}
+
+        {%set input_property_billing_ref_no = "14463691044000"%}
+
+      {%endif%}
+
+      {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
+        rows: [
+          {
+            key: {
+              text: "What is the billing authority reference number for this property?"
+            },
+            value: {
+              text: input_property_billing_ref_no
+            },
+            actions: {
+              items: [
+                {
+                  href: "billing-reference?reason="+data['reason']+"&property="+data['property'],
+                  text: "Change",
+                  visuallyHiddenText: "name"
                 }
               ]
             }
@@ -74,7 +150,7 @@
 
       if(data['property_new_address']==null)
       %}
-      {%    set property_address = "Stratford 2, Jubliee House. 2 Farthingale Walk, London E15 AW"%}
+      {%    set property_address = data['static_property_address']%}
 
       {% else%}
 
@@ -92,36 +168,28 @@
 
         {%endif%}
 
+        {%if(data['radio_council_tax_band']==null)
+        %}
+        {% set radio_council_tax_band = "Band F"%}
+
+        {%else%}
+
+          {%   set radio_council_tax_band = data['radio_council_tax_band']%}
+
+        {%endif%}
 
 
-      %}
 
       {{ govukSummaryList({
         classes: 'govuk-!-margin-bottom-9',
         rows: [
-          {
-            key: {
-              text: "Billing property reference number"
-            },
-            value: {
-              text: "06002874005006"
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "",
-                  visuallyHiddenText: "name"
-                }
-              ]
-            }
-          },
+
           {
             key: {
               text: "Address"
             },
             value: {
-              text: property_address
+              text:  property_address | striptags(true) | escape | nl2br
             },
             actions: {
               items: [
@@ -138,7 +206,7 @@
               text: "Description"
             },
             value: {
-              text: "Content will appear here"
+              text: data['static_property_description']
             },
             actions: {
               items: [
@@ -152,27 +220,10 @@
           },
           {
             key: {
-              text: "Rateable value"
+              text: "Select council tax band for this property"
             },
             value: {
-              text: "£1.150.000.00"
-            },
-            actions: {
-              items: [
-                {
-                  href: "#",
-                  text: "",
-                  visuallyHiddenText: "content will appear here"
-                }
-              ]
-            }
-          },
-          {
-            key: {
-              text: "Property occupier details"
-            },
-            value: {
-              text: "John Smith john.smith@ymail.co.uk +44 65789 07654"
+              text: radio_council_tax_band
             },
             actions: {
               items: [
@@ -187,17 +238,46 @@
         ]
       }) }}
 
-      <h2 class="govuk-heading-m">Demolition request details</h2>
+      <h2 class="govuk-heading-m">Change details</h2>
+
+
+      {%if(data['textarea_comments']==null)
+      %}
+      {% set textarea_comments = "Changes to the property"%}
+
+      {%else%}
+
+
+
+        {%   set textarea_comments = data['textarea_comments']%}
+
+      {%endif%}
+
+
+
+      {%if(data['effective_date']==null)
+      %}
+      {% set effective_date = "Band F"%}
+
+      {%else%}
+
+        {%   set effective_date = data['effective_date']%}
+
+      {%endif%}
+
+
+day{{data['effective_date_day']}}
+
 
       {{ govukSummaryList({
         classes: 'govuk-!-margin-bottom-9',
         rows: [
           {
             key: {
-              text: "Billing Authority Report Number"
+              text: "Comments"
             },
             value: {
-              text: "06002874"
+              text: textarea_comments
             },
             actions: {
               items: [
@@ -214,7 +294,7 @@
               text: "Property demolished effective date"
             },
             value: {
-              text: "10th October 2020"
+              text: effective_date
             },
             actions: {
               items: [

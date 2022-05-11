@@ -4,7 +4,7 @@
   {%if data['requestreason']=='occupier'%}
 
 
-        What is owner/occupier's UK postcode?
+       Enter the owner or occupier's postcode
   {%else%}
         What is UK postcode for this property?
   {%endif%}
@@ -32,10 +32,10 @@
 
 
           <div class="govuk-form-group">
-        <h1 class="govuk-heading-xl">
+        <h1 class="govuk-heading-l">
 
             {%if data['requestreason']=='occupier'%}
-              What is owner/occupier's UK postcode?
+              Enter the owner or occupier's postcode
             {%else%}
               What is UK postcode for this property?
             {%endif%}
@@ -44,9 +44,7 @@
 
             </h1>
 
-            <p class="govuk-body">
-                Enter a postode within UK where you like to look for property address.
-          </p>
+        
 
 
 reasoncode={{data['new-property-reason']}}
@@ -87,7 +85,7 @@ reasoncode={{data['new-property-reason']}}
 <div class="govuk-button-group">
 
     <button class="govuk-button" data-module="govuk-button" id="condirmsubmit" name="bulkconfirm" value="2">
-      Find Address
+      Find address
     </button>
 
 </div>
