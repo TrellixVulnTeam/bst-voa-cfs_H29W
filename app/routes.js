@@ -29,6 +29,8 @@ var addresses = [
     'Unit 6, Northern Quarter, Lawn Central, Telford Town Centre, Telford, Shropshire, TF3 4NT'
 ];
 
+var dateFilter = require('nunjucks-date-filter');
+
 
 
 
@@ -1129,6 +1131,24 @@ router.post('/reason-new-property', function (req, res) {
 
 
 })
+
+
+function populateData(postdata, variablename, staticvalue) {
+
+
+  if(postdata==null)
+  {
+      var variablename = staticvalue
+
+  }
+  else {
+      var variablename = postdata
+  }
+
+return populateData
+
+
+}
 
 
 

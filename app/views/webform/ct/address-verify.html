@@ -181,7 +181,7 @@
 
                           <input type="hidden" name="address_array" id="address_array" value="{{data['address']}}">
 
-                        {%if data['requestreason'] == "occupier"%}
+                        {%if data['propertyreason'] == "occupier"%}
 
                             <input type="hidden" name="occupier_property_address" id="occupier_property_address" value="{{property_address}}">
                         {%else%}

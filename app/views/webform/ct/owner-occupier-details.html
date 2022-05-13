@@ -33,14 +33,14 @@
 
               <div class="govuk-form-group">
 
-              
+
 
                 {{ govukInput({
                   label: {
                     text: "First name"
                   },
-                  id: "first-name",
-                  name: "first-name",
+                  id: "contact_first_name",
+                  name: "contact_first_name",
                   autocomplete: "name",
                   spellcheck: false
                 }) }}
@@ -49,8 +49,8 @@
                   label: {
                     text: "Last name"
                   },
-                  id: "last-name",
-                  name: "last-name",
+                  id: "contact_last_name",
+                  name: "contact_last_name",
                   autocomplete: "name",
                   spellcheck: false
                 }) }}
@@ -61,8 +61,8 @@
                     text: "Email address (optional)"
                   },
                   classes: "govuk-!-width-two-thirds",
-                  id: "two-thirds",
-                  name: "two-thirds"
+                  id: "contact_email",
+                  name: "contact_email"
                 }) }}
 
                 {{ govukInput({
@@ -70,8 +70,8 @@
                     text: "Phone number (optional)"
                   },
                   classes: "govuk-!-width-two-thirds",
-                  id: "two-thirds",
-                  name: "two-thirds"
+                  id: "contact_phone",
+                  name: "contact_phone"
                 }) }}
 
                 <br>
@@ -101,9 +101,9 @@
                     }
                   ]
                 }) }}
-				  
-				  
-				  
+
+
+
 
                 {{ govukRadios({
                       classes: "govuk-radios--inline",
