@@ -30,7 +30,7 @@
                 </h1>
               </legend>
 
-				<input class="govuk-input govuk-input--width-20" id="input-bill-auth-ref-no" name="input-bill-auth-ref-no" >
+				<input class="govuk-input govuk-input--width-20" id="input-bill-auth-ref-no" name="input-bill-auth-ref-no" value="{{data['input-bill-auth-ref-no']|default(data['billing_auth_ref_no'], true)}}">
 
 
 

@@ -42,7 +42,7 @@
             actions: {
               items: [
                 {
-                  href: "enter-billing-auth-rep-no?property="+data['property'],
+                  href: "enter-billing-auth-rep-no?property="+data['property']+"&billing_auth_ref_no="+data['input-bill-auth-ref-no']|default("C01324", true),
                   text: "Change",
                   visuallyHiddenText: "name"
                 }
@@ -51,6 +51,32 @@
           }
         ]
       }) }}
+
+
+      {%if(data['report_reason']!="adding a new property")%}
+
+          {%set sub_reason_question = data['sub_reason_option']|default("CR01: demolished or uninhabitable", true)%}
+
+      {%else%}
+
+
+
+            {%set sub_reason_value = "CR03: new"%}
+
+      {%endif%}
+
+
+      {%if(data['report_reason']!="adding a new property")%}
+
+          {%set sub_reason_request = data['sub_reason_question']|default("Why does the property need to be removed?", true)%}
+
+      {%else%}
+
+
+
+            {%set sub_reason_request = "New report"%}
+
+      {%endif%}
 
 
         <h2 class="govuk-heading-m">Change reason</h2>
@@ -69,6 +95,7 @@
               items: [
                 {
                   href: "request-reason?property="+data['property'],
+
                   text: "Change",
                   visuallyHiddenText: "Why are you creating this report?"
                 }
@@ -77,14 +104,16 @@
           },
           {
             key: {
-              text: data['sub_reason_question']|default("Why does the property need to be removed?", true)
+              text: sub_reason_request
             },
+
             value: {
-              text: data['sub_reason_option']|default("CR01: demolished or uninhabitable", true)
+              text: sub_reason_value
             },
             actions: {
               items: [
                 {
+
                   href: "request-sub-reason?property="+data['property']+"&reason="+data['reason'],
                   text: "Change",
                   visuallyHiddenText: data['sub_reason_question']|default("Why does the property need to be removed?", true)
