@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  Check your answers
+  Check details before sending the report
 {% endblock %}
 
 {% block beforeContent %}
@@ -21,7 +21,7 @@
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds-from-desktop">
 
-      <h1 class="govuk-heading-l">Check your answers</h1>
+      <h1 class="govuk-heading-l">Check details before sending the report</h1>
 
       <h2 class="govuk-heading-m">Report reference</h2>
 
@@ -131,7 +131,9 @@
 
       if(data['property_new_address']==null)
       %}
-      {%    set property_address = data['static_property_address']%}
+      {%    set property_address = data['static_property_address']|default("1st, Custom House Annexe, 20 Lower Thames St, London EC3R 6EE", true)%}
+
+
 
       {% else%}
 
@@ -326,8 +328,6 @@
 
 
 
-      {%if(data['propertyreason']=="occupier")
-      %}
 
                         {{ govukSummaryList({
                           classes: 'govuk-!-margin-bottom-9',
@@ -419,10 +419,10 @@
                             },
                             {
                               key: {
-                                text: "Is their address the same as the property address?"
+                                text: "Is their address the same as the property address"
                               },
                               value: {
-                                text: data['address_same_check']|default("yes", true)
+                                text: data['address_same_check']|default("no", true)
                               },
                               actions: {
                                 items: [
@@ -455,7 +455,9 @@
                         }) }}
 
 
-          {%else%}
+
+      {%if(data['propertyreason']!="occupier")
+                              %}
 
 
           {{ govukSummaryList({
@@ -463,7 +465,7 @@
             rows: [
               {
                 key: {
-                  text: "Property address?"
+                  text: "Property address"
                 },
                 value: {
                   text: data['property_new_address']|default("1st, Custom House Annexe, 20 Lower Thames St, London EC3R 6EE", true)
@@ -492,7 +494,7 @@
         rows: [
           {
             key: {
-              text: "What is the Unique Property Reference Number (UPRN)?(optional)"
+              text: "What is the Unique Property Reference Number (UPRN)?"
             },
             value: {
               text: data['uprn-input']|default("100022935279", true)
@@ -558,7 +560,7 @@
             <input type="hidden" name="answers-checked" value="true">
 
             {{ govukButton({
-                text: "Complete request"
+                text: "Confirm and send"
             }) }}
 
       </form>
