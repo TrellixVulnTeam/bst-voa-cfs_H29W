@@ -4,8 +4,6 @@
   Council Tax schedules
 {% endblock %}
 {% block beforeContent %}
-<<<<<<< HEAD
-=======
 
 	<div class="govuk-grid-row">
 		<div class="govuk-grid-column-one-third">
@@ -16,22 +14,10 @@
 		</div>
 		{% include "includes/header-section-signedin.html" %}
 	</div>
-{% endblock %}
 
 
-      <div class="govuk-grid-row">
-        <div class="govuk-grid-column-one-third">
-          {{ govukBackLink({
-            text: "Back",
-            href: "javascript:window.history.back()"
-          }) }}
-        </div>
-        {% include "includes/header-section-signedin.html" %}
-      </div>
-      {% endblock %}
-      {% block content %}
-
-
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
 
       <h1 class="govuk-heading-xl">Council Tax schedules</h1>
 
@@ -427,7 +413,6 @@
 
           <th scope="col" class="govuk-table__header" aria-sort="ascending">Schedule</th>
 
-          <th scope="col" class="govuk-table__header" aria-sort="none">Rating year</th>
           <th scope="col" class="govuk-table__header" aria-sort="none">List year</th>
 
           <th scope="col" class="govuk-table__header" aria-sort="none">Description</th>
