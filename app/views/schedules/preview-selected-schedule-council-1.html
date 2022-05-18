@@ -4,17 +4,22 @@
   Council Tax schedule preview
 {% endblock %}
 {% block beforeContent %}
-  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
-{% endblock %}
 
-{% block content %}
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-full">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-third">
+          {{ govukBackLink({
+            text: "Back",
+            href: "javascript:window.history.back()"
+          }) }}
+        </div>
+        {% include "includes/header-section-signedin.html" %}
+      </div>
+      {% endblock %}
+      {% block content %}
+
 
       <h1 class="govuk-heading-xl">Council Tax schedule preview</h1>
-
-
 
 
       <!--TABLE START-->
@@ -28,12 +33,12 @@
           </thead>
           <tbody class="govuk-table__body">
             <tr class="govuk-table__row">
-              <th scope="row" class="govuk-table__header">Rating year</th>
+              <th scope="row" class="govuk-table__header">List year</th>
               <td class="govuk-table__cell">2005 (Wales)</td>
             </tr>
             <tr class="govuk-table__row">
               <th scope="row" class="govuk-table__header">Description</th>
-              <td class="govuk-table__cell">£109.80 per week</td>
+              <td class="govuk-table__cell">Full Council Tax valuation list</td>
             </tr>
             <!--<tr class="govuk-table__row">
               <th scope="row" class="govuk-table__header">Last download</th>
