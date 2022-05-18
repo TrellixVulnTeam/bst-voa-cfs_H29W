@@ -4,8 +4,6 @@
   Council Tax schedule preview
 {% endblock %}
 {% block beforeContent %}
-<<<<<<< HEAD
-=======
 
 	<div class="govuk-grid-row">
 		<div class="govuk-grid-column-one-third">
@@ -17,7 +15,6 @@
 		{% include "includes/header-section-signedin.html" %}
 	</div>
 {% endblock %}
-
 {% block content %}
 
   <div class="govuk-grid-row">
@@ -25,19 +22,7 @@
 
       <h1 class="govuk-heading-xl">Council Tax schedule preview</h1>
 
->>>>>>> 05e76caaf0b0f6576b8f51879a4797292baaff78
 
-        <div class="govuk-grid-row">
-          <div class="govuk-grid-column-one-third">
-            {{ govukBackLink({
-              text: "Back",
-              href: "javascript:window.history.back()"
-            }) }}
-          </div>
-          {% include "includes/header-section-signedin.html" %}
-        </div>
-        {% endblock %}
-        {% block content %}
 
 
       <!--TABLE START-->
@@ -51,12 +36,12 @@
           </thead>
           <tbody class="govuk-table__body">
             <tr class="govuk-table__row">
-              <th scope="row" class="govuk-table__header">List year</th>
+              <th scope="row" class="govuk-table__header">Rating year</th>
               <td class="govuk-table__cell">1993 (England)</td>
             </tr>
             <tr class="govuk-table__row">
               <th scope="row" class="govuk-table__header">Description</th>
-              <td class="govuk-table__cell">Banding totals (for full Council Tax valuation list)</td>
+              <td class="govuk-table__cell">£109.80 per week</td>
             </tr>
         <tr class="govuk-table__row">
               <th scope="row" class="govuk-table__header">Last downloaded</th>
