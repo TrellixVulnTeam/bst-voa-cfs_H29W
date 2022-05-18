@@ -4,6 +4,8 @@
   Non-domestic rates schedules
 {% endblock %}
 {% block beforeContent %}
+<<<<<<< HEAD
+=======
 
 	<div class="govuk-grid-row">
 		<div class="govuk-grid-column-one-third">
@@ -15,11 +17,20 @@
 		{% include "includes/header-section-signedin.html" %}
 	</div>
 {% endblock %}
+>>>>>>> 05e76caaf0b0f6576b8f51879a4797292baaff78
 
-{% block content %}
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-third">
+          {{ govukBackLink({
+            text: "Back",
+            href: "javascript:window.history.back()"
+          }) }}
+        </div>
+        {% include "includes/header-section-signedin.html" %}
+      </div>
+      {% endblock %}
+      {% block content %}
 
-  <div class="govuk-grid-row">
-    <div class="govuk-grid-column-full">
 
       <h1 class="govuk-heading-xl">Non-domestic rates schedules</h1>
 
@@ -532,7 +543,7 @@
                  </div>
 
 
-              <td class="govuk-table__cell"><a href="#">10052017005NRP</a></td>
+              <td class="govuk-table__cell"><a href="#">100520170011NRP</a></td>
               <td class="govuk-table__cell">2017</td>
               <td class="govuk-table__cell"> Minor list change schedule</td>
               <td class="govuk-table__cell">16 May 2022</td>
@@ -553,7 +564,7 @@
                  </div>
 
 
-              <td class="govuk-table__cell"><a href="#">49112017043NTP</a></td>
+              <td class="govuk-table__cell"><a href="#">49112017010NTP</a></td>
               <td class="govuk-table__cell">2017</td>
               <td class="govuk-table__cell">Statistical Analysis of totals for full list</td>
               <td class="govuk-table__cell">13 May 2022</td>
@@ -595,7 +606,7 @@
                  </div>
 
 
-              <td class="govuk-table__cell"><a href="/schedules/preview-selected-schedule-ndr-3">47832017018NTP</a></td>
+              <td class="govuk-table__cell"><a href="/schedules/preview-selected-schedule-ndr-3">47832017010NTP</a></td>
               <td class="govuk-table__cell">2017</td>
               <td class="govuk-table__cell">Statistical Analysis of totals for full list</td>
               <td class="govuk-table__cell">11 May 2022</td>
@@ -616,7 +627,7 @@
                  </div>
 
 
-              <td class="govuk-table__cell"><a href="#">083320050237WM</a></td>
+              <td class="govuk-table__cell"><a href="#">783120050931WM</a></td>
               <td class="govuk-table__cell">2005</td>
               <td class="govuk-table__cell">Withdrawl and dismissal schedule</td>
               <td class="govuk-table__cell">6 May 2022</td>
@@ -637,7 +648,7 @@
                  </div>
 
 
-              <td class="govuk-table__cell"><a href="#">227820050174MP</a></td>
+              <td class="govuk-table__cell"><a href="#">227820050023MP</a></td>
               <td class="govuk-table__cell">2005</td>
               <td class="govuk-table__cell">Minor list change schedule</td>
               <td class="govuk-table__cell">29 Apr 2022</td>
@@ -657,7 +668,7 @@
                  </div>
 
 
-              <td class="govuk-table__cell"><a href="#">269920059551WM</a></td>
+              <td class="govuk-table__cell"><a href="#">782320058234WM</a></td>
               <td class="govuk-table__cell">2005</td>
               <td class="govuk-table__cell">Withdrawl and dismissal schedule</td>
               <td class="govuk-table__cell">28 Apr 2022</td>
@@ -699,7 +710,7 @@
                  </div>
 
 
-              <td class="govuk-table__cell"><a href="#">19122005783WM</a></td>
+              <td class="govuk-table__cell"><a href="#">214920059341WM</a></td>
               <td class="govuk-table__cell">2005</td>
               <td class="govuk-table__cell">Withdrawl and dismissal schedule</td>
               <td class="govuk-table__cell">15 Apr 2022</td>
@@ -720,7 +731,7 @@
                  </div>
 
 
-              <td class="govuk-table__cell"><a href="#">317820050174MP</a></td>
+              <td class="govuk-table__cell"><a href="#">317820050022MP</a></td>
               <td class="govuk-table__cell">2005</td>
               <td class="govuk-table__cell">Minor list change schedule</td>
               <td class="govuk-table__cell">11 Apr 2022</td>
