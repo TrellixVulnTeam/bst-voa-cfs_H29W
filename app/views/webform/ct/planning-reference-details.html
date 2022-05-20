@@ -62,6 +62,7 @@ Does this property have a planning portal reference?
              {
                value: "yes~owner-occupier-details?propertyreason=occupier",
                text: "Yes",
+							 checked: checked("planning_reference_number_available", "yes"),
                conditional: {
                  html: textHtml
                }
@@ -69,6 +70,7 @@ Does this property have a planning portal reference?
                     {
                       value: "no~no-planning-reference",
                       text: "No",
+											checked: checked("planning_reference_number_available", "no"),
                       conditional: {
                         html: nothing
 

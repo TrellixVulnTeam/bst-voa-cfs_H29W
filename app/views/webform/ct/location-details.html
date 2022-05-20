@@ -16,6 +16,18 @@
 		{% include "includes/header-section-signedin.html" %}
 	</div>
 {% endblock %}
+
+{% if data['location_details']=="edit" %}
+
+{% set uprn = "100022935279" %}
+{% set bngc_x = "533172" %}
+{% set bngc_y = "180611" %}
+
+
+{%endif%}
+
+
+
 {% block content %}
 
 
@@ -47,7 +59,8 @@
 
 				  },
 				  id: "uprn-input",
-				  name: "uprn-input"
+				  name: "uprn-input",
+          value:uprn
 				}) }}
 
               <h2 class="govuk-label govuk-label--m" for="event-name">
@@ -70,7 +83,8 @@
                           },
                           classes: "govuk-input--width-10",
                           id: "bngc-x-input",
-                          name: "bngc-x-input"
+                          name: "bngc-x-input",
+                          value:bngc_x
                         }) }}
 
                         {{ govukInput({
@@ -79,7 +93,8 @@
                           },
                           classes: "govuk-input--width-10",
                           id: "bngc-y-input",
-                          name: "bngc-y-input"
+                          name: "bngc-y-input",
+                          value:bngc_y
                         }) }}
 
                     </div>

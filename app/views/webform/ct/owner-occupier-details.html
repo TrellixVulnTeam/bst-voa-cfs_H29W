@@ -17,6 +17,15 @@
 	</div>
 {% endblock %}
 
+{% if data['owner_occupier']=="edit" %}
+
+{% set first_name = "Sam" %}
+{% set last_name = "Whilton" %}
+{% set contact_email = "sam.whilton@la.gov.uk" %}
+{% set contact_phone = "sam.whilton@la.gov.uk" %}
+
+{%endif%}
+
 {% block content %}
 
 
@@ -41,6 +50,7 @@
                   },
                   id: "contact_first_name",
                   name: "contact_first_name",
+                  value:first_name,
                   autocomplete: "name",
                   spellcheck: false
                 }) }}
@@ -51,6 +61,7 @@
                   },
                   id: "contact_last_name",
                   name: "contact_last_name",
+                    value:last_name,
                   autocomplete: "name",
                   spellcheck: false
                 }) }}
@@ -62,7 +73,8 @@
                   },
                   classes: "govuk-!-width-two-thirds",
                   id: "contact_email",
-                  name: "contact_email"
+                  name: "contact_email",
+                    value:contact_email
                 }) }}
 
                 {{ govukInput({
@@ -71,7 +83,8 @@
                   },
                   classes: "govuk-!-width-two-thirds",
                   id: "contact_phone",
-                  name: "contact_phone"
+                  name: "contact_phone",
+                  value:contact_phone
                 }) }}
 
                 <br>
@@ -93,11 +106,13 @@
                       items: [
                         {
                           value: "Owner",
-                          text: "Owner"
+                          text: "Owner",
+                          checked: checked("owner_occupier_check", "Owner")
                         },
                         {
                           value: "Occupier",
-                          text: "Occupier"
+                          text: "Occupier",
+                          checked: checked("owner_occupier_check", "Occupier")
                     }
                   ]
                 }) }}
@@ -122,11 +137,13 @@
                       items: [
                         {
                           value: "yes",
-                          text: "Yes"
+                          text: "Yes",
+                          checked: checked("address_same_check", "yes")
                         },
                         {
                           value: "no",
-                          text: "No"
+                          text: "No",
+                          checked: checked("address_same_check", "no")
                     }
                   ]
                 }) }}

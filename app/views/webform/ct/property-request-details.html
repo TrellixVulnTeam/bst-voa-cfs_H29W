@@ -18,7 +18,12 @@
 {% endblock %}
 {% block content %}
 
+{% if data['comments']=='edit'%}
+  {% set comments = "Property demolished on 1/6/17"%}
+  {% set effective_date = "25 04 2022"%}
 
+
+{% endif%}
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
 
@@ -57,10 +62,12 @@
                         {{ govukCharacterCount({
                             name: "textarea_comments",
                             id: "textarea_comments",
+                            value: comments,
                             maxlength: 2000,
                             label: {
                               text: "Comments",
                               classes: "govuk-label--m",
+
                               isPageHeading: false
                               }
                             }) }}
@@ -68,10 +75,12 @@
                           {{ govukDateInput({
                               id: "effective_date",
                               namePrefix: "effective_date",
+                              value:effective_date,
                               fieldset: {
                                 legend: {
                                   text: "Property demolished effective date",
                                     classes: "govuk-label--m"
+
                             }
                           },
                           hint: {

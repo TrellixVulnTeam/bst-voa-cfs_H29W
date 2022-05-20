@@ -37,12 +37,12 @@
               text: "Enter the billing authority report number"
             },
             value: {
-              text: data['input-bill-auth-ref-no']|default("C01324", true)
+              text: data['input-bill-auth-report-no']|default("C01324", true)
             },
             actions: {
               items: [
                 {
-                  href: "enter-billing-auth-rep-no?property="+data['property']+"&billing_auth_ref_no="+data['input-bill-auth-ref-no']|default("C01324", true),
+                  href: "enter-billing-auth-rep-no?property="+data['property']+"&billing_auth_report_no="+data['input-bill-auth-report-no']|default("C01324", true),
                   text: "Change",
                   visuallyHiddenText: "name"
                 }
@@ -55,13 +55,15 @@
 
       {%if(data['report_reason']!="adding a new property")%}
 
+
+
           {%set sub_reason_question = data['sub_reason_option']|default("CR01: demolished or uninhabitable", true)%}
 
       {%else%}
 
 
 
-            {%set sub_reason_value = "CR03: new"%}
+            {%set sub_reason_question = "CR03: new"%}
 
       {%endif%}
 
@@ -108,7 +110,7 @@
             },
 
             value: {
-              text: sub_reason_value
+              text: sub_reason_question
             },
             actions: {
               items: [
@@ -141,7 +143,7 @@
             actions: {
               items: [
                 {
-                  href: "billing-reference?reason="+data['reason']+"&property="+data['property'],
+                  href: "billing-reference?billing_auth_ref_no="+data['input_property_billing_ref_no']|default("1446369104400201", true)+"&property="+data['property'],
                   text: "Change",
                   visuallyHiddenText: "name"
                 }
@@ -235,7 +237,9 @@
             actions: {
               items: [
                 {
-                  href: "council-tax-band?reason="+data['reason']+"&property="+data['property'],
+
+                  href: "council-tax-band?council_tax_band="+data['radio_council_tax_band']|default("Band F", true)+"&property="+data['property'],
+
                   text: "Change",
                   visuallyHiddenText: "council tax band for this property"
                 }
@@ -292,7 +296,7 @@
             actions: {
               items: [
                 {
-                  href: "property-request-details?reason="+data['reason']+"&property="+data['property'],
+                  href: "property-request-details?reason="+data['reason']+"&property="+data['property']+"&comments=edit",
                   text: "Change",
                   visuallyHiddenText: "comments"
                 }
@@ -309,7 +313,7 @@
             actions: {
               items: [
                 {
-                  href: "property-request-details?reason="+data['reason']+"&property="+data['property'],
+                  href: "property-request-details?reason="+data['reason']+"&property="+data['property']+"&comments=edit",
                   text: "Change",
                   visuallyHiddenText: "property demolished effective date"
                 }
@@ -371,7 +375,7 @@
                               actions: {
                                 items: [
                                   {
-                                    href: "owner-occupier-details?reason="+data['reason']+"&property="+data['property']+"&propertyreason="+data['propertyreason'],
+                                    href: "owner-occupier-details?reason="+data['reason']+"&property="+data['property']+"&propertyreason="+data['propertyreason']+"&owner_occupier=edit",
                                     text: "Change",
                                     visuallyHiddenText: "Contact First Name"
                                   }
@@ -388,8 +392,8 @@
                               actions: {
                                 items: [
                                   {
-                                    href: "owner-occupier-details?reason="+data['reason']+"&property="+data['property']+"&propertyreason="+data['propertyreason'],
-                                    text: "Change",
+                                    href: "owner-occupier-details?reason="+data['reason']+"&property="+data['property']+"&propertyreason="+data['propertyreason']+"&owner_occupier=edit",
+                                      text: "Change",
                                     visuallyHiddenText: "Contact Last name"
                                   }
                                 ]
@@ -405,8 +409,8 @@
                               actions: {
                                 items: [
                                   {
-                                    href: "owner-occupier-details?reason="+data['reason']+"&property="+data['property']+"&propertyreason="+data['propertyreason'],
-                                    text: "Change",
+                                    href: "owner-occupier-details?reason="+data['reason']+"&property="+data['property']+"&propertyreason="+data['propertyreason']+"&owner_occupier=edit",
+                                        text: "Change",
                                     visuallyHiddenText: "Contact Email address"
                                   }
                                 ]
@@ -422,8 +426,8 @@
                               actions: {
                                 items: [
                                   {
-                                      href: "owner-occupier-details?reason="+data['reason']+"&property="+data['property']+"&propertyreason="+data['propertyreason'],
-                                    text: "Change",
+                                    href: "owner-occupier-details?reason="+data['reason']+"&property="+data['property']+"&propertyreason="+data['propertyreason']+"&owner_occupier=edit",
+                                      text: "Change",
                                     visuallyHiddenText: "Contact Phone number"
                                   }
                                 ]
@@ -473,7 +477,7 @@
                               actions: {
                                 items: [
                                   {
-                                    href: "address-postcode-lookup?reason="+data['reason']+"&property="+data['property']+"&propertyreason="+data['propertyreason'],
+                                    href: "address-enter?action=edit&reason="+data['reason']+"&property="+data['property']+"&propertyreason="+data['propertyreason'],
                                     text: "Change",
                                     visuallyHiddenText: "Contact address"
                                   }
@@ -502,7 +506,7 @@
                 actions: {
                   items: [
                     {
-                      href: "address-postcode-lookup?reason="+data['reason']+"&property="+data['property']+"&propertyreason="+data['propertyreason'],
+                      href: "address-enter?action=edit&reason="+data['reason']+"&property="+data['property']+"&propertyreason="+data['propertyreason']+"&owner_occupier=edit",
                       text: "Change",
                       visuallyHiddenText: "property address?"
                     }
@@ -531,7 +535,7 @@
             actions: {
               items: [
                 {
-                  href: "location-details?reason="+data['reason']+"&property="+data['property']+"&propertyreason="+data['propertyreason'],
+                  href: "location-details?reason="+data['reason']+"&property="+data['property']+"&propertyreason="+data['propertyreason']+"&location_details=edit",
                   text: "Change",
                   visuallyHiddenText: "What is the Unique Property Reference Number (UPRN)?"
                 }
@@ -549,7 +553,7 @@
             actions: {
               items: [
                 {
-                  href: "location-details?reason="+data['reason']+"&property="+data['property']+"&propertyreason="+data['propertyreason'],
+                  href: "location-details?reason="+data['reason']+"&property="+data['property']+"&propertyreason="+data['propertyreason']+"&location_details=edit",
                   text: "Change",
                   visuallyHiddenText: "British National Grid X coordinates"
                 }
@@ -567,7 +571,7 @@
             actions: {
               items: [
                 {
-                  href: "location-details?reason="+data['reason']+"&property="+data['property']+"&propertyreason="+data['propertyreason'],
+                  href: "location-details?reason="+data['reason']+"&property="+data['property']+"&propertyreason="+data['propertyreason']+"&location_details=edit",
                   text: "Change",
                   visuallyHiddenText: "British National Grid Y coordinates?"
                 }
