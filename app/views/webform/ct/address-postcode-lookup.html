@@ -4,7 +4,11 @@
   {%if data['propertyreason']=='occupier'%}
 
 
-        Enter the owner or occupier's postcode
+
+    What is the {{data['owner_occupier_check']| lower}}'s address?
+
+
+
   {%else%}
         Enter the postcode for this property
   {%endif%}
@@ -35,7 +39,7 @@
         <h1 class="govuk-heading-xl">
 
             {%if data['propertyreason']=='occupier'%}
-             Enter the owner or occupier's postcode
+             What is the {{data['owner_occupier_check']| lower}}'s address?
             {%else%}
             Enter the postcode for this property
             {%endif%}

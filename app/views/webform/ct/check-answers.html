@@ -88,7 +88,7 @@
         rows: [
           {
             key: {
-              text: "Why are you creating this report?"
+              text: "Why are you creating this Report?"
             },
             value: {
               text: data['report_reason']|default("removing a property", true)
@@ -215,7 +215,7 @@
               text: "Description"
             },
             value: {
-              text: data['static_property_description']|default("Resedential property", true)
+              text: data['static_property_description']|default("Residential", true)
             },
             actions: {
               items: [
@@ -325,7 +325,7 @@
               text: "Does this property have a planning portal reference?"
             },
             value: {
-              text: data['planning_reference_number_available']|default("no", true)
+              text: data['planning_reference_number_available']|default("No", true)
             },
             actions: {
               items: [
@@ -435,7 +435,7 @@
                             },
                             {
                               key: {
-                                text: "They are the"
+                                text: "Owner or occupier"
                               },
                               value: {
                                 text: data['owner_occupier_value']|default("Owner", true)
@@ -452,7 +452,7 @@
                             },
                             {
                               key: {
-                                text: "Is their address the same as the property address"
+                                text: "Address same as property address"
                               },
                               value: {
                                 text: data['address_same_check']|default("no", true)
@@ -527,7 +527,7 @@
         rows: [
           {
             key: {
-              text: "Enter a Unique Property Reference Number (optional)?"
+              text: "Unique Property Reference Number (optional)"
             },
             value: {
               text: data['uprn-input']|default("100022935279", true)

@@ -25,17 +25,9 @@
     <div class="govuk-grid-column-two-thirds">
 
 
-		{%if data['property-billing-ref-no-input']!="" %}
 
-			{%set billing_ref_no = data['input_property_billing_ref_no'] %}
-
-		{%else%}
-
-			{%set billing_ref_no = "14463691044000" %}
-
-		{%endif%}
 <form method="post" action="/webform/ct/council-tax-band">
-      <h1 class="govuk-heading-l">Check and confirm the address and description for billing authority reference number: {{billing_ref_no}}</h1>
+      <h1 class="govuk-heading-l">Check and confirm the address and description for billing authority reference number: {{data['input_property_billing_ref_no']|default("14463691044000", true)}}</h1>
 
 
 
@@ -66,13 +58,13 @@
 
 
         <h2 class="govuk-heading-s govuk-!-margin-bottom-2">Description</h2>
-            <p class="govuk-body">Resedential</p>
+            <p class="govuk-body">Residential</p>
 
             {{ govukInput({
 
               id: "static_property_description",
               name: "static_property_description",
-              value: "Resedential",
+              value: "Residential",
               type: "hidden"
             }) }}
 
@@ -90,7 +82,7 @@
 
           <div class="govuk-button-group">
             {{ govukButton({
-              text: "Confirm"
+              text: "Check and confirm details"
             }) }}
 
             {{ govukButton({
