@@ -5,7 +5,7 @@
 
 
 
-    What is the {{data['owner_occupier_check']| lower}}'s address?
+    What is the {{data['owner_occupier_check']|default("Owner", true)| lower}}'s address?
 
 
 
@@ -39,7 +39,7 @@
         <h1 class="govuk-heading-xl">
 
             {%if data['propertyreason']=='occupier'%}
-             What is the {{data['owner_occupier_check']| lower}}'s address?
+             What is the {{data['owner_occupier_check']|default("Owner", true)| lower}}'s address?
             {%else%}
             Enter the postcode for this property
             {%endif%}

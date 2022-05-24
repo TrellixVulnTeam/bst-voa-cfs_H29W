@@ -948,7 +948,8 @@ console.log("reason code = " +reason_remove )
       res.redirect('/webform/ct/billing-reference?reason='+reason+'&property='+property)
       }
       else {
-        res.redirect('/webform/ct/address-postcode-lookup?reason='+reason+'&property='+property+'&propertyreason=new')
+        //res.redirect('/webform/ct/address-postcode-lookup?reason='+reason+'&property='+property+'&propertyreason=new')
+        res.redirect('/webform/ct/billing-reference?reason='+reason+'&property='+property+'&propertyreason=new')
       }
 
 
@@ -981,6 +982,41 @@ router.post('/reference-details', function (req, res) {
 })
 
 
+router.post('/webform/ct/billing-reference', function (req, res) {
+
+  // Make a variable and give it the value from 'how-many-balls'
+  var reason = req.session.data['reason']
+  var property = req.session.data['property']
+  var propertyreason = req.session.data['propertyreason']
+
+
+
+  if (!property)
+  {
+    console.log("property123= " + property)
+
+    property="ct"
+
+  }
+
+  // Check whether the variable matches a condition
+  if (reason == "new"){
+    // Send user to next page
+
+    res.redirect('/webform/ct/address-postcode-lookup?reason='+reason+'&property='+property+'&propertyreason='+propertyreason)
+
+  } else {
+    // Send user to ineligible page
+    res.redirect('/webform/ct/property-playback?reason='+reason+'&property='+property+'&propertyreason='+propertyreason)
+
+  }
+
+})
+
+
+
+
+
 
 // Run this code when a form is submitted to 'confirm-remove-failed-report'
 router.post('/webform/ct/owner-occupier-details', function (req, res) {
@@ -989,7 +1025,7 @@ router.post('/webform/ct/owner-occupier-details', function (req, res) {
   var address_same_check = req.session.data['address_same_check']
 
   // Check whether the variable matches a condition
-  if (address_same_check == "no"){
+  if (address_same_check == "No"){
     // Send user to next page
     res.redirect('/webform/ct/address-postcode-lookup?propertyreason=occupier')
   } else {
@@ -1063,6 +1099,8 @@ router.post('/webform/ct/address-verify', function (req, res) {
 
   var reason_new = req.session.data['new-property-reason']
 
+  var property = req.session.data['property']
+
 
 
 console.log("newpropertyreason = " +reason_new )
@@ -1070,12 +1108,9 @@ console.log("newpropertyreason = " +reason_new )
 
   if (propertyreason == "new"){
     // Send user to next page
-    if ((reason_new == "01") || (reason_new == "04")){
-    res.redirect('/property-details?propertyreason='+propertyreason)
-    }
-    else {
-      res.redirect('/billing-reference?propertyreason='+propertyreason)
-    }
+
+      res.redirect('property-request-details?reason='+propertyreason+'&property='+property)
+
 
   } else {
     // Send user to ineligible page

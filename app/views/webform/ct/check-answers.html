@@ -222,11 +222,11 @@
                 {
                   href: "#",
                   text: "",
-                  visuallyHiddenText: "content will appear here"
+                  visuallyHiddenText: "property description "
                 }
               ]
             }
-          },
+          }if (sub_reason_question != "CR03: new"),
           {
             key: {
               text: "Select council tax band for this property"
@@ -245,7 +245,7 @@
                 }
               ]
             }
-          }
+          }if (sub_reason_question != "CR03: new")
         ]
       }) }}
 
@@ -278,20 +278,32 @@
 
       {%endif%}
 
+{%if data['report_reason']=="adding a new property"%}
 
+      {%set propertyremarks ="New resedential property added"%}
 
+{%elseif data['report_reason']=="removing a property"%}
+
+      {%set propertyremarks ="Resedential property removed"%}
+
+{%else%}
+
+      {%set propertyremarks =sub_reason_question + " Billing authority reference number is 1446369104400232"%}
+
+{%endif%}
 
 
 
       {{ govukSummaryList({
-        classes: 'govuk-!-margin-bottom-9',
+        classes: '',
         rows: [
           {
             key: {
               text: "Comments"
             },
             value: {
-              text: data['textarea_comments']|default("Changes to the property", true)
+              text: propertyremarks
+
             },
             actions: {
               items: [
@@ -339,10 +351,29 @@
           },
           {
             key: {
+              text: "Planning portal reference"
+            },
+            value: {
+              text: data['planning_reference_number']|default("PA/21/01924", true)
+            },
+            actions: {
+              items: [
+                {
+                  href: "planning-reference-details?reason="+data['reason']+"&property="+data['property']+"&planning_reference_number="+data['planning_reference_number']|default("PA/21/01924", true),
+                  text: "Change",
+                  visuallyHiddenText: "Planning portal reference"
+                }
+              ]
+            }
+          } if (data['planning_reference_number_available'] | default("No", true) == "Yes") else
+
+
+          {
+            key: {
               text: "Why does this property not have a planning portal reference?"
             },
             value: {
-              text: data['no_planning_reference_reason']|default("Planning permission is not required", true)
+                text: data['no_planning_reference_reason']|default("Planning permission is not required", true)
             },
             actions: {
               items: [
@@ -354,8 +385,24 @@
               ]
             }
           }
+
+
+
+
+
+
         ]
       }) }}
+
+
+
+
+
+
+
+
+
+
 
       <h2 class="govuk-heading-m">Contact details</h2>
 
@@ -455,7 +502,7 @@
                                 text: "Address same as property address"
                               },
                               value: {
-                                text: data['address_same_check']|default("no", true)
+                                text: data['address_same_check']|default("No", true)
                               },
                               actions: {
                                 items: [
@@ -483,7 +530,7 @@
                                   }
                                 ]
                               }
-                            }
+                            } if (data['address_same_check'] | default("No", true) == "No")
                           ]
                         }) }}
 
