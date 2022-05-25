@@ -991,7 +991,7 @@ router.post('/webform/ct/billing-reference', function (req, res) {
 
 
 
-  if (!property)
+  if (property)
   {
     console.log("property123= " + property)
 

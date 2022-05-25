@@ -155,6 +155,7 @@
 
       <h2 class="govuk-heading-m">Property details</h2>
 
+
       {%
 
 
@@ -203,9 +204,9 @@
             actions: {
               items: [
                 {
-                  href: "#",
-                  text: "",
-                  visuallyHiddenText: "date of birth"
+                  href: "address-enter?action=edit&reason="+data['reason']+"&property="+data['property']+"&propertyreason="+data['propertyreason'],
+                  text: "Change",
+                  visuallyHiddenText: "property address"
                 }
               ]
             }
@@ -280,11 +281,11 @@
 
 {%if data['report_reason']=="adding a new property"%}
 
-      {%set propertyremarks ="New resedential property added"%}
+      {%set propertyremarks ="New Residential property added"%}
 
 {%elseif data['report_reason']=="removing a property"%}
 
-      {%set propertyremarks ="Resedential property removed"%}
+      {%set propertyremarks ="Residential property removed"%}
 
 {%else%}
 
