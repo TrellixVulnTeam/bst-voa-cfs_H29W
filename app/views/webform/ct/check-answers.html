@@ -88,7 +88,7 @@
         rows: [
           {
             key: {
-              text: "Why are you creating this Report?"
+              text: "Why are you creating this report?"
             },
             value: {
               text: data['report_reason']|default("removing a property", true)
@@ -207,7 +207,16 @@
                   href: "address-enter?action=edit&reason="+data['reason']+"&property="+data['property']+"&propertyreason="+data['propertyreason'],
                   text: "Change",
                   visuallyHiddenText: "property address"
+                } if (data['report_reason']|default("removing a property", true) == "adding a new property") else
+
+                {
+                  href: "#",
+                  text: "",
+                  visuallyHiddenText: "property address"
                 }
+
+
+
               ]
             }
           },
@@ -636,7 +645,7 @@
 
           <p class="govuk-body">By submitting this application you are confirming that, to the best of your knowledge, the details you are providing are correct.</p>
 -->
-          <form action="/confirmation" method="post" novalidate>
+          <form action="/webform/ct/webform-submission-confirmation" method="post" novalidate>
 
             <input type="hidden" name="answers-checked" value="true">
 

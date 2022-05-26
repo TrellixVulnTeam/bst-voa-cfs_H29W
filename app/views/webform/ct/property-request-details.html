@@ -1,7 +1,11 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
+{% if data['reason']=='new'%}
+  New property details
+  {%else%}
   Change request details
+{%endif%}
 {% endblock %}
 
 {% block beforeContent %}
@@ -29,12 +33,25 @@
 
                   <div class="govuk-form-group">
                     <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="event-name">
-                          Change request details
+                      {% if data['reason']=='new'%}
+
+                        New property details
+                      {%else%}
+                      Change request details
+
+                      {%endif%}
                       </label>
 
 						<p class="govuk-body">
 
-							Include any additional information you have about the change you’re requesting for this property. Further guidance on what to include is in the <a href="#" target="_blank">billing authority reports submission standards (opens in a new window or tab)</a>.
+
+            {% if data['reason']=='new'%}
+            Include any additional information you have about this new property. Further guidance on what to include is in the <a href="#" target="_blank">billing authority reports submission standards (opens in a new window or tab)</a>.
+
+            {%else%}
+            Include any additional information you have about the change you’re requesting for this property. Further guidance on what to include is in the <a href="#" target="_blank">billing authority reports submission standards (opens in a new window or tab)</a>.
+            {%endif%}
+
 
 						</p>
 

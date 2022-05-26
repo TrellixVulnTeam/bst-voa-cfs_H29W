@@ -210,7 +210,8 @@
 {%else%}
 
 
-<h1 class="govuk-heading-xl">Code CR03: new will be added to the report</h1>
+<h1 class="govuk-heading-l">Code CR03: new will be added to the report</h1>
+<p class="govuk-body">This is the code for adding a new property. Select 'Continue' to confirm and enter the property details, or go back if you want to remove or make amends to a property</p>
 <input type="hidden" name="rsub_reason_option" id="sub_reason_option" value="CR03: new" />
 
 
@@ -225,12 +226,21 @@
 
 {%endif%}
 
+        <div class="govuk-button-group">
 
+                <button class="govuk-button" data-module="govuk-button">Continue</button>
 
-                <button class="govuk-button" data-module="govuk-button">Save and continue</button>
+                {{ govukButton({
+                  text: "Go back",
+                  href: "request-reason?property="+data['property'],
+                  classes: "govuk-button--secondary"
+
+                }) }}
+
+          </div>
 
         </div>
-        </div>
+    </div>
 
 
 
