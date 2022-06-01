@@ -290,15 +290,21 @@
 
 {%if data['report_reason']=="adding a new property"%}
 
-      {%set propertyremarks ="New Residential property added"%}
+      {%set propertyremarks =data['textarea_remarks']|default("New Residential property added", true)
+
+
+
+      %}
 
 {%elseif data['report_reason']=="removing a property"%}
 
-      {%set propertyremarks ="Residential property removed"%}
+        {%set propertyremarks =data['textarea_remarks']|default("Residential property removed", true)%}
+
+
 
 {%else%}
 
-      {%set propertyremarks =sub_reason_question + " Billing authority reference number is 1446369104400232"%}
+      {%set propertyremarks =data['textarea_remarks']|default(sub_reason_question + " Billing authority reference number is 1446369104400232", true)%}
 
 {%endif%}
 
@@ -307,9 +313,29 @@
       {{ govukSummaryList({
         classes: '',
         rows: [
+
+        {
+          key: {
+            text: "Effective date"
+          },
+          value: {
+            text: data['effective_date']|default("April 25, 2022", true)
+          },
+          actions: {
+            items: [
+              {
+                href: "property-request-details?reason="+data['reason']+"&property="+data['property']+"&remarks=edit",
+                text: "Change",
+                visuallyHiddenText: "Effective date"
+              }
+            ]
+          }
+        },
+
+
           {
             key: {
-              text: "Comments"
+              text: "Remarks"
             },
             value: {
               text: propertyremarks
@@ -318,30 +344,14 @@
             actions: {
               items: [
                 {
-                  href: "property-request-details?reason="+data['reason']+"&property="+data['property']+"&comments=edit",
+                  href: "property-request-details?reason="+data['reason']+"&property="+data['property']+"&remarks=edit",
                   text: "Change",
-                  visuallyHiddenText: "comments"
+                  visuallyHiddenText: "Remarks"
                 }
               ]
             }
           },
-          {
-            key: {
-              text: "Property demolished effective date"
-            },
-            value: {
-              text: data['effective_date']|default("April 25, 2022", true)
-            },
-            actions: {
-              items: [
-                {
-                  href: "property-request-details?reason="+data['reason']+"&property="+data['property']+"&comments=edit",
-                  text: "Change",
-                  visuallyHiddenText: "property demolished effective date"
-                }
-              ]
-            }
-          },
+
           {
             key: {
               text: "Does this property have a planning portal reference?"
