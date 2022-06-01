@@ -49,7 +49,7 @@
             Include any additional information you have about this new property. Further guidance on what to include is in the <a href="https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/941247/BARs_Submission_Standards_2020v8.pdf" target="_blank">billing authority reports submission standards (opens in a new window or tab)</a>.
 
             {%else%}
-            Include any additional information you have about the change you’re requesting for this property. Further guidance on what to include is in the <a href="#" target="_blank">billing authority reports submission standards (opens in a new window or tab)</a>.
+            Include any additional information you have about the change you’re requesting for this property. Further guidance on what to include is in the <a href="https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/941247/BARs_Submission_Standards_2020v8.pdf" target="_blank">billing authority reports submission standards (opens in a new window or tab)</a>.
             {%endif%}
 
 
@@ -76,34 +76,37 @@
 
 						 {%endif%}
 
+                           {{ govukDateInput({
+                               id: "effective_date",
+                               namePrefix: "effective_date",
+                               value:effective_date,
+                               fieldset: {
+                                 legend: {
+                                   text: "Effective date",
+                                     classes: "govuk-label--m"
+
+                             }
+                           },
+                           hint: {
+                             text: "Date must be in the past. Format: 27 3 2021"
+                           }
+                         }) }}
+
+
                         {{ govukCharacterCount({
                             name: "textarea_comments",
                             id: "textarea_comments",
-                            value: comments,
+                            value: Comments,
                             maxlength: 5000,
                             label: {
-                              text: "Comments",
+                              text: "Remarks",
                               classes: "govuk-label--m",
 
                               isPageHeading: false
                               }
                             }) }}
 
-                          {{ govukDateInput({
-                              id: "effective_date",
-                              namePrefix: "effective_date",
-                              value:effective_date,
-                              fieldset: {
-                                legend: {
-                                  text: "Effective date",
-                                    classes: "govuk-label--m"
 
-                            }
-                          },
-                          hint: {
-                            text: "Date must be in the past. Format: 27 3 2021"
-                          }
-                        }) }}
 
 
                         <div class="govuk-!-margin-top-8 govuk-!-margin-bottom-4">
