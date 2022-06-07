@@ -1192,6 +1192,7 @@ console.log("newpropertyreason = " +sub_reason )
 
   {
     // Send user to next page
+    delete req.session.data['radio_council_tax_band']
 
       res.redirect('property-request-details?reason='+propertyreason+'&property='+property)
 
@@ -1206,7 +1207,19 @@ console.log("newpropertyreason = " +sub_reason )
 
 
 
+router.post('/webform/ct/location-details', function (req, res) {
 
+  var reason = req.session.data['reason']
+
+  var property = req.session.data['property']
+
+
+res.redirect('check-answers?reason='+reason+'&property='+property)
+
+
+
+
+})
 
 router.post('/webform/ct/check-answers', function (req, res) {
 
@@ -1232,7 +1245,7 @@ router.post('/webform/ct/property-request-details', function (req, res) {
   {
       var sub_reason = req.session.data['sub_reason_option'].substring(0,4)
   }
-  
+
   var reason = req.session.data['reason']
 
   var property = req.session.data['property']
@@ -1248,6 +1261,10 @@ console.log("newpropertyreason = " +sub_reason )
 
   {
     // Send user to next page
+
+    delete req.session.data['planning_reference_number_available']
+    delete req.session.data['planning_reference_number']
+    delete req.session.data['no_planning_reference_reason']
 
       res.redirect('owner-occupier-details?propertyreason=occupier&reason='+reason+'&property='+property)
 
