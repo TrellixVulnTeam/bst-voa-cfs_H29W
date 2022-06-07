@@ -1205,14 +1205,34 @@ console.log("newpropertyreason = " +sub_reason )
 })
 
 
+
+
+
+router.post('/webform/ct/check-answers', function (req, res) {
+
+  var reason = req.session.data['reason']
+
+  var property = req.session.data['property']
+
+  req.session.data = {}
+res.redirect('webform-submission-confirmation?reason='+reason+'&property='+property)
+
+
+
+
+})
+
 router.post('/webform/ct/property-request-details', function (req, res) {
 
   // Make a variable and give it the value from 'how-many-balls'
 
   var propertyreason = req.session.data['propertyreason']
 
-  var sub_reason = req.session.data['sub_reason_option'].substring(0,4)
-
+  if(req.session.data['sub_reason_option'])
+  {
+      var sub_reason = req.session.data['sub_reason_option'].substring(0,4)
+  }
+  
   var reason = req.session.data['reason']
 
   var property = req.session.data['property']
