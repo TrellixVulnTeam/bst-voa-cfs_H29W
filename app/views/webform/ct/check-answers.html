@@ -255,7 +255,14 @@
                 }
               ]
             }
-          }if (sub_reason_question != "CR03: new")
+          }if (data['radio_council_tax_band']!=null)
+
+
+
+
+
+
+
         ]
       }) }}
 
@@ -368,7 +375,7 @@
                 }
               ]
             }
-          },
+          }if (data['planning_reference_number_available']!=null),
           {
             key: {
               text: "Planning portal reference"
@@ -385,26 +392,24 @@
                 }
               ]
             }
-          } if (data['planning_reference_number_available'] | default("No", true) == "Yes") else
-
-
-          {
-            key: {
-              text: "Why does this property not have a planning portal reference?"
-            },
-            value: {
-                text: data['no_planning_reference_reason']|default("Planning permission is not required", true)
-            },
-            actions: {
-              items: [
-                {
-                  href: "no-planning-reference?reason="+data['reason']+"&property="+data['property'],
-                  text: "Change",
-                  visuallyHiddenText: "Why does this property not have a planning portal reference?"
-                }
-              ]
-            }
-          }
+          } if (data['planning_reference_number_available'] | default("No", true) == "Yes"),
+              {
+                  key: {
+                    text: "Why does this property not have a planning portal reference?"
+                  },
+                  value: {
+                      text: data['no_planning_reference_reason']|default("Planning permission is not required", true)
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "no-planning-reference?reason="+data['reason']+"&property="+data['property'],
+                        text: "Change",
+                        visuallyHiddenText: "Why does this property not have a planning portal reference?"
+                      }
+                    ]
+                  }
+                } if (data['planning_reference_number_available'] == "No")
 
 
 
