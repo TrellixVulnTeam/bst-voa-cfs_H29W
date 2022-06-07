@@ -1168,6 +1168,79 @@ router.post('/reason-new-property', function (req, res) {
 })
 
 
+
+router.post('/webform/ct/property-playback', function (req, res) {
+
+  // Make a variable and give it the value from 'how-many-balls'
+
+  var propertyreason = req.session.data['propertyreason']
+
+  var sub_reason = req.session.data['sub_reason_option'].substring(0,4)
+
+  var reason = req.session.data['reason']
+
+  var property = req.session.data['property']
+
+
+
+
+
+console.log("newpropertyreason = " +sub_reason )
+  /// Check whether the variable matches a condition
+
+  if ((sub_reason == "CR04")||(sub_reason == "CR06"))
+
+  {
+    // Send user to next page
+
+      res.redirect('property-request-details?reason='+propertyreason+'&property='+property)
+
+
+  } else {
+    // Send user to ineligible page
+    res.redirect('council-tax-band?reason='+reason+'&property='+property)
+  }
+
+
+})
+
+
+router.post('/webform/ct/property-request-details', function (req, res) {
+
+  // Make a variable and give it the value from 'how-many-balls'
+
+  var propertyreason = req.session.data['propertyreason']
+
+  var sub_reason = req.session.data['sub_reason_option'].substring(0,4)
+
+  var reason = req.session.data['reason']
+
+  var property = req.session.data['property']
+
+
+
+
+
+console.log("newpropertyreason = " +sub_reason )
+  /// Check whether the variable matches a condition
+
+  if ((sub_reason == "CR01")||(sub_reason == "CR09")||(sub_reason == "CR12")||(sub_reason == "CR14"))
+
+  {
+    // Send user to next page
+
+      res.redirect('owner-occupier-details?propertyreason=occupier&reason='+reason+'&property='+property)
+
+
+  } else {
+    // Send user to ineligible page
+    res.redirect('planning-reference-details?reason='+reason+'&property='+property)
+  }
+
+
+})
+
+
 function populateData(postdata, variablename, staticvalue) {
 
 
