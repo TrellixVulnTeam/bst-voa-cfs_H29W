@@ -1175,7 +1175,11 @@ router.post('/webform/ct/property-playback', function (req, res) {
 
   var propertyreason = req.session.data['propertyreason']
 
-  var sub_reason = req.session.data['sub_reason_option'].substring(0,4)
+  if(req.session.data['sub_reason_option'])
+  {
+      var sub_reason = req.session.data['sub_reason_option'].substring(0,4)
+  }
+
 
   var reason = req.session.data['reason']
 
@@ -1194,7 +1198,7 @@ console.log("newpropertyreason = " +sub_reason )
     // Send user to next page
     delete req.session.data['radio_council_tax_band']
 
-      res.redirect('property-request-details?reason='+propertyreason+'&property='+property)
+      res.redirect('property-request-details?reason='+reason+'&property='+property)
 
 
   } else {
@@ -1205,7 +1209,19 @@ console.log("newpropertyreason = " +sub_reason )
 
 })
 
+router.post('/webform/ct/council-tax-band', function (req, res) {
 
+  var reason = req.session.data['reason']
+
+  var property = req.session.data['property']
+
+
+res.redirect('property-request-details?reason='+reason+'&property='+property)
+
+
+
+
+})
 
 router.post('/webform/ct/location-details', function (req, res) {
 
