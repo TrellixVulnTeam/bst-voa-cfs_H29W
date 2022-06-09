@@ -1059,17 +1059,39 @@ router.post('/webform/ct/address-postcode-lookup', function (req, res) {
   // Make a variable and give it the value from 'how-many-balls'
   var property_postcode = req.session.data['property-postcode']
   var propertyreason = req.session.data['propertyreason']
+  var property = req.session.data['property']
+  var reason = req.session.data['reason']
 console.log("propertyreason = " +propertyreason )
   // Check whether the variable matches a condition
-  if (property_postcode != "NA"){
+  if ((property_postcode == "NA")||(property_postcode == "SW1 OOO")){
     // Send user to next page
-    res.redirect('/webform/ct/address-list?propertyreason='+propertyreason)
+
+        res.redirect('/webform/ct/address-no-results?propertyreason='+propertyreason+'&reason='+reason+'&property='+property)
+
+
   } else {
     // Send user to ineligible page
-    res.redirect('/webform/ct/address-no-results?propertyreason='+propertyreason)
+    res.redirect('/webform/ct/address-list?propertyreason='+propertyreason+'&reason='+reason+'&property='+property)
   }
 
 })
+
+
+router.post('/webform/ct/address-no-results', function (req, res) {
+
+  // Make a variable and give it the value from 'how-many-balls'
+  var property_postcode = req.session.data['property-postcode']
+  var propertyreason = req.session.data['propertyreason']
+  var property = req.session.data['property']
+  var reason = req.session.data['reason']
+
+    res.redirect('/webform/ct/address-enter?action=new&propertyreason='+propertyreason+'&reason='+reason+'&property='+property)
+
+
+})
+
+
+
 
 
 router.post('/webform/ct/address-list', function (req, res) {

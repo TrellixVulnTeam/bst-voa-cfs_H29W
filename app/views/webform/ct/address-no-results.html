@@ -27,16 +27,18 @@
                     <div class="govuk-form-group">
 
 
-                      <form class="form" action="/property-playback" method="post">
+                      <form class="form" action="/webform/ct/address-no-results" method="post">
 
 
 
-                      <h1 class="govuk-heading-xl">We cannot find any addresses for {{data['property-postcode']}}</h1>
+                      <h1 class="govuk-heading-xl">We've not found any addresses for {{data['property-postcode']|default("SW1 OOO", true)}}</h1>
 
-                      <p class="govuk-!-font-size-20 govuk-!-padding-bottom-4">        Postcode you entered: <strong>{{data['property-postcode']}}</strong>
 
+
+                      <p class="govuk-!-font-size-20 govuk-!-padding-bottom-4">        Check the postcode and try again, or enter the address manually. 
+<!--
                               <a href="/add-new-address">Change Postcode</a></p>
-
+-->
 
                 			<form class="form" method="post">
 
@@ -47,8 +49,18 @@
                         <div class="govuk-button-group">
 
                       			<button class="govuk-button" data-module="govuk-button" id="condirmsubmit" name="bulkconfirm" value="2">
-                      				Add address manually
+                      				Enter address manually
                       			</button>
+
+                            {{ govukButton({
+                              text: "Go back",
+                              href: "address-postcode-lookup?property="+data['property']+"&reason="+data['reason']+"&propertyreason="+data['propertyreason'],
+                              classes: "govuk-button--secondary"
+
+                            }) }}
+
+
+
 
                         </div>
 
