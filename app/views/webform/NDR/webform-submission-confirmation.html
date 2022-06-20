@@ -1,0 +1,78 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Your report has been submitted to the VOA
+{% endblock %}
+
+{% block beforeContent %}
+
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-one-third">
+			{{ govukBackLink({
+			  text: "Back",
+			  href: "javascript:window.history.back()"
+			}) }}
+		</div>
+		{% include "includes/header-section-signedin.html" %}
+	</div>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <div class="govuk-panel govuk-panel--confirmation">
+        <h1 class="govuk-panel__title">You have successfully submitted your report to the Valuation Office Agency</h1>
+
+      </div>
+
+
+      <h2 class="govuk-heading-m">What you need to do next</h2>
+       	 <p class="govuk-body">Go back to the dashboard and add supporting documents to submitted reports, if required.
+
+  		     </p>
+
+		 <p class="govuk-body">Supporting information might include:</p>
+							<ul class="govuk-list govuk-list--bullet">
+							  <li>an inspector’s report</li>
+							  <li>photos</li>
+							  <li>planning documents</li>
+							</ul>
+
+
+		<p class="govuk-body">
+
+					The Valuation Office Agency will send a message if they require further information on a report
+or its supporting documents. These can be found on the dashboard under 'Messages'.
+
+
+		</p>
+
+	<form method="post" novalidate action="/bulk-submission-confirmation">
+
+
+           <div class="govuk-button-group">
+              <button class="govuk-button" data-module="govuk-button" id="adddocuments" name="bulksubmissionconfirm" value="1">
+                Add supporting documents
+              </button>
+
+              <button class="govuk-button govuk-button--secondary" data-module="govuk-button" id="dashboard" name="bulksubmissionconfirm" value="0">
+                Return to dashboard
+              </button>
+            </div>
+
+</form>
+
+
+			<p><a href="#">What do you think of this service</a> (takes 30 seconds).
+
+  		     </p>
+
+
+    </div>
+  </div>
+
+
+
+{% endblock %}

@@ -1,0 +1,126 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Location details
+{% endblock %}
+
+{% block beforeContent %}
+
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-one-third">
+			{{ govukBackLink({
+			  text: "Back",
+			  href: "javascript:window.history.back()"
+			}) }}
+		</div>
+		{% include "includes/header-section-signedin.html" %}
+	</div>
+{% endblock %}
+
+{% if data['location_details']=="edit" %}
+
+{% set uprn = "100022935279" %}
+{% set bngc_x = "533172" %}
+{% set bngc_y = "180611" %}
+
+
+{%endif%}
+
+
+
+{% block content %}
+
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+
+                     <form class="form" action="/webform/ndr/location-details" method="post">
+
+
+              <h1 class="govuk-heading-xl">Location details</h1>
+
+
+
+              <h3 class="govuk-heading-s">Address</h3>
+              <ul class="govuk-list">
+                      <li>Straford 2, Jubliee House,</li>
+                      <li>2 Farthingale Walk,</li>
+                      <li>London,</li>
+                      <li>SW1Y 4NO</li>
+
+                  </ul>
+
+
+			{{ govukInput({
+				  label: {
+					text: "Unique Property Reference Number (optional)",
+					classes: "govuk-label--m"
+
+				  },
+				  id: "uprn-input",
+				  name: "uprn-input",
+          value:uprn
+				}) }}
+
+              <h2 class="govuk-label govuk-label--m" for="event-name">
+                  British National Grid Coordinates (optional)
+                      </h2>
+
+						  <div id="BNGC-hint" class="govuk-hint">
+   								 This helps locate the property when no clear address is available or where the property would be difficult to find
+  						  </div>
+
+
+
+
+
+                    <div class="govuk-!-margin-top-6 govuk-!-margin-bottom-8">
+
+                        {{ govukInput({
+                          hint: {
+                            text: "X coordinates"
+                          },
+                          classes: "govuk-input--width-10",
+                          id: "bngc-x-input",
+                          name: "bngc-x-input",
+                          value:bngc_x
+                        }) }}
+
+                        {{ govukInput({
+                          hint: {
+                            text: "Y coordinates"
+                          },
+                          classes: "govuk-input--width-10",
+                          id: "bngc-y-input",
+                          name: "bngc-y-input",
+                          value:bngc_y
+                        }) }}
+
+                    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                     <div class="govuk-!-margin-top-8 govuk-!-margin-bottom-8">
+
+                      <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+
+
+
+
+        </div>
+      </div>
+
+{% endblock %}

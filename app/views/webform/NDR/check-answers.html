@@ -1,0 +1,699 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Check details before sending the report
+{% endblock %}
+
+{% block beforeContent %}
+
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-one-third">
+			{{ govukBackLink({
+			  text: "Back",
+			  href: "javascript:window.history.back()"
+			}) }}
+		</div>
+		{% include "includes/header-section-signedin.html" %}
+	</div>
+{% endblock %}
+
+{% block content %}
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds-from-desktop">
+
+      <h1 class="govuk-heading-l">Check details before sending the report</h1>
+
+      <h2 class="govuk-heading-m">Report reference</h2>
+
+
+
+
+
+      {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
+        rows: [
+          {
+            key: {
+              text: "Enter the billing authority report number"
+            },
+            value: {
+              text: data['input-bill-auth-report-no']|default("C01324", true)
+            },
+            actions: {
+              items: [
+                {
+                  href: "enter-billing-auth-rep-no?property="+data['property']+"&billing_auth_report_no="+data['input-bill-auth-report-no']|default("C01324", true),
+                  text: "Change",
+                  visuallyHiddenText: "name"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+
+
+
+
+
+          {%set sub_reason_option = data['sub_reason_option']|default("05: demolished", true)%}
+
+
+report reason=  {{sub_reason_option}}
+
+
+
+
+
+
+      {%if(data['report_reason']!="adding a new property")%}
+
+          {%set sub_reason_request = data['sub_reason_question']|default("Why does the property need to be removed?", true)%}
+
+      {%else%}
+
+
+
+            {%set sub_reason_request = "Why does the property need to be added?"%}
+
+      {%endif%}
+
+
+        <h2 class="govuk-heading-m">Change reason</h2>
+
+
+
+      {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
+        rows: [
+          {
+            key: {
+              text: "Why are you creating this report?"
+            },
+            value: {
+              text: data['report_reason']|default("removing a property", true)
+            },
+            actions: {
+              items: [
+                {
+                  href: "request-reason?property="+data['property'],
+
+                  text: "Change",
+                  visuallyHiddenText: "Why are you creating this report?"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: sub_reason_request
+            },
+
+            value: {
+              text: sub_reason_option
+            },
+            actions: {
+              items: [
+                {
+
+                  href: "request-sub-reason?property="+data['property']+"&reason="+data['reason'],
+                  text: "Change",
+                  visuallyHiddenText: data['sub_reason_question']|default("Why does the property need to be removed?", true)
+                },
+
+
+
+                {
+                  key: {
+                    text: "Why are you creating this report?"
+                  },
+                  value: {
+                    text: data['report_reason']|default("removing a property", true)
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "request-reason?property="+data['property'],
+
+                        text: "Change",
+                        visuallyHiddenText: "Why are you creating this report?"
+                      }
+                    ]
+                  }
+                }
+
+
+
+
+
+
+              ]
+            }
+          }
+        ]
+      }) }}
+
+
+      <h2 class="govuk-heading-m">Property reference</h2>
+
+
+      {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
+        rows: [
+          {
+            key: {
+              text: "What is the billing authority reference number for this property?"
+            },
+            value: {
+              text: data['input_property_billing_ref_no']|default("1446369104400201", true)
+            },
+            actions: {
+              items: [
+                {
+                  href: "billing-reference?billing_auth_ref_no="+data['input_property_billing_ref_no']|default("1446369104400201", true)+"&property="+data['property'],
+                  text: "Change",
+                  visuallyHiddenText: "name"
+                }
+              ]
+            }
+          }
+        ]
+      }) }}
+
+      <h2 class="govuk-heading-m">Property details</h2>
+
+
+      {%
+
+
+
+
+      if(data['property_new_address']==null)
+      %}
+      {%    set property_address = data['static_property_address']|default("1st, Custom House Annexe, 20 Lower Thames St, London EC3R 6EE", true)%}
+
+
+
+      {% else%}
+
+        {%   set property_address = data['property_new_address']%}
+
+      {%endif%}
+
+
+
+      {%  if(data['occupier_property_address']==null)
+        %}
+            {%set occupier_property_address = "1st, Custom House Annexe, 20 Lower Thames St, London EC3R 6EE"%}
+
+        {% else%}
+
+          {%  set occupier_property_address = data['occupier_property_address']%}
+
+        {%endif%}
+
+
+
+
+
+
+      {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
+        rows: [
+
+          {
+            key: {
+              text: "Address"
+            },
+            value: {
+              text:  property_address | striptags(true) | escape | nl2br
+            },
+            actions: {
+              items: [
+                {
+                  href: "address-enter?action=edit&reason="+data['reason']+"&property="+data['property']+"&propertyreason="+data['propertyreason'],
+                  text: "Change",
+                  visuallyHiddenText: "property address"
+                } if (data['report_reason']|default("removing a property", true) == "adding a new property") else
+
+                {
+                  href: "#",
+                  text: "",
+                  visuallyHiddenText: "property address"
+                }
+
+
+
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Rateable value"
+            },
+            value: {
+              text: data['property_rateable_value']|default("£1.500.000.00", true)
+            },
+            actions: {
+              items: [
+                {
+                  href: "#",
+                  text: "",
+                  visuallyHiddenText: "property description "
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Property description"
+            },
+            value: {
+              text: data['property-description']|default("Office and premises", true)
+            },
+            actions: {
+              items: [
+                {
+                    href: "property-description?reason="+data['reason']+"&property="+data['property'],
+                  text: "Change",
+                  visuallyHiddenText: "property description "
+                }
+              ]
+            }
+          }
+
+
+
+
+
+        ]
+      }) }}
+
+      <h2 class="govuk-heading-m">Change details</h2>
+
+
+      {%if(data['effective_date']==null)
+      %}
+      {% set effective_date = "April 21, 2022"%}
+
+
+      {%else%}
+
+        {%   set effective_date = data['effective_date']%}
+
+      {%endif%}
+
+
+
+
+      {%if(data['no_planning_reference_reason']==null)
+      %}
+      {% set no_planning_reference_reason = "No planning application has been submitted"%}
+
+      {%else%}
+
+
+
+        {%   set no_planning_reference_reason = data['no_planning_reference_reason']%}
+
+      {%endif%}
+
+{%if data['report_reason']=="adding a new property"%}
+
+      {%set propertyremarks =data['textarea_remarks']|default("New Residential property added", true)
+
+
+
+      %}
+
+{%elseif data['report_reason']=="removing a property"%}
+
+        {%set propertyremarks =data['textarea_remarks']|default("Residential property removed", true)%}
+
+
+
+{%else%}
+
+      {%set propertyremarks =data['textarea_remarks']|default(sub_reason_question + " Billing authority reference number is 1446369104400232", true)%}
+
+{%endif%}
+
+
+
+      {{ govukSummaryList({
+        classes: '',
+        rows: [
+
+        {
+          key: {
+            text: "Effective date"
+          },
+          value: {
+            text: data['effective_date']|default("April 25, 2022", true)
+          },
+          actions: {
+            items: [
+              {
+                href: "property-request-details?reason="+data['reason']+"&property="+data['property']+"&remarks=edit",
+                text: "Change",
+                visuallyHiddenText: "Effective date"
+              }
+            ]
+          }
+        },
+
+
+          {
+            key: {
+              text: "Remarks"
+            },
+            value: {
+              text: propertyremarks
+
+            },
+            actions: {
+              items: [
+                {
+                  href: "property-request-details?reason="+data['reason']+"&property="+data['property']+"&remarks=edit",
+                  text: "Change",
+                  visuallyHiddenText: "Remarks"
+                }
+              ]
+            }
+          },
+
+          {
+            key: {
+              text: "Does this property have a planning portal reference?"
+            },
+            value: {
+              text: data['planning_reference_number_available']|default("No", true)
+            },
+            actions: {
+              items: [
+                {
+                  href: "planning-reference-details?reason="+data['reason']+"&property="+data['property'],
+                  text: "Change",
+                  visuallyHiddenText: "Does this property have a planning portal reference?"
+                }
+              ]
+            }
+          }if (data['planning_reference_number_available']!=null),
+          {
+            key: {
+              text: "Planning portal reference"
+            },
+            value: {
+              text: data['planning_reference_number']|default("PA/21/01924", true)
+            },
+            actions: {
+              items: [
+                {
+                  href: "planning-reference-details?reason="+data['reason']+"&property="+data['property']+"&planning_reference_number="+data['planning_reference_number']|default("PA/21/01924", true),
+                  text: "Change",
+                  visuallyHiddenText: "Planning portal reference"
+                }
+              ]
+            }
+          } if (data['planning_reference_number_available'] | default("No", true) == "Yes"),
+              {
+                  key: {
+                    text: "Why does this property not have a planning portal reference?"
+                  },
+                  value: {
+                      text: data['no_planning_reference_reason']|default("Planning permission is not required", true)
+                  },
+                  actions: {
+                    items: [
+                      {
+                        href: "no-planning-reference?reason="+data['reason']+"&property="+data['property'],
+                        text: "Change",
+                        visuallyHiddenText: "Why does this property not have a planning portal reference?"
+                      }
+                    ]
+                  }
+                } if (data['planning_reference_number_available'] == "No")
+
+
+
+
+
+
+        ]
+      }) }}
+
+
+
+
+
+
+
+
+
+
+
+      <h2 class="govuk-heading-m">Contact details</h2>
+
+
+
+
+                        {{ govukSummaryList({
+                          classes: 'govuk-!-margin-bottom-9',
+                          rows: [
+                            {
+                              key: {
+                                text: "First name"
+                              },
+                              value: {
+                                text: data['contact_first_name']|default("Sam", true)
+                              },
+                              actions: {
+                                items: [
+                                  {
+                                    href: "owner-occupier-details?reason="+data['reason']+"&property="+data['property']+"&propertyreason="+data['propertyreason']+"&owner_occupier=edit",
+                                    text: "Change",
+                                    visuallyHiddenText: "Contact First Name"
+                                  }
+                                ]
+                              }
+                            },
+                            {
+                              key: {
+                                text: "Last name"
+                              },
+                              value: {
+                                text: data['contact_last_name']|default("Whilton", true)
+                              },
+                              actions: {
+                                items: [
+                                  {
+                                    href: "owner-occupier-details?reason="+data['reason']+"&property="+data['property']+"&propertyreason="+data['propertyreason']+"&owner_occupier=edit",
+                                      text: "Change",
+                                    visuallyHiddenText: "Contact Last name"
+                                  }
+                                ]
+                              }
+                            },
+                            {
+                              key: {
+                                text: "Email address"
+                              },
+                              value: {
+                                text: data['contact_email']|default("sam.whilton@la.gov.uk", true)
+                              },
+                              actions: {
+                                items: [
+                                  {
+                                    href: "owner-occupier-details?reason="+data['reason']+"&property="+data['property']+"&propertyreason="+data['propertyreason']+"&owner_occupier=edit",
+                                        text: "Change",
+                                    visuallyHiddenText: "Contact Email address"
+                                  }
+                                ]
+                              }
+                            },
+                            {
+                              key: {
+                                text: "Phone number"
+                              },
+                              value: {
+                                text: data['contact_phone']|default("078954 23456", true)
+                              },
+                              actions: {
+                                items: [
+                                  {
+                                    href: "owner-occupier-details?reason="+data['reason']+"&property="+data['property']+"&propertyreason="+data['propertyreason']+"&owner_occupier=edit",
+                                      text: "Change",
+                                    visuallyHiddenText: "Contact Phone number"
+                                  }
+                                ]
+                              }
+                            },
+                            {
+                              key: {
+                                text: "Owner or occupier"
+                              },
+                              value: {
+                                text: data['owner_occupier_value']|default("Owner", true)
+                              },
+                              actions: {
+                                items: [
+                                  {
+                                    href: "owner-occupier-details?reason="+data['reason']+"&property="+data['property']+"&propertyreason="+data['propertyreason'],
+                                    text: "Change",
+                                    visuallyHiddenText: "Owner or occupier selection"
+                                  }
+                                ]
+                              }
+                            },
+                            {
+                              key: {
+                                text: "Address same as property address"
+                              },
+                              value: {
+                                text: data['address_same_check']|default("No", true)
+                              },
+                              actions: {
+                                items: [
+                                  {
+                                    href: "owner-occupier-details?reason="+data['reason']+"&property="+data['property']+"&propertyreason="+data['propertyreason'],
+                                    text: "Change",
+                                    visuallyHiddenText: "Is their address the same as the property address?"
+                                  }
+                                ]
+                              }
+                            },
+                            {
+                              key: {
+                                text: "Contact address"
+                              },
+                              value: {
+                                html: data['occupier_property_address']|default("1st, Custom House Annexe, 20 Lower Thames St, London EC3R 6EE", true)
+                              },
+                              actions: {
+                                items: [
+                                  {
+                                    href: "address-enter?action=edit&reason="+data['reason']+"&property="+data['property']+"&propertyreason="+data['propertyreason'],
+                                    text: "Change",
+                                    visuallyHiddenText: "Contact address"
+                                  }
+                                ]
+                              }
+                            } if (data['address_same_check'] | default("No", true) == "No")
+                          ]
+                        }) }}
+
+
+
+      {%if(data['propertyreason']!="occupier")
+                              %}
+
+
+          {{ govukSummaryList({
+            classes: 'govuk-!-margin-bottom-9',
+            rows: [
+              {
+                key: {
+                  text: "Property address"
+                },
+                value: {
+                  text: data['property_new_address']|default("1st, Custom House Annexe, 20 Lower Thames St, London EC3R 6EE", true)
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "address-enter?action=edit&reason="+data['reason']+"&property="+data['property']+"&propertyreason="+data['propertyreason']+"&owner_occupier=edit",
+                      text: "Change",
+                      visuallyHiddenText: "property address?"
+                    }
+                  ]
+                }
+              }
+            ]
+          }) }}
+
+
+
+          {%endif%}
+
+      <h2 class="govuk-heading-m">Location details</h2>
+
+      {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
+        rows: [
+          {
+            key: {
+              text: "Unique Property Reference Number (optional)"
+            },
+            value: {
+              text: data['uprn-input']|default("100022935279", true)
+            },
+            actions: {
+              items: [
+                {
+                  href: "location-details?reason="+data['reason']+"&property="+data['property']+"&propertyreason="+data['propertyreason']+"&location_details=edit",
+                  text: "Change",
+                  visuallyHiddenText: "What is the Unique Property Reference Number (UPRN)?"
+                }
+              ]
+            }
+          },
+
+          {
+            key: {
+              text: "British National Grid X coordinates"
+            },
+            value: {
+              text: data['bngc-x-input']|default("533172", true)
+            },
+            actions: {
+              items: [
+                {
+                  href: "location-details?reason="+data['reason']+"&property="+data['property']+"&propertyreason="+data['propertyreason']+"&location_details=edit",
+                  text: "Change",
+                  visuallyHiddenText: "British National Grid X coordinates"
+                }
+              ]
+            }
+          },
+
+          {
+            key: {
+              text: "British National Grid Y coordinates"
+            },
+            value: {
+              text: data['bngc-y-input']|default("180611", true)
+            },
+            actions: {
+              items: [
+                {
+                  href: "location-details?reason="+data['reason']+"&property="+data['property']+"&propertyreason="+data['propertyreason']+"&location_details=edit",
+                  text: "Change",
+                  visuallyHiddenText: "British National Grid Y coordinates?"
+                }
+              ]
+            }
+          }
+
+        ]
+      }) }}
+
+
+<!--
+          <h2 class="govuk-heading-m">I understand and accept that:</h2>
+
+          <p class="govuk-body">By submitting this application you are confirming that, to the best of your knowledge, the details you are providing are correct.</p>
+-->
+          <form action="/webform/ct/check-answers" method="post" novalidate>
+
+            <input type="hidden" name="answers-checked" value="true">
+
+            {{ govukButton({
+                text: "Confirm and send"
+            }) }}
+
+      </form>
+
+    </div>
+  </div>
+{% endblock %}

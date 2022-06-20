@@ -1,0 +1,207 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+    Review address
+{% endblock %}
+
+{% block beforeContent %}
+
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-one-third">
+			{{ govukBackLink({
+			  text: "Back",
+			  href: "javascript:window.history.back()"
+			}) }}
+		</div>
+		{% include "includes/header-section-signedin.html" %}
+	</div>
+{% endblock %}
+
+{% block content %}
+
+                <div class="govuk-grid-row">
+                  <div class="govuk-grid-column-two-thirds">
+
+
+                    <div class="govuk-form-group">
+
+
+                      <form class="form" action="/webform/ndr/address-verify?propertyreason={{data['propertyreason']}}" method="post">
+
+
+                        {%if data['address']%}
+
+                            {% set addresslist = data['address'].split(',') %}
+
+                        {%else%}
+                            {%set printaddress = "Addenbrooke House,
+                            Ironmasters Way,
+                            Town Centre,
+                            Telford, Shropshire,
+                            TF3 4NT"%}
+                        {%endif%}
+
+
+
+
+
+
+
+
+
+
+                                                {% if data['property-address-line-1'].length > 0 %}
+
+
+                                                      {% set address1_value = data['property-address-line-1'] + ", " %}
+
+                                                {%else%}
+
+                                                        {% set address1_value = addresslist[0] + ", " %}
+
+
+
+                                                {%endif%}
+
+
+
+                                                {% if data['property-address-line-2'].length > 0%}
+
+
+                                                      {% set address2_value = data['property-address-line-2'] + ", " %}
+
+                                                {%else%}
+
+                                                      {% set address2_value = addresslist[1] + ", " + addresslist[2] + ", " %}
+
+
+                                                {%endif%}
+
+
+
+                                                {% if data['property-address-line-3'].length > 0 %}
+
+
+                                                      {% set address3_value = data['property-address-line-3'] + ", " %}
+
+                                                {%else%}
+
+                                                    {% set address3_value = addresslist[3] + ", "  %}
+
+
+                                                {%endif%}
+
+
+                                                {% if data['property-address-town-city'].length > 0 %}
+
+
+                                                      {% set address_city = data['property-address-town-city'] + ", " %}
+
+                                                {%else%}
+
+                                                    {% set address_city = addresslist[4] + ", " + addresslist[5]+ ", " %}
+
+
+                                                {%endif%}
+
+
+                                                {% if data['property-address-postcode'].length > 0 %}
+
+
+                                                      {% set address_postcode = data['property-address-postcode']  %}
+
+                                                {%else%}
+
+                                                    {% set address_postcode = addresslist[6]   %}
+
+
+                                                {%endif%}
+
+                                                  {% set property_address = address1_value + address2_value + address3_value + address_city + address_postcode %}
+
+
+
+                                                {#  set address2_value = [addresslist[1], addresslist[2] ]|join(', ') #}
+
+
+
+
+
+
+
+
+
+
+
+
+
+                      <h1 class="govuk-heading-xl">Review address</h1>
+
+
+
+                        <p class="govuk-body">
+
+
+
+                          {%if data['address']%}
+
+
+
+
+                                {{address1_value}}
+
+                                <br/>
+
+                                {{address2_value}}
+
+                                <br/>
+                                {{address3_value}}
+
+
+                                <br/>
+                                    {{address_city}}
+                                    <br/>
+                                        {{address_postcode}}
+
+                          {%else%}
+
+
+
+                              {{ printaddress | striptags(true) | escape | nl2br }}
+
+                          {%endif%}
+
+
+                        </p>
+
+
+                          <p class="govuk-body"><a href="/webform/ndr/address-enter?action=edit">Edit</a></p>
+
+                        <div class="govuk-button-group">
+
+                          <input type="hidden" name="address_array" id="address_array" value="{{data['address']}}">
+
+                        {%if data['propertyreason'] == "occupier"%}
+
+                            <input type="hidden" name="occupier_property_address" id="occupier_property_address" value="{{property_address}}">
+                        {%else%}
+
+                              <input type="hidden" name="property_new_address" id="property_new_address" value="{{property_address}}">
+
+                        {%endif%}
+
+                      			<button class="govuk-button" data-module="govuk-button" id="addressupdate" name="addressupdate" value="add-address">
+                      				Continue
+                      			</button>
+
+                        </div>
+
+                  </form>
+
+              </div>
+
+
+        </div>
+    </div>
+
+{% endblock %}

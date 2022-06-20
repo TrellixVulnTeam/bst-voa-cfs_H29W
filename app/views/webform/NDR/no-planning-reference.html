@@ -1,0 +1,91 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Why does this property not have a planning portal reference?
+{% endblock %}
+
+{% block beforeContent %}
+
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-one-third">
+			{{ govukBackLink({
+			  text: "Back",
+			  href: "javascript:window.history.back()"
+			}) }}
+		</div>
+		{% include "includes/header-section-signedin.html" %}
+	</div>
+{% endblock %}
+{% block content %}
+
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+
+                     <form class="form" action="/webform/ndr/no-planning-reference" method="post">
+
+
+              <h1 class="govuk-heading-xl">Why does this property not have a planning portal reference?</h1>
+
+              <div class="govuk-form-group">
+    <fieldset class="govuk-fieldset">
+      <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+        <h1 class="govuk-fieldset__heading">
+
+      </legend>
+      <div class="govuk-radios" data-module="govuk-radios">
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id=no_planning_reference_reason-1 name="no_planning_reference_reason" type="radio" value="It was built without planning permission" {{ checked("no_planning_reference_reason", "It was built without planning permission") }}>
+          <label class="govuk-label govuk-radios__label" for="no_planning_reference_reason" >
+            It was built without planning permission
+          </label>
+        </div>
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="no_planning_reference_reason-2" name="no_planning_reference_reason" type="radio" value="Planning permission is not applicable" {{ checked("no_planning_reference_reason", "Planning permission is not applicable")}}>
+          <label class="govuk-label govuk-radios__label" for="no_planning_reference_reason-2">
+            Planning permission is not applicable
+          </label>
+        </div>
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="no_planning_reference_reason-3" name="no_planning_reference_reason" type="radio" value="Planning permission is not required" {{checked("no_planning_reference_reason", "Planning permission is not required")}}>
+          <label class="govuk-label govuk-radios__label" for="no_planning_reference_reason-3">
+            Planning permission is not required
+          </label>
+        </div>
+        <div class="govuk-radios__item">
+          <input class="govuk-radios__input" id="no_planning_reference_reason-4" name="no_planning_reference_reason" type="radio" value="It is a permitted development and does not need planning permission" {{checked("no_planning_reference_reason", "It is a permitted development and does not need planning permission")}}>
+          <label class="govuk-label govuk-radios__label" for="no_planning_reference_reason-4">
+            It is a permitted development and does not need planning permission
+          </label>
+          </div>
+          <div class="govuk-radios__item">
+            <input class="govuk-radios__input" id="no_planning_reference_reason-5" name="no_planning_reference_reason" type="radio" value="No planning application has been submitted" {{checked("no_planning_reference_reason", "No planning application has been submitted")}}>
+            <label class="govuk-label govuk-radios__label" for="no_planning_reference_reason-5">
+              No planning application has been submitted
+            </label>
+
+
+        </div>
+      </div>
+
+
+
+
+
+      </div>
+
+
+
+                     <div class="govuk-!-margin-top-3 govuk-!-margin-bottom-3">
+
+                      <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+
+</form>
+
+
+        </div>
+      </div>
+
+{% endblock %}

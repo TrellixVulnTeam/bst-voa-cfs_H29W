@@ -1,0 +1,120 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+{% if data['reason']=='new'%}
+  New property details
+  {%else%}
+  Change request details
+{%endif%}
+{% endblock %}
+
+{% block beforeContent %}
+
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-one-third">
+			{{ govukBackLink({
+			  text: "Back",
+			  href: "javascript:window.history.back()"
+			}) }}
+		</div>
+		{% include "includes/header-section-signedin.html" %}
+	</div>
+{% endblock %}
+{% block content %}
+
+{% if data['remarks']=='edit'%}
+  {% set remarks = "Property demolished on 1/6/17"%}
+  {% set effective_date = "25 04 2022"%}
+
+
+{% endif%}
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+                  <div class="govuk-form-group">
+                    <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="event-name">
+                      {% if data['reason']=='new'%}
+
+                        New property details
+                      {%else%}
+                      Change request details
+
+                      {%endif%}
+                      </label>
+
+						<p class="govuk-body">
+
+
+            {% if data['reason']=='new'%}
+            Include any additional information you have about this new property. Further guidance on what to include is in the <a href="https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/941247/BARs_Submission_Standards_2020v8.pdf" target="_blank">billing authority reports submission standards (opens in a new window or tab)</a>.
+
+            {%else%}
+            Include any additional information you have about the change you’re requesting for this property. Further guidance on what to include is in the <a href="https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/941247/BARs_Submission_Standards_2020v8.pdf" target="_blank">billing authority reports submission standards (opens in a new window or tab)</a>.
+            {%endif%}
+
+
+						</p>
+
+                     <form class="form" action="/webform/ndr/property-request-details" method="post">
+
+
+
+						 {%if data['reason-remove'] != "" %}
+
+
+						 {%set comment_hint = "You need to add remarks relevant to request code " + data['reason-remove']%}
+
+						 {%elseif data['reason-amend'] != ""%}
+
+						 {%set comment_hint = "You need to add details relevant to request code " + data['reason-amend']%}
+
+
+						 {%else%}
+
+						  {%set comment_hint = "You need to add details relevant to request code " + data['reason-new']%}
+
+
+						 {%endif%}
+
+                           {{ govukDateInput({
+                               id: "effective_date",
+                               namePrefix: "effective_date",
+                               value:effective_date,
+                               fieldset: {
+                                 legend: {
+                                   text: "Effective date",
+                                     classes: "govuk-label--m"
+
+                             }
+                           },
+                           hint: {
+                             text: "Date must be in the past. Format: 27 3 2021"
+                           }
+                         }) }}
+
+
+                        {{ govukCharacterCount({
+                            name: "textarea_remarks",
+                            id: "textarea_remarks",
+                            value: remarks,
+                            maxlength: 5000,
+                            label: {
+                              text: "Remarks",
+                              classes: "govuk-label--m",
+
+                              isPageHeading: false
+                              }
+                            }) }}
+
+
+
+
+                        <div class="govuk-!-margin-top-8 govuk-!-margin-bottom-4">
+
+
+          <button class="govuk-button" data-module="govuk-button">Save and continue</button>
+          </form>
+        </div>
+      </div>
+
+{% endblock %}

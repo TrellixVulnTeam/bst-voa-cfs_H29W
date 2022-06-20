@@ -1,0 +1,107 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+
+
+
+  Check and confirm details
+{% endblock %}
+
+{% block beforeContent %}
+
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-one-third">
+			{{ govukBackLink({
+			  text: "Back",
+			  href: "javascript:window.history.back()"
+			}) }}
+		</div>
+		{% include "includes/header-section-signedin.html" %}
+	</div>
+{% endblock %}
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+
+
+<form method="post" action="/webform/ndr/property-playback">
+      <h1 class="govuk-heading-l">Check and confirm details </h1>
+
+
+      <h2 class="govuk-heading-s govuk-!-margin-bottom-2">Billing authority reference number</h2>
+          <p class="govuk-body">{{data['input_property_billing_ref_no']|default("14463691044000", true)}}</p>
+
+
+
+
+      <h2 class="govuk-heading-s govuk-!-margin-bottom-2">
+
+		  Address
+        </h2>
+
+        <ul class="govuk-list">
+            <li>Straford 2, Jubliee House,</li>
+            <li>2 Farthingale Walk,</li>
+            <li>London,</li>
+            <li>SW1Y 4NO</li>
+
+        </ul>
+
+        <!--hidden field-->
+      {{ govukInput({
+
+        id: "static_property_address",
+        name: "static_property_address",
+        value: "Straford 2, Jubliee House,\n2 Farthingale Walk,\nLondon,\nSW1Y 4NO",
+        type: "hidden"
+      }) }}
+
+<!--
+        <h2 class="govuk-heading-s govuk-!-margin-bottom-2">Description</h2>
+         <p class="govuk-body">Offices and premises</p>
+
+            {{ govukInput({
+
+              id: "static_property_description",
+              name: "static_property_description",
+              value: "Offices and premises",
+              type: "hidden"
+            }) }}
+-->
+
+          <h2 class="govuk-heading-s govuk-!-margin-bottom-2">Rateable value</h2>
+              <p class="govuk-body">£1.350.000.00</p>
+
+
+          {{ govukDetails({
+              summaryText: "If the address is incorrect",
+              text: "Go back and re-enter the billing property reference number. If the details are still incorrect, contact the Valuation Office Agency."
+          }) }}
+
+          <br/>
+
+          <div class="govuk-button-group">
+            {{ govukButton({
+              text: "Check and confirm details"
+            }) }}
+
+            {{ govukButton({
+              text: "Go back",
+              href: "billing-reference",
+              classes: "govuk-button--secondary"
+
+            }) }}
+          </div>
+	</form>
+
+
+
+
+
+
+    </div>
+  </div>
+
+{% endblock %}

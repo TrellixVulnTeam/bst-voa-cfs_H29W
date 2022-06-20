@@ -1,0 +1,94 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  {%if data['propertyreason']=='occupier'%}
+
+
+
+    What is the {{data['owner_occupier_check']|default("Owner", true)| lower}}'s address?
+
+
+
+  {%else%}
+        Enter the postcode for this property
+  {%endif%}
+
+{% endblock %}
+
+{% block beforeContent %}
+
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-one-third">
+			{{ govukBackLink({
+			  text: "Back",
+			  href: "javascript:window.history.back()"
+			}) }}
+		</div>
+		{% include "includes/header-section-signedin.html" %}
+	</div>
+{% endblock %}
+
+{% block content %}
+
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+
+          <div class="govuk-form-group">
+        <h1 class="govuk-heading-xl">
+
+            {%if data['propertyreason']=='occupier'%}
+             What is the {{data['owner_occupier_check']|default("Owner", true)| lower}}'s address?
+            {%else%}
+            Enter the postcode for this property
+            {%endif%}
+
+
+
+            </h1>
+
+
+
+            <form class="form" action="/webform/ndr/address-postcode-lookup" method="post">
+
+
+
+
+        				<div class="govuk-form-group {% if error %} form-group-error {% endif %}">
+        					<label class="govuk-label" for="postcode">
+        						Postcode
+        					 </label>
+
+                   <div id="event-name-hint" class="govuk-hint">
+                      For example SW1 6GH
+                    </div>
+
+        					<input type="text" class="govuk-input govuk-input--width-10" id="property-postcode" name="property-postcode" autocomplete="off" value="{{data['postcode']}}">
+        				</div>
+
+
+
+
+<div class="govuk-button-group">
+
+    <button class="govuk-button" data-module="govuk-button" id="condirmsubmit" name="bulkconfirm" value="2">
+      Find address
+    </button>
+
+</div>
+
+
+<div class="govuk-form-group">
+  <a class="govuk-list " href="/webform/ndr/address-enter?propertyreason={{data['propertyreason']}}&action=new">Enter the address manually</a>
+</div>
+
+        			</form>
+
+
+
+        		</div>
+        	</div>
+
+
+{% endblock %}

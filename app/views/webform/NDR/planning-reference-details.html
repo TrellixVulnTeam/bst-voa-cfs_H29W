@@ -1,0 +1,100 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Does this property have a planning portal reference?
+{% endblock %}
+
+{% block beforeContent %}
+
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-one-third">
+			{{ govukBackLink({
+			  text: "Back",
+			  href: "javascript:window.history.back()"
+			}) }}
+		</div>
+		{% include "includes/header-section-signedin.html" %}
+	</div>
+{% endblock %}
+{% block content %}
+
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+
+                     <form class="form" action="/webform/ndr/planning-reference-details" method="post">
+
+
+
+
+
+
+
+
+
+
+                {% set textHtml %}
+                {{ govukInput({
+                  id: "planning_reference_number",
+                  name: "planning_reference_number",
+                  type: "tel",
+                  autocomplete: "tel",
+                  classes: "govuk-input--width-20",
+                  label: {
+                    text: "Planning portal reference"
+                  }
+                }) }}
+                {% endset -%}
+
+                {{ govukRadios({
+                  idPrefix: "planning_reference_number_available",
+                  name: "planning_reference_number_available",
+                  fieldset: {
+                    legend: {
+                      text: "Does this property have a planning portal reference?",
+                      isPageHeading: true,
+                      classes: "govuk-fieldset__legend--l"
+                    }
+              },
+
+             items: [
+             {
+               value: "Yes~owner-occupier-details?propertyreason=occupier",
+               text: "Yes",
+							 checked: checked("planning_reference_number_available", "Yes"),
+               conditional: {
+                 html: textHtml
+               }
+                    },
+                    {
+                      value: "No~no-planning-reference",
+                      text: "No",
+											checked: checked("planning_reference_number_available", "No"),
+                      conditional: {
+                        html: nothing
+
+                      }
+                    }
+                  ]
+                }) }}
+
+
+
+
+
+
+
+
+                     <div class="govuk-!-margin-top-8 govuk-!-margin-bottom-8">
+
+                      <button class="govuk-button" data-module="govuk-button">Save and continue</button>
+
+
+</form
+
+
+        </div>
+      </div>
+
+{% endblock %}

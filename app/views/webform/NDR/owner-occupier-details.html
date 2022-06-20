@@ -1,0 +1,165 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Contact details for property
+{% endblock %}
+
+{% block beforeContent %}
+
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-one-third">
+			{{ govukBackLink({
+			  text: "Back",
+			  href: "javascript:window.history.back()"
+			}) }}
+		</div>
+		{% include "includes/header-section-signedin.html" %}
+	</div>
+{% endblock %}
+
+{% if data['owner_occupier']=="edit" %}
+
+{% set first_name = "Sam" %}
+{% set last_name = "Whilton" %}
+{% set contact_email = "sam.whilton@la.gov.uk" %}
+{% set contact_phone = "078954 23456" %}
+
+{%endif%}
+
+{% block content %}
+
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+
+          <div class="govuk-form-group">
+          <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--xl" for="event-name">
+              Contact details for property
+            </label>
+
+            <form class="form" action="/webform/ndr/owner-occupier-details" method="post">
+
+              <div class="govuk-form-group">
+
+
+
+                {{ govukInput({
+                  label: {
+                    text: "First name"
+                  },
+                  id: "contact_first_name",
+                  name: "contact_first_name",
+                  value:first_name,
+                  autocomplete: "name",
+                  spellcheck: false
+                }) }}
+
+                {{ govukInput({
+                  label: {
+                    text: "Last name"
+                  },
+                  id: "contact_last_name",
+                  name: "contact_last_name",
+                    value:last_name,
+                  autocomplete: "name",
+                  spellcheck: false
+                }) }}
+
+
+                {{ govukInput({
+                  label: {
+                    text: "Email address (optional)"
+                  },
+                  classes: "govuk-!-width-two-thirds",
+                  id: "contact_email",
+                  name: "contact_email",
+                    value:contact_email
+                }) }}
+
+                {{ govukInput({
+                  label: {
+                    text: "Phone number (optional)"
+                  },
+                  classes: "govuk-!-width-two-thirds",
+                  id: "contact_phone",
+                  name: "contact_phone",
+                  value:contact_phone
+                }) }}
+
+                <br>
+
+                {{ govukRadios({
+                      classes: "govuk-radios--inline",
+                      idPrefix: "owner_occupier_check",
+                      name: "owner_occupier_check",
+                      fieldset: {
+                        legend: {
+                          text: "Are they the owner or occupier?",
+                          isPageHeading: true,
+                          classes: "govuk-fieldset__legend--m"
+                        }
+                      },
+                      hint: {
+                        text: ""
+                      },
+                      items: [
+                        {
+                          value: "Owner",
+                          text: "Owner",
+                          checked: checked("owner_occupier_check", "Owner")
+                        },
+                        {
+                          value: "Occupier",
+                          text: "Occupier",
+                          checked: checked("owner_occupier_check", "Occupier")
+                    }
+                  ]
+                }) }}
+
+
+
+
+                {{ govukRadios({
+                      classes: "govuk-radios--inline",
+                      idPrefix: "address_same_check",
+                      name: "address_same_check",
+                      fieldset: {
+                        legend: {
+                          text: "Is their address the same as the property address?",
+                          isPageHeading: false,
+                          classes: "govuk-fieldset__legend--m"
+                        }
+                      },
+                      hint: {
+                        text: "If the address is not the same, you will be asked to add their address on the next page"
+                      },
+                      items: [
+                        {
+                          value: "Yes",
+                          text: "Yes",
+                          checked: checked("address_same_check", "Yes")
+                        },
+                        {
+                          value: "No",
+                          text: "No",
+                          checked: checked("address_same_check", "No")
+                    }
+                  ]
+                }) }}
+
+
+
+                <div class="govuk-button-group">
+
+              			<button class="govuk-button" data-module="govuk-button" id="continueowner" name="continueowner" value="continueowner">
+              			     Continue
+              			</button>
+
+                </div>
+
+        </form>
+        </div>
+      </div>
+
+{% endblock %}

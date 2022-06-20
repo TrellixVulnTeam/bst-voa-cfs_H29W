@@ -1,0 +1,202 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Select council tax band for this property
+{% endblock %}
+
+{% block beforeContent %}
+
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-one-third">
+			{{ govukBackLink({
+			  text: "Back",
+			  href: "javascript:window.history.back()"
+			}) }}
+		</div>
+		{% include "includes/header-section-signedin.html" %}
+	</div>
+{% endblock %}
+
+{% block content %}
+
+
+
+
+
+
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+
+	<form class="form" method="post" action="/webform/ct/council-tax-band">
+
+
+		<div class="govuk-form-group">
+
+      <fieldset class="govuk-fieldset" aria-describedby="propose-band-hint">
+
+
+        <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+
+            <h1 class="govuk-fieldset__heading">
+              Select Council Tax band for this property
+            </h1>
+
+        </legend>
+
+
+  <div id="propose-band-hint" class="govuk-body">
+  Council Tax bands reflect the value of the property on 1 April 1991 for England and on 1 April 2003 for Wales. <a class="govuk-link" href="https://www.gov.uk/council-tax-bands" target="_blank">Find out council tax band for this property (opens in a new window or tab)</a>.
+</div>
+
+
+
+
+
+		{%if data['property-billing-ref-no-input']!="" %}
+
+			{%set billing_ref_no = data['property-billing-ref-no-input'] %}
+
+		{%else%}
+
+			{%set billing_ref_no = "06002874005006" %}
+
+		{%endif%}
+
+
+
+		<h3 class="govuk-heading-s">Address</h3>
+		<ul class="govuk-list">
+            <li>Straford 2, Jubliee House,</li>
+            <li>2 Farthingale Walk,</li>
+            <li>London,</li>
+            <li>SW1Y 4NO</li>
+
+        </ul>
+
+
+
+
+
+
+
+
+
+
+  				<div class="govuk-radios">
+
+
+
+
+
+
+
+            <div class="govuk-form-group">
+                <fieldset class="govuk-fieldset">
+                <legend class="govuk-fieldset__legend govuk-fieldset__legend--m">
+					What is the Council Tax band for this property?
+                </legend>
+                <div class="govuk-radios" data-module="govuk-radios">
+
+                    <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="council_tax_band1" name="radio_council_tax_band" type="radio" value="Band A" {{ checked("radio_council_tax_band", "Band A") }}>
+
+
+
+                    <label class="govuk-label govuk-radios__label" for="council_tax_band1">
+                    Band A
+                    </label>
+                    </div>
+
+
+					<div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="council_tax_band2" name="radio_council_tax_band" type="radio" value="Band B" {{ checked("radio_council_tax_band", "Band B") }}>
+                    <label class="govuk-label govuk-radios__label" for="council_tax_band2">
+                    Band B
+                    </label>
+                    </div>
+
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="council_tax_band3" name="radio_council_tax_band" type="radio" value="Band C" {{ checked("radio_council_tax_band", "Band C") }}>
+                    <label class="govuk-label govuk-radios__label" for="council_tax_band3">
+                    Band C
+                    </label>
+                    </div>
+
+
+					<div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="council_tax_band4" name="radio_council_tax_band" type="radio" value="Band D" {{ checked("radio_council_tax_band", "Band D") }}>
+                    <label class="govuk-label govuk-radios__label" for="council_tax_band4">
+                    Band D
+                    </label>
+                    </div>
+
+					 <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="council_tax_band5" name="radio_council_tax_band" type="radio" value="Band E" {{ checked("radio_council_tax_band", "Band E") }}>
+                    <label class="govuk-label govuk-radios__label" for="council_tax_band5">
+                    Band E
+                    </label>
+                    </div>
+
+
+					<div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="council_tax_band6" name="radio_council_tax_band" type="radio" value="Band F" {{ checked("radio_council_tax_band", "Band F") }}>
+                    <label class="govuk-label govuk-radios__label" for="council_tax_band6">
+                    Band F
+                    </label>
+                    </div>
+
+					 <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="council_tax_band7" name="radio_council_tax_band" type="radio" value="Band G" {{ checked("radio_council_tax_band", "Band G") }}>
+                    <label class="govuk-label govuk-radios__label" for="council_tax_band7">
+                    Band G
+                    </label>
+                    </div>
+
+					<div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="council_tax_band8" name="radio_council_tax_band" type="radio" value="Band H" {{ checked("radio_council_tax_band", "Band B") }}>
+                    <label class="govuk-label govuk-radios__label" for="council_tax_band8">
+                    Band H
+                    </label>
+                    </div>
+
+
+					<div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="council_tax_band9" name="radio_council_tax_band" type="radio" value="Band I" {{ checked("radio_council_tax_band", "Band I") }}>
+                    <label class="govuk-label govuk-radios__label" for="council_tax_band9">
+                    Band I (Wales only)
+                    </label>
+                    </div>
+
+
+
+                </div>
+
+                </fieldset>
+            </div>
+
+
+
+
+
+          <div class="govuk-button-group">
+
+
+
+
+    {{ govukButton({
+      text: "Continue",
+      value: "addressconfirm"
+    }) }}
+
+			</div>
+
+        </form>
+
+          </div>
+        </div>
+
+
+
+{% endblock %}

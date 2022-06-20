@@ -1,0 +1,299 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+
+{%if (data['reason']=="remove") %}
+ 	Why does the property need to be removed?
+{%elseif data['reason']=="amend"%}
+	Why does the property need to be amended?
+{%else%}
+	Code CR03: new will be added to the report
+{%endif%}
+
+{% endblock %}
+
+
+
+{% block beforeContent %}
+
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-one-third">
+			{{ govukBackLink({
+			  text: "Back",
+			  href: "javascript:window.history.back()"
+			}) }}
+		</div>
+		{% include "includes/header-section-signedin.html" %}
+	</div>
+{% endblock %}
+
+{% block content %}
+
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+
+        <form class="form" action="/webform/ndr/request-sub-reason" method="post">
+
+
+
+
+{%if data['reason']=="remove"%}
+
+            {% set textHtml %}
+            {{ govukTextarea({
+              id: "other-reason-remove",
+              name: "other-reason-remove",
+              type: "tel",
+              autocomplete: "tel",
+              classes: "govuk-!-width-full",
+              label: {
+                text: "Other reason for removing the property"
+              }
+            }) }}
+            {% endset -%}
+
+            {{ govukRadios({
+              idPrefix: "sub_reason_option",
+              name: "sub_reason_option",
+              fieldset: {
+                legend: {
+                  text: "Why does the property need to be removed?",
+                  isPageHeading: false,
+                  classes: "govuk-fieldset__legend--l"
+
+                }
+              },
+				hint: {
+  				  		text: "The code you choose will be added to the report"
+  						},
+
+              items: [
+                {
+                  value: "05: demolished",
+                  text: "05: demolished",
+                  checked: checked("sub_reason_option", "05: demolished"),
+                  conditional: {
+                    html: emailHtml
+                  }
+                },
+
+                {
+                  value: "06: ceased to be rateable",
+                  text: "06: ceased to be rateable",
+                  checked: checked("sub_reason_option", "06: ceased to be rateable"),
+                  conditional: {
+                    html: phoneHtml
+                  }
+                },
+
+                {
+                  value: "07: exempt",
+                  text: "07: exempt",
+                  checked: checked("sub_reason_option", "07: exempt"),
+                  conditional: {
+                    html: phoneHtml
+                  }
+                },
+
+                {
+                  value: "08: other",
+                  text: "08: other",
+                  checked: checked("sub_reason_option", "08: other"),
+                  conditional: {
+                    html: textHtml
+                  }
+                }
+
+
+
+              ]
+            }) }}
+
+              <!--hidden field-->
+            {{ govukInput({
+
+              id: "sub_reason_question",
+              name: "sub_reason_question",
+              value: "Why does the property need to be removed?",
+              type: "hidden"
+            }) }}
+
+
+{%elseif data['reason']=="amend"%}
+
+
+			  {% set otherAmendHtml %}
+            {{ govukTextarea({
+              id: "other-reason-amend",
+              name: "other-reason-amend",
+              type: "tel",
+              autocomplete: "tel",
+              classes: "govuk-!-width-full",
+              label: {
+                text: "Other reason for amending the property"
+              }
+            }) }}
+            {% endset -%}
+
+            {{ govukRadios({
+              idPrefix: "sub_reason_option",
+              name: "sub_reason_option",
+              fieldset: {
+                legend: {
+                  text: "Why does the property need to be amended?",
+                  isPageHeading: false,
+                  classes: "govuk-fieldset__legend--l"
+
+                }
+              },
+				hint: {
+  				  		text: "The code you choose will be added to the report"
+  						},
+
+              items: [
+                {
+                  value: "09: improvement/alterations",
+                  text: "09: improvement/alterations",
+                  checked: checked("sub_reason_option", "09: improvement/alterations"),
+
+                  conditional: {
+                    html: emailHtml
+                  }
+                },
+                {
+                value: "10: reconstitution - split/merger",
+                text: "10: reconstitution - split/merger",
+                checked: checked("sub_reason_option", "10: reconstitution - split/merger"),
+                conditional: {
+                  html: phoneHtml
+                }
+              },
+              {
+                value: "11: other reason",
+                text: "11: other reason",
+                checked: checked("sub_reason_option", "11: other reason"),
+                conditional: {
+                  html: otherAmendHtml
+                }
+              },
+              {
+                        value: "12: address/reference number change only",
+                        text: "12: address/reference number change only",
+                        checked: checked("sub_reason_option", "12: address/reference number change only"),
+                        conditional: {
+                          html: otherAmendHtml2
+                        }
+                      }
+              ]
+            }) }}
+
+            <!--hidden field-->
+            {{ govukInput({
+
+              id: "sub_reason_question",
+              name: "sub_reason_question",
+              value: "Why does the property need to be amended?",
+              type: "hidden"
+            }) }}
+
+
+
+
+
+{%else%}
+
+
+            {% set textHtmlnew %}
+            {{ govukTextarea({
+              id: "other_reason_new",
+              name: "other_reason_new",
+              type: "tel",
+              autocomplete: "tel",
+              classes: "govuk-!-width-full",
+              label: {
+                text: "Other reason for adding the new property"
+              }
+            }) }}
+            {% endset -%}
+
+            {{ govukRadios({
+              idPrefix: "sub_reason_option",
+              name: "sub_reason_option",
+              fieldset: {
+                legend: {
+                  text: "Why does the property need to be added?",
+                  isPageHeading: false,
+                  classes: "govuk-fieldset__legend--l"
+
+                }
+              },
+            hint: {
+                text: "The code you choose will be added to the report"
+              },
+
+              items: [
+                {
+                  value: "01: new to rating list",
+                  text: "01: new to rating list",
+                  checked: checked("sub_reason_option", "01: new to rating list"),
+                  conditional: {
+                    html: emailHtml
+                  }
+                },
+
+                {
+                  value: "02: formerly domestic",
+                  text: "02: formerly domestic",
+                  checked: checked("sub_reason_option", "02: formerly domestic"),
+                  conditional: {
+                    html: phoneHtml
+                  }
+                },
+
+                {
+                  value: "03: formerly exempt",
+                  text: "03: formerly exempt",
+                  checked: checked("sub_reason_option", "03: formerly exempt"),
+                  conditional: {
+                    html: phoneHtml
+                  }
+                },
+
+                {
+                  value: "04: other",
+                  text: "04: other",
+                  checked: checked("sub_reason_option", "04: other"),
+                  conditional: {
+                    html: textHtmlnew
+                  }
+                }
+
+
+
+              ]
+            }) }}
+
+
+
+
+{%endif%}
+
+        <div class="govuk-button-group">
+
+                <button class="govuk-button" data-module="govuk-button">Continue</button>
+
+                {{ govukButton({
+                  text: "Go back",
+                  href: "request-reason?property="+data['property'],
+                  classes: "govuk-button--secondary"
+
+                }) }}
+
+          </div>
+
+        </div>
+    </div>
+
+
+
+{% endblock %}
