@@ -45,6 +45,7 @@
               name: "other-reason-remove",
               type: "tel",
               autocomplete: "tel",
+              value: data['other-reason-remove']|default("no reasons available for removing", true),
               classes: "govuk-!-width-full",
               label: {
                 text: "Other reason for removing the property"
@@ -127,6 +128,7 @@
               id: "other-reason-amend",
               name: "other-reason-amend",
               type: "tel",
+              value: data['other-reason-amend']|default("no reasons available for amending", true),
               autocomplete: "tel",
               classes: "govuk-!-width-full",
               label: {
@@ -208,6 +210,7 @@
               id: "other_reason_new",
               name: "other_reason_new",
               type: "tel",
+              value: data['other_reason_new']|default("no reasons available for adding", true),
               autocomplete: "tel",
               classes: "govuk-!-width-full",
               label: {

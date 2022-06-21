@@ -60,7 +60,7 @@
           {%set sub_reason_option = data['sub_reason_option']|default("05: demolished", true)%}
 
 
-report reason=  {{sub_reason_option}}
+
 
 
 
@@ -109,9 +109,27 @@ report reason=  {{sub_reason_option}}
             key: {
               text: sub_reason_request
             },
-
             value: {
               text: sub_reason_option
+            },
+            actions: {
+              items: [
+                {
+                  href: "request-sub-reason?property="+data['property']+"&reason="+data['reason'],
+
+                  text: "Change",
+                  visuallyHiddenText: data['sub_reason_question']|default("Why does the property need to be removed?", true)
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Other reason for adding the new property"
+            },
+
+            value: {
+              text: data['other_reason_new']|default("Reasons not included for first 3 new property requests", true)
             },
             actions: {
               items: [
@@ -119,38 +137,52 @@ report reason=  {{sub_reason_option}}
 
                   href: "request-sub-reason?property="+data['property']+"&reason="+data['reason'],
                   text: "Change",
-                  visuallyHiddenText: data['sub_reason_question']|default("Why does the property need to be removed?", true)
-                },
-
-
-
-                {
-                  key: {
-                    text: "Why are you creating this report?"
-                  },
-                  value: {
-                    text: data['report_reason']|default("removing a property", true)
-                  },
-                  actions: {
-                    items: [
-                      {
-                        href: "request-reason?property="+data['property'],
-
-                        text: "Change",
-                        visuallyHiddenText: "Why are you creating this report?"
-                      }
-                    ]
-                  }
+                  visuallyHiddenText: data['other_reason_new']|default("Other reason for adding the new property", true)
                 }
-
-
-
-
-
 
               ]
             }
-          }
+          }if (sub_reason_option == "04: other"),
+          {
+            key: {
+              text: "Other reason for removing the property"
+            },
+
+            value: {
+              text: data['other-reason-remove']|default("Reasons not included for first 3 property requests", true)
+            },
+            actions: {
+              items: [
+                {
+
+                  href: "request-sub-reason?property="+data['property']+"&reason="+data['reason'],
+                  text: "Change",
+                  visuallyHiddenText: data['other-reason-remove']|default("Other reason for removing the property", true)
+                }
+
+              ]
+            }
+          }if (sub_reason_option == "08: other"),
+          {
+            key: {
+              text: "Other reason for amending the property"
+            },
+
+            value: {
+              text: data['other-reason-amend']|default("Reasons not included for first 3 property requests", true)
+            },
+            actions: {
+              items: [
+                {
+
+                  href: "request-sub-reason?property="+data['property']+"&reason="+data['reason'],
+                  text: "Change",
+                  visuallyHiddenText: data['other-reason-amend']|default("Other reason for amending the property", true)
+                }
+
+              ]
+            }
+          }if (sub_reason_option == "11: other reason")
         ]
       }) }}
 
@@ -264,7 +296,7 @@ report reason=  {{sub_reason_option}}
                 }
               ]
             }
-          },
+          }if (data['reason'] != "new"),
           {
             key: {
               text: "Property description"
