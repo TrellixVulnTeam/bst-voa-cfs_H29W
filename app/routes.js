@@ -1659,6 +1659,22 @@ res.redirect('property-request-details?reason='+reason+'&property='+property)
 })
 
 
+
+router.post('/webform/ndr/check-answers', function (req, res) {
+
+  var reason = req.session.data['reason']
+
+  var property = req.session.data['property']
+
+  req.session.data = {}
+res.redirect('webform-submission-confirmation?reason='+reason+'&property='+property)
+
+
+
+
+})
+
+
 // The URL here needs to match the URL of the page that the user is on
 // when they type in their email address
 //router.post('/email-address-page', function (req, res) {
