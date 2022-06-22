@@ -45,12 +45,12 @@
 						<p class="govuk-body">
 
 
-            {% if data['reason']=='new'%}
-            Include any additional information you have about this new property. Further guidance on what to include is in the <a href="https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/941247/BARs_Submission_Standards_2020v8.pdf" target="_blank">billing authority reports submission standards (opens in a new window or tab)</a>.
+              {% if data['reason']=='new'%}
+              {% set hinttextremarks = "Include any additional information you have about this new property. Further guidance on what to include is in the <a href='https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/941247/BARs_Submission_Standards_2020v8.pdf' target='_blank'>billing authority reports submission standards (opens in a new window or tab)</a>." %}
 
-            {%else%}
-            Include any additional information you have about the change you’re requesting for this property. Further guidance on what to include is in the <a href="https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/941247/BARs_Submission_Standards_2020v8.pdf" target="_blank">billing authority reports submission standards (opens in a new window or tab)</a>.
-            {%endif%}
+              {%else%}
+                {% set hinttextremarks = "Include any additional information you have about the change you’re requesting for this property. Further guidance on what to include is in the <a href='https://assets.publishing.service.gov.uk/government/uploads/system/uploads/attachment_data/file/941247/BARs_Submission_Standards_2020v8.pdf' target='_blank'>billing authority reports submission standards (opens in a new window or tab)</a>."%}
+              {%endif%}
 
 
 						</p>
@@ -103,7 +103,11 @@
                               classes: "govuk-label--m",
 
                               isPageHeading: false
-                              }
+                              },
+                              hint: {
+                                  text: hinttextremarks|safe
+                                    }
+
                             }) }}
 
 

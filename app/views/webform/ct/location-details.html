@@ -67,9 +67,9 @@
                   British National Grid Coordinates (optional)
                       </h2>
 
-						  <div id="BNGC-hint" class="govuk-hint">
-   								 This helps locate the property when no clear address is available or where the property would be difficult to find
-  						  </div>
+                      <div id="BNGC-hint" class="govuk-hint">
+           								 Include coordinates when there is no clear address or the property may be difficult to find. Each coordinate is a 6 digit number.
+          						  </div>
 
 
 
@@ -79,7 +79,7 @@
 
                         {{ govukInput({
                           hint: {
-                            text: "X coordinates"
+                            text: "X (Easting)"
                           },
                           classes: "govuk-input--width-10",
                           id: "bngc-x-input",
@@ -89,7 +89,7 @@
 
                         {{ govukInput({
                           hint: {
-                            text: "Y coordinates"
+                            text: "Y (Northing)"
                           },
                           classes: "govuk-input--width-10",
                           id: "bngc-y-input",

@@ -28,17 +28,26 @@
 
       <form class="form" action="/webform/ndr/property-description" method="post">
 
-    {{ govukCharacterCount({
-        name: "property-description",
-        id: "property-description",
-        maxlength: 1000,
-        label: {
-          text: "Property description",
-          classes: "govuk-label--xl",
-          isPageHeading: true
-          }
+        <div class="govuk-character-count" data-module="govuk-character-count" data-maxlength="1000">
+          <div class="govuk-form-group">
+            <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="property-description">
+                Enter the property description
+              </label>
+            </h1>
+            <div id="property-description-hint" class="govuk-hint">
+              Use the find a <a href='https://www.gov.uk/find-business-rates' target='_blank'>business rates valuation (opens in new tab)</a> tool to look up this property's entry and enter the description as it appears
+            </div>
+            <textarea class="govuk-textarea govuk-js-character-count" id="property-description" name="property-description" rows="5" aria-describedby="property-description-info property-description-hint"></textarea>
+          </div>
 
-        }) }}
+          <div id="property-description-info" class="govuk-hint govuk-character-count__message">
+            You can enter up to 1000 characters
+          </div>
+
+        </div>
+
+
+  
 
 
 
