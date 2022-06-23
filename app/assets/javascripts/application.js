@@ -15,8 +15,8 @@ new MOJFrontend.FilterToggleButton({
   startHidden: true,
   toggleButton: {
     container: $(".moj-action-bar__filter"),
-    showText: "Show filter",
-    hideText: "Hide filter",
+    showText: "Search schedules",
+    hideText: "Hide search",
     classes: "govuk-button--secondary",
   },
   closeButton: {

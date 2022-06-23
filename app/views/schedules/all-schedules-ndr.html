@@ -5,7 +5,6 @@
 {% endblock %}
 {% block beforeContent %}
 
-
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-one-third">
           {{ govukBackLink({
@@ -15,7 +14,8 @@
         </div>
         {% include "includes/header-section-signedin.html" %}
       </div>
-
+      {% endblock %}
+      {% block content %}
 
 
       <h1 class="govuk-heading-xl">Non-domestic rates schedules</h1>
@@ -139,6 +139,14 @@
                     <input class="govuk-checkboxes__input" id="type-4" name="type" type="checkbox" value="4" checked>
                     <label class="govuk-label govuk-checkboxes__label" for="type-4">
                       2005
+                    </label>
+
+                  </div>
+
+                  <div class="govuk-checkboxes__item">
+                    <input class="govuk-checkboxes__input" id="type-5" name="type" type="checkbox" value="5" checked>
+                    <label class="govuk-label govuk-checkboxes__label" for="type-5">
+                      2010
                     </label>
 
                   </div>
@@ -450,14 +458,18 @@
 
     <!--TABLE START-->
 
-      <div data-module="moj-multi-select" data-multi-select-checkbox="#select-all">
+    <!-- Code below is for select all 'Checkbox'-->
+      <!--<div data-module="moj-multi-select" data-multi-select-checkbox="#select-all">-->
+
           <table class="govuk-table" data-module="moj-sortable-table">
 
           <thead class="govuk-table__head">
           <tr class="govuk-table__row">
 
 
-              <th scope="col" class="govuk-table__header" id="select-all"</th>
+              <!--<th scope="col" class="govuk-table__header" id="select-all"</th>-->
+
+              <th scope="col" class="govuk-table__header" id="none">Select reports</th>
 
               <th scope="col" class="govuk-table__header" aria-sort="descending">Schedule</th>
 
@@ -487,11 +499,14 @@
                  </label>
                </div>
 
-               <td class="govuk-table__cell"><a href="/schedules/preview-selected-schedule-ndr">320620174214NUP</a></td>
+               <!--<td class="govuk-table__cell"><a href="/schedules/preview-selected-schedule-test-ndr01">320620174214NUP</a></td>-->
+               <td class="govuk-table__cell"><a href="/schedules/preview-selected-schedule-test-ndr01" class="govuk-link" rel="noreferrer noopener" target="_blank">320620174214NUP<span class="govuk-visually-hidden">(opens in new tab)</span></a></td>
                <td class="govuk-table__cell">2017</td>
                <td class="govuk-table__cell">Update schedule</td>
                <td class="govuk-table__cell">18 May 2022</td>
                <td class="govuk-table__cell"></td>
+
+
 
             </tr>
 
@@ -508,7 +523,8 @@
                  </div>
 
 
-              <td class="govuk-table__cell"><a href="/schedules/preview-selected-schedule-ndr-1">14522017002NRP</a></td>
+              <!--<td class="govuk-table__cell"><a href="/schedules/preview-selected-schedule-ndr-1">14522017002NRP</a></td>-->
+              <td class="govuk-table__cell"><a href="/schedules/preview-selected-schedule-test-ndr01" class="govuk-link" rel="noreferrer noopener" target="_blank">14522017002NRP<span class="govuk-visually-hidden">(opens in new tab)</span></a></td>
               <td class="govuk-table__cell">2017</td>
               <td class="govuk-table__cell">Full list</td>
               <td class="govuk-table__cell">18 May 2022</td>
@@ -571,7 +587,8 @@
                  </div>
 
 
-              <td class="govuk-table__cell"><a href="/schedules/preview-selected-schedule-ndr-2">510220174284NUP</a></td>
+              <!--<td class="govuk-table__cell"><a href="/schedules/preview-selected-schedule-ndr-2">510220174284NUP</a></td>-->
+              <td class="govuk-table__cell"><a href="/schedules/preview-selected-schedule-test-ndr01" class="govuk-link" rel="noreferrer noopener" target="_blank">510220174284NUP<span class="govuk-visually-hidden">(opens in new tab)</span></a></td>
               <td class="govuk-table__cell">2017</td>
               <td class="govuk-table__cell">Update schedule</td>
               <td class="govuk-table__cell">12 May 2022</td>
@@ -592,7 +609,8 @@
                  </div>
 
 
-              <td class="govuk-table__cell"><a href="/schedules/preview-selected-schedule-ndr-3">47832017010NTP</a></td>
+              <!--<td class="govuk-table__cell"><a href="/schedules/preview-selected-schedule-ndr-3">47832017010NTP</a></td>-->
+              <td class="govuk-table__cell"><a href="/schedules/preview-selected-schedule-test-ndr01" class="govuk-link" rel="noreferrer noopener" target="_blank">47832017010NTP<span class="govuk-visually-hidden">(opens in new tab)</span></a></td>
               <td class="govuk-table__cell">2017</td>
               <td class="govuk-table__cell">Statistical Analysis of totals for full list</td>
               <td class="govuk-table__cell">11 May 2022</td>
@@ -614,7 +632,7 @@
 
 
               <td class="govuk-table__cell"><a href="#">783120050931WM</a></td>
-              <td class="govuk-table__cell">2005</td>
+              <td class="govuk-table__cell">2010</td>
               <td class="govuk-table__cell">Withdrawl and dismissal schedule</td>
               <td class="govuk-table__cell">6 May 2022</td>
               <td class="govuk-table__cell">9 May 2022</td>
@@ -635,7 +653,7 @@
 
 
               <td class="govuk-table__cell"><a href="#">227820050023MP</a></td>
-              <td class="govuk-table__cell">2005</td>
+              <td class="govuk-table__cell">2010</td>
               <td class="govuk-table__cell">Minor list change schedule</td>
               <td class="govuk-table__cell">29 Apr 2022</td>
               <td class="govuk-table__cell">3 May 2022</td>
@@ -655,7 +673,7 @@
 
 
               <td class="govuk-table__cell"><a href="#">782320058234WM</a></td>
-              <td class="govuk-table__cell">2005</td>
+              <td class="govuk-table__cell">2010</td>
               <td class="govuk-table__cell">Withdrawl and dismissal schedule</td>
               <td class="govuk-table__cell">28 Apr 2022</td>
               <td class="govuk-table__cell">4 May 2022</td>
@@ -676,7 +694,7 @@
 
 
               <td class="govuk-table__cell"><a href="#">14522005002NRP</a></td>
-              <td class="govuk-table__cell">2005</td>
+              <td class="govuk-table__cell">2010</td>
               <td class="govuk-table__cell">Full List</td>
               <td class="govuk-table__cell">20 Apr 2022</td>
               <td class="govuk-table__cell">22 Apr 2022</td>
