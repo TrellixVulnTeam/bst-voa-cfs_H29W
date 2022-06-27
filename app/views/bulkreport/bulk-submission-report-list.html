@@ -126,13 +126,13 @@
 				     <!-- update count once the user removes the 1 issue with data error -->
 						  {% if data['removerowissue'] == 1 %}
 
-							  1 report has data errors
+							  1 report has data errors. You must fix or remove it before you can submit your reports
 
 						  <!-- update count once the user corrects the 2 issues using webform -->
 						  {%elseif data['correctedissues'] == 2%}
-							 1 report has data errors.
+							 1 report has data errors. You must fix or remove it before you can submit your reports
 						  {%else%}
-								2 reports have data errors
+								2 reports have data errors. You must fix or remove these before you can submit your reports
 						  {% endif %}
 
 
@@ -143,9 +143,9 @@
 
 			</div>
 
-
+<!--
 <p class="govuk-body">You must fix or remove these before you can submit your reports.</p>
-
+-->
 
 {%else%}
 
@@ -215,7 +215,7 @@
 
 
 
-              <th scope="col" class="govuk-table__header" aria-sort="none">Row</th>
+              <th scope="col" class="govuk-table__header" aria-sort="none">Billing authority report number</th>
             <th scope="col" class="govuk-table__header" aria-sort="none">Billing authority reference number</th>
             <th scope="col" class="govuk-table__header" aria-sort="none">Data errors</th>
             <th scope="col" class="govuk-table__header" aria-sort="none">Action</th>
@@ -240,7 +240,7 @@
                                               </div>
                                             </td>-->
 
-                                              <td class="govuk-table__cell">1</td>
+                                              <td class="govuk-table__cell">BA155249/283DVL</td>
                                             <td class="govuk-table__cell">06002874005006</td>
 
                                             <td class="govuk-table__cell">
@@ -363,7 +363,7 @@
 
                                     <tr class="govuk-table__row govuk-table__row--selected">
 
-                                      <td class="govuk-table__cell">2</td>
+                                      <td class="govuk-table__cell">BA155872/283Address</td>
                                      <td class="govuk-table__cell">06002874005326</td>
 
                                       <td class="govuk-table__cell">
@@ -488,13 +488,13 @@
                                   <tr class="govuk-table__row govuk-table__row--selected">
 
 
-                                        <td class="govuk-table__cell">1</td>
+                                        <td class="govuk-table__cell">BA155249/283DVL</td>
                                       <td class="govuk-table__cell">06002874005006</td>
 
                                     <td class="govuk-table__cell"><strong class="govuk-tag--green">
                                      No errors
                                   </strong> </td>
-                                      <td class="govuk-table__cell"><a href="#">View report</a></td>
+                                      <td class="govuk-table__cell"><a href="#">Edit</a> <a href="#">Delete</a></td>
                                     </tr>
                               {% endif %}
 
@@ -502,13 +502,13 @@
                                 {%if data['removerowissue2'] != 1 %}
                                     <tr class="govuk-table__row govuk-table__row--selected">
 
-                                      <td class="govuk-table__cell">2</td>
+                                      <td class="govuk-table__cell">BA155872/283Address</td>
                                       <td class="govuk-table__cell">06002874005096</td>
 
                                      <td class="govuk-table__cell"><strong class="govuk-tag--green">
                                      No errors
                                   </strong> </td>
-                                      <td class="govuk-table__cell"><a href="#">View report</a></td>
+                                      <td class="govuk-table__cell"><a href="#">Edit</a> <a href="#">Delete</a></td>
                                     </tr>
                                     {% endif %}
 
@@ -580,13 +580,13 @@
                                   <tr class="govuk-table__row govuk-table__row--selected">
 
 
-                                        <td class="govuk-table__cell">1</td>
+                                        <td class="govuk-table__cell">BA155249/283DVL</td>
                                       <td class="govuk-table__cell">06002874005006</td>
 
                                     <td class="govuk-table__cell"><strong class="govuk-tag--green">
                                      No errors
                                   </strong> </td>
-                                      <td class="govuk-table__cell"><a href="#">View report</a></td>
+                                      <td class="govuk-table__cell"><a href="#">Edit</a> <a href="#">Delete</a></td>
                                     </tr>
                               {% endif %}
 
@@ -594,13 +594,13 @@
                                 {%if data['removerowissue2'] != 1 %}
                                     <tr class="govuk-table__row govuk-table__row--selected">
 
-                                      <td class="govuk-table__cell">2</td>
+                                      <td class="govuk-table__cell">BA155872/283Address</td>
                                       <td class="govuk-table__cell">06002874005096</td>
 
                                      <td class="govuk-table__cell"><strong class="govuk-tag--green">
                                      No errors
                                   </strong> </td>
-                                      <td class="govuk-table__cell"><a href="#">View report</a></td>
+                                      <td class="govuk-table__cell"><a href="#">Edit</a> <a href="#">Delete</a></td>
                                     </tr>
                                     {% endif %}
 
@@ -611,37 +611,37 @@
 
           <tr class="govuk-table__row govuk-table__row--selected">
 
-            <td class="govuk-table__cell">3</td>
+            <td class="govuk-table__cell">BA153947/283 effective date change</td>
            <td class="govuk-table__cell">06002874005326</td>
 
            <td class="govuk-table__cell"><strong class="govuk-tag--green">
            No errors
           </strong> </td>
-            <td class="govuk-table__cell"><a href="#">View report</a></td>
+            <td class="govuk-table__cell"><a href="#">Edit</a> <a href="#">Delete</a></td>
           </tr>
 
 
           <tr class="govuk-table__row govuk-table__row--selected">
 
-            <td class="govuk-table__cell">4</td>
+            <td class="govuk-table__cell">BA155456/283New</td>
             <td class="govuk-table__cell">06002874005326</td>
 
             <td class="govuk-table__cell"><strong class="govuk-tag--green">
            No errors
           </strong> </td>
-            <td class="govuk-table__cell"><a href="#">View report</a></td>
+            <td class="govuk-table__cell"><a href="#">Edit</a> <a href="#">Delete</a></td>
           </tr>
 
 
           <tr class="govuk-table__row govuk-table__row--selected">
 
-            <td class="govuk-table__cell">5</td>
+            <td class="govuk-table__cell">BA154061/283RECON</td>
             <td class="govuk-table__cell">06002874005034</td>
 
           <td class="govuk-table__cell"><strong class="govuk-tag--green">
            No errors
           </strong> </td>
-            <td class="govuk-table__cell"><a href="#">View report</a></td>
+            <td class="govuk-table__cell"><a href="#">Edit</a> <a href="#">Delete</a></td>
           </tr>
 
 <!--

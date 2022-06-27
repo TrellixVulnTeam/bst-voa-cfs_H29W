@@ -1,0 +1,108 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+
+
+
+
+			Upload multiple reports
+
+
+{% endblock %}
+
+{% block beforeContent %}
+
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-one-third">
+			{{ govukBackLink({
+			  text: "Back",
+			  href: "javascript:window.history.back()"
+			}) }}
+		</div>
+		{% include "includes/header-section-signedin.html" %}
+	</div>
+{% endblock %}
+
+{% block content %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="/bulkreport/verify-upload-file?filetype={{ data['filetype'] }}" method="post" class="form">
+      <div class="govuk-form-group">
+        <label class="govuk-heading-l" for="event-name">
+				<!-- pagetitle widget for excel filetype -->
+
+
+
+							Upload multiple reports
+
+        </label>
+
+
+				<!-- details widget for excel filetype -->
+
+				<p class="govuk-body">
+
+									Upload reports using an XML or Excel file.
+
+				</p>
+
+				<p class="gouk-body">
+
+					See <a href="#" target="_blank">billing authority reports submission standards (opens in a new tab)</a> which says what
+information to include for each report reason code.
+
+				</p>
+
+
+
+
+		   <p class="govuk-body">File must be:</p>
+			<ul class="govuk-list govuk-list--bullet">
+			 	 <li>less than 10MB</li>
+
+                   <li>XML, XLS, XLSX, XLT</li>
+
+				<li>the latest <a href="#" target="_blank">Excel template (opens in a new tab)</a> or follow the latest <a href="#" target="_blank">XML data
+schema (opens in a new tab)</a></li>
+
+			</ul>
+
+
+
+
+
+
+
+              <div class="govuk-form-group">
+                <label class="govuk-label" for="file-upload-1">
+                    <strong>
+											 Upload a file
+                    </strong>
+                </label>
+                <input class="govuk-file-upload" id="file-bulk-upload" name="file-bulk-upload" type="file">
+              </div>
+
+
+
+
+
+
+
+            </div>
+
+            <button class="govuk-button" data-module="govuk-button">
+              Continue
+            </button>
+          </form>
+
+
+
+
+
+  </div>
+</div>
+
+{% endblock %}

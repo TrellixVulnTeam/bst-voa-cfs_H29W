@@ -72,14 +72,14 @@
                    </dd>
                   </div>
 
-
+<!--
                   <div class="govuk-summary-list__row">
                    <dt class="govuk-summary-list__key">
                      File type
                    </dt>
                    <dd class="govuk-summary-list__value">
-                       
-					   
+
+
 					   {{ data['filetype'] | upper }}
                    </dd>
                    <dd class="govuk-summary-list__actions">
@@ -89,14 +89,16 @@
                    </dd>
                   </div>
 
-
+-->
 
                   <div class="govuk-summary-list__row">
                    <dt class="govuk-summary-list__key">
                      File
                    </dt>
                    <dd class="govuk-summary-list__value">
-                {% if data['file-bulk-upload'] != "" %}
+
+                  
+                {% if data['file-bulk-upload'] != null %}
                     {{ data['file-bulk-upload'] }}
 
                 {% else %}
