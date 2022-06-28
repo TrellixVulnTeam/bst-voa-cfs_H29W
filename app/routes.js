@@ -1478,7 +1478,7 @@ console.log("newpropertyreason = " +sub_reason )
     delete req.session.data['planning_reference_number']
     delete req.session.data['no_planning_reference_reason']
 
-      res.redirect('owner-occupier-details?propertyreason=occupier&reason='+reason+'&property='+property)
+      res.redirect('location-details?propertyreason=occupier&reason='+reason+'&property='+property)
 
 
   } else {
@@ -1494,6 +1494,11 @@ console.log("newpropertyreason = " +sub_reason )
 // Run this code when a form is submitted to 'confirm-remove-failed-report'
 router.post('/webform/ndr/owner-occupier-details', function (req, res) {
 
+  var reason = req.session.data['reason']
+
+  var property = req.session.data['property']
+
+
   // Make a variable and give it the value from 'how-many-balls'
   var address_same_check = req.session.data['address_same_check']
 
@@ -1503,7 +1508,7 @@ router.post('/webform/ndr/owner-occupier-details', function (req, res) {
     res.redirect('/webform/ndr/address-postcode-lookup?propertyreason=occupier')
   } else {
     // Send user to ineligible page
-    res.redirect('/webform/ndr/location-details')
+    res.redirect('/webform/ndr/check-answers?reason='+reason+'&property='+property)
   }
 
 })
@@ -1583,7 +1588,7 @@ console.log("newpropertyreason = " +reason_new )
 
   } else {
     // Send user to ineligible page
-    res.redirect('/webform/ndr/location-details?propertyreason='+propertyreason)
+    res.redirect('/webform/ndr/check-answers?propertyreason='+propertyreason)
   }
 
 
@@ -1625,8 +1630,14 @@ console.log("requestreason = " +reason_new )
 
 router.post('/webform/ndr/no-planning-reference', function (req, res) {
 
+  var reason = req.session.data['reason']
 
-    res.redirect('/webform/ndr/owner-occupier-details?propertyreason=occupier')
+  var property = req.session.data['property']
+
+
+  //  res.redirect('/webform/ndr/owner-occupier-details?propertyreason=occupier')
+
+    res.redirect('location-details?reason='+reason+'&property='+property)
 
 })
 
@@ -1636,8 +1647,21 @@ router.post('/webform/ndr/location-details', function (req, res) {
 
   var property = req.session.data['property']
 
+  var propertyreason = req.session.data['propertyreason']
 
-res.redirect('check-answers?reason='+reason+'&property='+property)
+  if(req.session.data['sub_reason_option'])
+  {
+      var sub_reason = req.session.data['sub_reason_option'].substring(0,4)
+  }
+
+  var reason = req.session.data['reason']
+
+  var property = req.session.data['property']
+
+
+res.redirect('owner-occupier-details?propertyreason=occupier&reason='+reason+'&property='+property)
+
+
 
 
 
