@@ -23,7 +23,7 @@
 
       <h1 class="govuk-heading-l">Check details before sending the report</h1>
 
-      <h2 class="govuk-heading-m">Report reference</h2>
+      <h2 class="govuk-heading-m">Report number</h2>
 
 
 
@@ -34,7 +34,7 @@
         rows: [
           {
             key: {
-              text: "Enter the billing authority report number"
+              text: "Billing authority report number"
             },
             value: {
               text: data['input-bill-auth-report-no']|default("C01324", true)
@@ -68,27 +68,33 @@
       {%endif%}
 
 
-      {%if(data['report_reason']!="adding a new property")%}
+      {%if(data['report_reason']=="removing a property")%}
 
-          {%set sub_reason_request = data['sub_reason_question']|default("Why does the property need to be removed?", true)%}
+
+            {%set sub_reason_request = "Reason for demolishing property"%}
+
+
+        {%elseif(data['report_reason']=="making amendments to a property")%}
+
+              {%set sub_reason_request = "Reason for amending property"%}
 
       {%else%}
 
 
 
-            {%set sub_reason_request = "New report"%}
+            {%set sub_reason_request = "Reason for adding property"%}
 
       {%endif%}
 
 
-        <h2 class="govuk-heading-m">Change reason</h2>
+        <h2 class="govuk-heading-m">Report reason</h2>
 
       {{ govukSummaryList({
         classes: 'govuk-!-margin-bottom-9',
         rows: [
           {
             key: {
-              text: "Why are you creating this report?"
+              text: "Reason for creating report"
             },
             value: {
               text: data['report_reason']|default("removing a property", true)
@@ -127,7 +133,7 @@
       }) }}
 
 
-      <h2 class="govuk-heading-m">Property reference</h2>
+      <h2 class="govuk-heading-m">Property number</h2>
 
 
       {{ govukSummaryList({
@@ -135,7 +141,7 @@
         rows: [
           {
             key: {
-              text: "What is the billing authority reference number for this property?"
+              text: "Billing authority reference number"
             },
             value: {
               text: data['input_property_billing_ref_no']|default("1446369104400201", true)
@@ -395,7 +401,7 @@
           } if (data['planning_reference_number_available'] | default("No", true) == "Yes"),
               {
                   key: {
-                    text: "Why does this property not have a planning portal reference?"
+                    text: "Reason for no planning portal reference"
                   },
                   value: {
                       text: data['no_planning_reference_reason']|default("Planning permission is not required", true)
@@ -421,11 +427,67 @@
 
 
 
+      <h2 class="govuk-heading-m">Location details</h2>
 
+      {{ govukSummaryList({
+        classes: 'govuk-!-margin-bottom-9',
+        rows: [
+          {
+            key: {
+              text: "Unique Property Reference Number (optional)"
+            },
+            value: {
+              text: data['uprn-input']|default("100022935279", true)
+            },
+            actions: {
+              items: [
+                {
+                  href: "location-details?reason="+data['reason']+"&property="+data['property']+"&propertyreason="+data['propertyreason']+"&location_details=edit",
+                  text: "Change",
+                  visuallyHiddenText: "What is the Unique Property Reference Number (UPRN)?"
+                }
+              ]
+            }
+          },
 
+          {
+            key: {
+              text: "British National Grid X (Eastings)"
+            },
+            value: {
+              text: data['bngc-x-input']|default("533172", true)
+            },
+            actions: {
+              items: [
+                {
+                  href: "location-details?reason="+data['reason']+"&property="+data['property']+"&propertyreason="+data['propertyreason']+"&location_details=edit",
+                  text: "Change",
+                  visuallyHiddenText: "British National Grid X (Eastings)"
+                }
+              ]
+            }
+          },
 
+          {
+            key: {
+              text: "British National Grid Y (Northings)"
+            },
+            value: {
+              text: data['bngc-y-input']|default("180611", true)
+            },
+            actions: {
+              items: [
+                {
+                  href: "location-details?reason="+data['reason']+"&property="+data['property']+"&propertyreason="+data['propertyreason']+"&location_details=edit",
+                  text: "Change",
+                  visuallyHiddenText: "British National Grid Y (Northings)"
+                }
+              ]
+            }
+          }
 
-
+        ]
+      }) }}
 
 
 
@@ -591,68 +653,6 @@
 
 
           {%endif%}
-
-      <h2 class="govuk-heading-m">Location details</h2>
-
-      {{ govukSummaryList({
-        classes: 'govuk-!-margin-bottom-9',
-        rows: [
-          {
-            key: {
-              text: "Unique Property Reference Number (optional)"
-            },
-            value: {
-              text: data['uprn-input']|default("100022935279", true)
-            },
-            actions: {
-              items: [
-                {
-                  href: "location-details?reason="+data['reason']+"&property="+data['property']+"&propertyreason="+data['propertyreason']+"&location_details=edit",
-                  text: "Change",
-                  visuallyHiddenText: "What is the Unique Property Reference Number (UPRN)?"
-                }
-              ]
-            }
-          },
-
-          {
-            key: {
-              text: "British National Grid X (Easting)"
-            },
-            value: {
-              text: data['bngc-x-input']|default("533172", true)
-            },
-            actions: {
-              items: [
-                {
-                  href: "location-details?reason="+data['reason']+"&property="+data['property']+"&propertyreason="+data['propertyreason']+"&location_details=edit",
-                  text: "Change",
-                  visuallyHiddenText: "British National Grid X (Easting)"
-                }
-              ]
-            }
-          },
-
-          {
-            key: {
-              text: "British National Grid Y (Northing)"
-            },
-            value: {
-              text: data['bngc-y-input']|default("180611", true)
-            },
-            actions: {
-              items: [
-                {
-                  href: "location-details?reason="+data['reason']+"&property="+data['property']+"&propertyreason="+data['propertyreason']+"&location_details=edit",
-                  text: "Change",
-                  visuallyHiddenText: "British National Grid Y (Northing)"
-                }
-              ]
-            }
-          }
-
-        ]
-      }) }}
 
 
 <!--

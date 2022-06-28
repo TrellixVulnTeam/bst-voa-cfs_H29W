@@ -60,8 +60,8 @@ Does this property have a planning portal reference?
 
              items: [
              {
-               value: "Yes~owner-occupier-details?propertyreason=occupier",
-               text: "Yes",
+							 value: "Yes~location-details?reason="+data['reason']+"&property="+data['property'],
+	 						 text: "Yes",
 							 checked: checked("planning_reference_number_available", "Yes"),
                conditional: {
                  html: textHtml

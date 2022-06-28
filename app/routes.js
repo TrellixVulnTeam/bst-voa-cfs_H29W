@@ -1021,17 +1021,25 @@ router.post('/webform/ct/billing-reference', function (req, res) {
 // Run this code when a form is submitted to 'confirm-remove-failed-report'
 router.post('/webform/ct/owner-occupier-details', function (req, res) {
 
-  // Make a variable and give it the value from 'how-many-balls'
-  var address_same_check = req.session.data['address_same_check']
 
-  // Check whether the variable matches a condition
-  if (address_same_check == "No"){
-    // Send user to next page
-    res.redirect('/webform/ct/address-postcode-lookup?propertyreason=occupier')
-  } else {
-    // Send user to ineligible page
-    res.redirect('/webform/ct/location-details')
-  }
+
+    var reason = req.session.data['reason']
+
+    var property = req.session.data['property']
+
+
+    // Make a variable and give it the value from 'how-many-balls'
+    var address_same_check = req.session.data['address_same_check']
+
+    // Check whether the variable matches a condition
+    if (address_same_check == "No"){
+      // Send user to next page
+      res.redirect('/webform/ct/address-postcode-lookup?propertyreason=occupier')
+    } else {
+        alert();
+      // Send user to ineligible page
+      res.redirect('/webform/ct/check-answers?reason='+reason+'&property='+property)
+    }
 
 })
 
@@ -1039,7 +1047,11 @@ router.post('/webform/ct/owner-occupier-details', function (req, res) {
 router.post('/webform/ct/no-planning-reference', function (req, res) {
 
 
-    res.redirect('/webform/ct/owner-occupier-details?propertyreason=occupier')
+    //res.redirect('/webform/ct/owner-occupier-details?propertyreason=occupier')
+    var reason = req.session.data['reason']
+    var property = req.session.data['property']
+
+      res.redirect('location-details?reason='+reason+'&property='+property)
 
 })
 
@@ -1123,6 +1135,8 @@ router.post('/webform/ct/address-verify', function (req, res) {
 
   var property = req.session.data['property']
 
+    var reason = req.session.data['reason']
+
 
 
 console.log("newpropertyreason = " +reason_new )
@@ -1135,8 +1149,8 @@ console.log("newpropertyreason = " +reason_new )
 
 
   } else {
-    // Send user to ineligible page
-    res.redirect('/webform/ct/location-details?propertyreason='+propertyreason)
+    res.redirect('/webform/ct/check-answers?propertyreason='+propertyreason+'&reason='+propertyreason+'&property='+property)
+
   }
 
 
@@ -1247,12 +1261,28 @@ res.redirect('property-request-details?reason='+reason+'&property='+property)
 
 router.post('/webform/ct/location-details', function (req, res) {
 
-  var reason = req.session.data['reason']
-
-  var property = req.session.data['property']
 
 
-res.redirect('check-answers?reason='+reason+'&property='+property)
+    var reason = req.session.data['reason']
+
+    var property = req.session.data['property']
+
+    var propertyreason = req.session.data['propertyreason']
+
+    if(req.session.data['sub_reason_option'])
+    {
+        var sub_reason = req.session.data['sub_reason_option'].substring(0,4)
+    }
+
+    var reason = req.session.data['reason']
+
+    var property = req.session.data['property']
+
+
+  res.redirect('owner-occupier-details?propertyreason=occupier&reason='+reason+'&property='+property)
+
+
+
 
 
 
@@ -1304,8 +1334,9 @@ console.log("newpropertyreason = " +sub_reason )
     delete req.session.data['planning_reference_number']
     delete req.session.data['no_planning_reference_reason']
 
-      res.redirect('owner-occupier-details?propertyreason=occupier&reason='+reason+'&property='+property)
+      //res.redirect('owner-occupier-details?propertyreason=occupier&reason='+reason+'&property='+property)
 
+      res.redirect('location-details?propertyreason=occupier&reason='+reason+'&property='+property)
 
   } else {
     // Send user to ineligible page
@@ -1575,6 +1606,8 @@ router.post('/webform/ndr/address-verify', function (req, res) {
 
   var property = req.session.data['property']
 
+  var reason = req.session.data['reason']
+
 
 
 console.log("newpropertyreason = " +reason_new )
@@ -1588,7 +1621,7 @@ console.log("newpropertyreason = " +reason_new )
 
   } else {
     // Send user to ineligible page
-    res.redirect('/webform/ndr/check-answers?propertyreason='+propertyreason)
+    res.redirect('/webform/ndr/check-answers?propertyreason='+propertyreason+'&reason='+propertyreason+'&property='+property)
   }
 
 
