@@ -1036,7 +1036,7 @@ router.post('/webform/ct/owner-occupier-details', function (req, res) {
       // Send user to next page
       res.redirect('/webform/ct/address-postcode-lookup?propertyreason=occupier')
     } else {
-        alert();
+      
       // Send user to ineligible page
       res.redirect('/webform/ct/check-answers?reason='+reason+'&property='+property)
     }
