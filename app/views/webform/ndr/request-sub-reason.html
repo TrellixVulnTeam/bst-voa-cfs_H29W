@@ -40,9 +40,10 @@
 {%if data['reason']=="remove"%}
 
             {% set textHtml %}
-            {{ govukTextarea({
+            {{ govukCharacterCount({
               id: "other-reason-remove",
               name: "other-reason-remove",
+              maxlength: 250,
               type: "tel",
               autocomplete: "tel",
               value: data['other-reason-remove']|default("no reasons available for removing", true),
@@ -124,9 +125,10 @@
 
 
 			  {% set otherAmendHtml %}
-            {{ govukTextarea({
+            {{ govukCharacterCount({
               id: "other-reason-amend",
               name: "other-reason-amend",
+              maxlength: 250,
               type: "tel",
               value: data['other-reason-amend']|default("no reasons available for amending", true),
               autocomplete: "tel",
@@ -206,9 +208,10 @@
 
 
             {% set textHtmlnew %}
-            {{ govukTextarea({
+            {{ govukCharacterCount({
               id: "other_reason_new",
               name: "other_reason_new",
+              maxlength: 250,
               type: "tel",
               value: data['other_reason_new']|default("no reasons available for adding", true),
               autocomplete: "tel",

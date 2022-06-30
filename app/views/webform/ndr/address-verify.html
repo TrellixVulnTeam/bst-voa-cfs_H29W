@@ -29,9 +29,48 @@
                       <form class="form" action="/webform/ndr/address-verify?propertyreason={{data['propertyreason']}}" method="post">
 
 
-                        {%if data['address']%}
 
-                            {% set addresslist = data['address'].split(',') %}
+
+                        {%if data['addressid']%}
+
+                            {%
+                                  if data['addressid'] == "0"%}
+
+
+                                      {%set address_selected = "Addenbrooke House, Ironmasters Way, Town Centre, Telford, Shropshire, TF3 4NT"%}
+
+                                    {%
+                                          elseif data['addressid'] == "1"%}
+
+
+                                              {%set address_selected = "Cafe Go, Addenbrooke House, Ironmasters Way, Telford Town Centre, Telford, Shropshire, TF3 4NT"%}
+
+                                    {%
+                                          elseif data['addressid'] == "2"%}
+
+
+                                                {%set address_selected = "Eighth Floor, Plaza One, Ironmasters Way, Telford Town Centre, Telford, Shropshire, TF3 4NT"%}
+
+
+                                    {%
+                                          elseif data['addressid'] == "3"%}
+
+                                                {%set address_selected = "Fifth Floor, Plaza One, Ironmasters Way, Telford Town Centre, Telford, Shropshire, TF3 4NT"%}
+
+
+                                    {%
+                                          elseif data['addressid'] == "4"%}
+
+
+                                          {%set address_selected = "First Floor, Plaza One, Ironmasters Way, Telford Town Centre, Telford, Shropshire, TF3 4NT"%}
+
+
+
+                                    {%endif%}
+
+
+
+                            {% set addresslist = address_selected.split(',') %}
 
                         {%else%}
                             {%set printaddress = "Addenbrooke House,
@@ -143,7 +182,7 @@
 
 
 
-                          {%if data['address']%}
+                          {%if address_selected%}
 
 
 
@@ -179,7 +218,7 @@
 
                         <div class="govuk-button-group">
 
-                          <input type="hidden" name="address_array" id="address_array" value="{{data['address']}}">
+                          <input type="hidden" name="address_array" id="address_array" value="{{address_selected}}">
 
                         {%if data['propertyreason'] == "occupier"%}
 

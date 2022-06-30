@@ -1,4 +1,4 @@
-{% extends "layout.html" %}
+/ct/{% extends "layout.html" %}
 
 {%
 
@@ -53,7 +53,15 @@ Addresses for {{show_postcode}}
 
 
 
+    <nav class="moj-pagination" aria-labelledby="pagination-label">
 
+
+      <p class="moj-pagination__results">Showing <b>1</b> to <b>5</b> of <b>5</b> addresses</p>
+
+
+
+
+    </nav>
 
 
 
@@ -64,10 +72,12 @@ Addresses for {{show_postcode}}
   					{% if error %}
   					<span class="error-message">Select a business address</span>
   					{% endif %}
-
+<!--
             <legend class="govuk-heading-s">
              Select an address
            </legend>
+
+           -->
   					{% for address in addresses%}
                   {%set radioid = "address" + loop.index0
               %}
@@ -80,7 +90,7 @@ Addresses for {{show_postcode}}
 
             {%else%}
 
-
+<!--
             <div class="govuk-form-group">
                 <fieldset class="govuk-fieldset">
                 <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
@@ -132,6 +142,113 @@ Addresses for {{show_postcode}}
                 </fieldset>
             </div>
 
+-->
+            <div class="govuk-form-group">
+
+
+              <table class="govuk-table" id="search-results-table">
+
+
+                        <thead class="govuk-table__head">
+                        <tr class="govuk-table__row">
+
+                           <th scope="col" class="govuk-table__header">Address</th>
+
+
+
+                        </tr>
+                        </thead>
+
+                        <tbody class="govuk-table__body">
+
+                        <tr class="govuk-table__row">
+
+
+                              <td class="govuk-table__cell"><a href="/webform/ct/address-verify?property={{data['property']}}&reason={{data['request']}}&propertyreason={{data['propertyreason']}}&addressid=0" class="govuk-link" title="Property address for Addenbrooke House, Ironmasters Way, Town Centre, Telford, Shropshire, TF3 4NT">Addenbrooke House, Ironmasters Way, Town Centre, Telford, Shropshire, TF3 4NT</a></td>
+
+
+
+
+                        </tr>
+
+                        <tr class="govuk-table__row">
+
+
+                              <td class="govuk-table__cell"><a href="/webform/ct/address-verify?property={{data['property']}}&reason={{data['request']}}&propertyreason={{data['propertyreason']}}&addressid=1" class="govuk-link" title="Property address for Cafe Go, Addenbrooke House, Ironmasters Way, Telford Town Centre, Telford, Shropshire, TF3 4NT">Cafe Go, Addenbrooke House, Ironmasters Way, Telford Town Centre, Telford, Shropshire, TF3 4NT</a></td>
+
+
+
+
+                        </tr>
+
+                        <tr class="govuk-table__row">
+
+
+                              <td class="govuk-table__cell"><a href="/webform/ct/address-verify?property={{data['property']}}&reason={{data['request']}}&propertyreason={{data['propertyreason']}}&addressid=2" class="govuk-link" title="Property address for Eighth Floor, Plaza One, Ironmasters Way, Telford Town Centre, Telford, Shropshire, TF3 4NT">Eighth Floor, Plaza One, Ironmasters Way, Telford Town Centre, Telford, Shropshire, TF3 4NT</a></td>
+
+
+
+
+                        </tr>
+
+                        <tr class="govuk-table__row">
+
+
+                              <td class="govuk-table__cell"><a href="/webform/ct/address-verify?property={{data['property']}}&reason={{data['request']}}&propertyreason={{data['propertyreason']}}&addressid=3" class="govuk-link" title="Property address for Fifth Floor, Plaza One, Ironmasters Way, Telford Town Centre, Telford, Shropshire, TF3 4NT">Fifth Floor, Plaza One, Ironmasters Way, Telford Town Centre, Telford, Shropshire, TF3 4NT</a></td>
+
+
+
+
+                        </tr>
+
+                        <tr class="govuk-table__row">
+
+
+                              <td class="govuk-table__cell"><a href="/webform/ct/address-verify?property={{data['property']}}&reason={{data['request']}}&propertyreason={{data['propertyreason']}}&addressid=4" class="govuk-link" title="Property address for First Floor, Plaza One, Ironmasters Way, Telford Town Centre, Telford, Shropshire, TF3 4NT">First Floor, Plaza One, Ironmasters Way, Telford Town Centre, Telford, Shropshire, TF3 4NT</a></td>
+
+
+
+
+                        </tr>
+
+
+
+
+
+                        </tbody>
+                        </table>
+
+
+
+                        <p class="govuk-visually-hidden" id="pagination-label">Pagination navigation</p>
+
+                        <ul class="moj-pagination__list">
+                        <li class="moj-pagination__item  moj-pagination__item--prev">
+                        <a class="moj-pagination__link" href="">Previous<span class="govuk-visually-hidden"> set of pages</span></a>
+                        </li>
+
+                        <li class="moj-pagination__item moj-pagination__item--active">1</li>
+
+                        <li class="moj-pagination__item"><a class="moj-pagination__link" href="/page=1">2</a></li>
+
+                        <li class="moj-pagination__item"><a class="moj-pagination__link" href="/page=3">3</a></li>
+
+                        <li class="moj-pagination__item moj-pagination__item--dots">...</li>
+
+                        <li class="moj-pagination__item"><a class="moj-pagination__link" href="/page=5">5</a></li>
+
+                        <li class="moj-pagination__item  moj-pagination__item--next">
+                        <a class="moj-pagination__link" href="">Next<span class="govuk-visually-hidden"> set of pages</span></a>
+                        </li>
+                        </ul>
+
+
+
+            </div>
+
+
+
+
 
 
 
@@ -140,17 +257,19 @@ Addresses for {{show_postcode}}
 
 
   				</div>
+
+
   				<p class="govuk-body govuk-!-padding-top-1 govuk-!-padding-bottom-3 "><a href="/webform/ct/address-enter?propertyreason={{data['propertyreason']}}&action=new">If the address is not listed you can enter the address manually</a></p>
           <div class="govuk-button-group">
 
 
 
-
+<!--
     {{ govukButton({
       text: "Continue",
       value: "addressconfirm"
     }) }}
-
+-->
     {{ govukButton({
       text: "Change postcode",
       href: "address-postcode-lookup?postcode=" + show_postcode,

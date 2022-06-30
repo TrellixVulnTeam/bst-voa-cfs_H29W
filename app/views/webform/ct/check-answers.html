@@ -53,7 +53,7 @@
       }) }}
 
 
-      {%if(data['report_reason']!="adding a new property")%}
+      {%if(data['report_reason']!="adding a property")%}
 
 
 
@@ -74,7 +74,7 @@
             {%set sub_reason_request = "Reason for demolishing property"%}
 
 
-        {%elseif(data['report_reason']=="making amendments to a property")%}
+        {%elseif(data['report_reason']=="Amending address, use, or other property details")%}
 
               {%set sub_reason_request = "Reason for amending property"%}
 
@@ -213,7 +213,7 @@
                   href: "address-enter?action=edit&reason="+data['reason']+"&property="+data['property']+"&propertyreason="+data['propertyreason'],
                   text: "Change",
                   visuallyHiddenText: "property address"
-                } if (data['report_reason']|default("removing a property", true) == "adding a new property") else
+                } if (data['report_reason']|default("removing a property", true) == "adding a property") else
 
                 {
                   href: "#",
@@ -301,7 +301,7 @@
 
       {%endif%}
 
-{%if data['report_reason']=="adding a new property"%}
+{%if data['report_reason']=="adding a property"%}
 
       {%set propertyremarks =data['textarea_remarks']|default("New Residential property added", true)
 
