@@ -126,14 +126,16 @@
 				     <!-- update count once the user removes the 1 issue with data error -->
 						  {% if data['removerowissue'] == 1 %}
 
-							  1 report has data errors. You must fix or remove it before you can submit your reports
+							  1 report has a data error. You must fix or remove it before you can submit your reports
 
 						  <!-- update count once the user corrects the 2 issues using webform -->
 						  {%elseif data['correctedissues'] == 2%}
-							 1 report has data errors. You must fix or remove it before you can submit your reports
+							 1 report has a data error. You must fix or remove it before you can submit your reports
 						  {%else%}
 								2 reports have data errors. You must fix or remove these before you can submit your reports
 						  {% endif %}
+
+
 
 
 
