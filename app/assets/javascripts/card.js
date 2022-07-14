@@ -4,8 +4,16 @@ var card = (function () {
   // Capture when a user clicks
   $('.card-body').on('click', function () {
     var url = $(this).find('a').attr('href')
+    var target = $(this).find('a').attr('target')
+
     if (url !== undefined) {
-      window.location.href = url
+
+      if(target == '_blank') {
+                window.open(url, target)
+            } else {
+                  window.location.href = url
+            }
+
     }
   })
  // set max height for any collection of elements
