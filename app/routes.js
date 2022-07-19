@@ -945,11 +945,11 @@ console.log("reason code = " +reason_remove )
 
 
     if ((reason == "remove")||(reason == "amend")) {
-      res.redirect('/webform/ct/billing-reference?reason='+reason+'&property='+property)
+      res.redirect('/webform/ct/billing-auth-ref-no?reason='+reason+'&property='+property)
       }
       else {
         //res.redirect('/webform/ct/address-postcode-lookup?reason='+reason+'&property='+property+'&propertyreason=new')
-        res.redirect('/webform/ct/billing-reference?reason='+reason+'&property='+property+'&propertyreason=new')
+        res.redirect('/webform/ct/billing-auth-ref-no?reason='+reason+'&property='+property+'&propertyreason=new')
       }
 
 
@@ -982,7 +982,7 @@ router.post('/reference-details', function (req, res) {
 })
 
 
-router.post('/webform/ct/billing-reference', function (req, res) {
+router.post('/webform/ct/billing-auth-ref-no', function (req, res) {
 
   // Make a variable and give it the value from 'how-many-balls'
   var reason = req.session.data['reason']
@@ -1036,9 +1036,9 @@ router.post('/webform/ct/owner-occupier-details', function (req, res) {
       // Send user to next page
       res.redirect('/webform/ct/address-postcode-lookup?propertyreason=occupier')
     } else {
-      
+
       // Send user to ineligible page
-      res.redirect('/webform/ct/check-answers?reason='+reason+'&property='+property)
+      res.redirect('/webform/ct/property-request-details?reason='+reason+'&property='+property)
     }
 
 })
@@ -1145,11 +1145,11 @@ console.log("newpropertyreason = " +reason_new )
   if (propertyreason == "new"){
     // Send user to next page
 
-      res.redirect('property-request-details?reason='+propertyreason+'&property='+property)
+      res.redirect('planning-reference-details?reason='+propertyreason+'&property='+property)
 
 
   } else {
-    res.redirect('/webform/ct/check-answers?propertyreason='+propertyreason+'&reason='+propertyreason+'&property='+property)
+    res.redirect('/webform/ct/property-request-details?propertyreason='+propertyreason+'&reason='+propertyreason+'&property='+property)
 
   }
 
@@ -1234,7 +1234,7 @@ console.log("newpropertyreason = " +sub_reason )
     // Send user to next page
     delete req.session.data['radio_council_tax_band']
 
-      res.redirect('property-request-details?reason='+reason+'&property='+property)
+      res.redirect('planning-reference-details?reason='+reason+'&property='+property)
 
 
   } else {
@@ -1245,14 +1245,14 @@ console.log("newpropertyreason = " +sub_reason )
 
 })
 
-router.post('/webform/ct/council-tax-band', function (req, res) {
+router.post('/webform/ct/property-request-details', function (req, res) {
 
   var reason = req.session.data['reason']
 
   var property = req.session.data['property']
 
 
-res.redirect('property-request-details?reason='+reason+'&property='+property)
+res.redirect('check-answers?reason='+reason+'&property='+property)
 
 
 
@@ -1303,7 +1303,7 @@ res.redirect('webform-submission-confirmation?reason='+reason+'&property='+prope
 
 })
 
-router.post('/webform/ct/property-request-details', function (req, res) {
+router.post('/webform/ct/council-tax-band', function (req, res) {
 
   // Make a variable and give it the value from 'how-many-balls'
 
@@ -1395,11 +1395,11 @@ console.log("reason code = " +reason_remove )
 
 
     if ((reason == "remove")||(reason == "amend")) {
-      res.redirect('/webform/ndr/billing-reference?reason='+reason+'&property='+property)
+      res.redirect('/webform/ndr/billing-auth-ref-no?reason='+reason+'&property='+property)
       }
       else {
         //res.redirect('/webform/ct/address-postcode-lookup?reason='+reason+'&property='+property+'&propertyreason=new')
-        res.redirect('/webform/ndr/billing-reference?reason='+reason+'&property='+property+'&propertyreason=new')
+        res.redirect('/webform/ndr/billing-auth-ref-no?reason='+reason+'&property='+property+'&propertyreason=new')
       }
 
 
@@ -1407,7 +1407,7 @@ console.log("reason code = " +reason_remove )
 
 
 
-router.post('/webform/ndr/billing-reference', function (req, res) {
+router.post('/webform/ndr/billing-auth-ref-no', function (req, res) {
 
   // Make a variable and give it the value from 'how-many-balls'
   var reason = req.session.data['reason']
@@ -1464,7 +1464,7 @@ console.log("newpropertyreason = " +sub_reason )
     // Send user to next page
     delete req.session.data['radio_council_tax_band']
 
-      res.redirect('property-request-details?reason='+reason+'&property='+property)
+      res.redirect('planning-reference-details?reason='+reason+'&property='+property)
 
 
   } else {
@@ -1478,7 +1478,7 @@ console.log("newpropertyreason = " +sub_reason )
 
 
 
-router.post('/webform/ndr/property-request-details', function (req, res) {
+router.post('/webform/ndr/property-description', function (req, res) {
 
   // Make a variable and give it the value from 'how-many-balls'
 
@@ -1539,7 +1539,7 @@ router.post('/webform/ndr/owner-occupier-details', function (req, res) {
     res.redirect('/webform/ndr/address-postcode-lookup?propertyreason=occupier')
   } else {
     // Send user to ineligible page
-    res.redirect('/webform/ndr/check-answers?reason='+reason+'&property='+property)
+    res.redirect('/webform/ndr/property-request-details?reason='+reason+'&property='+property)
   }
 
 })
@@ -1621,7 +1621,7 @@ console.log("newpropertyreason = " +reason_new )
 
   } else {
     // Send user to ineligible page
-    res.redirect('/webform/ndr/check-answers?propertyreason='+propertyreason+'&reason='+propertyreason+'&property='+property)
+    res.redirect('/webform/ndr/property-request-details?propertyreason='+propertyreason+'&reason='+propertyreason+'&property='+property)
   }
 
 
@@ -1701,14 +1701,14 @@ res.redirect('owner-occupier-details?propertyreason=occupier&reason='+reason+'&p
 
 })
 
-router.post('/webform/ndr/property-description', function (req, res) {
+router.post('/webform/ndr/property-request-details', function (req, res) {
 
   var reason = req.session.data['reason']
 
   var property = req.session.data['property']
 
 
-res.redirect('property-request-details?reason='+reason+'&property='+property)
+res.redirect('check-answers?reason='+reason+'&property='+property)
 
 
 
