@@ -1,0 +1,82 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Enter the billing authority report number
+{% endblock %}
+
+{% block beforeContent %}
+
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-one-third">
+			{{ govukBackLink({
+			  text: "Back",
+			  href: "javascript:window.history.back()"
+			}) }}
+		</div>
+		{% include "includes/header-section-signedin.html" %}
+	</div>
+{% endblock %}
+{% block content %}
+
+<form method="post" action="/webform/ndr/billing-auth-ref-no">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+                  <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                <h1 class="govuk-fieldset__heading">
+                  References
+                </h1>
+              </legend>
+
+
+
+            <div class="govuk-form-group">
+            <label class="govuk-label govuk-label--m" for="input-bill-auth-report-no">
+              Billing authority report number
+            </label>
+
+            <input class="govuk-input govuk-input--width-20" id="input-bill-auth-report-no" name="input-bill-auth-report-no" value="{{data['input-bill-auth-report-no']|default(data['billing_auth_report_no'], true)}}">
+            </div>
+
+            <div class="govuk-form-group">
+            <label class="govuk-label govuk-label--m" for="input_property_billing_ref_no">
+              Billing authority reference number
+            </label>
+
+            <div id="input_property_billing_ref_no-hint" class="govuk-hint">
+              For example,  1234567899
+            </div>
+
+            <input class="govuk-input govuk-input--width-20" id="input_property_billing_ref_no" name="input_property_billing_ref_no" value="{{data['input_property_billing_ref_no']|default(data['billing_auth_ref_no'], true)}}">
+            </div>
+
+
+
+
+
+
+
+
+
+
+
+
+            </fieldset>
+          </div>
+
+          <button class="govuk-button" data-module="govuk-button">
+            Continue
+          </button>
+
+
+
+
+
+
+
+        </div>
+      </div>
+</form>
+{% endblock %}

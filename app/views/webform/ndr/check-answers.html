@@ -23,34 +23,7 @@
 
       <h1 class="govuk-heading-l">Check details before sending the report</h1>
 
-      <h2 class="govuk-heading-m">Report number</h2>
 
-
-
-
-
-      {{ govukSummaryList({
-        classes: 'govuk-!-margin-bottom-9',
-        rows: [
-          {
-            key: {
-              text: "Billing authority report number"
-            },
-            value: {
-              text: data['input-bill-auth-report-no']|default("C01324", true)
-            },
-            actions: {
-              items: [
-                {
-                  href: "enter-billing-auth-rep-no?property="+data['property']+"&billing_auth_report_no="+data['input-bill-auth-report-no']|default("C01324", true),
-                  text: "Change",
-                  visuallyHiddenText: "name"
-                }
-              ]
-            }
-          }
-        ]
-      }) }}
 
 
 
@@ -193,12 +166,29 @@
       }) }}
 
 
-      <h2 class="govuk-heading-m">Property number</h2>
+      <h2 class="govuk-heading-m">Property references</h2>
 
 
       {{ govukSummaryList({
         classes: 'govuk-!-margin-bottom-9',
         rows: [
+        {
+          key: {
+            text: "Billing authority report number"
+          },
+          value: {
+            text: data['input-bill-auth-report-no']|default("C01324", true)
+          },
+          actions: {
+            items: [
+              {
+                href: "enter-billing-auth-rep-no?property="+data['property']+"&billing_auth_report_no="+data['input-bill-auth-report-no']|default("C01324", true),
+                text: "Change",
+                visuallyHiddenText: "name"
+              }
+            ]
+          }
+        },
           {
             key: {
               text: "Billing authority reference number"
@@ -329,10 +319,10 @@
       }) }}
 
 
+{%if (data['planning_reference_number_available']) %}
 
-
-      <h2 class="govuk-heading-m">Change details</h2>
-
+      <h2 class="govuk-heading-m">Plan details</h2>
+{%endif%}
 
       {%if(data['effective_date']==null)
       %}
@@ -386,43 +376,7 @@
         classes: '',
         rows: [
 
-        {
-          key: {
-            text: "Effective date"
-          },
-          value: {
-            text: data['effective_date']|default("April 25, 2022", true)
-          },
-          actions: {
-            items: [
-              {
-                href: "property-request-details?reason="+data['reason']+"&property="+data['property']+"&remarks=edit",
-                text: "Change",
-                visuallyHiddenText: "Effective date"
-              }
-            ]
-          }
-        },
 
-
-          {
-            key: {
-              text: "Remarks"
-            },
-            value: {
-              text: propertyremarks | safe
-
-            },
-            actions: {
-              items: [
-                {
-                  href: "property-request-details?reason="+data['reason']+"&property="+data['property']+"&remarks=edit",
-                  text: "Change",
-                  visuallyHiddenText: "Remarks"
-                }
-              ]
-            }
-          },
 
           {
             key: {
@@ -717,6 +671,52 @@
 
           {%endif%}
 
+          <h2 class="govuk-heading-m">Change details</h2>
+
+
+
+          {{ govukSummaryList({
+            classes: 'govuk-!-margin-bottom-9',
+            rows: [
+            {
+              key: {
+                text: "Effective date"
+              },
+              value: {
+                text: data['effective_date']|default("April 25, 2022", true)
+              },
+              actions: {
+                items: [
+                  {
+                    href: "property-request-details?reason="+data['reason']+"&property="+data['property']+"&remarks=edit",
+                    text: "Change",
+                    visuallyHiddenText: "Effective date"
+                  }
+                ]
+              }
+            },
+
+
+              {
+                key: {
+                  text: "Remarks"
+                },
+                value: {
+                  text:  propertyremarks | safe
+
+                },
+                actions: {
+                  items: [
+                    {
+                      href: "property-request-details?reason="+data['reason']+"&property="+data['property']+"&remarks=edit",
+                      text: "Change",
+                      visuallyHiddenText: "Remarks"
+                    }
+                  ]
+                }
+              }
+            ]
+          }) }}
 
 
 
