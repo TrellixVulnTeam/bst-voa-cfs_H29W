@@ -26,9 +26,11 @@
             <fieldset class="govuk-fieldset">
               <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                 <h1 class="govuk-fieldset__heading">
-                  References
+                  Reference numbers
                 </h1>
               </legend>
+
+
 
 
 
@@ -36,7 +38,9 @@
             <label class="govuk-label govuk-label--m" for="input-bill-auth-report-no">
               Billing authority report number
             </label>
-
+            <div id="input-bill-auth-report-no-hint" class="govuk-hint">
+              Your reference number for this report
+            </div>
             <input class="govuk-input govuk-input--width-20" id="input-bill-auth-report-no" name="input-bill-auth-report-no" value="{{data['input-bill-auth-report-no']|default(data['billing_auth_report_no'], true)}}">
             </div>
 
@@ -45,8 +49,9 @@
               Billing authority reference number
             </label>
 
+
             <div id="input_property_billing_ref_no-hint" class="govuk-hint">
-              For example,  1234567899
+              Your reference number for the property this report is about
             </div>
 
             <input class="govuk-input govuk-input--width-20" id="input_property_billing_ref_no" name="input_property_billing_ref_no" value="{{data['input_property_billing_ref_no']|default(data['billing_auth_ref_no'], true)}}">
