@@ -157,29 +157,40 @@
 
 
 
-      if(data['property_new_address']==null)
-      %}
-      {%    set property_address = data['static_property_address']|default("1st, Custom House Annexe, 20 Lower Thames St, London EC3R 6EE", true)%}
-
-
-
-      {% else%}
-
-        {%   set property_address = data['property_new_address']%}
-
-      {%endif%}
-
-
-
-      {%  if(data['occupier_property_address']==null)
+        if(data['property_new_address']==null)
         %}
-            {%set occupier_property_address = "1st, Custom House Annexe, 20 Lower Thames St, London EC3R 6EE"%}
+        {%    set property_address = data['static_property_address']|default("1st, Custom House Annexe, 20 Lower Thames St, London EC3R 6EE", true)%}
+
+
 
         {% else%}
 
-          {%  set occupier_property_address = data['occupier_property_address']%}
+                {%set new_property_address = data['new-property-address-line-1']|default("1st", true) + ", " + data['new-property-address-line-2']|default("Custom House Annexe", true) + ", " +   data['new-property-address-line-3']|default("20 Lower Thames St", true) + ", " +   data['new-property-address-town-city']|default("London", true) + ", " +   data['new-property-address-postcode']|default("EC3R 6EE", true)%}
+
+
+
+
+
+
+
+
 
         {%endif%}
+
+
+
+        {%  if(data['occupier_property_address']==null)
+          %}
+              {%set occupier_property_address = "1st, Custom House Annexe, 20 Lower Thames St, London EC3R 6EE"%}
+
+          {% else%}
+
+          {%set occupier_property_address = data['occupier-property-address-line-1']|default("1st", true) + ", " + data['occupier-property-address-line-2']|default("Custom House Annexe", true) + ", " +   data['occupier-property-address-line-3']|default("20 Lower Thames St", true) + ", " +   data['occupier-property-address-town-city']|default("London", true) + ", " +   data['occupier-property-address-postcode']|default("EC3R 6EE", true)%}
+
+
+
+
+          {%endif%}
 
 
 
@@ -195,12 +206,12 @@
               text: "Address"
             },
             value: {
-              text:  property_address | striptags(true) | escape | nl2br
+              text:  new_property_address | striptags(true) | escape | nl2br
             },
             actions: {
               items: [
                 {
-                  href: "address-enter?action=edit&reason="+data['reason']+"&property="+data['property']+"&propertyreason="+data['propertyreason'],
+                  href: "address-verify?reason="+data['reason']+"&property="+data['property']+"&propertyreason=new",
                   text: "Change",
                   visuallyHiddenText: "property address"
                 } if (data['report_reason']|default("removing a property", true) == "adding a property") else
@@ -560,12 +571,12 @@
                                 text: "Contact address"
                               },
                               value: {
-                                html: data['occupier_property_address']|default("1st, Custom House Annexe, 20 Lower Thames St, London EC3R 6EE", true)
+                                html: occupier_property_address | striptags(true) | escape | nl2br
                               },
                               actions: {
                                 items: [
                                   {
-                                    href: "address-enter?action=edit&reason="+data['reason']+"&property="+data['property']+"&propertyreason="+data['propertyreason'],
+                                    href: "address-verify?action=edit&reason="+data['reason']+"&property="+data['property']+"&propertyreason=occupier",
                                     text: "Change",
                                     visuallyHiddenText: "Contact address"
                                   }
@@ -594,7 +605,7 @@
                 actions: {
                   items: [
                     {
-                      href: "address-enter?action=edit&reason="+data['reason']+"&property="+data['property']+"&propertyreason="+data['propertyreason']+"&owner_occupier=edit",
+                      href: "address-verify?action=edit&reason="+data['reason']+"&property="+data['property']+"&propertyreason="+data['propertyreason']+"&owner_occupier=edit",
                       text: "Change",
                       visuallyHiddenText: "property address?"
                     }

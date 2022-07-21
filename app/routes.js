@@ -1114,7 +1114,11 @@ router.post('/webform/ct/address-list', function (req, res) {
   var address = req.session.data['address']
 console.log("address = " +address )
   // Check whether the variable matches a condition
-
+  delete req.session.data['property-address-line-1']
+  delete req.session.data['property-address-line-2']
+  delete req.session.data['property-address-line-3']
+  delete req.session.data['property-address-town-city']
+  delete req.session.data['property-address-postcode']
     // Send user to next page
 
 
@@ -1587,6 +1591,13 @@ console.log("address = " +address )
   // Check whether the variable matches a condition
 
     // Send user to next page
+
+    delete req.session.data['property-address-line-1']
+    delete req.session.data['property-address-line-2']
+    delete req.session.data['property-address-line-3']
+    delete req.session.data['property-address-town-city']
+    delete req.session.data['property-address-postcode']
+
 
 
     res.redirect('/webform/ndr/address-verify?propertyreason='+propertyreason)

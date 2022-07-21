@@ -73,6 +73,13 @@
                             {% set addresslist = address_selected.split(',') %}
 
                         {%else%}
+
+
+
+
+                            {% set addresslist = data['address'].split(',') %}
+
+
                             {%set printaddress = "Addenbrooke House,
                             Ironmasters Way,
                             Town Centre,
@@ -89,12 +96,17 @@
 
 
 
-                                                {% if data['property-address-line-1'].length > 0 %}
+                                                {% if ((data['property-address-line-1'].length > 0) and (data['propertyreason']=='new')) %}
 
 
                                                       {% set address1_value = data['property-address-line-1'] + ", " %}
 
+                                                      test123  {{data['address']}}
+
+
+
                                                 {%else%}
+
 
                                                         {% set address1_value = addresslist[0] + ", " %}
 
@@ -174,120 +186,192 @@
 
 
 
-                                                <h1 class="govuk-heading-l">Confirm address</h1>
+                      <h1 class="govuk-heading-l">Confirm address</h1>
 
 
 
-                                                  <p class="govuk-body">
+                        <p class="govuk-body">
 
-                                                        Confirm or update the address details to continue.
+                              Confirm or update the address details to continue.
 
-                                                    </p>
-
-
-                          <!--
-                                                    {%if address_selected%}
+                          </p>
 
 
-
-
-                                                          {#{address1_value}#}
-
-                                                          <br/>
-
-                                                          {#{address2_value}#}
-
-                                                          <br/>
-                                                          {#{address3_value}#}
-
-
-                                                          <br/>
-                                                              {#{address_city}#}
-                                                              <br/>
-                                                                  {#{address_postcode}#}
-
-                                                    {%else%}
+<!--
+                          {%if address_selected%}
 
 
 
-                                                        {*{ printaddress | striptags(true) | escape | nl2br }*}
 
-                                                    {%endif%}
-                          -->
-                                                    {{ govukInput({
-                                                      label: {
-                                                        html: 'Address line 1 <span class="govuk-visually-hidden">line 1 of 2</span>'
-                                                      },
-                                                      classes: "govuk-!-width-two-thirds",
-                                                      id: "property-address-line-1",
-                                                      name: "property-address-line-1",
-                                                      value: data['property-address-line-1']|default(addresslist[0] + ',' + addresslist[1], true),
-                                                      autocomplete: "address-line1"
-                                                    }) }}
+                                {#{address1_value}#}
+
+                                <br/>
+
+                                {#{address2_value}#}
+
+                                <br/>
+                                {#{address3_value}#}
 
 
-                                                    {{ govukInput({
-                                                      label: {
-                                                        text: "Address line 2 (optional)"
-                                                      },
-                                                      classes: "govuk-!-width-two-thirds",
-                                                      id: "property-address-line-2",
-                                                      name: "property-address-line-2",
-                                                      value: data['property-address-line-2']|default(addresslist[2], true),
-                                                      autocomplete: "address-level2"
-                                                    }) }}
+                                <br/>
+                                    {#{address_city}#}
+                                    <br/>
+                                        {#{address_postcode}#}
 
-                                                    {{ govukInput({
-                                                      label: {
-                                                        text: "Address line 3 (optional)"
-                                                      },
-                                                      classes: "govuk-!-width-two-thirds",
-                                                      id: "property-address-line-3",
-                                                      name: "property-address-line-3",
-                                                      value: data['property-address-line-3']|default(addresslist[3], true),
-                                                      autocomplete: "address-level2"
-                                                    }) }}
-
-                                                    {{ govukInput({
-                                                      label: {
-                                                        text: "Town/city"
-                                                      },
-                                                      classes: "govuk-!-width-two-thirds",
-                                                      id: "property-address-town-city",
-                                                      value: data['property-address-city']|default(addresslist[4] + ',' + addresslist[5], true),
-                                                      name: "property-address-town-city"
-                                                    }) }}
-
-                                                    {{ govukInput({
-                                                      label: {
-                                                        text: "Postcode"
-                                                      },
-                                                      hint: {
-                                                          text: "For example SW1 6GH"
-                                                    },
-
-                                                      classes: "govuk-input--width-10",
-                                                      id: "property-address-postcode",
-                                                      name: "property-address-postcode",
-                                                      value: data['property-address-postcode']|default(addresslist[6], true),
-                                                      autocomplete: "postal-code"
-
-                                                    }) }}
+                          {%else%}
 
 
 
-                      <!--    <p class="govuk-body"><a href="/webform/ndr/address-enter?action=edit">Edit</a></p>-->
+                              {*{ printaddress | striptags(true) | escape | nl2br }*}
+
+                          {%endif%}
+-->
+ {%if data['propertyreason'] == "occupier"%}
+
+
+
+                          {{ govukInput({
+                            label: {
+                              html: 'Address line 1 <span class="govuk-visually-hidden">line 1 of 2</span>'
+                            },
+                            classes: "govuk-!-width-two-thirds",
+                            id: "occupier-property-address-line-1",
+                            name: "occupier-property-address-line-1",
+                            value: data['occupier-property-address-line-1']|default(addresslist[0] + ',' + addresslist[1], true),
+                            autocomplete: "address-line1"
+                          }) }}
+
+
+                          {{ govukInput({
+                            label: {
+                              text: "Address line 2 (optional)"
+                            },
+                            classes: "govuk-!-width-two-thirds",
+                            id: "occupier-property-address-line-2",
+                            name: "occupier-property-address-line-2",
+                            value: data['occupier-property-address-line-2']|default(addresslist[2], true),
+                            autocomplete: "address-level2"
+                          }) }}
+
+                          {{ govukInput({
+                            label: {
+                              text: "Address line 3 (optional)"
+                            },
+                            classes: "govuk-!-width-two-thirds",
+                            id: "occupier-property-address-line-3",
+                            name: "occupier-property-address-line-3",
+                            value: data['occupier-property-address-line-3']|default(addresslist[3], true),
+                            autocomplete: "address-level2"
+                          }) }}
+
+                          {{ govukInput({
+                            label: {
+                              text: "Town/city"
+                            },
+                            classes: "govuk-!-width-two-thirds",
+                            id: "occupier-property-address-town-city",
+                            value: data['occupier-property-address-town-city']|default(addresslist[4] + ',' + addresslist[5], true),
+                            name: "occupier-property-address-town-city"
+                          }) }}
+
+                          {{ govukInput({
+                            label: {
+                              text: "Postcode"
+                            },
+                            hint: {
+                                text: "For example SW1 6GH"
+                          },
+
+                            classes: "govuk-input--width-10",
+                            id: "occupier-property-address-postcode",
+                            name: "occupier-property-address-postcode",
+                            value: data['occupier-property-address-postcode']|default(addresslist[6], true),
+                            autocomplete: "postal-code"
+
+                          }) }}
+
+{%else%}
+
+
+
+                        {{ govukInput({
+                          label: {
+                            html: 'Address line 1 <span class="govuk-visually-hidden">line 1 of 2</span>'
+                          },
+                          classes: "govuk-!-width-two-thirds",
+                          id: "new-property-address-line-1",
+                          name: "new-property-address-line-1",
+                          value: data['new-property-address-line-1']|default(addresslist[0] + ',' + addresslist[1], true),
+                          autocomplete: "address-line1"
+                        }) }}
+
+
+                        {{ govukInput({
+                          label: {
+                            text: "Address line 2 (optional)"
+                          },
+                          classes: "govuk-!-width-two-thirds",
+                          id: "new-property-address-line-2",
+                          name: "new-property-address-line-2",
+                          value: data['new-property-address-line-2']|default(addresslist[2], true),
+                          autocomplete: "address-level2"
+                        }) }}
+
+                        {{ govukInput({
+                          label: {
+                            text: "Address line 3 (optional)"
+                          },
+                          classes: "govuk-!-width-two-thirds",
+                          id: "new-property-address-line-3",
+                          name: "new-property-address-line-3",
+                          value: data['new-property-address-line-3']|default(addresslist[3], true),
+                          autocomplete: "address-level2"
+                        }) }}
+
+                        {{ govukInput({
+                          label: {
+                            text: "Town/city"
+                          },
+                          classes: "govuk-!-width-two-thirds",
+                          id: "new-property-address-town-city",
+                          value: data['new-property-address-town-city']|default(addresslist[4] + ',' + addresslist[5], true),
+                          name: "new-property-address-town-city"
+                        }) }}
+
+                        {{ govukInput({
+                          label: {
+                            text: "Postcode"
+                          },
+                          hint: {
+                              text: "For example SW1 6GH"
+                        },
+
+                          classes: "govuk-input--width-10",
+                          id: "new-property-address-postcode",
+                          name: "new-property-address-postcode",
+                          value: data['new-property-address-postcode']|default(addresslist[6], true),
+                          autocomplete: "postal-code"
+
+                        }) }}
+
+
+{%endif%}
+
+
+
+
+                        <!--  <p class="govuk-body"><a href="/webform//ndr/address-enter?action=edit">Edit</a></p>-->
 
                         <div class="govuk-button-group">
 
-                          <input type="hidden" name="address_array" id="address_array" value="{{address_selected}}">
+                          <input type="text" name="address_array" id="address_array" value="{{address_selected}}">
 
                         {%if data['propertyreason'] == "occupier"%}
 
-                            <input type="hidden" name="occupier_property_address" id="occupier_property_address" value="{{property_address}}">
+                            <input type="text" name="occupier_property_address" id="occupier_property_address" value="{{property_address}}">
                         {%else%}
 
-                              <input type="hidden" name="property_new_address" id="property_new_address" value="{{property_address}}">
+                              <input type="text" name="property_new_address" id="property_new_address" value="{{property_address}}">
 
                         {%endif%}
 
