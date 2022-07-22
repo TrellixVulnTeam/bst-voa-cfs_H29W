@@ -81,18 +81,38 @@
 {% endblock %}
 
 
-
-{% set mainClasses = mainClasses | default("govuk-main-wrapper--auto-spacing") %}
+<!{% set mainClasses = mainClasses | default("govuk-main-wrapper--auto-spacing") %}
 
 {% if useAutoStoreData %}
   {% block footer %}
-    {{ govukFooter({
+  {{ govukFooter({
       meta: {
         items: [
+        {
+          href: "/footer/accessibility.html",
+          text: "Accessibility"
+        },
+        {
+          href: "/footer/cookies.html",
+          text: "Cookies"
+        },
+        {
+          href: "/footer/help.html",
+          text: "Help"
+        },
+        {
+          href: "/footer/privacy.html",
+          text: "Privacy"
+        },
+        {
+          href: "/footer/terms-conditions.html",
+          text: "Terms and conditions"
+        },
           {
             href: "https://govuk-prototype-kit.herokuapp.com/",
             text: "GOV.UK Prototype Kit " + releaseVersion
           },
+
           {
             href: "/prototype-admin/clear-data",
             text: "Clear data"
@@ -101,6 +121,7 @@
         visuallyHiddenTitle: "Footer links"
       }
     }) }}
+
   {% endblock %}
 {% endif %}
 
