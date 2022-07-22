@@ -320,16 +320,16 @@
 
 
 
-                                    {%set occupieraddressline3 = data['new-property-address-line-3']|default(addresslist[3], true) %}
-                                    {%set occupieraddresstowncity = data['new-property-address-town-city']|default(addresslist[4] + ',' + addresslist[5], true) %}
-                                    {%set occupieraddresspostcode = data['new-property-address-postcode']|default(addresslist[6], true) %}
+                                    {%set newaddressline3 = data['new-property-address-line-3']|default(addresslist[3], true) %}
+                                    {%set newaddresstowncity = data['new-property-address-town-city']|default(addresslist[4] + ',' + addresslist[5], true) %}
+                                    {%set newaddresspostcode = data['new-property-address-postcode']|default(addresslist[6], true) %}
                               {%else%}
 
 
 
-                                    {%set occupieraddressline3 = "" %}
-                                    {%set occupieraddresstowncity = data['new-property-address-town-city']|default(addresslist[3] + ',' + addresslist[4], true) %}
-                                    {%set occupieraddresspostcode = data['new-property-address-postcode']|default(addresslist[5], true) %}
+                                    {%set newaddressline3 = "" %}
+                                    {%set newaddresstowncity = data['new-property-address-town-city']|default(addresslist[3] + ',' + addresslist[4], true) %}
+                                    {%set newaddresspostcode = data['new-property-address-postcode']|default(addresslist[5], true) %}
 
 
                               {%endif%}
@@ -368,7 +368,7 @@
                           classes: "govuk-!-width-two-thirds",
                           id: "new-property-address-line-3",
                           name: "new-property-address-line-3",
-                          value: addressline3,
+                          value: newaddressline3,
                           autocomplete: "address-level2"
                         }) }}
 
@@ -378,7 +378,7 @@
                           },
                           classes: "govuk-!-width-two-thirds",
                           id: "new-property-address-town-city",
-                          value: addresstowncity,
+                          value: newaddresstowncity,
                           name: "new-property-address-town-city"
                         }) }}
 
@@ -393,7 +393,7 @@
                           classes: "govuk-input--width-10",
                           id: "new-property-address-postcode",
                           name: "new-property-address-postcode",
-                          value: addresspostcode,
+                          value: newaddresspostcode,
                           autocomplete: "postal-code"
 
                         }) }}
