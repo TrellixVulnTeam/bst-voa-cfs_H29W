@@ -52,7 +52,7 @@ Addresses for {{show_postcode}}
 
 
 
-
+<!--
     <nav class="moj-pagination" aria-labelledby="pagination-label">
 
 
@@ -63,7 +63,7 @@ Addresses for {{show_postcode}}
 
     </nav>
 
-
+-->
 
 
   				<div class="govuk-radios {% if error %} form-group-error {% endif %}">
@@ -77,18 +77,54 @@ Addresses for {{show_postcode}}
              Select an address
            </legend>
 
+-->
+           <div class="govuk-form-group">
+                <label class="govuk-label" for="sort">
+                Select your address
+                </label>
+                <select class="govuk-select" id="address" name="address">
+                  <option value="published">Select address</option>
+
+
+
            -->
   					{% for address in addresses%}
                   {%set radioid = "address" + loop.index0
               %}
-  					<div class="govuk-radios__item">
+  				<!--	<div class="govuk-radios__item">
   						<input class="govuk-radios__input" id="{{radioid}}" name="address" type="radio" value="{{address}}">
   						<label class="govuk-label govuk-radios__label" for="{{radioid}}">
   							{{ address }}
   						</label>
-  					</div>
+  					</div>-->
+
+
+
+            <option value="{{ address }}">{{ address }}</option>
+
 
             {%else%}
+
+
+              <option value="Addenbrooke House, Ironmasters Way, Town Centre, Telford, Shropshire, TF3 4NT">Addenbrooke House, Ironmasters Way, Town Centre, Telford, Shropshire, TF3 4NT</option>
+              <option value="Cafe Go, Addenbrooke House, Ironmasters Way, Telford Town Centre, Telford, Shropshire, TF3 4NT">Cafe Go, Addenbrooke House, Ironmasters Way, Telford Town Centre, Telford, Shropshire, TF3 4NT</option>
+              <option value="Eighth Floor, Plaza One, Ironmasters Way, Telford Town Centre, Telford, Shropshire, TF3 4NT">Eighth Floor, Plaza One, Ironmasters Way, Telford Town Centre, Telford, Shropshire, TF3 4NT</option>
+              <option value="Fifth Floor, Plaza One, Ironmasters Way, Telford Town Centre, Telford, Shropshire, TF3 4NT">Fifth Floor, Plaza One, Ironmasters Way, Telford Town Centre, Telford, Shropshire, TF3 4NT</option>
+              <option value="First Floor, Plaza One, Ironmasters Way, Telford Town Centre, Telford, Shropshire, TF3 4NT">First Floor, Plaza One, Ironmasters Way, Telford Town Centre, Telford, Shropshire, TF3 4NT</option>
+              <option value="Floor 1, Plaza Two, Ironmasters Way, Telford Town Centre, Telford, Shropshire, TF3 4NT">Floor 1, Plaza Two, Ironmasters Way, Telford Town Centre, Telford, Shropshire, TF3 4NT</option>
+              <option value="Floor 2, Plaza Two, Ironmasters Way, Telford Town Centre, Telford, Shropshire, TF3 4NT">Floor 2, Plaza Two, Ironmasters Way, Telford Town Centre, Telford, Shropshire, TF3 4NT</option>
+              <option value="Ground Floor, Plaza One, Ironmasters Way, Telford Town Centre, Telford, Shropshire, TF3 4NT">Ground Floor, Plaza One, Ironmasters Way, Telford Town Centre, Telford, Shropshire, TF3 4NT</option>
+              <option value="Ground Floor, Plaza Two, Ironmasters Way, Telford Town Centre, Telford, Shropshire, TF3 4NT">Ground Floor, Plaza Two, Ironmasters Way, Telford Town Centre, Telford, Shropshire, TF3 4NT</option>
+              <option value="Plaza One, Ironmasters Way, Town Centre, Telford, Shropshire, TF3 4NT">Plaza One, Ironmasters Way, Town Centre, Telford, Shropshire, TF3 4NT</option>
+              <option value="Plaza Two, Ironmasters Way, Town Centre, Telford, Shropshire, TF3 4NT">Plaza Two, Ironmasters Way, Town Centre, Telford, Shropshire, TF3 4NT</option>
+              <option value="Reynolds House, Ironmasters Way, Telford Town Centre, Telford, Shropshire, TF3 4NT">Reynolds House, Ironmasters Way, Telford Town Centre, Telford, Shropshire, TF3 4NT</option>
+              <option value="Seventh Floor, Plaza One, Ironmasters Way, Telford Town Centre, Telford, Shropshire, TF3 4NT">Seventh Floor, Plaza One, Ironmasters Way, Telford Town Centre, Telford, Shropshire, TF3 4NT</option>
+              <option value="Sixth Floor, Plaza One, Ironmasters Way, Telford Town Centre, Telford, Shropshire, TF3 4NT">Sixth Floor, Plaza One, Ironmasters Way, Telford Town Centre, Telford, Shropshire, TF3 4NT</option>
+              <option value="Third Floor, Plaza One, Ironmasters Way, Telford Town Centre, Telford, Shropshire, TF3 4NT">Third Floor, Plaza One, Ironmasters Way, Telford Town Centre, Telford, Shropshire, TF3 4NT</option>
+              <option value="Unit 5, Northern Quarter, Lawn Central, Telford Town Centre, Telford, Shropshire, TF3 4NT">Unit 5, Northern Quarter, Lawn Central, Telford Town Centre, Telford, Shropshire, TF3 4NT</option>
+              <option value="Unit 6, Northern Quarter, Lawn Central, Telford Town Centre, Telford, Shropshire, TF3 4NT">Unit 6, Northern Quarter, Lawn Central, Telford Town Centre, Telford, Shropshire, TF3 4NT</option>
+
+
 
 <!--
             <div class="govuk-form-group">
@@ -142,7 +178,7 @@ Addresses for {{show_postcode}}
                 </fieldset>
             </div>
 
--->
+<!--
             <div class="govuk-form-group">
 
 
@@ -248,13 +284,14 @@ Addresses for {{show_postcode}}
 
 
 
-
+-->
 
 
 
   					{% endfor %}
 
-
+          </select>
+        </div>
 
   				</div>
 
@@ -271,9 +308,9 @@ Addresses for {{show_postcode}}
     }) }}
 -->
     {{ govukButton({
-      text: "Change postcode",
-      href: "address-postcode-lookup?postcode=" + show_postcode,
-      classes: "govuk-button--secondary"
+      text: "Continue",
+
+      classes: "govuk-button--primary"
 
     }) }}
 
