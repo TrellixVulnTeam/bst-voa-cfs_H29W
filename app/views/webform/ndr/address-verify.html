@@ -225,8 +225,31 @@
                               {*{ printaddress | striptags(true) | escape | nl2br }*}
 
                           {%endif%}
+
+
 -->
+
+
  {%if data['propertyreason'] == "occupier"%}
+
+
+                           {%if addresslist[6].length>0%}
+
+
+
+                                 {%set occupieraddressline3 = data['occupier-property-address-line-3']|default(addresslist[3], true) %}
+                                 {%set occupieraddresstowncity = data['occupier-property-address-town-city']|default(addresslist[4] + ',' + addresslist[5], true) %}
+                                 {%set occupieraddresspostcode = data['occupier-property-address-postcode']|default(addresslist[6], true) %}
+                           {%else%}
+
+
+
+                                 {%set occupieraddressline3 = "" %}
+                                 {%set occupieraddresstowncity = data['occupier-property-address-town-city']|default(addresslist[3] + ',' + addresslist[4], true) %}
+                                 {%set occupieraddresspostcode = data['occupier-property-address-postcode']|default(addresslist[5], true) %}
+
+
+                           {%endif%}
 
 
 
@@ -260,7 +283,7 @@
                             classes: "govuk-!-width-two-thirds",
                             id: "occupier-property-address-line-3",
                             name: "occupier-property-address-line-3",
-                            value: data['occupier-property-address-line-3']|default(addresslist[3], true),
+                            value: occupieraddressline3,
                             autocomplete: "address-level2"
                           }) }}
 
@@ -270,7 +293,7 @@
                             },
                             classes: "govuk-!-width-two-thirds",
                             id: "occupier-property-address-town-city",
-                            value: data['occupier-property-address-town-city']|default(addresslist[4] + ',' + addresslist[5], true),
+                            value: occupieraddresstowncity,
                             name: "occupier-property-address-town-city"
                           }) }}
 
@@ -285,13 +308,31 @@
                             classes: "govuk-input--width-10",
                             id: "occupier-property-address-postcode",
                             name: "occupier-property-address-postcode",
-                            value: data['occupier-property-address-postcode']|default(addresslist[6], true),
+                            value: occupieraddresspostcode,
                             autocomplete: "postal-code"
 
                           }) }}
 
 {%else%}
 
+
+                              {%if addresslist[6].length>0%}
+
+
+
+                                    {%set occupieraddressline3 = data['new-property-address-line-3']|default(addresslist[3], true) %}
+                                    {%set occupieraddresstowncity = data['new-property-address-town-city']|default(addresslist[4] + ',' + addresslist[5], true) %}
+                                    {%set occupieraddresspostcode = data['new-property-address-postcode']|default(addresslist[6], true) %}
+                              {%else%}
+
+
+
+                                    {%set occupieraddressline3 = "" %}
+                                    {%set occupieraddresstowncity = data['new-property-address-town-city']|default(addresslist[3] + ',' + addresslist[4], true) %}
+                                    {%set occupieraddresspostcode = data['new-property-address-postcode']|default(addresslist[5], true) %}
+
+
+                              {%endif%}
 
 
                         {{ govukInput({
@@ -317,6 +358,9 @@
                           autocomplete: "address-level2"
                         }) }}
 
+
+
+
                         {{ govukInput({
                           label: {
                             text: "Address line 3 (optional)"
@@ -324,7 +368,7 @@
                           classes: "govuk-!-width-two-thirds",
                           id: "new-property-address-line-3",
                           name: "new-property-address-line-3",
-                          value: data['new-property-address-line-3']|default(addresslist[3], true),
+                          value: addressline3,
                           autocomplete: "address-level2"
                         }) }}
 
@@ -334,7 +378,7 @@
                           },
                           classes: "govuk-!-width-two-thirds",
                           id: "new-property-address-town-city",
-                          value: data['new-property-address-town-city']|default(addresslist[4] + ',' + addresslist[5], true),
+                          value: addresstowncity,
                           name: "new-property-address-town-city"
                         }) }}
 
@@ -349,7 +393,7 @@
                           classes: "govuk-input--width-10",
                           id: "new-property-address-postcode",
                           name: "new-property-address-postcode",
-                          value: data['new-property-address-postcode']|default(addresslist[6], true),
+                          value: addresspostcode,
                           autocomplete: "postal-code"
 
                         }) }}
@@ -364,14 +408,14 @@
 
                         <div class="govuk-button-group">
 
-                          <input type="text" name="address_array" id="address_array" value="{{address_selected}}">
+                          <input type="hidden" name="address_array" id="address_array" value="{{address_selected}}">
 
                         {%if data['propertyreason'] == "occupier"%}
 
-                            <input type="text" name="occupier_property_address" id="occupier_property_address" value="{{property_address}}">
+                            <input type="hidden" name="occupier_property_address" id="occupier_property_address" value="{{property_address}}">
                         {%else%}
 
-                              <input type="text" name="property_new_address" id="property_new_address" value="{{property_address}}">
+                              <input type="hidden" name="property_new_address" id="property_new_address" value="{{property_address}}">
 
                         {%endif%}
 
