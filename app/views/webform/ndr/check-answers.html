@@ -239,7 +239,7 @@
 
           {% else%}
 
-          test123{{data['occupier_property_address']}}
+
 
               {%set occupier_property_address = data['occupier-property-address-line-1']|default("1st", true) + ", " + data['occupier-property-address-line-2']|default("Custom House Annexe", true) + ", " +   data['occupier-property-address-line-3']|default("20 Lower Thames St", true) + ", " +   data['occupier-property-address-town-city']|default("London", true) + ", " +   data['occupier-property-address-postcode']|default("EC3R 6EE", true)%}
 

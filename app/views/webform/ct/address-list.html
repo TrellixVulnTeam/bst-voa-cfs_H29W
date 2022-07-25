@@ -46,28 +46,21 @@ Addresses for {{show_postcode}}
 	<form class="form" method="post" action="/webform/ct/address-list">
 
 
-
-
-    <h1 class="govuk-heading-l">Addresses for {{show_postcode}}</h1>
-
-
-
+    <div class="govuk-form-group">
+      <h1 class="govuk-label-wrapper"><label class="govuk-label govuk-label--l" for="address">
+        Addresses for {{show_postcode}}
+        </label>
+      </h1>
 <!--
     <nav class="moj-pagination" aria-labelledby="pagination-label">
-
-
       <p class="moj-pagination__results">Showing <b>1</b> to <b>5</b> of <b>5</b> addresses</p>
-
-
-
-
     </nav>
 
--->
+
 
 
   				<div class="govuk-radios {% if error %} form-group-error {% endif %}">
-
+-->
 
   					{% if error %}
   					<span class="error-message">Select a business address</span>
@@ -78,12 +71,10 @@ Addresses for {{show_postcode}}
            </legend>
 
 -->
-           <div class="govuk-form-group">
-                <label class="govuk-label" for="sort">
-                Select your address
-                </label>
+
+
                 <select class="govuk-select" id="address" name="address">
-                  <option value="published">Select address</option>
+                <option value="Unit 1, Northern Quarter, Lawn Central, Telford Town Centre, Telford, Shropshire, TF3 4NT">Select address</option>
 
 
 
@@ -293,7 +284,7 @@ Addresses for {{show_postcode}}
           </select>
         </div>
 
-  				</div>
+
 
 
   				<p class="govuk-body govuk-!-padding-top-1 govuk-!-padding-bottom-3 "><a href="/webform/ct/address-enter?propertyreason={{data['propertyreason']}}&action=new">If the address is not listed you can enter the address manually</a></p>
