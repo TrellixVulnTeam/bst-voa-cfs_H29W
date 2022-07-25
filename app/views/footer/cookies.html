@@ -1,11 +1,21 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  Cookies settings
+  Cookies policy
+
 {% endblock %}
 
 {% block beforeContent %}
-  <a class="govuk-back-link" href="javascript:window.history.back()">Back</a>
+
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-one-third">
+			{{ govukBackLink({
+			  text: "Back",
+			  href: "javascript:window.history.back()"
+			}) }}
+		</div>
+		{% include "includes/header-section-signedin.html" %}
+	</div>
 {% endblock %}
 
 {% block content %}
@@ -201,7 +211,7 @@
     </a>
 </p>
 
-
+<input type="hidden" name="cookiestatus" value="no">
 
 
 

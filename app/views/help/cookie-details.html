@@ -1,0 +1,706 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Cookies
+
+{% endblock %}
+
+{% block beforeContent %}
+
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-one-third">
+			{{ govukBackLink({
+			  text: "Back",
+			  href: "javascript:window.history.back()"
+			}) }}
+		</div>
+		{% include "includes/header-section-signedin.html" %}
+	</div>
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+
+
+
+    <div class="govuk-grid-column-two-thirds">
+
+
+  <h1 class="govuk-heading-xl" id="cookies-heading">Cookies</h1>
+  <p class="govuk-body" id="cookies-info">Small files (known as ‘cookies’) are put onto your computer to collect information about how you browse the site.</p>
+  <p class="govuk-body" id="cookies-usages">Cookies are used to:</p>
+  <ul class="govuk-list govuk-list--bullet" id="cookies-usages-bullets">
+    <li id="cookies-usages-bullets1">measure how you use the website so it can be updated and improved based on your needs</li>
+    <li id="cookies-usages-bullets2">remember the notifications you’ve seen so that you’re not shown them again</li>
+  </ul>
+  <div class="govuk-inset-text" id="cookies-inset-text">
+    <p class="govuk-body">GOV.UK cookies aren’t used to identify you personally.</p>
+  </div>
+  <p class="govuk-body" id="cookies-paragraph-1">You’ll normally see a message on the site before a cookie is stored on your computer.</p>
+  <p class="govuk-body" id="cookies-more-about">
+    Find out more about
+    <a href="http://www.aboutcookies.org/" class="govuk-link" rel="noreferrer noopener" target="_blank">how to manage cookies (opens in new tab)</a>.
+  </p>
+  <h2 class="govuk-heading-l" id="cookies-are-used">How cookies are used</h2>
+  <h3 class="govuk-heading-m" id="cookies-website-usage">Measuring website usage (Google Analytics)</h3>
+  <p class="govuk-body" id="cookies-analytics-paragraph-1">Google Analytics software collects information about how you use the site. This is done to help make sure the site is meeting the needs of its users and to help make improvements.</p>
+  <p class="govuk-body" id="cookies-analytics-paragraph-2">Google Analytics stores information about:</p>
+  <ul class="govuk-list govuk-list--bullet" id="cookies-analytics-bullets">
+    <li id="cookies-analytics-bullets1">the pages you visit - how long you spend on each page</li>
+    <li id="cookies-analytics-bullets2">how you got to the site</li>
+    <li id="cookies-analytics-bullets3">what you click on while you’re visiting the site</li>
+  </ul>
+  <p class="govuk-body" id="cookies-analytics-paragraph-3">We don’t collect or store your personal information (eg your name or address) so this information can’t be used to identify who you are.</p>
+  <div class="govuk-inset-text" id="cookies-analytics-inset-text">
+    <p class="govuk-body">Google isn’t allowed to use or share our analytics data.</p>
+  </div>
+  <table class="govuk-table" id="cookies-analytics-table">
+
+    <caption class="govuk-table__caption">The following cookies are used:</caption>
+
+
+    <thead class="govuk-table__head">
+     <tr class="govuk-table__row">
+
+         <th scope="col" class="govuk-table__header">Name</th>
+
+         <th scope="col" class="govuk-table__header">Purpose</th>
+
+         <th scope="col" class="govuk-table__header">Expires</th>
+
+     </tr>
+    </thead>
+
+  <tbody class="govuk-table__body">
+
+      <tr class="govuk-table__row">
+
+
+            <td class="govuk-table__cell">_gat</td>
+
+
+
+            <td class="govuk-table__cell">This helps us identify how you use GOV.UK so we can make the site better</td>
+
+
+
+            <td class="govuk-table__cell">10 minutes</td>
+
+
+      </tr>
+
+      <tr class="govuk-table__row">
+
+
+            <td class="govuk-table__cell">GDS_successEvents and GDS_analyticsTokens</td>
+
+
+
+            <td class="govuk-table__cell">These help us identify how you use GOV.UK so we can make the site better</td>
+
+
+
+            <td class="govuk-table__cell">4 months</td>
+
+
+      </tr>
+
+      <tr class="govuk-table__row">
+
+
+            <td class="govuk-table__cell">_ga</td>
+
+
+
+            <td class="govuk-table__cell">This helps us identify how you use GOV.UK so we can make the site better</td>
+
+
+
+            <td class="govuk-table__cell">2 years</td>
+
+
+      </tr>
+
+      <tr class="govuk-table__row">
+
+
+            <td class="govuk-table__cell">ga_nextpage_params</td>
+
+
+
+            <td class="govuk-table__cell">This stores data to be sent to Google on the next page you request</td>
+
+
+
+            <td class="govuk-table__cell">When you close your browser</td>
+
+
+      </tr>
+
+  </tbody>
+</table>
+
+
+
+
+
+
+  <p class="govuk-body" id="cookies-analytics-opt-out">
+    You can
+    <a href="https://tools.google.com/dlpage/gaoptout" class="govuk-link" rel="noreferrer noopener" target="_blank">opt out of Google Analytics cookies (opens in new tab)</a>.
+  </p>
+  <h3 class="govuk-heading-m" id="cookies-versions-heading">Comparing different versions of a webpage (Optimizely)</h3>
+  <p class="govuk-body" id="cookies-versions-paragraph-1">Optimizely software is used to test different versions of a webpage (or webpages) to see which performs better. This is done to help make improvements and ensure the site is meeting the needs of its users.</p>
+  <table class="govuk-table" id="cookies-versions-table">
+
+    <caption class="govuk-table__caption">The following cookies are used:</caption>
+
+
+    <thead class="govuk-table__head">
+     <tr class="govuk-table__row">
+
+         <th scope="col" class="govuk-table__header">Name</th>
+
+         <th scope="col" class="govuk-table__header">Purpose</th>
+
+         <th scope="col" class="govuk-table__header">Expires</th>
+
+     </tr>
+    </thead>
+
+  <tbody class="govuk-table__body">
+
+      <tr class="govuk-table__row">
+
+
+            <td class="govuk-table__cell">optimizelyEndUserId</td>
+
+
+
+            <td class="govuk-table__cell">This helps us identify how you use GOV.UK so we can make the site better</td>
+
+
+
+            <td class="govuk-table__cell">6 months</td>
+
+
+      </tr>
+
+      <tr class="govuk-table__row">
+
+
+            <td class="govuk-table__cell">optimizelyRedirectData</td>
+
+
+
+            <td class="govuk-table__cell">This helps us identify how you use GOV.UK so we can make the site better</td>
+
+
+
+            <td class="govuk-table__cell">5 seconds</td>
+
+
+      </tr>
+
+  </tbody>
+</table>
+
+
+
+
+
+
+  <h3 class="govuk-heading-m" id="cookies-consent-heading">Cookies message</h3>
+  <p class="govuk-body" id="cookies-consent-paragraph-1">You may see a banner when you visit HMRC inviting you to accept cookies or review your settings. We will set a cookie so that your computer knows you have seen it and not to show it again, and also to store your settings.</p>
+  <table class="govuk-table" id="cookies-consent-table">
+
+
+    <thead class="govuk-table__head">
+     <tr class="govuk-table__row">
+
+         <th scope="col" class="govuk-table__header">Name</th>
+
+         <th scope="col" class="govuk-table__header">Purpose</th>
+
+         <th scope="col" class="govuk-table__header">Expires</th>
+
+     </tr>
+    </thead>
+
+  <tbody class="govuk-table__body">
+
+      <tr class="govuk-table__row">
+
+
+            <td class="govuk-table__cell">userConsent</td>
+
+
+
+            <td class="govuk-table__cell">Saves your cookie consent settings</td>
+
+
+
+            <td class="govuk-table__cell">1 year</td>
+
+
+      </tr>
+
+  </tbody>
+</table>
+
+
+
+
+
+
+  <h3 class="govuk-heading-m" id="cookies-sessions-heading">Sessions</h3>
+  <p class="govuk-body" id="cookies-sessions-paragraph">A cookie is set to record your session activity.</p>
+  <table class="govuk-table" id="cookies-sessions-table">
+
+
+    <thead class="govuk-table__head">
+     <tr class="govuk-table__row">
+
+         <th scope="col" class="govuk-table__header">Name</th>
+
+         <th scope="col" class="govuk-table__header">Purpose</th>
+
+         <th scope="col" class="govuk-table__header">Expires</th>
+
+     </tr>
+    </thead>
+
+  <tbody class="govuk-table__body">
+
+      <tr class="govuk-table__row">
+
+
+            <td class="govuk-table__cell">mdtp</td>
+
+
+
+            <td class="govuk-table__cell">Stores session data</td>
+
+
+
+            <td class="govuk-table__cell">When you close your browser</td>
+
+
+      </tr>
+
+      <tr class="govuk-table__row">
+
+
+            <td class="govuk-table__cell">mdtpp</td>
+
+
+
+            <td class="govuk-table__cell">Stores session data</td>
+
+
+
+            <td class="govuk-table__cell">When you close your browser</td>
+
+
+      </tr>
+
+      <tr class="govuk-table__row">
+
+
+            <td class="govuk-table__cell">mdtpdf</td>
+
+
+
+            <td class="govuk-table__cell">Stores session data</td>
+
+
+
+            <td class="govuk-table__cell">When you close your browser</td>
+
+
+      </tr>
+
+      <tr class="govuk-table__row">
+
+
+            <td class="govuk-table__cell">PLAY_FLASH</td>
+
+
+
+            <td class="govuk-table__cell">Stores session data</td>
+
+
+
+            <td class="govuk-table__cell">When you close your browser</td>
+
+
+      </tr>
+
+      <tr class="govuk-table__row">
+
+
+            <td class="govuk-table__cell">remme</td>
+
+
+
+            <td class="govuk-table__cell">This is used to uniquely identify a user on a device trying to go through the 2SV challenge</td>
+
+
+
+            <td class="govuk-table__cell">7 days</td>
+
+
+      </tr>
+
+  </tbody>
+</table>
+
+
+
+
+
+
+
+  <h3 class="govuk-heading-m" id="cookies-introductory-heading">Our introductory message</h3>
+  <p class="govuk-body" id="cookies-introductory-paragraph">You may see a pop-up welcome message when you first visit. A cookie is stored so that your computer knows you’ve seen it and knows not to show it again.</p>
+  <table class="govuk-table" id="cookies-introductory-table">
+
+
+    <thead class="govuk-table__head">
+     <tr class="govuk-table__row">
+
+         <th scope="col" class="govuk-table__header">Name</th>
+
+         <th scope="col" class="govuk-table__header">Purpose</th>
+
+         <th scope="col" class="govuk-table__header">Expires</th>
+
+     </tr>
+    </thead>
+
+  <tbody class="govuk-table__body">
+
+      <tr class="govuk-table__row">
+
+
+            <td class="govuk-table__cell">seen_cookie_message</td>
+
+
+
+            <td class="govuk-table__cell">Saves a message to let us know that you have seen our cookie message</td>
+
+
+
+            <td class="govuk-table__cell">1 month</td>
+
+
+      </tr>
+
+  </tbody>
+</table>
+
+
+
+
+
+
+  <h3 class="govuk-heading-m" id="cookies-user-research-heading">User research banner</h3>
+  <p class="govuk-body" id="cookies-user-research-paragraph">You may see a banner about user research when you visit. A cookie is stored so that your computer knows when you have chosen not to see it again.</p>
+  <table class="govuk-table" id="cookies-user-research-table">
+
+
+    <thead class="govuk-table__head">
+     <tr class="govuk-table__row">
+
+         <th scope="col" class="govuk-table__header">Name</th>
+
+         <th scope="col" class="govuk-table__header">Purpose</th>
+
+         <th scope="col" class="govuk-table__header">Expires</th>
+
+     </tr>
+    </thead>
+
+  <tbody class="govuk-table__body">
+
+      <tr class="govuk-table__row">
+
+
+            <td class="govuk-table__cell">mdtpurr</td>
+
+
+
+            <td class="govuk-table__cell">Saves a message to let us know that you no longer want to see it again.</td>
+
+
+
+            <td class="govuk-table__cell">1 month</td>
+
+
+      </tr>
+
+  </tbody>
+</table>
+
+
+
+
+
+
+
+  <h3 class="govuk-heading-m" id="cookies-satisfaction-survey-heading">Our satisfaction survey</h3>
+  <p class="govuk-body" id="cookies-satisfaction-survey-paragraph">
+
+  <a href="http://www.surveymonkey.com/" class="govuk-link" rel="noreferrer noopener" target="_blank">SurveyMonkey (opens in new tab)</a>
+ is used to collect responses to the survey. If you take part, SurveyMonkey will save extra cookies to your computer to track your progress through it.
+  </p>
+  <table class="govuk-table" id="cookies-satisfaction-survey-table">
+
+
+    <thead class="govuk-table__head">
+     <tr class="govuk-table__row">
+
+         <th scope="col" class="govuk-table__header">Name</th>
+
+         <th scope="col" class="govuk-table__header">Purpose</th>
+
+         <th scope="col" class="govuk-table__header">Expires</th>
+
+     </tr>
+    </thead>
+
+  <tbody class="govuk-table__body">
+
+      <tr class="govuk-table__row">
+
+
+            <td class="govuk-table__cell">mbox</td>
+
+
+
+            <td class="govuk-table__cell">This is used to keep your progress through the survey</td>
+
+
+
+            <td class="govuk-table__cell">30 minutes</td>
+
+
+      </tr>
+
+      <tr class="govuk-table__row">
+
+
+            <td class="govuk-table__cell">SSOE</td>
+
+
+
+            <td class="govuk-table__cell">This is used for testing different content and features on the survey website to help make it better</td>
+
+
+
+            <td class="govuk-table__cell">When you close your browser</td>
+
+
+      </tr>
+
+      <tr class="govuk-table__row">
+
+
+            <td class="govuk-table__cell">TS5159a2 and TSd0b041</td>
+
+
+
+            <td class="govuk-table__cell">These are used to manage survey traffic by sending your computer to a specific server</td>
+
+
+
+            <td class="govuk-table__cell">When you close your browser</td>
+
+
+      </tr>
+
+      <tr class="govuk-table__row">
+
+
+            <td class="govuk-table__cell">ep201</td>
+
+
+
+            <td class="govuk-table__cell">This is used to help us identify how you use the survey</td>
+
+
+
+            <td class="govuk-table__cell">30 minutes</td>
+
+
+      </tr>
+
+      <tr class="govuk-table__row">
+
+
+            <td class="govuk-table__cell">ep202</td>
+
+
+
+            <td class="govuk-table__cell">This works with ep201 to help us identify how you use the survey</td>
+
+
+
+            <td class="govuk-table__cell">1 year</td>
+
+
+      </tr>
+
+  </tbody>
+</table>
+
+
+
+
+
+
+
+  <h3 class="govuk-heading-m" id="cookies-digital-assistant-heading">Digital assistant cookies</h3>
+  <p class="govuk-body" id="cookies-digital-assistant-paragraph">
+  The HMRC digital assistant and webchat can be found on various HMRC services pages. For the digital assistant and website to work correctly, the following cookies are required:
+  </p>
+  <table class="govuk-table" id="cookies-digital-assistant-table">
+
+
+    <thead class="govuk-table__head">
+     <tr class="govuk-table__row">
+
+         <th scope="col" class="govuk-table__header">Name</th>
+
+         <th scope="col" class="govuk-table__header">Purpose</th>
+
+         <th scope="col" class="govuk-table__header">Expires</th>
+
+     </tr>
+    </thead>
+
+  <tbody class="govuk-table__body">
+
+      <tr class="govuk-table__row">
+
+
+            <td class="govuk-table__cell">inqCA_10006330</td>
+
+
+
+            <td class="govuk-table__cell">Chat activity flag, required for restoring functionality of web chat if (during a chat engagement) the user reloads the page, navigates to a new page within the HMRC site or leaves the HMRC site and returns before the session timeout.</td>
+
+
+
+            <td class="govuk-table__cell">When you close your browser</td>
+
+
+      </tr>
+
+      <tr class="govuk-table__row">
+
+
+            <td class="govuk-table__cell">inqVital_10006330</td>
+
+
+
+            <td class="govuk-table__cell">Persistent data about the customer. This cookie stores information about the customer (unique Nuance ID), last chat activity, past purchases, etc. This cookie is used to set the state of sale after the chat and to link chats from the same customer.</td>
+
+
+
+            <td class="govuk-table__cell">When you close your browser</td>
+
+
+      </tr>
+
+      <tr class="govuk-table__row">
+
+
+            <td class="govuk-table__cell">tcSrv_10006330</td>
+
+
+
+            <td class="govuk-table__cell">A survey show flag required to show whether the post chat survey used for web chat have been presented to the user.</td>
+
+
+
+            <td class="govuk-table__cell">When you close your browser</td>
+
+
+      </tr>
+
+      <tr class="govuk-table__row">
+
+
+            <td class="govuk-table__cell">inqSession_10006330</td>
+
+
+
+            <td class="govuk-table__cell">Session data for current chat. The information stored in this cookie can be used to drive the business rules and to restore chat (e.g. after page reload). Most part of the data is deleted when chat is closed.</td>
+
+
+
+            <td class="govuk-table__cell">When you close your browser</td>
+
+
+      </tr>
+
+      <tr class="govuk-table__row">
+
+
+            <td class="govuk-table__cell">inqState_10006330</td>
+
+
+
+            <td class="govuk-table__cell">Information about customer actions for ETL events (Extract, Transform &amp; Load – process of logging data used for reporting). Example: count of chats on site, page markers, count of assisted, etc.</td>
+
+
+
+            <td class="govuk-table__cell">When you close your browser</td>
+
+
+      </tr>
+
+      <tr class="govuk-table__row">
+
+
+            <td class="govuk-table__cell">JSESSIONID</td>
+
+
+
+            <td class="govuk-table__cell">Cookie used in session tracking. Since HTTP is a stateless protocol, the cookie is created to enable the web chat application to keep the state of the session on the server side.</td>
+
+
+
+            <td class="govuk-table__cell">When you close your browser</td>
+
+
+      </tr>
+
+  </tbody>
+</table>
+
+
+
+
+
+
+
+
+
+  <a lang="en" hreflang="en" class="govuk-link hmrc-report-technical-issue " rel="noreferrer noopener" target="_blank" href="https://www.tax.service.gov.uk/contact/report-technical-problem?newTab=true&amp;service=help-frontend&amp;referrerUrl=https%3A%2F%2Fwww.tax.service.gov.uk%2Fhelp%2Fcookie-details">
+    Is this page not working properly? (opens in new tab)
+  </a>
+
+
+
+
+
+    </div>
+
+
+
+</div>
+
+    {% endblock %}

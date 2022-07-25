@@ -1754,14 +1754,10 @@ router.post('/footer/cookies', function (req, res) {
 
   if((!cookiestatus)||(cookiestatus="no"))
   {
-      delete req.session.data['cookiestatus']
+    
       res.redirect('/footer/cookies?cookiestatus=yes')
   }
-  else{
-      delete req.session.data['cookiestatus']
-    res.redirect('/footer/cookies?cookiestatus=no')
 
-  }
 
 
 
