@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-  Question page
+  Cookies settings
 {% endblock %}
 
 {% block beforeContent %}
@@ -10,18 +10,212 @@
 
 {% block content %}
 
-  <div class="govuk-grid-row">
+<div class="govuk-grid-row">
+
+
+
+
+
+{%if data['cookiestatus'] == "yes"%}
+
     <div class="govuk-grid-column-two-thirds">
 
-      <h1 class="govuk-heading-xl">
-      Cookies title here
-      </h1>
 
-      <p>Lots of lovely cookies content here.</p>
+      <div class="cookie-settings__notice-wrapper" aria-live="polite"><div class="cookie-settings__confirmation">
+        <div class="cookie-settings__notice govuk-notification-banner govuk-notification-banner--success" role="alertdialog" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner" tabindex="-1">
+          <div class="govuk-notification-banner__header">
+            <h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+              Success
+            </h2>
+          </div>
+          <div class="govuk-notification-banner__content cookie-settings__notice-content">
+            <h3 class="govuk-heading-m">Your cookie settings were saved</h3>
+            <p class="govuk-body">Other government services may set additional cookies and, if so, will have their own cookie policy and banner.</p>
+        </div>
+        </div>
+      </div>
+    </div>
+{%endif%}
 
-      <p>This paragraph has a link to <a href="/url/of/onward/page">find out more about this subject</a>.</p>
+<div class="cookie-settings__notice-wrapper" aria-live="polite"></div>
+<h1 class="govuk-heading-xl">
+ Cookie settings on HMRC services
+</h1>
+<p class="govuk-body">‘Cookies’ are files saved on your phone, tablet or computer when you visit a website.</p>
+<p class="govuk-body">We use 3 types of cookies to store information about how you use HMRC services, such as the pages you visit.</p>
+
+
+
+<!--
+
+<div class="cookie-settings__unsupported-browser">
+    <p class="govuk-body">You cannot change your cookie settings because:</p>
+    <ul class="govuk-list govuk-list--bullet">
+        <li>your web browser (the software you use to access the internet) is unsupported</li>
+        <li>Javascript is not running on your browser</li>
+    </ul>
+    <h2 class="govuk-heading-m">
+ How to change your cookies settings
+</h2>
+    <p class="govuk-body">Try reloading the page.</p>
+
+    <p class="govuk-body">
+        If your browser is unsupported,
+        <a href="https://www.gov.uk/help/browsers" class="govuk-link">
+            upgrade your browser</a>.
+    </p>
+
+    <p class="govuk-body">If Javascript is not running on your browser, try turning on Javascript.</p>
+    <p class="govuk-body">
+    <a href="/help/cookie-details" class="govuk-link">
+        Find out more about cookies on HMRC services
+    </a>
+</p>
+
+</div>
+-->
+
+<div class="cookie-settings__supported-browser">
+    <p class="govuk-body">You can choose which ones you’re happy for us to use.</p>
+
+    <form action="/footer/cookies" method="post">
+
+<h2 class="govuk-heading-m">Strictly necessary cookies</h2>
+
+<p class="govuk-body">These essential cookies do things like remember your progress through a form, such as a tax return.</p>
+<p class="govuk-body">They always need to be on.</p>
+
+
+
+
+
+  <div class="govuk-form-group">
+
+      <fieldset class="govuk-fieldset" aria-describedby="measurement-hint">
+
+
+        <legend class="govuk-fieldset__legend" data-gtm-vis-has-fired-8267218_2628="1">
+          <h2 class="govuk-heading-m">
+ Cookies that measure website use
+</h2>
+        </legend>
+
+
+  <div id="measurement-hint" class="govuk-hint">
+
+    <p class="govuk-body">We use analytics tools to measure how you use our services so we can improve them based on the needs of users. We do not allow anyone else to use or share this data.</p>
+    <p class="govuk-body">These tools set cookies that store anonymised information about:</p>
+    <ul class="govuk-list govuk-list--bullet">
+        <li>how you got to the site</li>
+        <li>the pages you visit on HMRC services and how long you spend on each page</li>
+        <li>what you click on while you’re visiting the site</li>
+    </ul>
+
+</div>
+
+          <div class="govuk-radios" data-module="govuk-radios">
+                      <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="measurement" name="measurement" type="radio" value="on" {{ checked("measurement", "on") }}>
+                          <label class="govuk-label govuk-radios__label" for="measurement">
+                            Use cookies that measure my website use
+                          </label>
+                      </div>
+
+                      <div class="govuk-radios__item">
+                        <input class="govuk-radios__input" id="measurement-2" name="measurement" type="radio" value="off" {{ checked("measurement", "off") }}>
+                        <label class="govuk-label govuk-radios__label" for="measurement-2">
+                          Do not use cookies that measure my website use
+                        </label>
+                    </div>
+
+          </div>
+
+</fieldset>
+
+
+
+
+  </div>
+
+
+  <div class="govuk-form-group">
+
+      <fieldset class="govuk-fieldset" aria-describedby="settings-hint">
+
+
+        <legend class="govuk-fieldset__legend" data-gtm-vis-recent-on-screen-8267218_2628="111" data-gtm-vis-first-on-screen-8267218_2628="111" data-gtm-vis-total-visible-time-8267218_2628="100" data-gtm-vis-has-fired-8267218_2628="1">
+
+    <h2 class="govuk-heading-m">Cookies that remember your settings</h2>
+
+        </legend>
+
+
+  <div id="settings-hint" class="govuk-hint">
+  These cookies do things like remember your preferences and the choices you make, to personalise your experience of using our services.
+</div>
+
+
+
+
+
+      <div class="govuk-radios" data-module="govuk-radios">
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="cookiesettings" name="cookiesettings" type="radio" value="on" {{ checked("cookiesettings", "on") }}>
+                      <label class="govuk-label govuk-radios__label" for="cookiesettings">
+                          Use cookies that remember my settings on services
+                      </label>
+                  </div>
+
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="cookiesettings-2" name="cookiesettings" type="radio" value="off" {{ checked("cookiesettings", "off") }}>
+                    <label class="govuk-label govuk-radios__label" for="cookiesettings-2">
+                    Do not use cookies that remember my settings on services
+                    </label>
+                </div>
+
+      </div>
+
+</fieldset>
+
+
+
+
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <p class="govuk-body">
+    <a href="/help/cookie-details" class="govuk-link">
+        Find out more about cookies on HMRC services
+    </a>
+</p>
+
+
+
+
+
+      <button class="govuk-button" data-module="govuk-button">
+        Save changes
+
+      </button>
+
+
+    </form>
+</div>
+
 
     </div>
-  </div>
+</div>
 
 {% endblock %}

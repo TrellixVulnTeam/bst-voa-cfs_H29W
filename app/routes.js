@@ -1742,6 +1742,33 @@ res.redirect('webform-submission-confirmation?reason='+reason+'&property='+prope
 
 })
 
+router.post('/footer/cookies', function (req, res) {
+
+  var measurement = req.session.data['measurement']
+
+  var cookiesettings = req.session.data['cookiesettings']
+
+  var cookiestatus = req.session.data['cookiestatus']
+
+
+
+  if((!cookiestatus)||(cookiestatus="no"))
+  {
+      delete req.session.data['cookiestatus']
+      res.redirect('/footer/cookies?cookiestatus=yes')
+  }
+  else{
+      delete req.session.data['cookiestatus']
+    res.redirect('/footer/cookies?cookiestatus=no')
+
+  }
+
+
+
+
+
+})
+
 
 // The URL here needs to match the URL of the page that the user is on
 // when they type in their email address
