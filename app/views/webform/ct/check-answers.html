@@ -1,5 +1,10 @@
 {% extends "layout.html" %}
 
+
+
+
+
+
 {% block pageTitle %}
   Check details before sending the report
 {% endblock %}
@@ -293,9 +298,12 @@
 
       {%endif%}
 
+
+      {%set property_remarks_show = "<p class=bodytext>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ut tortor eget dui porta faucibus. Suspendisse ullamcorper ligula vitae nisl egestas, in mollis ante ullamcorper. Curabitur quis risus quis lectus pretium posuere. Suspendisse tincidunta.<span id='defaulttext'></span><span id='moreText' style='display:none;'> Donec imperdiet sed elit eget rutrum. Sed maximus, lectus eu gravida auctor, odio ligula consequat lectus, ac egestas sem justo in felis. Proin at malesuada mi. Donec fermentum commodo ex, eleifend faucibus massa mollis quis. Quisque ac justo interdum, semper arcu in, rhoncus mi. Vivamus elementum tellus at nisl hendrerit ornare. Aliquam at rutrum erat.</span></p><a onclick='toggleText()' id='readmore' href='javascript:;'>Read more...</a>"%}
+
 {%if data['report_reason']=="adding a property"%}
 
-      {%set propertyremarks =data['textarea_remarks']|default("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ut tortor eget dui porta faucibus. Suspendisse ullamcorper ligula vitae nisl egestas, in mollis ante ullamcorper. Curabitur quis risus quis lectus pretium posuere. Suspendisse tincidunta. <a href='#'>Read more...</a>", true)
+      {%set propertyremarks =data['textarea_remarks']|default(property_remarks_show, true)
 
 
 
@@ -303,13 +311,13 @@
 
 {%elseif data['report_reason']=="removing a property"%}
 
-        {%set propertyremarks =data['textarea_remarks']|default("Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ut tortor eget dui porta faucibus. Suspendisse ullamcorper ligula vitae nisl egestas, in mollis ante ullamcorper. Curabitur quis risus quis lectus pretium posuere. Suspendisse tincidunta. <a href='#'>Read more...</a>", true)%}
+        {%set propertyremarks =data['textarea_remarks']|default(sub_reason_question + " ---  " + property_remarks_show, true)%}
 
 
 
 {%else%}
 
-      {%set propertyremarks =data['textarea_remarks']|default(sub_reason_question + "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ut tortor eget dui porta faucibus. Suspendisse ullamcorper ligula vitae nisl egestas, in mollis ante ullamcorper. Curabitur quis risus quis lectus pretium posuere. Suspendisse tincidunta. <a href='#'>Read more...</a>", true)%}
+      {%set propertyremarks =data['textarea_remarks']|default(sub_reason_question + " --- " + property_remarks_show, true)%}
 
 {%endif%}
 
@@ -579,7 +587,7 @@
 
 
 
-    
+
 
 
           <h2 class="govuk-heading-m">Change details</h2>
