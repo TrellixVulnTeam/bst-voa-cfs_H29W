@@ -1114,11 +1114,23 @@ router.post('/webform/ct/address-list', function (req, res) {
   var address = req.session.data['address']
 console.log("address = " +address )
   // Check whether the variable matches a condition
-  delete req.session.data['property-address-line-1']
-  delete req.session.data['property-address-line-2']
-  delete req.session.data['property-address-line-3']
-  delete req.session.data['property-address-town-city']
-  delete req.session.data['property-address-postcode']
+  if (propertyreason == "new"){
+    // Send user to next page
+  delete req.session.data['new-property-address-line-1']
+  delete req.session.data['new-property-address-line-2']
+  delete req.session.data['new-property-address-line-3']
+  delete req.session.data['new-property-address-town-city']
+  delete req.session.data['new-property-address-postcode']
+}
+else {
+  delete req.session.data['occupier-property-address-line-1']
+  delete req.session.data['occupier-property-address-line-2']
+  delete req.session.data['occupier-property-address-line-3']
+  delete req.session.data['occupier-property-address-town-city']
+  delete req.session.data['occupier-property-address-postcode']
+
+}
+
     // Send user to next page
 
 
@@ -1153,7 +1165,7 @@ console.log("newpropertyreason = " +reason_new )
 
 
   } else {
-    res.redirect('/webform/ct/property-request-details?propertyreason='+propertyreason+'&reason='+propertyreason+'&property='+property)
+    res.redirect('/webform/ct/property-request-details?propertyreason='+propertyreason+'&reason='+reason+'&property='+property)
 
   }
 
@@ -1164,25 +1176,29 @@ console.log("newpropertyreason = " +reason_new )
 
 router.post('/webform/ct/address-enter', function (req, res) {
 
-  // Make a variable and give it the value from 'how-many-balls'
-
   var propertyreason = req.session.data['propertyreason']
 
   var reason_new = req.session.data['new-property-reason']
 
+  var property = req.session.data['property']
 
-console.log("requestreason = " +reason_new )
-  // Check whether the variable matches a condition
-
-
+    var reason = req.session.data['reason']
 
 
 
-    // Send user to ineligible page
+console.log("newpropertyreason = " +reason_new )
+  /// Check whether the variable matches a condition
+
+  if (propertyreason == "new"){
+    // Send user to next page
+
+      res.redirect('planning-reference-details?reason='+propertyreason+'&property='+property)
 
 
+  } else {
+    res.redirect('/webform/ct/property-request-details?propertyreason='+propertyreason+'&reason='+propertyreason+'&property='+property)
 
-      res.redirect('/webform/ct/address-verify?propertyreason='+propertyreason)
+  }
 
 
 
@@ -1592,11 +1608,22 @@ console.log("address = " +address )
 
     // Send user to next page
 
-    delete req.session.data['property-address-line-1']
-    delete req.session.data['property-address-line-2']
-    delete req.session.data['property-address-line-3']
-    delete req.session.data['property-address-town-city']
-    delete req.session.data['property-address-postcode']
+    if (propertyreason == "new"){
+      // Send user to next page
+    delete req.session.data['new-property-address-line-1']
+    delete req.session.data['new-property-address-line-2']
+    delete req.session.data['new-property-address-line-3']
+    delete req.session.data['new-property-address-town-city']
+    delete req.session.data['new-property-address-postcode']
+  }
+  else {
+    delete req.session.data['occupier-property-address-line-1']
+    delete req.session.data['occupier-property-address-line-2']
+    delete req.session.data['occupier-property-address-line-3']
+    delete req.session.data['occupier-property-address-town-city']
+    delete req.session.data['occupier-property-address-postcode']
+
+  }
 
 
 
@@ -1632,7 +1659,7 @@ console.log("newpropertyreason = " +reason_new )
 
   } else {
     // Send user to ineligible page
-    res.redirect('/webform/ndr/property-request-details?propertyreason='+propertyreason+'&reason='+propertyreason+'&property='+property)
+    res.redirect('/webform/ndr/property-request-details?propertyreason='+propertyreason+'&reason='+reason+'&property='+property)
   }
 
 
@@ -1642,26 +1669,29 @@ console.log("newpropertyreason = " +reason_new )
 
 router.post('/webform/ndr/address-enter', function (req, res) {
 
-  // Make a variable and give it the value from 'how-many-balls'
-
   var propertyreason = req.session.data['propertyreason']
 
   var reason_new = req.session.data['new-property-reason']
 
+  var property = req.session.data['property']
 
-console.log("requestreason = " +reason_new )
-  // Check whether the variable matches a condition
-
-
+    var reason = req.session.data['reason']
 
 
 
-    // Send user to ineligible page
+console.log("newpropertyreason = " +reason_new )
+  /// Check whether the variable matches a condition
+
+  if (propertyreason == "new"){
+    // Send user to next page
+
+      res.redirect('planning-reference-details?reason='+propertyreason+'&property='+property)
 
 
+  } else {
+    res.redirect('/webform/ndr/property-request-details?propertyreason='+propertyreason+'&reason='+propertyreason+'&property='+property)
 
-      res.redirect('/webform/ndr/address-verify?propertyreason='+propertyreason)
-
+  }
 
 
 
@@ -1754,7 +1784,7 @@ router.post('/footer/cookies', function (req, res) {
 
   if((!cookiestatus)||(cookiestatus="no"))
   {
-    
+
       res.redirect('/footer/cookies?cookiestatus=yes')
   }
 

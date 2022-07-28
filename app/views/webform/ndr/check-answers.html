@@ -30,7 +30,7 @@
 
 
 
-          {%set sub_reason_option = data['sub_reason_option']|default("05: demolished", true)%}
+
 
 
 
@@ -45,16 +45,20 @@
 
             {%set sub_reason_request = "Reason for demolishing property"%}
 
+            {%set sub_reason_option = data['sub_reason_option']|default("05: demolished", true)%}
+
 
         {%elseif(data['report_reason']=="Amending address, use, or other property details")%}
 
               {%set sub_reason_request = "Reason for amending property"%}
+                {%set sub_reason_option = data['sub_reason_option']|default("05: demolished", true)%}
 
       {%else%}
 
 
 
             {%set sub_reason_request = "Reason for adding property"%}
+              {%set sub_reason_option = "CR03: new"%}
 
       {%endif%}
 
@@ -270,7 +274,7 @@
                   href: "address-verify?action=edit&reason="+data['reason']+"&property="+data['property']+"&propertyreason=new",
                   text: "Change",
                   visuallyHiddenText: "property address"
-                } if (data['report_reason']|default("removing a property", true) == "adding a new property") else
+                } if (data['report_reason']|default("removing a property", true) == "adding a property") else
 
                 {
                   href: "#",

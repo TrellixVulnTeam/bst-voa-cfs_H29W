@@ -1,4 +1,4 @@
-{% extends "layout.html" %}
+/ct/{% extends "layout.html" %}
 
 {% block pageTitle %}
     Confirm address
@@ -76,9 +76,9 @@
 
 
 
-
-                            {% set addresslist = data['address'].split(',') %}
-
+                              {% if(data['address']) %}
+                                  {% set addresslist = data['address'].split(',') %}
+                              {%endif%}
 
                             {%set printaddress = "Addenbrooke House,
                             Ironmasters Way,
@@ -91,82 +91,48 @@
 
 
 
+  {% if(data['address']) %}
+
+
+
+            {% set address1_value = addresslist[0] + ", " %}
+            {% set address2_value = addresslist[1] + ", " + addresslist[2] + ", " %}
+              {% set address3_value = addresslist[3] + ", "  %}
+                {% set address_city = addresslist[4] + ", " + addresslist[5]+ ", " %}
+                  {% set address_postcode = addresslist[6]   %}
+
+
+
+  {%else%}
+
+      {%if data['propertyreason']=="new"%}
+
+
+            {% set address1_value = data['new-property-address-line-1'] + ", " %}
+            {% set address2_value = data['new-property-address-line-2'] + ", " %}
+            {% set address3_value = data['new-property-address-line-3'] + ", " %}
+            {% set address_city = data['new-property-address-town-city'] + ", " %}
+            {% set address_postcode = data['new-property-address-postcode']  %}
+
+     {%else%}
+
+
+           {% set address1_value = data['occupier-property-address-line-1'] + ", " %}
+           {% set address2_value = data['occupier-property-address-line-2'] + ", " %}
+           {% set address3_value = data['occupier-property-address-line-3'] + ", " %}
+           {% set address_city = data['occupier-property-address-town-city'] + ", " %}
+           {% set address_postcode = data['occupier-property-address-postcode']  %}
+
+
+     {%endif%}
+
+
+  {%endif%}
 
 
 
 
 
-                                                {% if ((data['property-address-line-1'].length > 0) and (data['propertyreason']=='new')) %}
-
-
-                                                      {% set address1_value = data['property-address-line-1'] + ", " %}
-
-                                                      test123  {{data['address']}}
-
-
-
-                                                {%else%}
-
-
-                                                        {% set address1_value = addresslist[0] + ", " %}
-
-
-
-                                                {%endif%}
-
-
-
-                                                {% if data['property-address-line-2'].length > 0%}
-
-
-                                                      {% set address2_value = data['property-address-line-2'] + ", " %}
-
-                                                {%else%}
-
-                                                      {% set address2_value = addresslist[1] + ", " + addresslist[2] + ", " %}
-
-
-                                                {%endif%}
-
-
-
-                                                {% if data['property-address-line-3'].length > 0 %}
-
-
-                                                      {% set address3_value = data['property-address-line-3'] + ", " %}
-
-                                                {%else%}
-
-                                                    {% set address3_value = addresslist[3] + ", "  %}
-
-
-                                                {%endif%}
-
-
-                                                {% if data['property-address-town-city'].length > 0 %}
-
-
-                                                      {% set address_city = data['property-address-town-city'] + ", " %}
-
-                                                {%else%}
-
-                                                    {% set address_city = addresslist[4] + ", " + addresslist[5]+ ", " %}
-
-
-                                                {%endif%}
-
-
-                                                {% if data['property-address-postcode'].length > 0 %}
-
-
-                                                      {% set address_postcode = data['property-address-postcode']  %}
-
-                                                {%else%}
-
-                                                    {% set address_postcode = addresslist[6]   %}
-
-
-                                                {%endif%}
 
                                                   {% set property_address = address1_value + address2_value + address3_value + address_city + address_postcode %}
 

@@ -27,6 +27,7 @@
 {% block content %}
 
                 <div class="govuk-grid-row">
+                          <form class="form" action="/webform/ndr/address-enter" method="post">
                   <div class="govuk-grid-column-two-thirds">
 
 
@@ -35,7 +36,7 @@
 
                       </label>
 
-                      <form class="form" action="/webform/ndr/address-enter" method="post">
+
 
 
                     {%if data['action']=='edit'%}
@@ -126,7 +127,7 @@
                             {% call govukFieldset({
                               legend: {
                                 text: page_header,
-                                classes: "govuk-fieldset__legend--xl",
+                                classes: "govuk-fieldset__legend--l",
                                 isPageHeading: true
                               }
                             }) %}
@@ -136,7 +137,7 @@
 
 
 
-
+ {%if data['propertyreason'] == "occupier"%}
 
 
 
@@ -145,8 +146,8 @@
                         html: 'Address line 1 <span class="govuk-visually-hidden">line 1 of 2</span>'
                       },
                       classes: "govuk-!-width-two-thirds",
-                      id: "property-address-line-1",
-                      name: "property-address-line-1",
+                      id: "occupier-property-address-line-1",
+                      name: "occupier-property-address-line-1",
                       value: address1_value,
                       autocomplete: "address-line1"
                     }) }}
@@ -157,8 +158,8 @@
                         text: "Address line 2 (optional)"
                       },
                       classes: "govuk-!-width-two-thirds",
-                      id: "property-address-line-2",
-                      name: "property-address-line-2",
+                      id: "occupier-property-address-line-2",
+                      name: "occupier-property-address-line-2",
                       value: address2_value,
                       autocomplete: "address-level2"
                     }) }}
@@ -168,8 +169,8 @@
                         text: "Address line 3 (optional)"
                       },
                       classes: "govuk-!-width-two-thirds",
-                      id: "property-address-line-3",
-                      name: "property-address-line-3",
+                      id: "occupier-property-address-line-3",
+                      name: "occupier-property-address-line-3",
                       value: address3_value,
                       autocomplete: "address-level2"
                     }) }}
@@ -179,9 +180,9 @@
                         text: "Town/city"
                       },
                       classes: "govuk-!-width-two-thirds",
-                      id: "property-address-town-city",
+                      id: "occupier-property-address-town-city",
                       value: address_city,
-                      name: "property-address-town-city"
+                      name: "occupier-property-address-town-city"
                     }) }}
 
                     {{ govukInput({
@@ -193,24 +194,103 @@
                     },
 
                       classes: "govuk-input--width-10",
-                      id: "property-address-postcode",
-                      name: "property-address-postcode",
+                      id: "occupier-property-address-postcode",
+                      name: "occupier-property-address-postcode",
                       value: address_postcode,
                       autocomplete: "postal-code"
 
                     }) }}
+{%else%}
 
+                  {{ govukInput({
+                    label: {
+                      html: 'Address line 1 <span class="govuk-visually-hidden">line 1 of 2</span>'
+                    },
+                    classes: "govuk-!-width-two-thirds",
+                    id: "new-property-address-line-1",
+                    name: "new-property-address-line-1",
+                    value: address1_value,
+                    autocomplete: "address-line1"
+                  }) }}
+
+
+                  {{ govukInput({
+                    label: {
+                      text: "Address line 2 (optional)"
+                    },
+                    classes: "govuk-!-width-two-thirds",
+                    id: "new-property-address-line-2",
+                    name: "new-property-address-line-2",
+                    value: address2_value,
+                    autocomplete: "address-level2"
+                  }) }}
+
+                  {{ govukInput({
+                    label: {
+                      text: "Address line 3 (optional)"
+                    },
+                    classes: "govuk-!-width-two-thirds",
+                    id: "new-property-address-line-3",
+                    name: "new-property-address-line-3",
+                    value: address3_value,
+                    autocomplete: "address-level2"
+                  }) }}
+
+                  {{ govukInput({
+                    label: {
+                      text: "Town/city"
+                    },
+                    classes: "govuk-!-width-two-thirds",
+                    id: "new-property-address-town-city",
+                    value: address_city,
+                    name: "new-property-address-town-city"
+                  }) }}
+
+                  {{ govukInput({
+                    label: {
+                      text: "Postcode"
+                    },
+                    hint: {
+                        text: "For example SW1 6GH"
+                  },
+
+                    classes: "govuk-input--width-10",
+                    id: "new-property-address-postcode",
+                    name: "new-property-address-postcode",
+                    value: address_postcode,
+                    autocomplete: "postal-code"
+
+                  }) }}
+
+
+
+{%endif%}
 
             {% endcall %}
 
 
 
             <div class="govuk-button-group govuk-!-padding-top-6">
+              {%if data['propertyreason'] == "occupier"%}
 
+                  <input type="hidden" name="occupier_property_address" id="occupier_property_address" value="{{property_address}}">
+              {%else%}
+
+                  {%if data['report_reason'] == "adding a property"%}
+
+                    <input type="hidden" name="property_new_address" id="property_new_address" value="new property">
+
+                    {%endif%}
+
+              {%endif%}
 
       {{ govukButton({
         text: "Continue"
       }) }}
+
+
+
+      </form>
 
           </div>
 
