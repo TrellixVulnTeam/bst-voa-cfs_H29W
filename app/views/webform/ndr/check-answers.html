@@ -651,36 +651,7 @@
 
 
 
-      {%if(data['propertyreason']!="occupier")
-                              %}
-
-
-          {{ govukSummaryList({
-            classes: 'govuk-!-margin-bottom-9',
-            rows: [
-              {
-                key: {
-                  text: "Property address"
-                },
-                value: {
-                  text: data['property_new_address']|default("1st, Custom House Annexe, 20 Lower Thames St, London EC3R 6EE", true)
-                },
-                actions: {
-                  items: [
-                    {
-                      href: "address-enter?action=edit&reason="+data['reason']+"&property="+data['property']+"&propertyreason="+data['propertyreason']+"&owner_occupier=edit",
-                      text: "Change",
-                      visuallyHiddenText: "property address?"
-                    }
-                  ]
-                }
-              }
-            ]
-          }) }}
-
-
-
-          {%endif%}
+    
 
           <h2 class="govuk-heading-m">Change details</h2>
 
