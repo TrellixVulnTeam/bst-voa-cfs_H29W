@@ -151,7 +151,7 @@ router.post('/bulk-submission-report-list', function (req, res, nex) {
   var bulkconfirm = req.session.data['bulkconfirm']
   var correctedissues = req.session.data['correctedissues']
 
-   console.log('parmaeters'+req.method);
+
 
 
   // Check whether the variable matches a condition
@@ -1794,6 +1794,111 @@ router.post('/footer/cookies', function (req, res) {
 
 
 })
+
+
+router.post('/cookieconfirm', function (req, res) {
+
+  var measurement = req.session.data['measurement']
+
+  var cookiesettings = req.session.data['cookiesettings']
+
+  var confirmcookie = req.session.data['confirmcookie']
+
+  var strreferrer = req.get('Referrer')
+
+  console.log(strreferrer)
+
+  var strcookie = strreferrer.indexOf('?cookiexist=')
+  var strcookieparameter = strreferrer.indexOf('&cookiexist=')
+
+
+  var equalexist = strreferrer.indexOf('=')
+
+    var strurl = strreferrer.indexOf('?')
+
+  var truncUrl = strreferrer.slice(0,strurl+1)
+
+
+
+
+
+ console.log('parameterr value'+strcookieparameter);
+
+/*	console.log('parmaeters'+req.get('Referrer'));
+
+  console.log('substring='+str.indexOf('?cookiexist'))
+
+    console.log('url='+str.slice(0,strcookie))
+*/
+
+	// Check whether the variable matches a condition
+  if (confirmcookie == "1"){
+    // Send user to next page
+    if(strcookie>0)
+    {
+
+        res.redirect(truncUrl+'?cookiexist=yes')
+
+
+    }
+/*
+    else if(equalexist>0) {
+        res.redirect(str+'&cookiexist=yes')
+    }*/
+    else if(strcookieparameter>0) {
+        res.redirect(strreferrer.slice(0,79)+'&cookiexist=yes')
+    }
+    else {
+      res.redirect(strreferrer.slice(0,strreferrer.length)+'?cookiexist=yes')
+    }
+
+  }
+  else if(confirmcookie == "2") {
+
+    // Send user to ineligible page
+
+
+      if(strcookie>0)
+      {
+          console.log('no value'+truncUrl);
+          res.redirect(truncUrl+'?cookiexist=no')
+
+
+
+
+      }
+/*
+      else if(equalexist>0) {
+          res.redirect(str+'&cookiexist=yes')
+      }*/
+      else if(strcookieparameter>0) {
+          res.redirect(strreferrer.slice(0,79)+'&cookiexist=no')
+      }
+      else {
+        res.redirect(strreferrer.slice(0,strreferrer.length)+'?cookiexist=no')
+      }
+  }
+  else if(confirmcookie == "3") {
+
+    // Send user to ineligible page
+
+
+
+        res.redirect(strreferrer+'&hidecookiemsg=yes')
+
+  }
+
+
+
+
+
+
+
+
+
+})
+
+
 
 
 // The URL here needs to match the URL of the page that the user is on

@@ -53,7 +53,55 @@ function toggleText() {
     }
 }
 
+function ShowCookieConfirmation(parentid,objectid) {
+	alert();
+	
+	cookieBanner = document.getElementById(parentid);
+
+	HideMessage = document.getElementById(objectid);
+	
+	HideMessage.style.display = 'none';
+	
+	if (HideMessage.style.display === 'none') {
+    HideMessage.style.display = 'block';
+
+    
+  } else {
+    HideMessage.style.display = 'none';
+
+   
+  }
+
+
+}
 $(document).ready(function () {
+	
+	$("#btnAcceptCookies").click(function(){
+        $("#default_cookie_banner").hide();
+		$("#reject_cookie_message").hide();
+		$("#accept_cookie_message").show();
+    });
+	
+	$("#btnRejectCookies").click(function(){
+        $("#default_cookie_banner").hide();
+		$("#accept_cookie_message").hide();
+		$("#reject_cookie_message").show();
+    });
+	
+	
+	$("#btnAccepthide").click(function(){
+        $("#default_cookie_banner").hide();
+		$("#accept_cookie_message").hide();
+		$("#reject_cookie_message").hide();
+    });
+	
+	$("#btnRejectthide").click(function(){
+        $("#default_cookie_banner").hide();
+		$("#accept_cookie_message").hide();
+		$("#reject_cookie_message").hide();
+    });
+	
+	
   window.MOJFrontend.initAll()
   window.GOVUKFrontend.initAll()
 })
