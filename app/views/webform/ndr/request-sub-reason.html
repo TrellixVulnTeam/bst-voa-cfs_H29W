@@ -49,8 +49,9 @@
               value: data['other-reason-remove']|default("", true),
               classes: "govuk-!-width-full",
               label: {
-                text: "Other reason for removing the property"
+                text: "Tell us why you want to remove this property from the list if the other reason codes do not apply. If the reason is not known, enter ‘Unknown’"
               }
+            
             }) }}
             {% endset -%}
 
@@ -134,7 +135,7 @@
               autocomplete: "tel",
               classes: "govuk-!-width-full",
               label: {
-                text: "Other reason for amending the property"
+                text: "Tell us why you want to amend this property on the list if the other reason codes do not apply. If the reason is not known, enter ‘Unknown’"
               }
             }) }}
             {% endset -%}
@@ -217,8 +218,9 @@
               autocomplete: "tel",
               classes: "govuk-!-width-full",
               label: {
-                text: "Other reason for adding the new property"
-              }
+                    text: "Tell us why you want to add this property to the list if the other reason codes do not apply. If the reason is not known, enter ‘Unknown’"
+                  }
+
             }) }}
             {% endset -%}
 
