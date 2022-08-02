@@ -1848,6 +1848,10 @@ router.post('/cookieconfirm', function (req, res) {
     else if(strcookieparameter>0) {
         res.redirect(strreferrer.slice(0,79)+'&cookiexist=yes')
     }
+    else if((strcookieparameter<0)&&(strreferrer.indexOf('=')>0)) {
+        console.log('in condtition where querystring exists for accept')
+        res.redirect(strreferrer.slice(0,strreferrer.length)+'&cookiexist=yes')
+    }
     else {
       res.redirect(strreferrer.slice(0,strreferrer.length)+'?cookiexist=yes')
     }
@@ -1873,6 +1877,10 @@ router.post('/cookieconfirm', function (req, res) {
       }*/
       else if(strcookieparameter>0) {
           res.redirect(strreferrer.slice(0,79)+'&cookiexist=no')
+      }
+      else if((strcookieparameter<0)&&(strreferrer.indexOf('=')>0)) {
+          console.log('in condtition where querystring exists for accept')
+          res.redirect(strreferrer.slice(0,strreferrer.length)+'&cookiexist=yes')
       }
       else {
         res.redirect(strreferrer.slice(0,strreferrer.length)+'?cookiexist=no')
