@@ -117,23 +117,7 @@
       {{ govukSummaryList({
         classes: 'govuk-!-margin-bottom-9',
         rows: [
-        {
-          key: {
-            text: "Billing authority report number"
-          },
-          value: {
-            text: data['input-bill-auth-report-no']|default("C01324", true)
-          },
-          actions: {
-            items: [
-              {
-                href: "enter-billing-auth-rep-no?property="+data['property']+"&billing_auth_report_no="+data['input-bill-auth-report-no']|default("C01324", true),
-                text: "Change",
-                visuallyHiddenText: "name"
-              }
-            ]
-          }
-        },
+
           {
             key: {
               text: "Billing authority reference number"
@@ -145,6 +129,23 @@
               items: [
                 {
                   href: "billing-reference?billing_auth_ref_no="+data['input_property_billing_ref_no']|default("1446369104400201", true)+"&property="+data['property'],
+                  text: "Change",
+                  visuallyHiddenText: "name"
+                }
+              ]
+            }
+          },
+          {
+            key: {
+              text: "Billing authority report number"
+            },
+            value: {
+              text: data['input-bill-auth-report-no']|default("C01324", true)
+            },
+            actions: {
+              items: [
+                {
+                  href: "enter-billing-auth-rep-no?property="+data['property']+"&billing_auth_report_no="+data['input-bill-auth-report-no']|default("C01324", true),
                   text: "Change",
                   visuallyHiddenText: "name"
                 }

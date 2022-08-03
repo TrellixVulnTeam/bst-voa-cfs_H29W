@@ -178,6 +178,23 @@
         rows: [
         {
           key: {
+            text: "Billing authority reference number"
+          },
+          value: {
+            text: data['input_property_billing_ref_no']|default("1446369104400201", true)
+          },
+          actions: {
+            items: [
+              {
+                href: "billing-reference?billing_auth_ref_no="+data['input_property_billing_ref_no']|default("1446369104400201", true)+"&property="+data['property'],
+                text: "Change",
+                visuallyHiddenText: "name"
+              }
+            ]
+          }
+        },
+        {
+          key: {
             text: "Billing authority report number"
           },
           value: {
@@ -192,24 +209,8 @@
               }
             ]
           }
-        },
-          {
-            key: {
-              text: "Billing authority reference number"
-            },
-            value: {
-              text: data['input_property_billing_ref_no']|default("1446369104400201", true)
-            },
-            actions: {
-              items: [
-                {
-                  href: "billing-reference?billing_auth_ref_no="+data['input_property_billing_ref_no']|default("1446369104400201", true)+"&property="+data['property'],
-                  text: "Change",
-                  visuallyHiddenText: "name"
-                }
-              ]
-            }
-          }
+        }
+
         ]
       }) }}
 

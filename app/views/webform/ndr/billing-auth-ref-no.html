@@ -32,6 +32,19 @@
 
 
 
+              <div class="govuk-form-group">
+              <label class="govuk-label govuk-label--m" for="input_property_billing_ref_no">
+                Billing authority reference number
+              </label>
+
+
+              <div id="input_property_billing_ref_no-hint" class="govuk-hint">
+                Your reference number for the property this report is about
+              </div>
+
+              <input class="govuk-input govuk-input--width-20" id="input_property_billing_ref_no" name="input_property_billing_ref_no" value="{{data['input_property_billing_ref_no']|default(data['billing_auth_ref_no'], true)}}">
+              </div>
+
 
 
             <div class="govuk-form-group">
@@ -44,18 +57,7 @@
             <input class="govuk-input govuk-input--width-20" id="input-bill-auth-report-no" name="input-bill-auth-report-no" value="{{data['input-bill-auth-report-no']|default(data['billing_auth_report_no'], true)}}">
             </div>
 
-            <div class="govuk-form-group">
-            <label class="govuk-label govuk-label--m" for="input_property_billing_ref_no">
-              Billing authority reference number
-            </label>
 
-
-            <div id="input_property_billing_ref_no-hint" class="govuk-hint">
-              Your reference number for the property this report is about
-            </div>
-
-            <input class="govuk-input govuk-input--width-20" id="input_property_billing_ref_no" name="input_property_billing_ref_no" value="{{data['input_property_billing_ref_no']|default(data['billing_auth_ref_no'], true)}}">
-            </div>
 
 
 

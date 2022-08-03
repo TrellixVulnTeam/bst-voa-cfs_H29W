@@ -85,7 +85,24 @@
 
               {{ govukDetails({
                   summaryText: "If the address is incorrect",
-                  text: "<p class='govuk-body'>Go back and enter the billing property reference number again.</p> <p class='govuk-body'>If the details are still incorrect, <a href='/footer/help' target='_blank'>contact the Valuation Office Agency.</a></p>" | safe
+                  text: "<p class='govuk-body'>Go back and enter the billing property reference number again.</p>
+                  <p class='govuk-body'>If the details are still incorrect, <a href='/footer/help' target='_blank'>contact the Valuation Office Agency  {
+                      key: {
+                        text: "Billing authority report number"
+                      },
+                      value: {
+                        text: data['input-bill-auth-report-no']|default("C01324", true)
+                      },
+                      actions: {
+                        items: [
+                          {
+                            href: "enter-billing-auth-rep-no?property="+data['property']+"&billing_auth_report_no="+data['input-bill-auth-report-no']|default("C01324", true),
+                            text: "Change",
+                            visuallyHiddenText: "name"
+                          }
+                        ]
+                      }
+                    }.</a></p>" | safe
               }) }}
 
           <br/>
