@@ -1804,6 +1804,8 @@ router.post('/cookieconfirm', function (req, res) {
 
   var confirmcookie = req.session.data['confirmcookie']
 
+    var cookiexist = req.session.data['cookiexist']
+
   var strreferrer = req.get('Referrer')
 
   console.log(strreferrer)
@@ -1836,9 +1838,14 @@ router.post('/cookieconfirm', function (req, res) {
     // Send user to next page
     if(strcookie>0)
     {
+        if(cookiexist==0)
+        {
+        res.redirect(truncUrl+'cookiexist=yes')
 
-        res.redirect(truncUrl+'?cookiexist=yes')
-
+        }
+        else {
+            res.redirect(truncUrl+'?cookiexist=yes')
+        }
 
     }
 /*
@@ -1864,8 +1871,17 @@ router.post('/cookieconfirm', function (req, res) {
 
       if(strcookie>0)
       {
-          console.log('no value'+truncUrl);
-          res.redirect(truncUrl+'?cookiexist=no')
+
+        
+
+          if(cookiexist==0)
+          {
+          res.redirect(truncUrl+'cookiexist=no')
+
+          }
+          else {
+              res.redirect(truncUrl+'?cookiexist=no')
+          }
 
 
 

@@ -1,0 +1,46 @@
+
+
+{% extends "layout-basic.html" %}
+
+{% block pageTitle %}
+    Your feedback has been received
+
+{% endblock %}
+
+{% block beforeContent %}
+<!--
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-one-third">
+			{{ govukBackLink({
+			  text: "Back",
+			  href: "javascript:window.history.back()"
+			}) }}
+		</div>
+		{% include "includes/header-section-signedin.html" %}
+	</div>
+  -->
+{% endblock %}
+
+{% block content %}
+
+<div class="govuk-grid-row">
+          <div class="govuk-grid-column-two-thirds">
+
+
+                <div class="gem-c-title govuk-!-margin-top-8 govuk-!-margin-bottom-8">
+
+                  <h1 class="gem-c-title__text govuk-heading-xl">
+                  Your feedback has been received
+                  </h1>
+                </div>
+
+                {%if data['property']=="ndr"%}
+                <p class="bodyText">Return to the <a href="/bahomepage#council-tax">local authority portal</a>.</p>
+                {%else%}
+                <p class="bodyText">Return to the <a href="/bahomepage#non-domestic-rates">local authority portal</a>.</p>
+                {%endif%}
+
+          </div>
+        </div>
+
+    {% endblock %}
