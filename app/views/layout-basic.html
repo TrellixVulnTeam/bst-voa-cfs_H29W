@@ -67,11 +67,18 @@
 
       {%endif%}
 
-  {%else%}
+      {%elseif data['cookiexist']=="0"%}
 
 
 
-        {%set globalflag=false%}
+            {%set globalflag=false%}
+            {%set acceptflag=true%}
+            {%set rejectflag=true%}
+
+
+        {%else%}
+
+        {%set globalflag=true%}
         {%set acceptflag=true%}
         {%set rejectflag=true%}
 
