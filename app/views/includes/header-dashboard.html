@@ -1,6 +1,12 @@
 	<div class="govuk-grid-row">
 		<div class="govuk-grid-column-one-third">
-		<p class="govuk-body-l govuk-!-margin-top-3">{{data['ba_name']|default("Bridgend", true)}} ({{data['ba_code']|default("6905", true)}})</p>
+					<p class="govuk-body-l govuk-!-margin-top-3">{{data['ba_name']|default("Bridgend", true)}} ({{data['ba_code']|default("6905", true)}})
+
+						{%if data['accountype']=="multiplebas"%}
+						<a href="/select-billing-authority">Change <span class="govuk-visually-hidden">Billing Authority</span>
+						{%endif%}
+						</a>
+					</p>
 		</div>
 		<div class="govuk-grid-column-two-thirds">
 			{{
