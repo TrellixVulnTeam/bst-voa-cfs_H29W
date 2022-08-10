@@ -1,15 +1,18 @@
 	<div class="govuk-grid-row">
 		<div class="govuk-grid-column-one-third">
-			&nbsp;
+		<p class="govuk-body-l govuk-!-margin-top-3">{{data['ba_name']|default("Bridgend", true)}} ({{data['ba_code']|default("6905", true)}})</p>
 		</div>
 		<div class="govuk-grid-column-two-thirds">
-			<ul class="govuk-list" style="text-align:right; margin-top:13px;">
-				<li style="display:inline">
-					<a href="#" class="govuk-link">Ms Zachary Hill</a> |
-				</li>
-				<li style="display:inline">
-					<a href="/signin" class="govuk-link">Sign out</a>
-				</li>
-			</ul>
+			{{
+			  hmrcLanguageSelect({
+			    language: 'en',
+			    en: {
+			      href: '?en'
+			    },
+			    cy: {
+			      href: '?cy'
+			    }
+			  })
+			}}
 		</div>
 	</div>

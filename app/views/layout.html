@@ -30,6 +30,9 @@
 {% from "govuk/components/tag/macro.njk"                 import govukTag %}
 {% from "govuk/components/textarea/macro.njk"            import govukTextarea %}
 {% from "govuk/components/warning-text/macro.njk"        import govukWarningText %}
+{%- from "hmrc/components/language-select/macro.njk" import hmrcLanguageSelect -%}
+{% from "hmrc/components/header/macro.njk" import hmrcHeader %}
+
 
 
 
@@ -206,9 +209,26 @@
   {{ govukHeader({
     homepageUrl: "/",
     serviceName: servicename_property,
-    serviceUrl: "/",
-    containerClasses: "govuk-width-container"
+    serviceUrl: "/bahomepage",
+    containerClasses: "govuk-width-container",
+    navigation: [
+      {
+        href: "#1",
+        text: "Home",
+        active: false
+      },
+      {
+        href: "#2",
+        text: "Change billing authority"
+      },
+      {
+        href: "#3",
+        text: "Sign out"
+      }
+    ]
   }) }}
+
+
 
 
 <div class="govuk-width-container ">
