@@ -85,7 +85,7 @@
 																		<a href="/bahomepage?accountype={{data['accountype']|default("singleba", true)}}&ba_name=Birmingham&ba_code=4605{{propertybm}}">
 																			Birmingham
 																		</a>
-																		{%else%}Birmingham (selected <span class="govuk-visually-hidden">billing authority</span>){%endif%}
+																		{%else%}<span aria-label="Birmingham (selected billing authority)">Birmingham (selected) </span>{%endif%}
 
 
 
@@ -117,7 +117,7 @@
 																		<a href="/bahomepage?accountype={{data['accountype']|default("singleba", true)}}&ba_name=Breckland&ba_code=2605{{propertybm}}">
 																			Breckland
 																		</a>
-												{%else%}Breckland (selected <span class="govuk-visually-hidden">billing authority</span>){%endif%}</td>
+												{%else%}<span aria-label="Breckland (selected billing authority)">Breckland (selected)</span>{%endif%}</td>
 
                                   <td class="govuk-table__cell">2605</td>
 
@@ -147,7 +147,7 @@
 
                                         {%if data['ba_code']!="6905"%}
                                     <a href="/bahomepage?accountype={{data['accountype']|default("singleba", true)}}&ba_name=Bridgend&ba_code=6905{{propertybm}}">Bridgend</a>
-                                    {%else%} Bridgend (selected <span class="govuk-visually-hidden">billing authority</span>)  {%endif%}
+                                    {%else%} <span aria-label="Bridgend (selected billing authority)">Breckland (selected)</span> {%endif%}
 
 
 							</td>
@@ -174,7 +174,7 @@
 
 											  {%if data['ba_code']!="3815"%}
                                           <a href="/bahomepage?accountype={{data['accountype']|default("singleba", true)}}&ba_name=Chichester&ba_code=3815{{propertybm}}">Chichester</a>
-                                    {%else%}Chichester (selected <span class="govuk-visually-hidden">billing authority</span>){%endif%}
+                                    {%else%}<span aria-label="Chichester (selected billing authority)">Chichester (selected)</span>{%endif%}
 
 
 
@@ -205,7 +205,7 @@
 
 									    {%if data['ba_code']!="1715"%}
                                         <a href="/bahomepage?accountype={{data['accountype']|default("singleba", true)}}&ba_name=Eastleigh&ba_code=1715{{propertybm}}">Eastleigh</a>
-                                    {%else%}Eastleigh (selected <span class="govuk-visually-hidden">billing authority</span>){%endif%}
+                                    {%else%}<span aria-label="Eastleigh (selected billing authority)">Eastleigh (selected)</span>{%endif%}
 
 
 
@@ -232,7 +232,7 @@
 
 									    {%if data['ba_code']!="5480"%}
                                           <a href="/bahomepage?accountype={{data['accountype']|default("singleba", true)}}&ba_name=Havering&ba_code=5480{{propertybm}}">Havering</a>
-                                    {%else%}Havering (selected <span class="govuk-visually-hidden">billing authority</span>){%endif%}
+                                    {%else%}<span aria-label="Havering (selected billing authority)">Havering (selected)</span>{%endif%}
 
 
 
@@ -264,7 +264,7 @@
 
                                     {%if data['ba_code']!="5660"%}
                                             <a href="/bahomepage?accountype={{data['accountype']|default("singleba", true)}}&ba_name=Lambeth&ba_code=5660{{propertybm}}">Lambeth</a>
-                                    {%else%}Lambeth (selected <span class="govuk-visually-hidden">billing authority</span>){%endif%}
+                                    {%else%}<span aria-label="Lambeth (selected billing authority)">Lambeth (selected)</span>{%endif%}
 
 
 
@@ -292,7 +292,7 @@
 
 											 {%if data['ba_code']!="2340"%}
                                             <a href="/bahomepage?accountype={{data['accountype']|default("singleba", true)}}&ba_name=Pendle&ba_code=2340{{propertybm}}">Pendle</a>
-                                    {%else%}Pendle (selected <span class="govuk-visually-hidden">billing authority</span>){%endif%}
+                                    {%else%}<span aria-label="Pendle (selected billing authority)">Pendle (selected)</span>{%endif%}
 
 
 								</td>
@@ -320,7 +320,7 @@
 
 									    {%if data['ba_code']!="2335"%}
                                               <a href="/bahomepage?accountype={{data['accountype']|default("singleba", true)}}&ba_name=Rossendale&ba_code=2335{{propertybm}}">Rossendale</a>
-                                    {%else%}Rossendale (selected <span class="govuk-visually-hidden">billing authority</span>) {%endif%}
+                                    {%else%}<span aria-label="Rossendale (selected billing authority)">Rossendale (selected)</span> {%endif%}
 
 
 
@@ -351,7 +351,7 @@
 
 												 {%if data['ba_code']!="1165"%}
                                                 <a href="/bahomepage?accountype={{data['accountype']|default("singleba", true)}}&ba_name=Torbay&ba_code=1165{{propertybm}}">Torbay</a>
-                                    {%else%}Torbay (selected <span class="govuk-visually-hidden">billing authority</span>){%endif%}
+                                    {%else%}<span aria-label="Torbay (selected billing authority)">Torbay (selected)</span>{%endif%}
 
 
 
@@ -381,7 +381,7 @@
 
 								{%if data['ba_code']!="2535"%}
                                                   <a href="/bahomepage?accountype={{data['accountype']}}&ba_name=West Lindsay&ba_code=2535{{propertybm}}">West Lindsay</a>
-                                    {%else%}West Lindsay (selected <span class="govuk-visually-hidden">billing authority</span>){%endif%}
+                                    {%else%}<span aria-label="West Lindsay (selected billing authority)">West Lindsay (selected)</span>{%endif%}
 
 
 								</td>
@@ -411,7 +411,7 @@
 
                                     {%if data['ba_code']!="2370"%}
                                                   <a href="/bahomepage?accountype={{data['accountype']}}&ba_name=Wyre&ba_code=2370{{propertybm}}">Wyre</a>
-                                    {%else%}Wyre (selected <span class="govuk-visually-hidden">billing authority</span>)
+                                    {%else%}<span aria-label="Wyre (selected billing authority)">Breckland (selected)</span>)
 									  {%endif%}
 
 
