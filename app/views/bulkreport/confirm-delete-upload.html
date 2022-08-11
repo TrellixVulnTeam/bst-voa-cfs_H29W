@@ -6,7 +6,7 @@
 
 {% if data['errortype'] == 'data' %}
 
-  
+
 
 Are you sure you want to delete the uploaded file and all its reports?
 
@@ -44,7 +44,7 @@ Are you sure you want to delete the file?
         <label class="govuk-heading-xl" for="event-name">
        {% if data['errortype'] == 'data' %}
 
-  
+
 
 		Are you sure you want to delete the uploaded file and all its reports?
 
@@ -126,5 +126,5 @@ Are you sure you want to delete the file?
 
 
 
-
+  {% include "includes/details-get-help.html" %}
 {% endblock %}

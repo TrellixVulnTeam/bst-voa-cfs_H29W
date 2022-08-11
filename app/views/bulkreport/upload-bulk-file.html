@@ -9,7 +9,7 @@
 			Upload Excel file
 
 {%else%}
-		Upload XML file 
+		Upload XML file
 
 
 {%endif%}
@@ -57,10 +57,10 @@
 				{% if data['filetype'] == "Excel" %}
 
 
-         
 
-                 
-		  		
+
+
+
 		   <p class="govuk-body">The Excel file should be:</p>
 			<ul class="govuk-list govuk-list--bullet">
 			 	 <li>less than 10MB in size</li>
@@ -72,11 +72,11 @@
 			</ul>
 
 
-            
+
 
 				{%else%}
-		  
-		  
+
+
 		  <p class="govuk-body">The XML file should be:</p>
 			<ul class="govuk-list govuk-list--bullet">
 			 	<li>less than 10MB in size</li>
@@ -84,11 +84,11 @@
 				<li>based on the <a href="#" target="_blank">latest XML data schema (opens in a new window or tab)</a></li>
 
 			</ul>
-								
 
-		  
 
-									
+
+
+
 
 
 			{%endif%}
@@ -104,7 +104,7 @@
               </div>
 
 
-         
+
 
 
 
@@ -122,5 +122,5 @@
 
   </div>
 </div>
-
+  {% include "includes/details-get-help.html" %}
 {% endblock %}

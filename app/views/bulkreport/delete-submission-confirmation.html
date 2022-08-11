@@ -80,11 +80,11 @@ The file has been deleted
 		</table>
 
 		<p class="govuk-body">
-	
-	
+
+
 						<a href="#" target="_blank">Download the list of file errors as an Excel file</a>.
 
-					
+
 					</p>
 
 
@@ -94,7 +94,7 @@ The file has been deleted
 
 
 
-							
+
 							{% if data['filetype'] == "xml" %}
             	  <p><a href="#">Read guidance on fixing file errors in XML files (opens in a new window or tab)</a></p>
 							{% else  %}
@@ -124,7 +124,7 @@ The file has been deleted
               <button class="govuk-button" name="uploadanother" id="uploadanother" value="1" formaction="/upload_another_submission">
               Upload another file
             </button>
-				
+
 				 <button class="govuk-button govuk-button--secondary" name="dashboard" id="dashboard" value="2" formaction="/return_dashboard">
               Return to dashboard
             </button>
@@ -132,7 +132,7 @@ The file has been deleted
 
             </div>
 
-
+<!--
   			<div class="govuk-width-container">
   			  <div class="govuk-grid-row">
   				<div class="govuk-grid-column-two-thirds">
@@ -140,7 +140,7 @@ The file has been deleted
   				</div>
   			  </div>
   			</div>
-
+-->
 
           </form>
 
@@ -155,5 +155,5 @@ The file has been deleted
 
 
 
-
+{% include "includes/details-get-help.html" %}
 {% endblock %}
