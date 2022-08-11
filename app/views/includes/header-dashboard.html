@@ -6,8 +6,9 @@
 
 
 									<p class="govuk-body-l govuk-!-margin-top-3">
+										<strong>
 										{{data['ba_name']|default("Bridgend", true)}} ({{data['ba_code']|default("6905", true)}})
-
+										</strong>
 										{%if data['accountype']=="multiplebas"%}
 										<a href="/select-billing-authority">Change <span class="govuk-visually-hidden">Billing Authority</span>
 
