@@ -8,7 +8,7 @@
 
 	<div class="govuk-grid-row">
 
-	
+
 		<div class="govuk-grid-column-full">
 			{{ govukBackLink({
 			  text: "Back",
@@ -144,13 +144,13 @@
 
 
                                         {%if data['ba_code']!="6905"%}
-                                    <a href="/bahomepage?accountype={{data['accountype']|default("singleba", true)}}&ba_name=Bridgend&ba_code=6905{{propertybm}}">Bridgend</a>
-                                    {%else%} <span aria-label="Bridgend (selected billing authority)">Breckland (selected)</span> {%endif%}
+                                    <a href="/bahomepage?accountype={{data['accountype']|default("singleba", true)}}&ba_name=Burnley&ba_code=2315{{propertybm}}">Burnley</a>
+                                    {%else%} <span aria-label="Burnley (selected billing authority)">Burnley (selected)</span> {%endif%}
 
 
 							</td>
 
-                                  <td class="govuk-table__cell">6905</td>
+                                  <td class="govuk-table__cell">2315</td>
 
                                   <!--<td class="govuk-table__cell">
 
@@ -170,22 +170,22 @@
                                   <td class="govuk-table__cell">
 
 
-											  {%if data['ba_code']!="3815"%}
-                                          <a href="/bahomepage?accountype={{data['accountype']|default("singleba", true)}}&ba_name=Chichester&ba_code=3815{{propertybm}}">Chichester</a>
-                                    {%else%}<span aria-label="Chichester (selected billing authority)">Chichester (selected)</span>{%endif%}
+											  {%if data['ba_code']!="1610"%}
+                                          <a href="/bahomepage?accountype={{data['accountype']|default("singleba", true)}}&ba_name=Cotswold&ba_code=1610{{propertybm}}">Cotswold</a>
+                                    {%else%}<span aria-label="Cotswold (selected billing authority)">Cotswold (selected)</span>{%endif%}
 
 
 
 								</td>
 
-                                  <td class="govuk-table__cell">3815</td>
+                                  <td class="govuk-table__cell">1610</td>
 
                                  <!-- <td class="govuk-table__cell">
 
 
 
-                                    {%if data['ba_code']!="3815"%}
-                                          <a href="/bahomepage?accountype={{data['accountype']|default("singleba", true)}}&ba_name=Chichester&ba_code=3815">Choose billing authority</a>
+                                    {%if data['ba_code']!="1610"%}
+                                          <a href="/bahomepage?accountype={{data['accountype']|default("singleba", true)}}&ba_name=Cotswold&ba_code=1610">Choose billing authority</a>
                                     {%else%}Selected Billing Authority{%endif%}
 
 
