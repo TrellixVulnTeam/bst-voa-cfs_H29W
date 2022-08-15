@@ -30,10 +30,10 @@
 
             <ul class="govuk-list hmrc-language-select__items">
             <li class="govuk-header__navigation-item">
-              <a class="govuk-header__link" href="/bahomepage">Home</a>
+              <a class="govuk-header__link" href="/bahomepage">Cartref</a>
             </li>
             <li class="govuk-header__navigation-item">
-              <a class="govuk-header__link" href="/signin">Sign out</a>
+              <a class="govuk-header__link" href="/signin">Allgofnodi</a>
             </li>
           </ul>
         </nav>
@@ -76,7 +76,7 @@
                               {{data['ba_name']|default("Bridgend", true)}} ({{data['ba_code']|default("6905", true)}})
                               </strong>
                               {%if data['accountype']=="multiplebas"%}
-                              <a href="/select-billing-authority">Change <span class="govuk-visually-hidden">Billing Authority</span>
+                              <a href="/select-billing-authority">Newid <span class="govuk-visually-hidden">Awdurdod Bilio</span>
 
                               </a>
                             </p>
@@ -85,13 +85,13 @@
                       <div class="govuk-grid-column-two-thirds">
                         {{
                           hmrcLanguageSelect({
-                            language: 'en',
+                            language: 'cy',
                             en: {
-                              href: '/contact/feedback-form?en=1'
-                            },
-                            cy: {
-                              href: '/contact/feedback-form-welsh?cy=1'
-                            }
+									href: '/contact/feedback-form?en=1'
+								  },
+								  cy: {
+									href: '/contact/feedback-form-welsh?cy=1'
+								  }
                           })
                         }}
                       </div>
@@ -101,9 +101,9 @@
                 <div class="govuk-grid-column-full">
                   {{
                     hmrcLanguageSelect({
-                      language: 'en',
+                      language: 'cy',
                       en: {
-                        href: '?en'
+                        href: '/contact/feedback-form?en=1'
                       },
                       cy: {
                         href: '/contact/feedback-form-welsh?cy=1'
