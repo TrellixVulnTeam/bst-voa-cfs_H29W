@@ -1,0 +1,133 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+	Local Authorities Portal Iterations
+{% endblock %}
+
+
+{% block content %}
+
+
+
+
+
+      <div class="govuk-grid-row">
+          <div class="govuk-grid-column-full">
+
+              <div class="govuk-!-margin-top-4">
+<a href="javascript:history.go(-1)" class="govuk-back- govuk-!-margin-top-0 govuk-!-margin-bottom-4 js-enabled">Back</a>
+</div>
+
+
+      <h1 class="govuk-heading-xl">HTTP messages</h1>
+
+
+							<div class="govuk-grid-column-full">
+
+
+
+											<h2 class="govuk-accordion__section-heading">
+
+
+
+
+
+
+
+
+
+<table class="govuk-table">
+
+  <thead class="govuk-table__head">
+    <tr class="govuk-table__row">
+      <th scope="col" class="govuk-table__header app-custom-class">HTTP error code</th>
+      <th scope="col" class="govuk-table__header app-custom-class">HTTP Message</th>
+      </tr>
+
+
+
+  </thead>
+  <tbody class="govuk-table__body">
+
+
+		<tr class="govuk-table__row">
+				<td class="govuk-table__cell">400</td>
+				<td class="govuk-table__cell"><a href="errorcodes/httpmessages?msg=400" target="_blank">Bad Request</a></td>
+		</tr>
+
+		<tr class="govuk-table__row">
+				<td class="govuk-table__cell">401</td>
+				<td class="govuk-table__cell"><a href="" target="_blank">Unauthorized</a></td>
+		</tr>
+
+
+		<tr class="govuk-table__row">
+				<td class="govuk-table__cell">403</td>
+				<td class="govuk-table__cell"><a href="" target="_blank">Forbidden</a></td>
+		</tr>
+
+
+		<tr class="govuk-table__row">
+				<td class="govuk-table__cell">404</td>
+				<td class="govuk-table__cell"><a href="" target="_blank">Page not found</a></td>
+		</tr>
+
+		<tr class="govuk-table__row">
+				<td class="govuk-table__cell">405</td>
+				<td class="govuk-table__cell"><a href="" target="_blank">Method Not Allowed</a></td>
+		</tr>
+
+
+		<tr class="govuk-table__row">
+				<td class="govuk-table__cell">408</td>
+				<td class="govuk-table__cell"><a href="" target="_blank">Request timeout</a></td>
+		</tr>
+
+
+		<tr class="govuk-table__row">
+				<td class="govuk-table__cell">412</td>
+				<td class="govuk-table__cell"><a href="" target="_blank">Too Many Requests</a></td>
+		</tr>
+
+		<tr class="govuk-table__row">
+				<td class="govuk-table__cell">429</td>
+				<td class="govuk-table__cell"><a href="" target="_blank">Precondition Failed</a></td>
+		</tr>
+
+		<tr class="govuk-table__row">
+				<td class="govuk-table__cell">500</td>
+				<td class="govuk-table__cell"><a href="" target="_blank">Internal service error</a></td>
+		</tr>
+
+
+		<tr class="govuk-table__row">
+				<td class="govuk-table__cell">501</td>
+				<td class="govuk-table__cell"><a href="" target="_blank">Not Implemented</a></td>
+		</tr>
+
+		<tr class="govuk-table__row">
+				<td class="govuk-table__cell">503</td>
+				<td class="govuk-table__cell"><a href="" target="_blank">Service unavailable</a></td>
+		</tr>
+
+
+
+
+
+  </tbody>
+</table>
+
+
+
+
+				</div>
+
+
+
+          </div>
+
+
+
+
+
+{% endblock %}
