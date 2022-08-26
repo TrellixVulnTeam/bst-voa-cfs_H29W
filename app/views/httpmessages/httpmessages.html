@@ -1,0 +1,66 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+ We are now checking the documents
+{% endblock %}
+
+{% block beforeContent %}
+
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-one-third">
+			{{ govukBackLink({
+			  text: "Back",
+			  href: "javascript:window.history.back()"
+			}) }}
+		</div>
+		{% include "includes/header-section-signedin.html" %}
+	</div>
+{% endblock %}
+
+{% block content %}
+
+
+{%if ((data['msg']=="400")or(data['msg']=="429")or(data['msg']=="500"))%}
+    {%set msgtitle="There is a problem with the service"%}
+    {%set msgbody="<p class='govuk-body'>Try again later.</p><p class='govuk-body'><a href='#'>Contact the Valuation Office Agency</a> if you need to make changes to your billing authority reports.</p>"%}
+{%elseif ((data['msg']=="401")or(data['msg']=="403")or(data['msg']=="501"))%}
+    {%set msgtitle="You cannot access this page"%}
+    {%set msgbody="<p class='govuk-body'>Check the address you entered and try again.</p><p class='govuk-body'>If you get this message again and think you should have access to this page, <a href='#'>Contact the Valuation Office Agency</a>.</p>"%}
+
+{%elseif ((data['msg']=="404")or(data['msg']=="405")or(data['msg']=="412"))%}
+    {%set msgtitle="Page not found"%}
+    {%set msgbody="<p class='govuk-body'>If you typed the web address, check it is correct.</p><p class='govuk-body'>If you pasted the web address, check you copied the entire address.</p><p class='govuk-body'><a href='#'>Contact the Valuation Office Agency</a> if you need to make changes to your billing authority reports.</p>"%}
+{%elseif data['msg']=="412"%}
+        {%set msgtitle="There is a problem with the service"%}
+        {%set msgbody="<p class='govuk-body'>Try again later.</p><p class='govuk-body'><a href='#'>Contact the Valuation Office Agency</a> if you need to make changes to your billing authority reports.</p>"%}
+{%elseif data['msg']=="429"%}
+        {%set msgtitle="There is a problem with the service"%}
+        {%set msgbody="<p class='govuk-body'>Try again later.</p><p class='govuk-body'><a href='#'>Contact the Valuation Office Agency</a> if you need to make changes to your billing authority reports.</p>"%}
+{%elseif data['msg']=="500"%}
+        {%set msgtitle="There is a problem with the service"%}
+        {%set msgbody="<p class='govuk-body'>Try again later.</p><p class='govuk-body'><a href='#'>Contact the Valuation Office Agency</a> if you need to make changes to your billing authority reports.</p>"%}
+
+{%elseif data['msg']=="503"%}
+        {%set msgtitle="The service is currently unavailable"%}
+        {%set msgbody="<p class='govuk-body'>You will be able to use the service from 9am on Monday 19 November 2023.</p><p class='govuk-body'><a href='#'>Contact the Valuation Office Agency</a> if you need to make changes to your billing authority reports.</p>"%}
+
+{%else%}
+		  {%set msgtitle="There is a problem with the service"%}
+    {%set msgbody="<p class='govuk-body'>Try again later.</p><p class='govuk-body'><a href='#'>Contact the Valuation Office Agency</a> if you need to make changes to your billing authority reports.</p>"%}
+{%endif%}
+
+<div class="govuk-width-container">
+  <main class="govuk-main-wrapper govuk-main-wrapper--l" id="main-content" role="main">
+    <div class="govuk-grid-row">
+      <div class="govuk-grid-column-two-thirds">
+        <h1 class="govuk-heading-l">  {{msgtitle}}</h1>
+
+            {{msgbody}}
+      </div>
+    </div>
+  </main>
+</div>
+
+
+  {% include "includes/details-get-help.html" %}
+{% endblock %}
