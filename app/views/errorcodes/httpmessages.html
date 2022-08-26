@@ -7,14 +7,14 @@
     {%set msgbody="<p class='govuk-body'>Try again later.</p><p class='govuk-body'><a href='#'>Contact the Valuation Office Agency</a> if you need to make changes to your billing authority reports.</p>"%}
 {%elseif ((data['msg']=="401")or(data['msg']=="403")or(data['msg']=="501"))%}
     {%set msgtitle="You cannot access this page"%}
-    {%set msgbody="<p class='govuk-body'>Check the address you entered and try again.</p><p class='govuk-body'>If you get this message again and think you should have access to this page, <a href='#'>Contact the Valuation Office Agency</a>.</p>"%}
+    {%set msgbody="<p class='govuk-body'>Check the address you entered and try again.</p><p class='govuk-body'>If you get this message again and think you should have access to this page, <a href='#'>contact the Valuation Office Agency</a>.</p>"%}
 
 {%elseif ((data['msg']=="404")or(data['msg']=="405")or(data['msg']=="412"))%}
     {%set msgtitle="Page not found"%}
-    {%set msgbody="<p class='govuk-body'>If you typed the web address, check it is correct.</p><p class='govuk-body'>If you pasted the web address, check you copied the entire address.</p><p class='govuk-body'>If the web address is correct or you selected a link or button, <a href='#'>Contact the Valuation Office Agency</a>.</p>"%}
+    {%set msgbody="<p class='govuk-body'>If you typed the web address, check it is correct.</p><p class='govuk-body'>If you pasted the web address, check you copied the entire address.</p><p class='govuk-body'>If the web address is correct or you selected a link or button, <a href='#'>contact the Valuation Office Agency</a>.</p>"%}
 {%elseif ((data['msg']=="408"))%}
     {%set msgtitle="Page not loading"%}
-    {%set msgbody="<p class='govuk-body'>Try refreshing the page or enter the link in the address bar again.</p><p class='govuk-body'>If the page still does not load, check your internet connection or try again later. You can also <a href='#'>Contact the Valuation Office Agency</a>.</p>"%}
+    {%set msgbody="<p class='govuk-body'>Try refreshing the page or enter the link in the address bar again.</p><p class='govuk-body'>If the page still does not load, check your internet connection or try again later. You can also <a href='#'>contact the Valuation Office Agency</a>.</p>"%}
 {%elseif data['msg']=="412"%}
         {%set msgtitle="There is a problem with the service"%}
         {%set msgbody="<p class='govuk-body'>Try again later.</p><p class='govuk-body'><a href='#'>Contact the Valuation Office Agency</a> if you need to make changes to your billing authority reports.</p>"%}
