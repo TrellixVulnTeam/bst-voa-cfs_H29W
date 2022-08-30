@@ -243,6 +243,34 @@ router.post('/bulk-submission-confirmation', function (req, res) {
 
 
 
+
+router.post('/user-permissions-request-add', function (req, res) {
+
+
+  // Make a variable and give it the value from 'submit buttons'
+  var requestadduser = req.session.data['requestadduser']
+
+
+  // Check whether the variable matches a condition
+  if (requestadduser == "1"){
+    // Send user to next page
+
+    res.redirect('/user-admin/request-add-user-details')
+  } else if(requestadduser == "0") {
+
+    // Send user to ineligible page
+    res.redirect('/bahomepage#user-management')
+  }
+
+	else{
+
+		res.redirect('/bulkreport/bulk-submission-confirmation')
+
+	}
+
+})
+
+
 router.post('/failed-upload-file', function (req, res) {
 
 
@@ -1872,7 +1900,7 @@ router.post('/cookieconfirm', function (req, res) {
       if(strcookie>0)
       {
 
-        
+
 
           if(cookiexist==0)
           {
