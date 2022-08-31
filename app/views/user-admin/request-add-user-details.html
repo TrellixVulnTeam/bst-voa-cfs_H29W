@@ -1,0 +1,104 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Request add user
+{% endblock %}
+
+{% block beforeContent %}
+
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-one-third">
+			{{ govukBackLink({
+			  text: "Back",
+			  href: "javascript:window.history.back()"
+			}) }}
+		</div>
+		{% include "includes/header-section-signedin.html" %}
+	</div>
+{% endblock %}
+{% block content %}
+
+<form method="post" action="/user-admin/request-add-user-permissions">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+                  <div class="govuk-form-group">
+            <fieldset class="govuk-fieldset">
+              <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+                <h1 class="govuk-fieldset__heading">
+                  Add a user
+                </h1>
+              </legend>
+
+
+              <div class="govuk-form-group">
+                      <label class="govuk-label" for="input_first_name">
+                        First name
+                      </label>
+
+                      <input class="govuk-input govuk-input--width-20" id="input_first_name" name="input_first_name" value="{{data['input_first_name']|default(data['input_first_name'], true)}}">
+              </div>
+
+
+              <div class="govuk-form-group">
+                      <label class="govuk-label" for="input_last_name">
+                        Last name
+                      </label>
+
+                      <input class="govuk-input govuk-input--width-20" id="input_last_name" name="input_last_name" value="{{data['input_last_name']|default(data['input_last_name'], true)}}">
+              </div>
+
+
+              <div class="govuk-form-group">
+                      <label class="govuk-label" for="input_email_address">
+                        Email address
+                      </label>
+
+                      <input class="govuk-input govuk-input--width-20" id="input_email_address" name="input_email_address" value="{{data['input_email_address']|default(data['input_email_address'], true)}}">
+              </div>
+
+
+              <div class="govuk-form-group">
+                      <label class="govuk-label" for="input_phone_number">
+                        Phone number
+                      </label>
+
+                      <input class="govuk-input govuk-input--width-20" id="input_email_address" name="input_phone_number" value="{{data['input_phone_number']|default(data['input_phone_number'], true)}}" type="tel" autocomplete="tel">
+              </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </fieldset>
+          </div>
+
+          <button class="govuk-button" data-module="govuk-button">
+            Continue
+          </button>
+
+
+
+
+
+
+
+        </div>
+      </div>
+</form>
+  {% include "includes/details-get-help.html" %}
+{% endblock %}
