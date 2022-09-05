@@ -1,0 +1,143 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Who do you want to remove?
+{% endblock %}
+
+{% block beforeContent %}
+
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-one-third">
+			{{ govukBackLink({
+			  text: "Back",
+			  href: "javascript:window.history.back()"
+			}) }}
+		</div>
+		{% include "includes/header-section-signedin.html" %}
+	</div>
+{% endblock %}
+{% block content %}
+
+<form method="post" action="/user-admin/check-remove-user-details">
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-two-thirds">
+
+
+
+          <div class="govuk-form-group">
+  <fieldset class="govuk-fieldset" aria-describedby="waste-hint">
+    <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+      <h1 class="govuk-fieldset__heading">
+        Who do you want to remove?
+      </h1>
+    </legend>
+    <div id="user-permission-hint" class="govuk-hint">
+    Select all the users you want to remove
+
+        </div>
+
+    <div class="govuk-checkboxes" data-module="govuk-checkboxes">
+
+      <div class="govuk-checkboxes__item">
+        <input class="govuk-checkboxes__input" id="user_names1" name="user_names" type="checkbox" value="  Byron Kane" {{ checked("user_names", "Byron Kane") }}>
+
+
+
+        <label class="govuk-label govuk-checkboxes__label" for="user_names1">
+      Byron Kane
+        </label>
+        </div>
+
+        <div class="govuk-checkboxes__item">
+          <input class="govuk-checkboxes__input" id="user_names2" name="user_names" type="checkbox" value="Leyton Faulkner" {{ checked("user_names", "Leyton Faulkner") }}>
+
+
+
+          <label class="govuk-label govuk-checkboxes__label" for="user_names2">
+        Leyton Faulkner
+          </label>
+          </div>
+
+
+          <div class="govuk-checkboxes__item">
+            <input class="govuk-checkboxes__input" id="user_names3" name="user_names" type="checkbox" value="Jane Doe" {{ checked("user_names", "Jane Doe") }}>
+
+
+
+            <label class="govuk-label govuk-checkboxes__label" for="user_names3">
+              Jane Doe
+
+            </label>
+            </div>
+
+            <div class="govuk-checkboxes__item">
+              <input class="govuk-checkboxes__input" id="user_names4" name="user_names" type="checkbox" value="John Smith" {{ checked("user_names", "John Smith") }}>
+
+
+
+              <label class="govuk-label govuk-checkboxes__label" for="user_names4">
+            John Smith
+              </label>
+              </div>
+
+              <div class="govuk-checkboxes__item">
+                <input class="govuk-checkboxes__input" id="user_names5" name="user_names" type="checkbox" value="Wallace Hutton" {{ checked("user_names", "Wallace Hutton") }}>
+
+
+
+                <label class="govuk-label govuk-checkboxes__label" for="user_names5">
+              Wallace Hutton
+                </label>
+                </div>
+
+                <div class="govuk-checkboxes__item">
+                  <input class="govuk-checkboxes__input" id="user_names6" name="user_names" type="checkbox" value="Unity Dunkfeld" {{ checked("user_names", "Unity Dunkfeld") }}>
+
+
+
+                  <label class="govuk-label govuk-checkboxes__label" for="user_names6">
+                Unity Dunkfeld
+                  </label>
+                  </div>
+
+    </div>
+
+  </fieldset>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          <button class="govuk-button" data-module="govuk-button">
+            Continue
+          </button>
+
+
+
+
+
+
+
+        </div>
+      </div>
+</form>
+  {% include "includes/details-get-help.html" %}
+{% endblock %}

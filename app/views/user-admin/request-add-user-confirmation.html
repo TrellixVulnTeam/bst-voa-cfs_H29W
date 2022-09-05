@@ -1,0 +1,80 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Request sent
+{% endblock %}
+
+{% block beforeContent %}
+
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-one-third">
+			{{ govukBackLink({
+			  text: "Back",
+			  href: "javascript:window.history.back()"
+			}) }}
+		</div>
+		{% include "includes/header-section-signedin.html" %}
+	</div>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <div class="govuk-panel govuk-panel--confirmation">
+        <h1 class="govuk-panel__title">Request sent</h1>
+        <div class="govuk-panel__body">
+          Your request to add {{data['input_first_name']|default("John", true)}} {{data['input_last_name']|default("Smith", true)}} has been sent to the Valuation Office Agency.
+
+        </div>
+
+      </div>
+
+
+      <h2 class="govuk-heading-m">What you need to do next</h2>
+       	 <p class="govuk-body"> The user will receive an email when the account is ready to be used. It will include instructions on how to access and use the account.
+
+  		     </p>
+
+		 <!--<p class="govuk-body">Supporting information might include:</p>
+							<ul class="govuk-list govuk-list--bullet">
+							  <li>an inspector’s report</li>
+							  <li>photos</li>
+							  <li>planning documents</li>
+							</ul>
+
+
+		<p class="govuk-body">
+
+					The Valuation Office Agency will send a message if they require further information on a report.
+          These can be found on the dashboard under 'Messages'.
+
+
+		</p>-->
+
+	<form method="post" novalidate action="/user-permissions-request-add">
+
+
+           <div class="govuk-button-group">
+              <button class="govuk-button" data-module="govuk-button" id="adduser" name="requestadduser" value="1">
+                Add another user
+              </button>
+
+              <button class="govuk-button govuk-button--secondary" data-module="govuk-button" id="dashboard" name="requestadduser" value="0">
+                Return to dashboard
+              </button>
+            </div>
+
+</form>
+
+
+			<p><a href="/contact/feedback-form">What do you think of this service</a> (takes 30 seconds).
+
+  		     </p>
+
+
+    </div>
+  </div>
+  {% include "includes/details-get-help.html" %}
+{% endblock %}

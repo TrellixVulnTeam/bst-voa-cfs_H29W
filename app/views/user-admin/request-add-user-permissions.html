@@ -28,7 +28,7 @@
   <fieldset class="govuk-fieldset" aria-describedby="waste-hint">
     <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
       <h1 class="govuk-fieldset__heading">
-          What do you want this user to do?
+          What permissions do you want this user to have?
       </h1>
     </legend>
     <div id="user-permission-hint" class="govuk-hint">
@@ -39,45 +39,69 @@
     <div class="govuk-checkboxes" data-module="govuk-checkboxes">
 
       <div class="govuk-checkboxes__item">
-        <input class="govuk-checkboxes__input" id="user_permissions1" name="user_permissions" type="checkbox" value="Submit and manage reports and view and download schedules for Council Tax" {{ checked("user_permissions", "Submit and manage reports and view and download schedules for Council Tax") }}>
+        <input class="govuk-checkboxes__input" id="user_permissions1" name="user_permissions" type="checkbox" value="Council tax" {{ checked("user_permissions", "Council tax") }}>
 
 
 
         <label class="govuk-label govuk-checkboxes__label" for="user_permissions1">
-      Submit and manage reports and view and download schedules for Council Tax
+      Council tax
         </label>
+
+        <div id="ct-hint" class="govuk-hint">
+          Submit reports, upload supporting documents and download schedules
+
+            </div>
         </div>
 
         <div class="govuk-checkboxes__item">
-          <input class="govuk-checkboxes__input" id="user_permissions2" name="user_permissions" type="checkbox" value="Submit and manage reports and view and download schedules for non-domestic rates" {{ checked("user_permissions", "Submit and manage reports and view and download schedules for non-domestic rates") }}>
+          <input class="govuk-checkboxes__input" id="user_permissions2" name="user_permissions" type="checkbox" value="  Non-domestic rates" {{ checked("user_permissions", "Non-domestic rates") }}>
 
 
 
           <label class="govuk-label govuk-checkboxes__label" for="user_permissions2">
-        Submit and manage reports and view and download schedules for non-domestic rates
+      Non-domestic rates
           </label>
+
+          <div id="ndr-hint" class="govuk-hint">
+            Submit reports, upload supporting documents and download schedules
+
+              </div>
+
+
           </div>
 
 
           <div class="govuk-checkboxes__item">
-            <input class="govuk-checkboxes__input" id="user_permissions3" name="user_permissions" type="checkbox" value="Upload occupier lists, street names and numbering lists" {{ checked("user_permissions", "Upload occupier lists, street names and numbering lists") }}>
+            <input class="govuk-checkboxes__input" id="user_permissions3" name="user_permissions" type="checkbox" value="Data sharing" {{ checked("user_permissions", "Data sharing") }}>
 
 
 
             <label class="govuk-label govuk-checkboxes__label" for="user_permissions3">
-              Upload occupier lists, street names and numbering lists
+            Data sharing
 
             </label>
+
+            <div id="ds-hint" class="govuk-hint">
+              Upload occupier lists, street names and numbering lists
+
+                </div>
+
             </div>
 
             <div class="govuk-checkboxes__item">
-              <input class="govuk-checkboxes__input" id="user_permissions4" name="user_permissions" type="checkbox" value="Request user changes" {{ checked("user_permissions", "Request user changes") }}>
+              <input class="govuk-checkboxes__input" id="user_permissions4" name="user_permissions" type="checkbox" value="Manage users" {{ checked("user_permissions", "Manage users") }}>
 
 
 
-              <label class="govuk-label govuk-checkboxes__label" for="user_permissions4">
-            Request user changes
-              </label>
+                    <label class="govuk-label govuk-checkboxes__label" for="user_permissions4">
+                        Manage users
+                    </label>
+
+                    <div id="ms-hint" class="govuk-hint">
+                    Request user changes
+                  </div>
+
+
               </div>
 
     </div>

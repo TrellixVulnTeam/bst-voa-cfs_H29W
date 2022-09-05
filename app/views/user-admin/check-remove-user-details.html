@@ -1,0 +1,234 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Check and confirm users
+
+
+
+
+
+
+{% endblock %}
+
+{% block beforeContent %}
+
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-one-third">
+			{{ govukBackLink({
+			  text: "Back",
+			  href: "javascript:window.history.back()"
+			}) }}
+		</div>
+		{% include "includes/header-section-signedin.html" %}
+	</div>
+{% endblock %}
+
+{% block content %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="/user-admin/request-remove-user-confirmation" method="post" class="form">
+      <div class="govuk-form-group">
+
+				<fieldset class="govuk-fieldset">
+					<legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
+						<h1 class="govuk-fieldset__heading">
+							Check and confirm users
+						</h1>
+						<div id="user-request-hint" class="govuk-body">
+							Check the user accounts that you want to remove before sending this request to the Valuation Office Agency.
+						</div>
+					</legend>
+
+<!--
+				  <h2 class="govuk-heading-m">User details</h2>
+
+        <dl class="govuk-summary-list">
+
+
+
+                  <div class="govuk-summary-list__row">
+                   <dt class="govuk-summary-list__key">
+                     First name
+
+                   </dt>
+                   <dd class="govuk-summary-list__value">
+
+
+                     {{data['input_first_name']|default("John", true)}}
+
+
+                   </dd>
+                   <dd class="govuk-summary-list__actions">
+
+
+                     <a class="govuk-link" href="request-add-user-details">
+                       Change<span class="govuk-visually-hidden">Change</span>
+                     </a>
+
+
+                   </dd>
+                  </div>
+
+                  <div class="govuk-summary-list__row">
+                   <dt class="govuk-summary-list__key">
+                     Last name
+
+                   </dt>
+                   <dd class="govuk-summary-list__value">
+
+
+                    {{data['input_last_name']|default("Smith", true)}}
+
+
+                   </dd>
+                   <dd class="govuk-summary-list__actions">
+
+
+                     <a class="govuk-link" href="request-add-user-details">
+                       Change<span class="govuk-visually-hidden">Change</span>
+                     </a>
+
+
+                   </dd>
+                  </div>
+
+
+                  <div class="govuk-summary-list__row">
+                   <dt class="govuk-summary-list__key">
+                     Email address
+
+                   </dt>
+                   <dd class="govuk-summary-list__value">
+
+
+                     {{data['input_email_address']|default("john.smith@localauthority.co.uk", true)}}
+
+
+                   </dd>
+                   <dd class="govuk-summary-list__actions">
+
+
+                     <a class="govuk-link" href="request-add-user-details">
+                       Change<span class="govuk-visually-hidden">Change</span>
+                     </a>
+
+
+                   </dd>
+                  </div>
+
+                  <div class="govuk-summary-list__row">
+                   <dt class="govuk-summary-list__key">
+                     Phone number
+
+                   </dt>
+                   <dd class="govuk-summary-list__value">
+
+
+                     {{data['input_phone_number']|default("07456787456", true)}}
+
+
+                   </dd>
+                   <dd class="govuk-summary-list__actions">
+
+
+                     <a class="govuk-link" href="request-add-user-details">
+                       Change<span class="govuk-visually-hidden">Change</span>
+                     </a>
+
+
+                   </dd>
+                  </div>
+
+
+
+
+
+
+        </dl>
+
+
+				<h2 class="govuk-heading-m">User permissions</h2>
+
+			<dl class="govuk-summary-list">
+
+
+
+
+
+
+
+
+
+								<div class="govuk-summary-list__row">
+								 <dt class="govuk-summary-list__key">
+									Actions
+
+								 </dt>
+								 <dd class="govuk-summary-list__value">
+
+
+
+										 <ul class="govuk-list govuk-list--bullet">
+
+												 {% for permission  in data['user_permissions'] %}
+													 <li>{{ permission }}</li>
+												 {% else %}
+													 <li>Submit and manage reports and view and download schedules for non-domestic rates</li>
+												 {% endfor %}
+
+										</ul>
+
+								 </dd>
+								 <dd class="govuk-summary-list__actions">
+
+
+									 <a class="govuk-link" href="request-add-user-permissions">
+										 Change<span class="govuk-visually-hidden">Change</span>
+									 </a>
+
+
+								 </dd>
+								</div>
+
+
+
+
+			</dl>
+
+-->
+
+
+
+<ul class="govuk-list govuk-list--bullet">
+
+		{% for username  in data['user_names'] %}
+			<li>{{ username }}</li>
+		{% else %}
+			<li>Jane Doe</li>
+			<li>John Smith</li>
+		{% endfor %}
+
+</ul>
+
+
+
+
+
+            </div>
+
+            <button class="govuk-button" data-module="govuk-button">
+              Confirm and send
+            </button>
+          </form>
+
+
+
+
+
+  </div>
+</div>
+  {% include "includes/details-get-help.html" %}
+{% endblock %}
