@@ -35,10 +35,10 @@ Check and confirm users
 				<fieldset class="govuk-fieldset">
 					<legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
 						<h1 class="govuk-fieldset__heading">
-							Check and confirm users
+							Check and confirm user
 						</h1>
 						<div id="user-request-hint" class="govuk-body">
-							Check the user accounts that you want to remove before sending this request to the Valuation Office Agency.
+							Check the user account that you want to remove before sending this request to the Valuation Office Agency.
 						</div>
 					</legend>
 
@@ -201,22 +201,26 @@ Check and confirm users
 -->
 
 
-
+<!--
 <ul class="govuk-list govuk-list--bullet">
 
 		{% for username  in data['user_names'] %}
 			<li>{{ username }}</li>
 		{% else %}
 			<li>Jane Doe</li>
-			<li>John Smith</li>
+
 		{% endfor %}
 
 </ul>
+-->
+<p class="govuk-body-l">
+
+			{{data['username']}}
 
 
+			<input type="hidden" name="username" value="{{data['username']}}" />
 
-
-
+</p>
             </div>
 
             <button class="govuk-button" data-module="govuk-button">

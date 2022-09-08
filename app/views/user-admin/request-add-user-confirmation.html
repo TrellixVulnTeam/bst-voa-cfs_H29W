@@ -25,16 +25,32 @@
       <div class="govuk-panel govuk-panel--confirmation">
         <h1 class="govuk-panel__title">Request sent</h1>
         <div class="govuk-panel__body">
-          Your request to add {{data['input_first_name']|default("John", true)}} {{data['input_last_name']|default("Smith", true)}} has been sent to the Valuation Office Agency.
 
+
+		{%if data['admin_type']=="edit"%}
+
+			The request has been sent to the Valuation Office Agency.
+
+			 {%elseif data['admin_type']=="add"%}
+          Your request to add {{data['input_first_name']|default("John", true)}} {{data['input_last_name']|default("Smith", true)}} has been sent to the Valuation Office Agency.
+	{%endif%}
         </div>
 
       </div>
 
 
       <h2 class="govuk-heading-m">What you need to do next</h2>
-       	 <p class="govuk-body"> The user will receive an email when the account is ready to be used. It will include instructions on how to access and use the account.
+       	 <p class="govuk-body">
 
+			admin type {{data['admin_type']}}
+
+			 {%if data['admin_type']=="edit"%}
+			 You and the user will receive an email when the change has been made.
+
+
+			 {%elseif data['admin_type']=="add"%}
+			 The user will receive an email when the account is ready to be used. It will include instructions on how to access and use the account.
+			{%endif%}
   		     </p>
 
 		 <!--<p class="govuk-body">Supporting information might include:</p>

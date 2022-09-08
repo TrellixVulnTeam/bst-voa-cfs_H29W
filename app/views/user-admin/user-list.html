@@ -1,0 +1,217 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  User list
+{% endblock %}
+{% block beforeContent %}
+
+
+
+      <div class="govuk-grid-row">
+        <div class="govuk-grid-column-one-third">
+          {{ govukBackLink({
+            text: "Back",
+            href: "javascript:window.history.back()"
+          }) }}
+        </div>
+        {% include "includes/header-section-signedin.html" %}
+      </div>
+      {% endblock %}
+      {% block content %}
+
+
+
+      <h1 class="govuk-heading-xl">Manage users</h1>
+
+
+
+
+
+
+
+
+    <!--FILTER COMPONENT FINISH-->
+
+
+
+
+        <div class="moj-scrollable-pane">
+
+          <div class="moj-scrollable-pane__wrapper">
+
+            <div class="govuk-!-margin-top-6 govuk-!-margin-bottom-4">
+
+            <a href="/user-admin/request-add-user-details?admin-type=add" role="button" draggable="false" class="govuk-button moj-button-menu__item  " data-module="govuk-button">
+              Add new user
+            </a>
+
+
+
+
+
+
+<!--TABLE START-->
+
+      <!-- Code below is for select all 'Checkbox'-->
+      <!--<div data-module="moj-multi-select" data-multi-select-checkbox="#select-all">-->
+          <table class="govuk-table">
+
+
+          <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+
+
+          <!--<th scope="col" class="govuk-table__header" id="none"</th>-->
+
+          <th scope="col" class="govuk-table__header" id="none">Last name</th>
+
+          <th scope="col" class="govuk-table__header">First name</th>
+
+          <th scope="col" class="govuk-table__header">Email address</th>
+
+          <th scope="col" class="govuk-table__header">Permissions</th>
+
+          <th scope="col" class="govuk-table__header">Actions</th>
+
+
+
+
+          </tr>
+          </thead>
+
+
+          <tbody class="govuk-table__body">
+
+
+
+
+          <tr class="govuk-table__row">
+
+            <td class="govuk-table__cell">
+
+              Kane
+            </td>
+
+
+            <td class="govuk-table__cell">Byron</td>
+            <td class="govuk-table__cell"><a href="mailto:byron.kane@localauth.co.uk" class="govuk-link">byron.kane@localauth.co.uk<span class="govuk-visually-hidden">(opens in new tab)</span></a></td>
+            <td class="govuk-table__cell">Council tax</td>
+            <td class="govuk-table__cell"><a href="request-add-user-permissions?admin_type=edit&firstname=Byron&lastname=Kane">Edit permissions</a> | <a href="check-remove-user-details?username=Byron Kane">Delete <span class="govuk-visually-hidden">user</span></a> </td>
+
+
+          </tr>
+
+
+          <tr class="govuk-table__row">
+
+            <td class="govuk-table__cell">
+
+              Faulkner
+            </td>
+
+
+            <td class="govuk-table__cell">Leyton</td>
+            <td class="govuk-table__cell"><a href="mailto:leyton.faulkner@localauth.co.uk" class="govuk-link">leyton.faulkner@localauth.co.uk<span class="govuk-visually-hidden">(opens in new tab)</span></a></td>
+            <td class="govuk-table__cell">
+
+												Non-domestic rates
+
+
+				</td>
+            <td class="govuk-table__cell"><a href="request-add-user-permissions?admin_type=edit&firstname=Leyton&lastname=Faulkner">Edit permissions</a> | <a href="check-remove-user-details?username=Leyton Faulkner">Delete <span class="govuk-visually-hidden">user</span></a> </td>
+
+
+          </tr>
+
+
+
+          <tr class="govuk-table__row">
+
+            <td class="govuk-table__cell">
+
+              Doe
+            </td>
+
+
+            <td class="govuk-table__cell">Jane</td>
+            <td class="govuk-table__cell"><a href="mailto:jane.doe@localauth.co.uk" class="govuk-link">jane.doe@localauth.co.uk<span class="govuk-visually-hidden">(opens in new tab)</span></a></td>
+            <td class="govuk-table__cell">
+
+				<ul class="govuk-list govuk-list--bullet">
+											  <li>
+												Non-domestic rates
+											  </li>
+											 <li>
+												 Data sharing</li>
+										</ul>
+
+
+			</td>
+            <td class="govuk-table__cell"><a href="request-add-user-permissions?admin_type&firstname=Jane&lastname=Doe">Edit permissions</a> | <a href="check-remove-user-details?username=Jane Doe">Delete <span class="govuk-visually-hidden">user</span></a> </td>
+
+
+          </tr>
+
+
+          <tr class="govuk-table__row">
+
+            <td class="govuk-table__cell">
+
+              Dunkfeld
+            </td>
+
+
+            <td class="govuk-table__cell">Unity</td>
+            <td class="govuk-table__cell"><a href="mailto:unity.dunkfeld@localauth.co.uk" class="govuk-link">unity.dunkfeld@localauth.co.uk<span class="govuk-visually-hidden">(opens in new tab)</span></a></td>
+            <td class="govuk-table__cell">	<ul class="govuk-list govuk-list--bullet">
+											  <li>
+												Council tax
+											  </li>
+											 <li>
+												 Data sharing</li>
+										</ul></td>
+            <td class="govuk-table__cell"><a href="request-add-user-permissions?admin_type=edit&firstname=Unity&lastname=Dunkfeld">Edit permissions</a> | <a href="check-remove-user-details?username=Unity Dunkfeld">Delete <span class="govuk-visually-hidden">user</span></a> </td>
+
+
+          </tr>
+
+
+          <tr class="govuk-table__row">
+
+            <td class="govuk-table__cell">
+
+              Hutton
+            </td>
+
+
+            <td class="govuk-table__cell">Wallace</td>
+            <td class="govuk-table__cell"><a href="mailto:wallace.hutton@localauth.co.uk" class="govuk-link">wallace.hutton@localauth.co.uk<span class="govuk-visually-hidden">(opens in new tab)</span></a></td>
+            <td class="govuk-table__cell">Manage users</td>
+            <td class="govuk-table__cell"><a href="request-add-user-permissions?admin_type=edit&firstname=Wallace&lastname=Hutton">Edit permissions</a> | <a href="check-remove-user-details?username=Wallace Hutton Kane">Delete <span class="govuk-visually-hidden">user</span></a> </td>
+
+
+          </tr>
+
+
+
+
+
+
+
+
+
+
+       </tbody>
+    </table>
+
+
+
+
+ <!--TABLE END-->
+
+
+
+    </div>
+  </div>
+  {% include "includes/details-get-help.html" %}
+{% endblock %}

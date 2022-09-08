@@ -18,6 +18,14 @@
 {% endblock %}
 {% block content %}
 
+{%
+    if data['admin_type']=="edit"
+
+  %}
+
+  {%set checkedstr="checked"%}
+  {%endif%}
+
 <form method="post" action="/user-admin/check-change-user-details">
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
@@ -31,6 +39,26 @@
           What permissions do you want this user to have?
       </h1>
     </legend>
+
+{%if data['admin_type']=="edit"%}
+    <div class="govuk-form-group">
+      <label class="govuk-label govuk-label--s" for="full-name">
+        First name
+      </label>
+
+      <p class="govuk-body">{{data['firstname']}}</p>
+
+    </div>
+
+
+    <div class="govuk-form-group">
+      <label class="govuk-label govuk-label--s" for="full-name">
+        Last name
+      </label>
+        <p class="govuk-body">{{data['lastname']}}</p>
+    </div>
+{%endif%}
+
     <div id="user-permission-hint" class="govuk-hint">
       Select all tasks that you want this user to perform
 
@@ -39,7 +67,7 @@
     <div class="govuk-checkboxes" data-module="govuk-checkboxes">
 
       <div class="govuk-checkboxes__item">
-        <input class="govuk-checkboxes__input" id="user_permissions1" name="user_permissions" type="checkbox" value="Council tax" {{ checked("user_permissions", "Council tax") }}>
+        <input class="govuk-checkboxes__input" {{checkedstr}} id="user_permissions1" name="user_permissions" type="checkbox" value="Council tax" {{ checked("user_permissions", "Council tax") }}>
 
 
 
@@ -54,7 +82,7 @@
         </div>
 
         <div class="govuk-checkboxes__item">
-          <input class="govuk-checkboxes__input" id="user_permissions2" name="user_permissions" type="checkbox" value="  Non-domestic rates" {{ checked("user_permissions", "Non-domestic rates") }}>
+          <input class="govuk-checkboxes__input" id="user_permissions2" name="user_permissions" type="checkbox" value="Non-domestic rates" {{ checked("user_permissions", "Non-domestic rates") }}>
 
 
 
@@ -72,7 +100,7 @@
 
 
           <div class="govuk-checkboxes__item">
-            <input class="govuk-checkboxes__input" id="user_permissions3" name="user_permissions" type="checkbox" value="Data sharing" {{ checked("user_permissions", "Data sharing") }}>
+            <input class="govuk-checkboxes__input" {{checkedstr}} id="user_permissions3" name="user_permissions" type="checkbox" value="Data sharing" {{ checked("user_permissions", "Data sharing") }}>
 
 
 
@@ -118,7 +146,7 @@
 
 
 
-
+<input type="hidden" name="admin_type" value="{{data['admin_type']}}" />
 
 
 
