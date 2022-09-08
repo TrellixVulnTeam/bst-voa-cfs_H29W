@@ -56,11 +56,11 @@ Check and confirm account details
                    </dd>
                    <dd class="govuk-summary-list__actions">
 
-
+									{%if data['admin_type']=="add"%}
                      <a class="govuk-link" href="request-add-user-details">
                        Change<span class="govuk-visually-hidden">Change</span>
                      </a>
-
+									{%endif%}
 
                    </dd>
                   </div>
@@ -79,11 +79,11 @@ Check and confirm account details
                    </dd>
                    <dd class="govuk-summary-list__actions">
 
-
+									{%if data['admin_type']=="add"%}
                      <a class="govuk-link" href="request-add-user-details">
                        Change<span class="govuk-visually-hidden">Change</span>
                      </a>
-
+									{%endif%}
 
                    </dd>
                   </div>
@@ -135,7 +135,7 @@ Check and confirm account details
                    </dd>
                   </div>
 
-    {%endif%}            
+    {%endif%}
 
 
 
@@ -196,7 +196,7 @@ Check and confirm account details
 
 
 
-
+<input type="hidden" name="admin_type" value="{{data['admin_type']}}" />
 
 
             </div>
