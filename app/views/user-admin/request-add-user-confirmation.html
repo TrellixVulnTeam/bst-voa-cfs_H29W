@@ -29,7 +29,7 @@
 
 		{%if data['admin_type']=="edit"%}
 
-			The request has been sent to the Valuation Office Agency.
+			Your request has been sent to the Valuation Office Agency.
 
 			 {%elseif data['admin_type']=="add"%}
           Your request to add {{data['input_first_name']|default("John", true)}} {{data['input_last_name']|default("Smith", true)}} has been sent to the Valuation Office Agency.
@@ -45,7 +45,7 @@
 
 
 			 {%if data['admin_type']=="edit"%}
-			 You and the user will receive an email when the change has been made.
+			An email will be sent to both you and the user when the change has been made.
 
 
 			 {%elseif data['admin_type']=="add"%}

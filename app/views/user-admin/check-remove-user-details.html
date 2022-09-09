@@ -35,11 +35,16 @@ Check and confirm users
 				<fieldset class="govuk-fieldset">
 					<legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
 						<h1 class="govuk-fieldset__heading">
-							Check and confirm user
+
+	Are you sure you want to remove {{data['username']|default("Byron Kane", true)}}?
+
+
 						</h1>
+						<!--
 						<div id="user-request-hint" class="govuk-body">
 							Check the user account that you want to remove before sending this request to the Valuation Office Agency.
 						</div>
+						-->
 					</legend>
 
 <!--
@@ -214,18 +219,44 @@ Check and confirm users
 </ul>
 -->
 <p class="govuk-body-l">
-
+<!--
 			{{data['username']}}
+-->
 
+
+
+
+                <div class="govuk-radios" data-module="govuk-radios">
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="yesdelete" name="confirm-delete-upload" type="radio" value="yes">
+                    <label class="govuk-label govuk-radios__label" for="yesdelete">
+                      Yes
+                    </label>
+                  </div>
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="nodelete" name="confirm-delete-upload" type="radio" value="no">
+                    <label class="govuk-label govuk-radios__label" for="nodelete">
+                      No
+                    </label>
+                  </div>
+
+                </div>
+
+
+          
 
 			<input type="hidden" name="username" value="{{data['username']}}" />
 
-</p>
-            </div>
 
+            </div>
+<diV>
             <button class="govuk-button" data-module="govuk-button">
               Confirm and send
             </button>
+
+</div>
+
+
           </form>
 
 

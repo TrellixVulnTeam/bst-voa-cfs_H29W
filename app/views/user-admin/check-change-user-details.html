@@ -166,12 +166,24 @@ Check and confirm account details
 
 										 <ul class="govuk-list govuk-list--bullet">
 
-												 {% for permission  in data['user_permissions'] %}
-													 <li>{{ permission }}</li>
-												 {% else %}
-													 <li>Submit and manage reports and view and download schedules for non-domestic rates</li>
-												 {% endfor %}
+										
 
+									{%if data['user_permissions'].length > 1%}
+
+												 {% for permission  in data['user_permissions'] %}
+
+													 {%if permission!="_unchecked"%}
+														 <li>{{ permission }}</li>
+													{%endif%}
+												 {% else %}
+													 <li>Council Tax</li>
+												 {% endfor %}
+								{%elseif data['user_permissions'].length == 1%}
+												 {{data['user_permissions']}}
+								{%else%}
+												Non-domestic rates
+
+									{%endif%}
 										</ul>
 
 								 </dd>

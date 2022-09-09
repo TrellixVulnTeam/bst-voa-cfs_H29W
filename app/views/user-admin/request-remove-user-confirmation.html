@@ -27,7 +27,7 @@
         <div class="govuk-panel__body">
 
 
-          Your request to remove
+        Your request to remove this user <!--{{data['username']|default("Byron Kane", true)}}--> has been sent to the Valuation Office Agency.
 <!--
           {% for username  in data['user_names'] %}
           {{ loop.count }}  {{ username }}
@@ -36,15 +36,13 @@
           {% endfor %}
 -->
 
-        user account {{data['username']}}
-           has been sent to the Valuation Office Agency.
         </div>
 
       </div>
 
 
       <h2 class="govuk-heading-m">What happens next</h2>
-       	 <p class="govuk-body"> You will receive an email when the account has been removed.
+       	 <p class="govuk-body"> An email will be sent to you when the account has been removed.
 
   		     </p>
 
