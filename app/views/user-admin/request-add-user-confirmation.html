@@ -19,6 +19,7 @@
 
 {% block content %}
 
+
   <div class="govuk-grid-row">
     <div class="govuk-grid-column-two-thirds">
 
@@ -73,9 +74,24 @@
 
 
            <div class="govuk-button-group">
-              <button class="govuk-button" data-module="govuk-button" id="adduser" name="requestadduser" value="1">
-                Add another user
-              </button>
+
+
+		{%if data['admin_type']=="edit"%}
+              {{ govukButton({
+                text: "Edit another user",
+                href: "/user-admin/user-list",
+                classes: "govuk-button--primary"
+
+              }) }}
+    {%else%}
+
+          {{ govukButton({
+            text: "Add another user",
+            href: "user-admin/request-add-user-details?admin_type=add",
+            classes: "govuk-button--primary"
+
+          }) }}
+    {%endif%}
 
               <button class="govuk-button govuk-button--secondary" data-module="govuk-button" id="dashboard" name="requestadduser" value="0">
                 Return to dashboard
