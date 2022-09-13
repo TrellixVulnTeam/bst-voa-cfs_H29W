@@ -101,6 +101,40 @@
 </form>
 
 
+
+<!-- added for usability testing -->
+      <details class="govuk-details" data-module="govuk-details">
+                    <summary class="govuk-details__summary">
+                      <span class="govuk-details__summary-text">
+                      	{%if data['admin_type']=="add"%}
+                      Show email notification for add user request
+                      {%elseif data['admin_type']=="edit"%}
+                      Show email notification for edit user request
+                      {%endif%}
+                      </span>
+                    </summary>
+                    <div class="govuk-details__text">
+
+                      <p>
+                        	{%if data['admin_type']=="add"%}
+                          <img src="/public/images/email/add_user_request_email.jpg" width="150%" height="150%"" title="Upload progress email notification" />
+
+                            {%elseif data['admin_type']=="edit"%}
+                            <img src="/public/images/email/edit_user_request_email.jpg" width="150%" height="150%"" title="Upload progress email notification" />
+
+                          {%endif%}
+                      </p>
+
+
+
+
+
+                    </div>
+          </details>
+
+<!-- added for usability testing -->
+
+
 			<p><a href="/contact/feedback-form">What do you think of this service</a> (takes 30 seconds).
 
   		     </p>
