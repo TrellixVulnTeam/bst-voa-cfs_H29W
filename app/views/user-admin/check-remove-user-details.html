@@ -224,6 +224,18 @@ Check and confirm users
 -->
 
 
+<div class="govuk-form-group">
+										 <label class="govuk-label govuk-label--s">
+											 Email address
+										 </label>
+
+					<input class="govuk-input govuk-input--width-20" id="input_email_address" name="input_email_address" type="hidden" value="{{data['input_email_address']|default(email, true)}}">
+				 <p class="govuk-body">{{data['input_email_address']|default("byron.kane@localauth.co.uk", true)}}</p>
+
+						 </div>
+
+
+
 
 
                 <div class="govuk-radios" data-module="govuk-radios">
@@ -243,7 +255,7 @@ Check and confirm users
                 </div>
 
 
-          
+
 
 			<input type="hidden" name="username" value="{{data['username']}}" />
 

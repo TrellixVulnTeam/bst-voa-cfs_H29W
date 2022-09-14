@@ -18,6 +18,49 @@
 {% endblock %}
 {% block content %}
 
+{%if data['admin_type']=="edit"%}
+			{%if data['userid']==1%}
+
+					{%set firstname = "Byron"%}
+					{%set lastname = "Kane"%}
+					{%set email = "byron.kane@localauth.co.uk"%}
+					{%set phone = "07445678675"%}
+
+			{%elseif data['userid']==2 %}
+
+					{%set firstname = "Leyton"%}
+					{%set lastname = "Faulkner"%}
+					{%set email = "leyton.faulkner@localauth.co.uk"%}
+					{%set phone = "07445678123"%}
+
+
+			{%elseif data['userid']==3 %}
+
+				{%set firstname = "Jane"%}
+					{%set lastname = "Doe"%}
+					{%set email = "jane.doe@localauth.co.uk"%}
+					{%set phone = "0734678009"%}
+
+
+			{%elseif data['userid']==4 %}
+
+					{%set firstname = "Unity"%}
+					{%set lastname = "Dunkfeld"%}
+					{%set email = "unity.dunkfeld@localauth.co.uk"%}
+					{%set phone = "0734678432"%}
+
+
+			{%else%}
+
+					{%set firstname = "Wallace"%}
+					{%set lastname = "Hutton"%}
+					{%set email = "wallace.hutton@localauth.co.uk"%}
+					{%set phone = "0787678400"%}
+
+
+			{%endif%}
+
+{%endif%}
 <form method="post" action="/user-admin/request-add-user-permissions">
       <div class="govuk-grid-row">
         <div class="govuk-grid-column-two-thirds">
@@ -26,11 +69,21 @@
             <fieldset class="govuk-fieldset">
               <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                 <h1 class="govuk-fieldset__heading">
-                  Add a user
+				{%if data['admin_type']=="edit"%}
+                  
+					Edit user details
+					
+					{%else%}
+					
+					Add a user
+					
+				{%endif%}
                 </h1>
+				  {%if data['admin_type']=="add"%}
                 <div id="user-request-hint" class="govuk-body">
                   Enter the user's details to request a new account. 
                 </div>
+				  {%endif%}
               </legend>
 
 
@@ -39,7 +92,7 @@
                         First name
                       </label>
 
-                      <input class="govuk-input govuk-input--width-20" id="input_first_name" name="input_first_name" value="{{data['input_first_name']|default(data['input_first_name'], true)}}">
+                      <input class="govuk-input govuk-input--width-20" id="input_first_name" name="input_first_name" value="{{data['input_first_name']|default(firstname, true)}}">
               </div>
 
 
@@ -48,7 +101,7 @@
                         Last name
                       </label>
 
-                      <input class="govuk-input govuk-input--width-20" id="input_last_name" name="input_last_name" value="{{data['input_last_name']|default(data['input_last_name'], true)}}">
+                      <input class="govuk-input govuk-input--width-20" id="input_last_name" name="input_last_name" value="{{data['input_last_name']|default(lastname, true)}}">
               </div>
 
 
@@ -56,8 +109,12 @@
                       <label class="govuk-label" for="input_email_address">
                         Email address
                       </label>
-
-                      <input class="govuk-input govuk-input--width-20" id="input_email_address" name="input_email_address" value="{{data['input_email_address']|default(data['input_email_address'], true)}}">
+						 {%if data['admin_type']=="add"%}	
+                      <input class="govuk-input govuk-input--width-20" id="input_email_address" name="input_email_address" value="">
+				  		{%else%}
+				   <input class="govuk-input govuk-input--width-20" id="input_email_address" name="input_email_address" type="hidden" value="{{data['input_email_address']|default(email, true)}}">
+				  <p class="govuk-body">{{data['input_email_address']|default(email, true)}}</p>
+				  		{%endif%}
               </div>
 
 
@@ -66,7 +123,7 @@
                         Phone number
                       </label>
 
-                      <input class="govuk-input govuk-input--width-20" id="input_email_address" name="input_phone_number" value="{{data['input_phone_number']|default(data['input_phone_number'], true)}}" type="tel" autocomplete="tel">
+                      <input class="govuk-input govuk-input--width-20" id="input_email_address" name="input_phone_number" value="{{data['input_phone_number']|default(phone, true)}}" type="tel" autocomplete="tel">
               </div>
 
 

@@ -56,11 +56,11 @@ Check and confirm account details
                    </dd>
                    <dd class="govuk-summary-list__actions">
 
-									{%if data['admin_type']=="add"%}
+									
                      <a class="govuk-link" href="request-add-user-details">
                        Change<span class="govuk-visually-hidden">Change</span>
                      </a>
-									{%endif%}
+									
 
                    </dd>
                   </div>
@@ -79,16 +79,15 @@ Check and confirm account details
                    </dd>
                    <dd class="govuk-summary-list__actions">
 
-									{%if data['admin_type']=="add"%}
+									
                      <a class="govuk-link" href="request-add-user-details">
                        Change<span class="govuk-visually-hidden">Change</span>
                      </a>
-									{%endif%}
+									
 
                    </dd>
                   </div>
 
-{%if data['admin_type']=="add"%}
                   <div class="govuk-summary-list__row">
                    <dt class="govuk-summary-list__key">
                      Email address
@@ -102,13 +101,13 @@ Check and confirm account details
 
                    </dd>
                    <dd class="govuk-summary-list__actions">
-
+					{%if data['admin_type']=="add"%}
 
                      <a class="govuk-link" href="request-add-user-details">
                        Change<span class="govuk-visually-hidden">Change</span>
                      </a>
 
-
+					{%endif%}
                    </dd>
                   </div>
 
@@ -135,7 +134,7 @@ Check and confirm account details
                    </dd>
                   </div>
 
-    {%endif%}
+ 
 
 
 
