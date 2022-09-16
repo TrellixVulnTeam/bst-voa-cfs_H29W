@@ -55,7 +55,7 @@
 					{%set firstname = "Wallace"%}
 					{%set lastname = "Hutton"%}
 					{%set email = "wallace.hutton@localauth.co.uk"%}
-					{%set phone = "0787678400"%}
+
 
 
 			{%endif%}
@@ -70,13 +70,13 @@
               <legend class="govuk-fieldset__legend govuk-fieldset__legend--l">
                 <h1 class="govuk-fieldset__heading">
 				{%if data['admin_type']=="edit"%}
-                  
+
 					Edit user details
-					
+
 					{%else%}
-					
+
 					Add a user
-					
+
 				{%endif%}
                 </h1>
 				  {%if data['admin_type']=="add"%}
@@ -85,6 +85,20 @@
                 </div>
 				  {%endif%}
               </legend>
+
+
+
+
+
+                <div class="govuk-form-group">
+                        <label class="govuk-label" for="input_first_name">
+                          Billing authority
+                        </label>
+                        <p class="govuk-body">
+                      {{data['ba_name']|default("Burnley", true)}} ({{data['ba_code']|default("2315", true)}})
+                      </p>
+                </div>
+
 
 
               <div class="govuk-form-group">
@@ -109,7 +123,7 @@
                       <label class="govuk-label" for="input_email_address">
                         Email address
                       </label>
-						 {%if data['admin_type']=="add"%}	
+						 {%if data['admin_type']=="add"%}
                       <input class="govuk-input govuk-input--width-20" id="input_email_address" name="input_email_address" value="">
 				  		{%else%}
 				   <input class="govuk-input govuk-input--width-20" id="input_email_address" name="input_email_address" type="hidden" value="{{data['input_email_address']|default(email, true)}}">
@@ -117,7 +131,7 @@
 				  		{%endif%}
               </div>
 
-
+<!--
               <div class="govuk-form-group">
                       <label class="govuk-label" for="input_phone_number">
                         Phone number
@@ -126,7 +140,7 @@
                       <input class="govuk-input govuk-input--width-20" id="input_email_address" name="input_phone_number" value="{{data['input_phone_number']|default(phone, true)}}" type="tel" autocomplete="tel">
               </div>
 
-
+-->
 
 
 
