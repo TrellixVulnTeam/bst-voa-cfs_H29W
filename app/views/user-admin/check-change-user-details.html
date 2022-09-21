@@ -40,7 +40,26 @@ Check and confirm account details
 
         <dl class="govuk-summary-list">
 
+					<div class="govuk-summary-list__row">
+					 <dt class="govuk-summary-list__key">
+						Billing authority
 
+					 </dt>
+					 <dd class="govuk-summary-list__value">
+
+
+						 {{data['ba_name']|default("Burnley", true)}} ({{data['ba_code']|default("2315", true)}})
+
+
+					 </dd>
+					 <dd class="govuk-summary-list__actions">
+
+
+
+
+
+					 </dd>
+					</div>
 
                   <div class="govuk-summary-list__row">
                    <dt class="govuk-summary-list__key">
@@ -56,11 +75,11 @@ Check and confirm account details
                    </dd>
                    <dd class="govuk-summary-list__actions">
 
-
+										 	{%if data['admin_type']=="add"%}
                      <a class="govuk-link" href="request-add-user-details">
                        Change<span class="govuk-visually-hidden">Change</span>
                      </a>
-
+										 	{%endif%}
 
                    </dd>
                   </div>
@@ -79,11 +98,11 @@ Check and confirm account details
                    </dd>
                    <dd class="govuk-summary-list__actions">
 
-
+										 	{%if data['admin_type']=="add"%}
                      <a class="govuk-link" href="request-add-user-details">
                        Change<span class="govuk-visually-hidden">Change</span>
                      </a>
-
+										 	{%endif%}
 
                    </dd>
                   </div>

@@ -25,6 +25,59 @@
 
   {%set checkedstr="checked"%}
   {%endif%}
+{%
+    if data['userid']=="1"
+%}
+
+{%
+      set firstname = "Byron"
+      %}
+      {%
+      set lastname="Kane"  %}
+      {%set useremail = "byron.kane@localauth.co.uk"
+
+%}
+
+{%elseif data['userid']=="2"%}
+
+{%
+      set firstname = "Leyton"
+      %}
+      {%
+      set lastname = "Faulkner"%}
+      {%set useremail = "leyton.faulkner@localauth.co.uk"
+
+%}
+
+{%elseif data['userid']=="3"%}
+
+{%
+      set firstname = "Jane"%}
+      {%set lastname="Doe"%}
+    {%  set useremail = "jane.doe@localauth.co.uk"
+
+%}
+
+
+{%elseif data['userid']=="4"%}
+
+{%
+      set firstname = "Unity"%}
+      {%set lastname="Dunkfeld"%}
+      {%set useremail = "unity.dunkfeld@localauth.co.uk"
+
+%}
+
+{%else%}
+{%
+      set firstname = "Wallace"%}
+      {%set lastname="Hutton"%}
+    {%  set useremail = "wallace.hutton@localauth.co.uk"
+
+%}
+  {%endif%}
+
+
 
 <form method="post" action="/user-admin/check-change-user-details">
       <div class="govuk-grid-row">
@@ -43,12 +96,28 @@
 
 
 {%if data['admin_type']=="edit"%}
+
+<div class="govuk-form-group">
+  <label class="govuk-label govuk-label--s" for="full-name">
+    Billing authority
+  </label>
+
+  <p class="govuk-body">		 {{data['ba_name']|default("Burnley", true)}} ({{data['ba_code']|default("2315", true)}})
+</p>
+
+</div>
+
     <div class="govuk-form-group">
       <label class="govuk-label govuk-label--s" for="full-name">
         First name
       </label>
 
-      <p class="govuk-body">{{data['input_first_name']}}</p>
+      <p class="govuk-body">{{firstname}}</p>
+
+      <input id="input_first_name" name="input_first_name" type="hidden" value="{{firstname}}">
+
+      <input id="input_last_name" name="input_last_name" type="hidden" value="{{lastname}}">
+      <input id="input_email_address" name="input_email_address" type="hidden" value="{{useremail}}">
 
     </div>
 
@@ -57,9 +126,20 @@
       <label class="govuk-label govuk-label--s" for="full-name">
         Last name
       </label>
-        <p class="govuk-body">{{data['input_last_name']}}</p>
+        <p class="govuk-body">{{lastname}}</p>
+    </div>
+
+    <div class="govuk-form-group">
+      <label class="govuk-label govuk-label--s" for="full-name">
+        Email
+      </label>
+        <p class="govuk-body">{{useremail}}</p>
     </div>
 {%endif%}
+
+<label class="govuk-label govuk-label--s" for="full-name">
+  Permissions
+</label>
 
     <div id="user-permission-hint" class="govuk-hint">
       Select all tasks that you want this user to perform
