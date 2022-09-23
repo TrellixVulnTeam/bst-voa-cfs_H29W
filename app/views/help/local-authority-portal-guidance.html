@@ -1,0 +1,163 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Local authority portal guidance
+
+{% endblock %}
+
+{% block beforeContent %}
+
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-one-third">
+			{{ govukBackLink({
+			  text: "Back",
+			  href: "javascript:window.history.back()"
+			}) }}
+		</div>
+		{% include "includes/header-section-signedin.html" %}
+	</div>
+{% endblock %}
+
+{% block content %}
+
+
+
+
+<div class="govuk-grid-row">
+
+
+
+    <div class="govuk-grid-column-full">
+
+
+  <h1 class="govuk-heading-xl" id="cookies-heading">  Local authority portal guidance
+    </h1>
+  <p class="govuk-body" id="ba-usages">Billing authorities can use the local authority portal to:</p>
+  <ul class="govuk-list govuk-list--bullet" id="cookies-usages-bullets">
+    <li id="ba-usages-bullets1">add, remove or amend the details of properties on the lists for Council Tax and non-domestic rates</li>
+    <li id="ba-usages-bullets2">add supporting information to submitted reports </li>
+    <li id="ba-usages-bullets3">view and download schedules</li>
+    <li id="ba-usages-bullets4">find out when new schedules are published</li>
+
+  </ul>
+
+    <p class="govuk-body">Changes to properties are reported to the Valuation Office Agency (VOA) through billing authority reports. These should include details of the property, the change that is being requested, and the reason for making the change.</p>
+
+
+  <p class="govuk-body" id="cookies-analytics-paragraph-2">There are 2 ways to submit reports:</p>
+  <ul class="govuk-list govuk-list--bullet" id="cookies-analytics-bullets">
+    <li id="submit-bullets1">uploading multiple reports using either an Excel or XML file </li>
+    <li id="submit-bullets2">submitting individual reports using an online form</li>
+
+  </ul>
+
+  <h2 class="govuk-heading-m" id="up-multiple-heading">Uploading multiple reports</h2>
+  <p class="govuk-body">Select the ‘Upload multiple reports’ option on the local authority dashboard to upload multiple reports to the VOA at once.</p>
+  <p class="govuk-body">You will be asked to upload either an XML file or an Excel file containing all the <a href="#">information the VOA requires to process reports.</a></p>
+
+  <p class="govuk-body">XML files can be exported using your own software, or you can use an Excel template to add reports.</p>
+
+  <p class="govuk-body" id="ba-usages">Download the Excel template for:</p>
+  <ul class="govuk-list govuk-list--bullet" id="cookies-usages-bullets">
+    <li id="ba-usages-bullets1"><a href="#">Council Tax</a></li>
+    <li id="ba-usages-bullets2"><a href="#">non-domestic rates</a></li>
+
+  </ul>
+
+  <p class="govuk-body">There is a limit of 10MB file size per Excel or XML document.</p>
+
+<p class="govuk-body">Once the file has been uploaded, the service will check the file for errors. This usually takes less than 30 minutes and you will be sent an email when this is complete. It will also say if any errors were found.</p>
+  <h3 class="govuk-heading-s" id="cookies-consent-heading">Fixing errors in uploaded files</h3>
+  <p class="govuk-body">If there are any errors in the data when you upload either of these files, the service will say that there are data errors, what these are, and how to fix them.</p>
+  <p class="govuk-body">This usually means that required data has been left out, entered incorrectly, or does not meet format requirements.</p>
+  <p class="govuk-body">You can find out if any of the reports that have been submitted through an XML or Excel file contain errors by selecting ‘Fix upload errors’ on the dashboard.</p>
+  <p class="govuk-body">The service will also check the file itself. If the file is corrupted or contains viruses, you will be asked to delete the file, fix it and try uploading it again.</p>
+
+
+  <p class="govuk-body" id="ba-usages">You will have to do this outside of the system. If you receive a file error, you can try:</p>
+  <ul class="govuk-list govuk-list--bullet" id="cookies-usages-bullets">
+    <li id="ba-usages-bullets1">deleting the file and reuploading it</li>
+    <li id="ba-usages-bullets2">download the Excel template again, if you are using it, then add your reports and reupload</li>
+    <li id="ba-usages-bullets1">export the XML file from your system again, then reupload</li>
+    <li id="ba-usages-bullets2">speak with your local IT team and ask them to check for viruses, corruption, or other issues</li>
+
+  </ul>
+
+  <p class="govuk-body">If issues continue, contact the Valuation Office Agency.</p>
+
+  <h3 class="govuk-heading-s" id="cookies-consent-heading">Creating single reports using the portal</h3>
+  <p class="govuk-body">Select ‘Create single reports’ on the dashboard to upload reports individually.</p>
+  <p class="govuk-body">You will be asked what change you want to make, followed by a series of questions where you manually enter the information required for the report.</p>
+  <p class="govuk-body">The report will be submitted to the VOA after all questions have been answered. </p>
+
+  <h3 class="govuk-heading-s" id="cookies-consent-heading">What to include in the ‘Remarks’ field</h3>
+  <p class="govuk-body">Further information that supports the change that is being requested is required for each report. This is known as ‘Remarks’.</p>
+  <p class="govuk-body">There are corresponding fields within the Excel templates or your XML file for remarks, and there is a box that you can enter them in if you upload reports individually.</p>
+  <p class="govuk-body">What you should include as remarks depends on the reason code you enter for that report.</p>
+
+
+
+  <div class="govuk-inset-text" id="cookies-inset-text">
+    <p class="govuk-body"><a href="#">Find out what to include in the remarks field by reason code</a></p>
+  </div>
+
+
+  <h3 class="govuk-heading-s" id="cookies-consent-heading">Adding supporting documents</h3>
+  <p class="govuk-body">After reports have been submitted to the VOA, they become ‘In progress reports’. This means they are waiting for the VOA to process them before adding to the schedules. </p>
+  <p class="govuk-body">Most in progress reports require supporting information to be processed by the VOA. Supporting information includes documents that support the reason the change has been requested. </p>
+
+  <p class="govuk-body" id="ba-usages">Supporting information might include:</p>
+  <ul class="govuk-list govuk-list--bullet" id="cookies-usages-bullets">
+    <li id="ba-usages-bullets1">an inspector’s report</li>
+    <li id="ba-usages-bullets2">photos</li>
+    <li id="ba-usages-bullets1">planning documents</li>
+
+  </ul>
+
+  <p class="govuk-body">They can be added by selecting ‘Submitted reports’ on the dashboard. This shows all reports that are currently in progress from you billing authority. Select ‘Add supporting documents’ to add files to a report.</p>
+  <p class="govuk-body">The VOA can take up to 90 days from receiving the report to decide whether to add it to the schedules or not. The decision is made based on the information provided in the report and the supporting information you upload to the service.</p>
+
+
+  <h2 class="govuk-heading-m" id="cookies-consent-heading">Downloading schedules</h2>
+  <p class="govuk-body">Once reports have been processed and accepted by the VOA they will be added to the schedules. You can choose ‘Download schedules’ on the dashboard to search for and save them.</p>
+  <p class="govuk-body">A filter can also be used to help find schedules of a certain type, or by date.</p>
+
+
+  <h2 class="govuk-heading-m" id="cookies-consent-heading">Glossary of terms</h2>
+  <p class="govuk-body">There is a <a href="#">glossary of terms </a>,
+    which includes frequently used words, phrases and acronyms specific to this service.</p>
+
+    <h2 class="govuk-heading-m" id="cookies-consent-heading">Get help using the service</h2>
+    <h4 class="govuk-heading-s">Telephone</h4>
+  <p class="govuk-body">
+            < phone number >
+
+              <br/>
+              Monday to Friday, 9am to 5pm
+
+    </p>
+
+      <h4 class="govuk-heading-s">Email</h4>
+    <p class="govuk-body">
+            < email address >
+
+
+    </p>
+    <p class="govuk-body">
+        We aim to respond within 5 working days
+
+      </p>
+
+
+
+    <h2 class="govuk-heading-m" id="cookies-consent-heading">Feedback</h2>
+    <p class="govuk-body">Send your comments and feedback to the VOA using the <a href="/contact/feedback-form">feedback form<a/>.</p>
+
+
+    </div>
+
+
+
+</div>
+  {% include "includes/details-get-help.html" %}
+    {% endblock %}
