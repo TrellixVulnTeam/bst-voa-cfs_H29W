@@ -1028,7 +1028,7 @@ router.post('/webform/ct/billing-auth-ref-no', function (req, res) {
   }
 
   // Check whether the variable matches a condition
-  if (reason == "new"){
+  if (reason == "add"){
     // Send user to next page
 
     res.redirect('/webform/ct/address-postcode-lookup?reason='+reason+'&property='+property+'&propertyreason='+propertyreason)
