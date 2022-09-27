@@ -1593,6 +1593,19 @@ router.post('/webform/ndr/owner-occupier-details', function (req, res) {
 })
 
 
+router.post('/occupiers-list/upload-occupiers-list', function (req, res) {
+
+
+
+
+    // Send user to ineligible page
+    res.redirect('/occupiers-list/upload-occupiers-list?listaction=add')
+
+})
+
+
+
+
 router.post('/webform/ct/no-planning-reference', function (req, res) {
 
 

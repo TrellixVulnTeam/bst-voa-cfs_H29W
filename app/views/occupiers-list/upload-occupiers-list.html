@@ -1,0 +1,200 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+
+
+
+
+			Upload an occupier list
+
+
+{% endblock %}
+
+{% block beforeContent %}
+
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-full">
+			{% include "includes/header-dashboard.html" %}
+		</div>
+		<div class="govuk-grid-column-full">
+			{{ govukBackLink({
+			  text: "Back",
+			  href: "javascript:window.history.back()"
+			}) }}
+		</div>
+
+	</div>
+{% endblock %}
+
+{% block content %}
+
+{%if (data['listaction'] == "add") %}
+
+	{%set filenm = "occupiers_list_mar_2023.xls"%}
+					<div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+								<div class="govuk-notification-banner__header">
+								<h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+									Occupiers list added
+								</h2>
+								</div>
+								<div class="govuk-notification-banner__content"  style="border:1px solid red;">
+								<h3 class="govuk-notification-banner__heading" >
+									You have added "{{filenm}}".
+								</h3>
+
+								</div>
+							</div>
+
+
+	{% endif %}
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="/occupiers-list/upload-occupiers-list" method="post" class="form">
+      <div class="govuk-form-group">
+        <label class="govuk-heading-l" for="event-name">
+				<!-- pagetitle widget for excel filetype -->
+
+
+
+						Upload an occupier list
+
+        </label>
+
+
+				<!-- details widget for excel filetype -->
+
+				<p class="govuk-body">
+
+								Each billing authority must send its occupier list to the Valuation Office Agency every 3 months.
+
+				</p>
+
+				<div class="govuk-inset-text">
+					Find out when an <a href="/occupiers-list/occupiers-list-history">occupier list was last uploaded for this billing authority</a>. You can also 		check on the status of recent uploads.
+
+	</div>
+
+
+
+
+		   <p class="govuk-body">Upload your occupier list using the template:</p>
+
+			 <ul class="govuk-list govuk-list--bullet">
+					<li><a href="#">Occupier list template (England)</a></li>
+						<li><a href="#">Occupier list template (Wales)</a></li>
+			</ul>
+
+
+			  <p class="govuk-body">Files must be:
+</p>
+			<ul class="govuk-list govuk-list--bullet">
+			 	 <li>less than 130MB</li>
+
+         <li>XLS, XLSX or XLT format
+				 	</li>
+
+
+			</ul>
+
+
+
+
+
+
+
+              <div class="govuk-form-group">
+                <label class="govuk-label" for="file-upload-1">
+                    <strong>
+											 Upload a file
+                    </strong>
+                </label>
+                <input class="govuk-file-upload" id="file-occupier-list-upload" name="file-occupier-list-upload" type="file">
+              </div>
+
+
+
+
+
+
+
+            </div>
+
+            <button class="govuk-button" data-module="govuk-button">
+              Add
+            </button>
+
+          </form>
+
+
+
+
+
+  </div>
+
+</div>
+	{%if (data['listaction'] == "add") %}
+
+		{%set filenm = "occupiers_list_mar_2023.xls"%}
+		<hr class="govuk-section-break govuk-section-break--visible">
+
+
+		<div class="govuk-form-group govuk-!-margin-bottom-8 govuk-!-margin-top-8">
+								<label class="govuk-heading-m">
+							Occupiers list ready for upload
+								</label>
+
+								<table class="govuk-table" data-module="moj-sortable-table">
+									<thead class="govuk-table__head">
+										<tr class="govuk-table__row">
+									 <th class="govuk-table__header" class="govuk-table__header" aria-sort="none">Documents</th>
+											<th scope="col" class="govuk-table__header" aria-sort="ascending">File size</th>
+											<th scope="col" class="govuk-table__header" >Action</th>
+
+											<!--<th scope="col" class="govuk-table__header" aria-sort="none">Action</th>-->
+										</tr>
+									</thead>
+									<tbody class="govuk-table__body">
+
+
+
+
+
+										<tr class="govuk-table__row govuk-table__row--selected">
+								<td class="govuk-table__cell">{{filenm}}</td>
+											<td class="govuk-table__cell">8 MB</td>
+											<td class="govuk-table__cell">
+														<a href="/bulkevidence/confirm-remove-file-row?filerow=1&filecount={{data['filecount']}}">Remove</a>
+											</td>
+										</tr>
+
+
+
+						</tbody>
+					</table>
+
+
+
+
+		</div>
+
+
+
+										  <div class="govuk-button-group">
+
+													<a href="/bulkevidence/upload-validated-notification">
+															<button class="govuk-button" data-module="govuk-button">
+																Send
+															</button>
+
+													</a>
+											</div>
+
+
+		{% endif %}
+
+
+
+</div>
+  {% include "includes/details-get-help.html" %}
+{% endblock %}
