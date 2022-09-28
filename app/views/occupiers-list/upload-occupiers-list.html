@@ -38,7 +38,7 @@
 
 		<h1 class="govuk-heading-l">
 
-		      	Upload an occupier list
+		      	Add an occupiers list
 
 		      </h1>
 
@@ -124,7 +124,7 @@
 
 	<div class="govuk-grid-row" id="uploadedOccupiersList" style="display:none;">
 		<div class="govuk-grid-column-full">
-
+<!--
 		<div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
 					<div class="govuk-notification-banner__header">
 					<h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
@@ -138,16 +138,16 @@
 
 					</div>
 				</div>
-
+-->
 				<div class="govuk-form-group">
-					<label class="govuk-heading-l" for="event-name">
+						<h1 class="govuk-heading-l">
 					<!-- pagetitle widget for excel filetype -->
 
 
 
-							Upload an occupier list
+							Occupiers list ready for upload
 
-					</label>
+					</h1>
 			</div>
 
     <form action="/occupiers-list/upload-occupiers-list-progress" method="post" class="form">
@@ -155,14 +155,12 @@
 
 
 		<div class="govuk-form-group govuk-!-margin-bottom-8 govuk-!-margin-top-8">
-								<label class="govuk-heading-m">
-							Occupiers list ready for upload
-								</label>
 
-								<table class="govuk-table" data-module="moj-sortable-table">
+
+								<table class="govuk-table">
 									<thead class="govuk-table__head">
 										<tr class="govuk-table__row">
-									 <th class="govuk-table__header" class="govuk-table__header" aria-sort="none">Documents</th>
+									 <th class="govuk-table__header" class="govuk-table__header" aria-sort="none">Document</th>
 											<th scope="col" class="govuk-table__header" aria-sort="ascending">File size</th>
 											<th scope="col" class="govuk-table__header" >Action</th>
 
