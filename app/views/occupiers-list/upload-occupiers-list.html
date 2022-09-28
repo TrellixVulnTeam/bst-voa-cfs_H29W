@@ -145,7 +145,7 @@
 
 
 
-							Occupiers list ready for upload
+							Confirm Occupiers list to send
 
 					</h1>
 			</div>
@@ -156,7 +156,7 @@
 
 		<div class="govuk-form-group govuk-!-margin-bottom-8 govuk-!-margin-top-8">
 
-
+<!--
 								<table class="govuk-table">
 									<thead class="govuk-table__head">
 										<tr class="govuk-table__row">
@@ -164,7 +164,6 @@
 											<th scope="col" class="govuk-table__header" aria-sort="ascending">File size</th>
 											<th scope="col" class="govuk-table__header" >Action</th>
 
-											<!--<th scope="col" class="govuk-table__header" aria-sort="none">Action</th>-->
 										</tr>
 									</thead>
 									<tbody class="govuk-table__body">
@@ -184,23 +183,47 @@
 
 
 						</tbody>
-					</table>
+								</table>
+-->
+<dl class="govuk-summary-list">
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      Document
+    </dt>
+    <dd class="govuk-summary-list__value">
+    {{filenm}}
+    </dd>
 
+  </div>
+  <div class="govuk-summary-list__row">
+    <dt class="govuk-summary-list__key">
+      File size
+    </dt>
+    <dd class="govuk-summary-list__value">
+      8 MB
+    </dd>
+
+  </div>
+
+</dl>
 
 
 
 		</div>
-
-
-
+	<div class="govuk-form-group govuk-!-margin-bottom-8 govuk-!-margin-top-8">
+		<p class="govuk-body">
+		<a href="#" onclick="HideUploadfile();">Upload a different file</a>
+		</p>
+</div>
 										  <div class="govuk-button-group">
 
-													<a href="/bulkevidence/upload-validated-notification">
 															<button class="govuk-button" data-module="govuk-button">
-																Send
+																Confirm and send
 															</button>
 
-													</a>
+
+
+
 											</div>
 
 
