@@ -28,40 +28,23 @@
 
 {% block content %}
 
-{%if (data['listaction'] == "add") %}
-
-	{%set filenm = "occupiers_list_mar_2023.xls"%}
-					<div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
-								<div class="govuk-notification-banner__header">
-								<h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
-									Occupiers list added
-								</h2>
-								</div>
-								<div class="govuk-notification-banner__content"  style="border:1px solid red;">
-								<h3 class="govuk-notification-banner__heading" >
-									You have added "{{filenm}}".
-								</h3>
-
-								</div>
-							</div>
 
 
-	{% endif %}
+<div class="govuk-grid-row" id="uploadOccupierComponent">
+<div class="govuk-grid-column-two-thirds">
 
-<div class="govuk-grid-row">
-  <div class="govuk-grid-column-two-thirds">
-    <form action="/occupiers-list/upload-occupiers-list" method="post" class="form">
-      <div class="govuk-form-group">
-        <label class="govuk-heading-l" for="event-name">
-				<!-- pagetitle widget for excel filetype -->
+	<div class="govuk-form-group">
+		<label class="govuk-heading-l" for="event-name">
+		<!-- pagetitle widget for excel filetype -->
 
 
 
-						Upload an occupier list
+				Upload an occupier list
 
-        </label>
+		</label>
+</div>
 
-
+	<div class="govuk-form-group">
 				<!-- details widget for excel filetype -->
 
 				<p class="govuk-body">
@@ -120,11 +103,11 @@
 
             </div>
 
-            <button class="govuk-button" data-module="govuk-button">
+            <button class="govuk-button" data-module="govuk-button" onclick="ShowUploadfile();">
               Add
             </button>
 
-          </form>
+
 
 
 
@@ -133,10 +116,40 @@
   </div>
 
 </div>
-	{%if (data['listaction'] == "add") %}
+	{#%if (data['listaction'] == "add") %#}
 
 		{%set filenm = "occupiers_list_mar_2023.xls"%}
-		<hr class="govuk-section-break govuk-section-break--visible">
+
+	<div class="govuk-grid-row" id="uploadedOccupiersList" style="display:none;">
+		<div class="govuk-grid-column-full">
+
+		<div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+					<div class="govuk-notification-banner__header">
+					<h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+						Occupiers list added
+					</h2>
+					</div>
+					<div class="govuk-notification-banner__content"  style="border:1px solid red;">
+					<h3 class="govuk-notification-banner__heading" >
+						You have added "{{filenm}}".
+					</h3>
+
+					</div>
+				</div>
+
+				<div class="govuk-form-group">
+					<label class="govuk-heading-l" for="event-name">
+					<!-- pagetitle widget for excel filetype -->
+
+
+
+							Upload an occupier list
+
+					</label>
+			</div>
+
+    <form action="/occupiers-list/upload-occupiers-list-progress" method="post" class="form">
+
 
 
 		<div class="govuk-form-group govuk-!-margin-bottom-8 govuk-!-margin-top-8">
@@ -164,7 +177,7 @@
 								<td class="govuk-table__cell">{{filenm}}</td>
 											<td class="govuk-table__cell">8 MB</td>
 											<td class="govuk-table__cell">
-														<a href="/bulkevidence/confirm-remove-file-row?filerow=1&filecount={{data['filecount']}}">Remove</a>
+														<a href="#" onclick="HideUploadfile();">Remove</a>
 											</td>
 										</tr>
 
@@ -191,10 +204,32 @@
 											</div>
 
 
-		{% endif %}
-
-
-
+		{#% endif %#}
+    </form>
 </div>
+
+<script>
+
+	function ShowUploadfile() {
+
+
+	 document.getElementById("uploadedOccupiersList").style.display='';
+	 document.getElementById("uploadOccupierComponent").style.display='none';
+
+
+ }
+
+ function HideUploadfile() {
+
+
+	document.getElementById("uploadedOccupiersList").style.display='none';
+	document.getElementById("uploadOccupierComponent").style.display='';
+
+
+}
+
+
+
+	</script>
   {% include "includes/details-get-help.html" %}
 {% endblock %}

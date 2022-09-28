@@ -1,0 +1,91 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  We’ve received your occupier list
+
+{% endblock %}
+
+{% block beforeContent %}
+
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-one-third">
+			{{ govukBackLink({
+			  text: "Back",
+			  href: "javascript:window.history.back()"
+			}) }}
+		</div>
+		{% include "includes/header-section-signedin.html" %}
+	</div>
+{% endblock %}
+
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-two-thirds">
+
+      <div class="govuk-panel govuk-panel--confirmation" style="background-color:#003078">
+        <h1 class="govuk-panel__title">We’ve received your occupier list
+
+ </h1>
+    <!--    <div class="govuk-panel__body">
+         You will receive an email when this is finished
+        </div> -->
+      </div>
+
+<!--
+		<p class="govuk-body">
+
+			Checking uploaded files can take up to [X] minutes. You can close this window.
+		</p>
+-->
+
+      <h2 class="govuk-heading-m">What happens next</h2>
+       	 <p class="govuk-body">We will check your file to make sure it contains everything we need. This usually takes [x] minutes and you will receive an email when this is done.
+
+</p>
+
+		<p class="govuk-body">If you are told there is a problem with the file, you can go to your <a href="/occupiers-list/occupiers-list-history">occupier lists upload history</a> to fix it.</p>
+
+
+
+<form method="post" action="/bahomepage">
+       <div class="govuk-button-group">
+
+          <button class="govuk-button govuk-button--secondary" data-module="govuk-button" id="Return" name="return" value="dashboard">
+            Return to dashboard
+          </button>
+
+       </div>
+</form>
+
+      <p><a href="/contact/feedback-form">What did you think of this service?</a> (takes 30 seconds)</p>
+<!-- added for usability testing -->
+      <details class="govuk-details" data-module="govuk-details">
+                    <summary class="govuk-details__summary">
+                      <span class="govuk-details__summary-text">
+                      Show email notification for upload validation progress(UT)
+                      </span>
+                    </summary>
+                    <div class="govuk-details__text">
+
+                      <p>
+
+                        <img src="/public/images/email/upload-fail-email-updated.jpg" width="100%" height="100%"" title="Upload progress email notification" />
+                      </p>
+
+
+
+
+
+                    </div>
+          </details>
+
+<!-- added for usability testing -->
+
+    </div>
+
+
+
+  </div>
+  {% include "includes/details-get-help.html" %}
+{% endblock %}
