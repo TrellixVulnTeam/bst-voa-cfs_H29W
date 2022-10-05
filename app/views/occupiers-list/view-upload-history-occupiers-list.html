@@ -22,35 +22,8 @@ Occupier list upload history
     <div class="govuk-grid-column-full">
 
 
-					{% if data['deletefile'] != 0 %}
-						<div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
-						  <div class="govuk-notification-banner__header">
-							<h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
-							  File removed
-							</h2>
-						  </div>
-						  <div class="govuk-notification-banner__content">
-							<h3 class="govuk-notification-banner__heading">
-							  You have removed the file
 
 
-								{%if data['deletefile'] == 1 %}
-										{{ data['file-bulk-upload'] }}
-								{%else%}
-											{{ data['file-data-validation'] }}
-								{%endif%}
-
-
-							</h3>
-						<!--	<p class="govuk-body">Upload a corrected file.</p>-->
-						  </div>
-						</div>
-
-
-
-					{% endif %}
-
-{% if data['deletefile'] == 0 %}
       <h1 class="govuk-heading-xl">Occupier list upload history</h1>
 
 	<p class="govuk-body">
@@ -120,15 +93,8 @@ Occupier list upload history
 
 			-->
 
-	{% if data['deletefile'] == 1 %}
+
 		<p>Showing 1 - 3 of 3 results</p>
-	{% else %}
-    <!--
-
-				commented for Usability testing March 09 2022
-
-		<p>Showing 1 - 4 of 4 results</p>-->
-	{% endif %}
 
 
 
@@ -171,7 +137,7 @@ Occupier list upload history
 
 <!-- start of Commenting for usability testing -->
 
-		{% if data['deletefile'] != 1 %}
+
 
           <tr class="govuk-table__row govuk-table__row--selected">
 						  <td class="govuk-table__cell">06 June 2023</td>
@@ -192,10 +158,9 @@ Occupier list upload history
             </td>
           </tr>
 
-		{% endif %}
-<!-- end  of Commenting for usability testing -->
 
-	{% if data['deletefile'] != 2 %}
+
+
 
           <tr class="govuk-table__row govuk-table__row--selected">
 						  <td class="govuk-table__cell">06 March 2023</td>
@@ -215,7 +180,7 @@ Occupier list upload history
               </td>
           </tr>
 
-{% endif %}
+
 
 				<!--
           <tr class="govuk-table__row govuk-table__row--selected">
@@ -238,12 +203,11 @@ Occupier list upload history
         </tbody>
       </table>
 
-{% else %}
-
-<h1 class="govuk-heading-xl">No reports uploaded at this moment</h1>
 
 
-{% endif %}
+<!--<h1 class="govuk-heading-xl">No reports uploaded at this moment</h1>-->
+
+
 <form method="post" novalidate action="/bulkreport/select-file-format">
 
 <!--
