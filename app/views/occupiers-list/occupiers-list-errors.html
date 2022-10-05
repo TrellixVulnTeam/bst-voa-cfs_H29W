@@ -1,0 +1,284 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+  Fix an occupier list
+{% endblock %}
+
+{% block beforeContent %}
+
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-one-third">
+			{{ govukBackLink({
+			  text: "Back",
+			  href: "javascript:window.history.back()"
+			}) }}
+		</div>
+		{% include "includes/header-section-signedin.html" %}
+	</div>
+{% endblock %}
+{% block content %}
+
+
+
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      <h1 class="govuk-heading-xl">Fix an occupier list
+		</h1>
+
+
+
+
+
+
+<p class="govuk-!-padding-bottom-3">There is a problem with this occupier list.</p>
+
+
+<div class="govuk-inset-text">
+<strong>File name:</strong> occupierlist0922
+</div>
+
+
+         <table class="govuk-table" data-module="moj-sortable-table">
+
+
+        <thead class="govuk-table__head">
+
+          <tr class="govuk-table__row">
+        <!-- <th class="govuk-table__header" scope="col" id="select-all">   </th>-->
+
+
+
+
+
+
+              <th scope="col" class="govuk-table__header" aria-sort="none">Billing authority reference number</th>
+          <th scope="col" class="govuk-table__header" aria-sort="none">Data errors</th>
+
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+
+
+                                          <tr class="govuk-table__row govuk-table__row--selected">
+
+
+                                            <td class="govuk-table__cell">06002874005006</td>
+
+                                            <td class="govuk-table__cell">
+
+                                              <ul class="govuk-list">
+                                                  <li>
+                                                      Start date is missing
+                                                  </li>
+                                                  <li>
+                                                      Primary telephone number is missing.
+                                                  </li>
+                                              </ul>
+                                            </td>
+
+
+
+                                          </tr>
+
+                                          <tr class="govuk-table__row govuk-table__row--selected">
+
+
+                                            <td class="govuk-table__cell">06002874005326</td>
+
+                                            <td class="govuk-table__cell">
+
+                                              <ul class="govuk-list">
+                                                  <li>
+                                                    Business Postcode is missing
+                                                  </li>
+                                                  <li>
+                                                      Vacancy indicator is incorrect.
+                                                  </li>
+                                              </ul>
+                                            </td>
+
+
+
+                                          </tr>
+
+                                          <tr class="govuk-table__row govuk-table__row--selected">
+
+
+                                            <td class="govuk-table__cell">06002874008765</td>
+
+                                            <td class="govuk-table__cell">
+                                              <ul class="govuk-list">
+                                                  <li>
+                                                      Start date is missing
+                                                  </li>
+                                                  <li>
+                                                      Billing Postcode is missing.
+                                                  </li>
+                                              </ul>
+                                            </td>
+
+
+
+                                          </tr>
+
+                                          <tr class="govuk-table__row govuk-table__row--selected">
+
+
+                                            <td class="govuk-table__cell">06002874009001</td>
+
+                                            <td class="govuk-table__cell">
+
+                                              <ul class="govuk-list">
+                                                  <li>
+                                                      Primary E-mail address is missing
+                                                  </li>
+                                                  <li>
+                                                      Primary telephone number is missing.
+                                                  </li>
+                                              </ul>
+
+                                            </td>
+
+
+
+                                          </tr>
+
+                                          <tr class="govuk-table__row govuk-table__row--selected">
+
+
+                                            <td class="govuk-table__cell">06002874009036</td>
+
+                                            <td class="govuk-table__cell">
+
+                                              <ul class="govuk-list">
+                                                  <li>
+                                                      Start date is missing
+                                                  </li>
+                                                  <li>
+                                                      Primary telephone number is missing.
+                                                  </li>
+                                              </ul>
+                                            </td>
+
+
+
+                                          </tr>
+
+                                          <tr class="govuk-table__row govuk-table__row--selected">
+
+
+                                            <td class="govuk-table__cell">06002874018008</td>
+
+                                            <td class="govuk-table__cell">
+
+                                              <ul class="govuk-list">
+                                                  <li>
+                                                      Start date is missing
+                                                  </li>
+                                                  <li>
+                                                      Primary telephone number is missing.
+                                                  </li>
+                                              </ul>
+
+                                            </td>
+
+
+
+                                          </tr>
+
+
+
+
+
+
+
+
+
+
+        </tbody>
+      </table>
+
+
+
+
+
+
+				<form method="post" novalidate action="/occupiers-list/confirm-delete-occupiers-list">
+
+	<input type="hidden" name="file-data-validation" id="file-data-validation" value="localcouncilreport.xls">
+
+
+  <input type="hidden" name="edit_issue" id="edit_issue" value="{{data['correctedissues']}}">
+
+
+      <input type="hidden" name="removerowissue1" id="removerowissue1" value="{{data['removerowissue1']}}">
+
+      <input type="hidden" name="removerowissue2" id="removerowissue2" value="{{data['removerowissue2']}}">
+
+
+
+<!-- show rexcel data errors link if file has data issues and option to remove failed reports and delete uploaded file-->
+
+
+
+				<p class="govuk-body">
+
+
+						<a href="#" target="_blank">Download the list of data errors as an Excel file</a>.
+
+
+					</p>
+
+
+	<p class="govuk-body">
+          To continue, delete the file, fix the issues and then upload it again.
+		</p>
+
+  <div class="govuk-button-group">
+
+
+    <input type="hidden" name="bulk-report-file" id="bulk-report-file" value="localcouncilreport07022022.xml">
+
+		  <button class="govuk-button govuk-button--warning" data-module="govuk-button" id="deleteupload" name="bulkconfirm" value="0">
+			Delete the file
+		  </button>
+  </div>
+
+
+
+
+
+
+
+
+</form>
+
+      </div>
+    </div>
+
+
+  </div>
+  {% include "includes/details-get-help.html" %}
+{% endblock %}

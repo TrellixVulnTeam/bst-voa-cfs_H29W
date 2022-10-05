@@ -1,0 +1,263 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+Occupier list upload history
+{% endblock %}
+
+{% block beforeContent %}
+
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-one-third">
+			{{ govukBackLink({
+			  text: "Back",
+			  href: "javascript:window.history.back()"
+			}) }}
+		</div>
+		{% include "includes/header-section-signedin.html" %}
+	</div>
+{% endblock %}
+{% block content %}
+
+  <div class="govuk-grid-row">
+    <div class="govuk-grid-column-full">
+
+
+					{% if data['deletefile'] != 0 %}
+						<div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
+						  <div class="govuk-notification-banner__header">
+							<h2 class="govuk-notification-banner__title" id="govuk-notification-banner-title">
+							  File removed
+							</h2>
+						  </div>
+						  <div class="govuk-notification-banner__content">
+							<h3 class="govuk-notification-banner__heading">
+							  You have removed the file
+
+
+								{%if data['deletefile'] == 1 %}
+										{{ data['file-bulk-upload'] }}
+								{%else%}
+											{{ data['file-data-validation'] }}
+								{%endif%}
+
+
+							</h3>
+						<!--	<p class="govuk-body">Upload a corrected file.</p>-->
+						  </div>
+						</div>
+
+
+
+					{% endif %}
+
+{% if data['deletefile'] == 0 %}
+      <h1 class="govuk-heading-xl">Occupier list upload history</h1>
+
+	<p class="govuk-body">
+
+					<!-- The files listed below contain errors and need to be fixed before they can be submitted. -->
+					This page shows the occupier lists your billing authority has sent to the Valuation Office Agency.
+
+		</p>
+
+	<p class="govuk-body">
+
+		Use it to find out when you need to <a href="#">upload the latest list</a> or to check if there is a problem with a
+		recent upload.
+
+
+	</p>
+
+<!--
+		<details class="govuk-details" data-module="govuk-details">
+                <summary class="govuk-details__summary">
+                  <span class="govuk-details__summary-text">
+                  			What each file status means
+                  </span>
+                </summary>
+                <div class="govuk-details__text">
+
+
+                  <ul>
+
+                    <li class="govuk-list govuk-list--bullet">
+												<strong class="govuk-tag govuk-tag--yellow">
+	               				 Processing
+	             			 	  </strong>
+
+									 				Your file is still being checked. We will email you when this is finished.
+										</li>
+
+                    <li class="govuk-list govuk-list--bullet">
+						<strong class="govuk-tag govuk-tag--red">
+               				 FILE ERRORS
+             			 </strong>
+
+									 		There is a problem with the file. Go to 'View errors' to see what the errors are, then remove the file, correct any errors and re-upload it.
+					</li>
+
+
+
+					  <li class="govuk-list govuk-list--bullet">
+						  <strong class="govuk-tag govuk-tag--orange">
+               				 DATA ERRORS
+             			 </strong>
+
+									 		The information in the file does not meet <a href="#" target="_blank">submission standards (opens in a new window or tab)</a>. Go to 'Fix errors' where you can edit any reports that have issues. You can also remove the file, correct any errors, then re-upload it.
+						</li>
+
+
+
+
+
+
+
+                  </ul>
+
+
+                </div>
+      </details>
+
+			-->
+
+	{% if data['deletefile'] == 1 %}
+		<p>Showing 1 - 3 of 3 results</p>
+	{% else %}
+    <!--
+
+				commented for Usability testing March 09 2022
+
+		<p>Showing 1 - 4 of 4 results</p>-->
+	{% endif %}
+
+
+
+
+      <table class="govuk-table" data-module="moj-sortable-table">
+        <thead class="govuk-table__head">
+          <tr class="govuk-table__row">
+
+            <th scope="col" class="govuk-table__header" aria-sort="ascending">Date uploaded</th>
+
+						         <th class="govuk-table__header" class="govuk-table__header" aria-sort="none">File name</th>
+            <th scope="col" class="govuk-table__header" aria-sort="none">Status</th>
+            <th scope="col" class="govuk-table__header" aria-sort="none">Action</th>
+
+            <!--<th scope="col" class="govuk-table__header" aria-sort="none">Action</th>-->
+          </tr>
+        </thead>
+        <tbody class="govuk-table__body">
+
+
+          <tr class="govuk-table__row govuk-table__row--selected">
+
+						    <td class="govuk-table__cell">09 September 2023</td>
+								<td class="govuk-table__cell">occupierlist0923.xlsx</td>
+
+
+						  <td class="govuk-table__cell">
+										<strong class="govuk-tag govuk-tag--red">
+											<!--FILE ERRORS-->
+											ERRORS
+										</strong>
+           </td>
+            <td class="govuk-table__cell">
+							<a href="/occupiers-list/occupiers-list-errors">Fix errors</a>
+
+            </td>
+          </tr>
+
+
+
+<!-- start of Commenting for usability testing -->
+
+		{% if data['deletefile'] != 1 %}
+
+          <tr class="govuk-table__row govuk-table__row--selected">
+						  <td class="govuk-table__cell">06 June 2023</td>
+
+							<td class="govuk-table__cell">
+
+								occupierlist0623.xlsx
+							</td>
+
+            <td class="govuk-table__cell">
+							<strong class="govuk-tag govuk-tag--yellow">
+									Processing
+								</strong>
+
+           </td>
+            <td class="govuk-table__cell">
+
+            </td>
+          </tr>
+
+		{% endif %}
+<!-- end  of Commenting for usability testing -->
+
+	{% if data['deletefile'] != 2 %}
+
+          <tr class="govuk-table__row govuk-table__row--selected">
+						  <td class="govuk-table__cell">06 March 2023</td>
+
+			<td class="govuk-table__cell">
+
+
+						occupierlist0323.xlsx
+			</td>
+
+            <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">
+                <!--DATA ERRORS-->
+								Uploaded
+              </strong>
+           </td>
+            <td class="govuk-table__cell">
+              </td>
+          </tr>
+
+{% endif %}
+
+				<!--
+          <tr class="govuk-table__row govuk-table__row--selected">
+						<td class="govuk-table__cell">localcouncil07032022-1.xls</td>
+            <td class="govuk-table__cell">09 Mar 2022 09:27</td>
+            <td class="govuk-table__cell"><strong class="govuk-tag govuk-tag--green">
+                Validated
+              </strong>
+           </td>
+            <td class="govuk-table__cell">
+                  <a href="/bulkreport/bulk-submission-report-list?dataissues=0">View reports</a>
+            </td>
+          </tr>
+				-->
+
+
+
+
+
+        </tbody>
+      </table>
+
+{% else %}
+
+<h1 class="govuk-heading-xl">No reports uploaded at this moment</h1>
+
+
+{% endif %}
+<form method="post" novalidate action="/bulkreport/select-file-format">
+
+<!--
+	<div class="govuk-button-group">
+
+
+	  	 <button class="govuk-button" data-module="govuk-button" id="uploadanother" name="uploadanother" value="1">
+			Upload another file
+		  </button>
+
+	 </div>
+-->
+</form>
+    </div>
+  </div>
+  {% include "includes/details-get-help.html" %}
+{% endblock %}

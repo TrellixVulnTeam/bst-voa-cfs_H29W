@@ -1,0 +1,118 @@
+{% extends "layout.html" %}
+
+{% block pageTitle %}
+
+
+
+{% if data['errortype'] == 'data' %}
+
+
+
+Are you sure you want to delete the file?
+
+
+{%else%}
+
+Are you sure you want to delete the file?
+
+
+{%endif%}
+
+{% endblock %}
+
+{% block beforeContent %}
+
+	<div class="govuk-grid-row">
+		<div class="govuk-grid-column-one-third">
+			{{ govukBackLink({
+			  text: "Back",
+			  href: "javascript:window.history.back()"
+			}) }}
+		</div>
+		{% include "includes/header-section-signedin.html" %}
+	</div>
+{% endblock %}
+
+{% block content %}
+
+
+
+<div class="govuk-grid-row">
+  <div class="govuk-grid-column-two-thirds">
+    <form action="/occupiers-list/delete-occupiers-list-confirmation" method="post" class="form">
+      <div class="govuk-form-group">
+        <label class="govuk-heading-xl" for="event-name">
+      Are you sure you want to delete the file?
+
+        </label>
+
+
+
+
+
+		  <dl class="govuk-summary-list">
+			  <div class="govuk-summary-list__row">
+				<dt class="govuk-summary-list__key">
+				  File
+				</dt>
+				<dd class="govuk-summary-list__value">
+
+
+
+
+      	{%if data['file-bulk-upload'].length > 0  %}
+
+            {{data['file-bulk-upload']}}print
+          //  {{data['file-bulk-upload'].length}}
+
+
+
+          {%else %}
+
+
+              	occupierlist0923.xlsx
+
+
+          {%endif%}
+				</dd>
+			  </div>
+		  </dl>
+
+
+                <div class="govuk-radios" data-module="govuk-radios">
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="yesdelete" name="confirm-delete-upload" type="radio" value="yes">
+                    <label class="govuk-label govuk-radios__label" for="yesdelete">
+                      Yes
+                    </label>
+                  </div>
+                  <div class="govuk-radios__item">
+                    <input class="govuk-radios__input" id="nodelete" name="confirm-delete-upload" type="radio" value="no">
+                    <label class="govuk-label govuk-radios__label" for="nodelete">
+                      No
+                    </label>
+                  </div>
+
+                </div>
+
+
+            </div>
+
+            <button class="govuk-button" data-module="govuk-button">
+              Continue
+            </button>
+          </form>
+
+
+
+
+
+  </div>
+</div>
+
+
+
+
+
+  {% include "includes/details-get-help.html" %}
+{% endblock %}
