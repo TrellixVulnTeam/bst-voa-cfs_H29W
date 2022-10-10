@@ -1,7 +1,7 @@
 {% extends "layout.html" %}
 
 {% block pageTitle %}
-Your upload contains errors
+There is a problem with your file
 {% endblock %}
 
 {% block beforeContent %}
@@ -26,12 +26,19 @@ Your upload contains errors
     <form action="/occupiers-list/confirm-delete-occupiers-list" method="post" class="form">
       <div class="govuk-form-group">
         <label class="govuk-heading-xl" for="event-name">
-      Your upload contains errors
+     There is a problem with your file
         </label>
 	<p class="govuk-body">
 		  Delete the file, fix the errors and then upload the file again.
 
 		  </p>
+		  
+		  
+							{% if data['filetype'] == "xml" %}
+            	  <p><a href="#">Read guidance on fixing file errors in XML files (opens in a new window or tab)</a></p>
+							{% else  %}
+								<p><a href="#">Read guidance on fixing file errors in Excel files (opens in a new window or tab)</a></p>
+							{% endif %}
 
        <table class="govuk-table" data-module="moj-sortable-table">
 	   <!--<table class="govuk-table" data-module="moj-sortable-table">-->
@@ -73,21 +80,7 @@ Your upload contains errors
 
 
 
-          <div class="govuk-width-container">
-            <div class="govuk-grid-row">
-            <div class="govuk-grid-column-full">
-
-
-
-							{% if data['filetype'] == "xml" %}
-            	  <p><a href="#">Read guidance on fixing file errors in XML files (opens in a new window or tab)</a></p>
-							{% else  %}
-								<p><a href="#">Read guidance on fixing file errors in Excel files (opens in a new window or tab)</a></p>
-							{% endif %}
-
-            </div>
-            </div>
-          </div>
+        
 
 
 

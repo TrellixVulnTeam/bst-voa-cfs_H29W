@@ -62,7 +62,7 @@
 				</p>
 
 				<ul class="govuk-list govuk-list--bullet">
-					 <li>15 January/li>
+					 <li>15 January</li>
 						 <li>15 April</li>
 						  <li>15 July</li>
 							 <li>15 October</li>
@@ -135,7 +135,7 @@
 		{%set filenm = "occupiers_list_mar_2023.xls"%}
 
 	<div class="govuk-grid-row" id="uploadedOccupiersList" style="display:none;">
-		<div class="govuk-grid-column-full">
+		<div class="govuk-grid-column-two-thirds">
 <!--
 		<div class="govuk-notification-banner govuk-notification-banner--success" role="alert" aria-labelledby="govuk-notification-banner-title" data-module="govuk-notification-banner">
 					<div class="govuk-notification-banner__header">
@@ -200,11 +200,15 @@
 <dl class="govuk-summary-list">
   <div class="govuk-summary-list__row">
     <dt class="govuk-summary-list__key">
-      Document
+      Filename
     </dt>
     <dd class="govuk-summary-list__value">
     {{filenm}}
     </dd>
+	   <dd class="govuk-summary-list__actions">
+      <a href="#" onclick="HideUploadfile();">Change <span class="govuk-visually-hidden"> file</span></a>
+    </dd>
+	  
 
   </div>
   <div class="govuk-summary-list__row">
@@ -214,6 +218,11 @@
     <dd class="govuk-summary-list__value">
       8 MB
     </dd>
+	  <dd class="govuk-summary-list__actions">
+     
+    </dd>
+	  
+	  
 
   </div>
 
@@ -222,11 +231,7 @@
 
 
 		</div>
-	<div class="govuk-form-group govuk-!-margin-bottom-4">
-		<p class="govuk-body">
-		<a href="#" onclick="HideUploadfile();">Upload a different file</a>
-		</p>
-</div>
+	
 										  <div class="govuk-button-group govuk-!-margin-top-8">
 
 															<button class="govuk-button" data-module="govuk-button">
